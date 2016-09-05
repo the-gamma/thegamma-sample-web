@@ -1,0 +1,17 @@
+*.suo
+*.bak
+.ionide.debug
+
+.fake
+.vs
+paket.exe
+paket.targets
+paket-files
+packages
+
+web/ext/js
+
+temp
+bin
+obj
+debug.log

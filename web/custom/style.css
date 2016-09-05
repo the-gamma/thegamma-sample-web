@@ -1,0 +1,403 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata|Kreon:300,400,700|Roboto:400,700,400italic);
+
+/***************************************************************************************************
+  Page header (with photo and heading)
+***************************************************************************************************/
+
+header {
+  padding:20px;
+}
+header h1 {
+  font-size:30pt;
+  margin:0px;
+  line-height:1.4em;
+}
+header .content a span {
+  color:black;
+  background:#F4C300;
+  padding:3px 10px 3px 10px;
+}
+header .content a:hover {
+  text-decoration:none;
+}
+header .content a:hover span {
+  background:#FFEC9B;
+  color:black;
+}
+header .content {
+  font-family:Kreon,'Times New Roman',times,serif;
+}
+
+/***************************************************************************************************
+  Footer & separator between main text and other articles
+***************************************************************************************************/
+
+footer, .break {
+  background:#DDD8C5;
+}
+
+footer {
+  padding:30px 0px 50px 0px;
+  margin-top:50px;
+}
+footer h1 {
+  font-family:Kreon,'Times New Roman',times,serif;
+  font-size:28pt;
+  margin:0px 0px 20px 0px;
+}
+footer a {
+  text-decoration:underline;
+  color:#636159;
+}
+footer h3 {
+  font-family:Kreon,'Times New Roman',times,serif;
+  font-size:16pt;
+  margin:13px 0px 0px 0px;
+}
+footer .text {
+  padding:0px 20px 0px 20px;
+}
+
+.break {
+  margin:20px 0px 30px 0px;
+  padding:35px 0px 35px 0px;
+}
+.break h1 {
+  font-family:Kreon,'Times New Roman',times,serif;
+  font-size:20pt;
+}
+
+footer .container, .break .container {
+  font-family:'Roboto',verdana,sans-serif;
+  font-size:11pt;  
+  color:#56544C;
+}
+
+footer .btn-success, .container .btn-success {
+  border-color:#BFBBAC;
+  background:#E5E2D7;
+  color:#636159;
+}
+footer .btn-success:hover, footer .btn-success:focus,
+.container .btn-success:hover, .container .btn-success:focus {
+  color:#636159;
+  border-color:#BFBBAC;
+  background:#F5F2E7;
+}
+
+
+/***************************************************************************************************
+  Various forms and boxes
+***************************************************************************************************/
+
+.btn-success {
+  border-color:#BFBBAC;
+  background:#DDD8C5;
+  color:black;
+}
+.btn-success:hover, .btn-success:focus {
+  color:black;
+  border-color:#BFBBAC;
+  background:#E5E2D7;
+}
+
+/***************************************************************************************************
+  Interactive figure styling
+***************************************************************************************************/
+
+.ia-figure {
+  background:white;
+  border:1px solid #d8d8d8;
+  border-radius:6px;
+  padding:5px 15px 10px 15px;
+  margin:10px 10px 30px 10px;
+}
+
+.ia-figure .tools a {
+  font-size:10pt;
+  color:#b0b0b0;
+  text-decoration:none;
+}
+.ia-figure .tools a:hover {
+  color:#808080;
+}
+.ia-figure .tools-right {
+  float:right;
+}
+.ia-figure .tools-right a {
+  margin-left:10px;
+}
+.ia-figure .tools-left a {
+  margin-right:10px;
+}
+@media only screen and (max-width : 480px) {
+  .ia-figure .tools-left a span { display:none; }
+}
+
+.ia-figure .loading {
+  padding:60px 0px 80px 0px;
+  text-align:center;
+  color:#c0c0c0;
+}
+.ia-figure .ia-editor {
+  margin:10px 0px 10px 0px;
+}
+.ia-figure .ia-scrollable {
+  max-height:500px;
+  overflow-y:auto;
+  margin-bottom:10px;
+}
+.spinner {
+  margin-left:auto;
+  margin-right:auto;
+  width:21px;
+  height:21px;
+  background-image:url('../img/spinner.png');
+}
+
+/* For medal images in a table */
+.ia-output table img {
+  width:14px;
+  height:14px;
+  margin:2px;
+}
+
+@media only screen and (max-width : 480px) {
+  .ia-output table th {
+    border-bottom-style:none !important;
+  }
+  .ia-output table tr td:first-child {
+    color:#606060;
+    font-weight:bold;
+  }
+  .ia-output table tr {
+    width:100%;
+    display:block;
+  }
+  .ia-output table td {
+    display: inline-block;
+    width:100%;
+  }
+}
+
+.ia-errors ul, .ia-errors li {
+  list-style:none;
+  margin:0px;
+  padding:0px;
+}
+.ia-errors ul {
+  margin-bottom:20px;
+}
+.ia-errors li .err {
+  background:#D16159;
+  color:white;
+  padding:2px 5px 2px 5px;
+  margin-right:2px;
+  font-weight:bold;
+}
+.ia-errors li .loc {
+  color:#a0a0a0;
+}
+.ia-errors li {
+  color:#303030;
+  font-size:10pt;
+  margin:2px 20px 2px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/***************************************************************************************************
+  Editors for automatically provided options
+***************************************************************************************************/
+
+.ia-editor-panel h3, .ia-editor h3 {
+  font-family:'Roboto',verdana,sans-serif;
+  font-size:12pt;
+  font-weight:bold;
+  color:#909090;
+  margin:0px;
+}
+.ia-editor-panel p, .ia-editor p {
+  font-size:11pt;
+  color:#808080;
+  margin:0px 0px 20px 0px;
+}				
+.ia-editor-panel, .ia-editor {
+  margin:0px auto 40px auto;
+  padding:0px 20px 0px 20px;
+}
+
+.ia-editor-panel .chosen-container {
+  width:100% !important;
+  line-height:16px;
+}
+.ia-editor-panel select {
+  width:100% !important;
+}
+.ia-editor-panel .chosen-results li {
+  padding:2px 10px 2px 10px !important;
+}
+.ia-editor-panel .control {
+  max-width:600px;
+  margin:0px auto 20px auto;
+}
+
+.ed-nested .chosen-container {
+  margin-bottom:5px;
+}
+
+
+.ed-list ul, .ed-list li {
+  margin:0px;
+  padding:0px;
+  list-style-type:none;
+  font-size:14px;
+}
+.ed-list li {
+  padding:2px 10px 2px 10px;
+}
+.ed-list button {
+  text-align:right;
+  border-style:none;
+  background:transparent;
+  height:10px;
+  float:right;
+  font-weight:bold;
+  font-size:8pt;
+  color:#808080;
+}
+.ed-list button:disabled {
+  color:#a0a0a0;
+}
+.ed-list .control {
+  border: 1px solid #ccc;
+  padding-top:2px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.ed-list .chosen-single span {
+  line-height:16px;
+  color:#c0c0c0;
+}
+.ed-list .chosen-single div {
+  right:8px !important;
+  top:-10px !important;
+}
+.ed-list .chosen-drop {
+  border-top-style:none !important;
+}
+.ed-list .chosen-single {
+  width:100% !important;
+  box-shadow:none !important;
+  border-style:none !important;
+  padding:0px 10px 0px 10px !important;
+  height:20px !important;
+}
+.ed-list select {
+  border-style:none;
+}
+
+/***************************************************************************************************
+  Standard page formatting
+***************************************************************************************************/
+
+body {
+  font-family:'Roboto',verdana,sans-serif;
+  font-size:13pt;
+  background-color:#F2F1ED;
+  overflow-x:hidden;
+  overflow-y:scroll;
+}
+
+article {
+  padding-top:30px;
+  min-height:800px;
+}
+
+article code {
+  font-family:Inconsolata;
+  font-size:12pt;
+}
+
+article h1 {
+  font:300 24pt Kreon,'Times New Roman',times,serif;
+  margin:0px 0px 20px 0px;
+}
+article h2 {
+  font:300 18pt Kreon,'Times New Roman',times,serif;
+  margin:0px 0px 20px 0px;
+}
+article h3 {
+  font:400 18pt Kreon,'Times New Roman',times,serif;
+  margin:0px 0px 10px 0px;
+}
+
+article h1 span, article h2 span, article h1 a, article h2 a {
+  padding:4px 10px 4px 10px;
+  background:#FFDD35;
+  color:black;
+}
+article h1 a:hover, article h2 a:hover {
+  background:#FFEC9B;
+  color:black;
+  text-decoration:none;
+}
+article p {
+  margin:0px 0px 20px 0px;
+}
+article li {
+  margin:0px 0px 10px 0px;
+}
+article ul {
+  margin:0px 0px 20px 0px;
+}
+article table td, article table th {
+  font-size:11pt;
+  color:#505050;
+}
+
+/***************************************************************************************************
+  Sharing dialog
+***************************************************************************************************/
+
+#share-dialog .modal-dialog {
+  width:700px;
+}
+@media only screen and (max-width : 768px) {
+  #share-dialog .modal-dialog {
+    width:90%;
+  }
+}
+
+#share-dialog .social {
+  margin-left:20px;
+  font-size:20pt;
+}
+#share-dialog .social i {
+  margin-right:6px;
+}
+#submit-error {
+  color:#c31515;
+  position:relative;
+  left:20px;
+  visibility:hidden;
+  font-size:12pt;
+}
+.modal-content {
+  border-radius:0px;
+  background:#F2F1ED;
+}
+.modal-dialog h4 {
+  font-family:Kreon,'Times New Roman',times,serif;
+}
+.modal-body h3 {
+  font-size:15pt;
+  margin:5px 0px 15px 0px;
+}
+.modal-body .btn-primary {
+  margin-left:0px;
+}
+.modal-body .btn {
+  width:120px;
+}

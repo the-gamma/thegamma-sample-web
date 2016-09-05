@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+  <meta name=viewport content="width=device-width, initial-scale=1">
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link href="/lib/bootstrap.min.css" rel="stylesheet">
+  <link href="/lib/chosen.min.css" rel="stylesheet">
+  <link href="/custom/style.css" rel="stylesheet">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <meta name="theme-color" content="#F4C300">    
+  <script type="text/javascript" src="/custom/common.js"></script>
+  
+  <title>The Gamma</title>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="content">
+        <div class="col-lg-12">
+          <a href="/">
+            <h1><span>The Gamma</span></h1>    
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <article>
+    <div class="container">
+      <div class="col-lg-12">
+        <div class="ia-figure">
+          <p class="tools tools-right">
+            <a class="ia-show-options" href="javascript:;"><i class="fa fa-pencil-square-o"></i> <span>options</span></a>
+            <a class="ia-show-source" href="javascript:;"><i class="fa fa-code"></i> <span>source</span></a>
+          </p>
+          <p class="tools tools-left">
+            <a class="ia-share" href="javascript:;" style="display:none"><i class="fa fa-share-alt"></i> <span>share</span></a>
+            <a class="ia-run" href="javascript:;" style="display:none"><i class="fa fa-refresh"></i> <span>refresh</span></a>
+          </p>
+          <script class="ia-source" type="text/thegamma">empty.create()</script>
+          <!-- <script class="ia-compiled" type="text/thegamma-compiled"></script> -->
+          <div class="ia-options" style="display:none">
+            <div class="loading">
+              <p>Loading content, please wait...</p>
+              <div class="spinner" id="sp1"></div>
+              <script>startSpinning('sp1');</script>
+            </div>
+          </div>
+          <div class="ia-editor" style="display:none">
+            <h3>Edit source</h3>
+            <p>The following is the source code behind the visualization. You can change it and hit 'refresh' to run your new version.
+              When you type <code>.</code> after a name or a quoted name, you will get hint with possible options to choose from!</p>
+            <div id="ed1" class="ia-monaco"></div>
+          </div>
+          <div class="ia-errors"></div>
+          <div id="out1" class="ia-output">
+            <div class="loading">
+              <p>Loading content, please wait...</p>
+              <div class="spinner" id="sp2"></div>
+              <script>startSpinning('sp2');</script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  
+  <!--
+  <footer>
+    <div class="container">
+      <div class="hidden-xs col-sm-4 col-md-3" style="text-align:center;">
+        <h1>The Gamma</h1>        
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-sm-3 hidden-xs" style="text-align:center;">
+        <img src="/img/logo.png" style="width:100px;" />
+      </div>
+      <div class="col-sm-5 text">
+        <p>For more information about The Gamma and related projects, follow us
+          at <a href="http://twitter.com/thegamma_net">@thegamma_net</a>. If you want to speak
+          to us, contact <a href="http://tomasp.net">Tomas Petricek</a> at 
+          <a href="mailto:tomas@tomasp.net">tomas@tomasp.net</a>.
+        </p>
+        <p>
+          All source code is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+          and is available on <a href="http://github.com/the-gamma">GitHub</a>. If you have an interesting
+          project idea, do get in touch!
+        </p>
+      </div>
+      <div class="col-sm-4 text">
+        <p>To receive the latest news enter your email below. We will not spam you.</p>
+        <form action="https://docs.google.com/forms/d/1QhOoo9g6M6WhtZcMxOcURH1pQLpLLVIuTN1omvJLbWA/formResponse" 
+            method="POST" id="ss-form" target="_self" onsubmit="" class="form-inline">
+          <input placeholder="hello@thegamma.net" type="text" name="entry.902762028" value="" 
+            style="width:100%;" class="form-control ss-q-short" id="entry_902762028" dir="auto" aria-label="Email" title="">
+          <input style="margin-top:5px;width:100%;" type="submit" name="submit" class="btn btn-success" value="Sign up" id="ss-submit">
+          <input type="hidden" name="draftResponse" value="[,,&quot;-2799700618843047135&quot;]">
+          <input type="hidden" name="pageHistory" value="0">
+          <input type="hidden" name="fvv" value="0">
+          <input type="hidden" name="fbzx" value="-2799700618843047135">
+        </form>
+      </div>
+    </div>    
+  </footer>
+  -->
+
+  <!-- Dialog for entering more details when sharing a snippet -->
+  <div class="modal fade" id="share-dialog" tabindex="-1" role="dialog" aria-labelledby="Share" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Share Your Visualization</h4>
+        </div>
+        
+        <!-- This appears once snippet is saved -->
+        <div class="modal-body" id="modal-done" style="display:none">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h3>Your visualization was succesfully saved!</h3>
+                <p>Here is a link to your visualization so that you can review it and an address
+                 that you can copy and share with friends.</p>
+                <ul><li><a href="#" id="result-link">View your created visualization</a></li></ul>
+                <p>Share your visualization:</p>                
+                <button class="btn btn-success" data-dismiss="modal" onclick="closeShareDialog();" style="float:right;margin-top:30px">Close</button>
+                <p class="social">
+                  <a id="share-lnk-tw" target="_blank" href="#">
+                    <i class="fa fa-twitter-square"></i></a>
+                  <a id="share-lnk-fb" target="_blank" href="#">
+                    <i class="fa fa-facebook-official"></i></a>
+                  <a id="share-lnk-rd" target="_blank" href="#">
+                    <i class="fa fa-reddit-square"></i></a>
+                  <a id="share-lnk-em" href="#">
+                    <i class="fa fa-envelope"></i></a>
+                </p>                
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- This appears initially when dialog opens -->
+        <div class="modal-body" id="modal-share">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="submit-title" class="col-sm-2 control-label">Title</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="submit-title" placeholder="Title of your visualization">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="submit-author" class="col-sm-2 control-label">Author</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="submit-author" placeholder="Your name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="submit-author" class="col-sm-2 control-label">Twitter</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="submit-twitter" placeholder="Your twitter (optional)">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="submit-info" class="col-sm-2 control-label">About</label>
+              <div class="col-sm-10">
+                <textarea id="submit-info" class="form-control" placeholder="Write a few words about your visualization! You can use Markdown for basic formatting." rows="4"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <input type="button" class="btn btn-success" onclick="saveAndShare();" value="Share"/>
+                <span id="submit-error">We need title, your name and a brief description.</span>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Dialog shown when snippet is not well-typed -->
+  <div class="modal fade" id="cannot-share-dialog" tabindex="-1" role="dialog" aria-labelledby="Share" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel2">Error</h4>
+        </div>
+        
+        <!-- This appears once snippet is saved -->
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h3>Code contains errors</h3>
+                <p>The source code of the visualization contains errors and cannot be shared.
+                  Please correct all errors before sharing the snippet.</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-1 col-sm-10">
+                <button class="btn btn-success" data-dismiss="modal">OK</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Third-party standard references -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.5.3/numeral.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.js" 
+    integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="/lib/chosen.jquery.min.js"></script>
+
+  <!-- More fancy libraries -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  <script src="/lib/datamaps.world.min.js"></script>
+
+  <!-- Loading Monaco and TheGamma scripts -->
+  <script src="/lib/babel.min.js"></script>
+  <script src="/lib/require.js"></script>
+  <script>
+    require.config({
+        baseUrl: '/',
+        paths: { 
+          'core-js': 'lib/dev/core.min',          // Debug: only needed when loading 'ext/src/main/main'
+          'fable-core': 'lib/dev/fable-core.min', // Debug: Only needed when loading 'ext/src/main/main'
+          // {% if model.debug == "true" %}
+          // 'core-js': 'lib/dev/core.min',          // Debug: only needed when loading 'ext/src/main/main'
+          // 'fable-core': 'lib/dev/fable-core.min', // Debug: Only needed when loading 'ext/src/main/main'
+          // {% endif %}
+          'vs': 'lib/vs' 
+        },
+        map: { "*": { "monaco": "vs/editor/editor.main" }}
+    });
+    require(['monaco'], function () {
+      // Start logging of site events
+      // logStarted = true; 
+      // logEvent("page", "loaded", "", window.navigator.userAgent);
+      require(["ext/src/main/main"]);
+      
+      // {% if model.debug == "true" %}
+      // Debug: load individual source files instead of WebPacked version
+      // require(["ext/src/main/main"]);
+      // {% else %}
+      // require(["ext/thegamma-script"]);
+      // {% endif %}
+    });
+  </script>
+
+  <!-- More fancy libraries -->
+  <script type="text/javascript" src="//www.google.com/jsapi"></script>
+  <script type="text/javascript" src="/custom/charts.js"></script>
+
+  <!-- Google analytics
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      
+    ga('create', 'UA-65311433-1', 'auto');
+    ga('send', 'pageview');  
+  </script> -->
+</body>
+</html>
