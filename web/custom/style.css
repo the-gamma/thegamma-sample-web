@@ -102,6 +102,56 @@ footer .btn-success:hover, footer .btn-success:focus,
 }
 
 /***************************************************************************************************
+  Pivot live previews
+***************************************************************************************************/
+
+.monaco-editor .view-zones {
+  z-index:1000;
+}
+.pivot-preview {
+  background:#ffffff;
+  min-height:200px;
+  padding-top:10px;
+  border-bottom:solid 3px #F4C300;
+  z-index:1000;
+}
+
+.pivot-preview ul.tabs {
+  padding:0px;
+  margin:0px;
+  background:white;
+  width:100%;
+  height:35px;
+  font-family:'Roboto',verdana,sans-serif;
+  font-size:12pt;  
+  border-bottom:solid 3px #F4C300;
+}
+
+.pivot-preview ul.tabs li {
+  list-style-type:none;
+  margin:0px 5px 0px 5px;
+  padding:5px 10px 5px 10px;
+  background:#f0f0f0;
+  float:left;
+  height:32px;
+  cursor:pointer !important;
+}
+
+.pivot-preview ul.tabs li.selected {
+  background:#F4C300;
+  color:white;
+}
+
+.pivot-preview ul.tabs li.add {
+  float:right;
+  color:#F4C300;
+  margin-right:30px;
+  background:white;
+}
+
+.pivot-preview .preview-body {
+}
+/***************************************************************************************************
   Interactive figure styling
 ***************************************************************************************************/
 
