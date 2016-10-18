@@ -46,61 +46,55 @@
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(1), __webpack_require__(2), __webpack_require__(3), __webpack_require__(4), __webpack_require__(6), __webpack_require__(7), __webpack_require__(19), __webpack_require__(10), __webpack_require__(14), __webpack_require__(11), !(function webpackMissingModule() { var e = new Error("Cannot find module \"../thegamma/monaco\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()), __webpack_require__(13), !(function webpackMissingModule() { var e = new Error("Cannot find module \"../thegamma/services\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()), __webpack_require__(28), __webpack_require__(8), __webpack_require__(9), !(function webpackMissingModule() { var e = new Error("Cannot find module \"../libraries/google/charts\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()), __webpack_require__(12), !(function webpackMissingModule() { var e = new Error("Cannot find module \"../thegamma/editors\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(1), __webpack_require__(2), __webpack_require__(3), __webpack_require__(4), __webpack_require__(6), __webpack_require__(7), __webpack_require__(19), __webpack_require__(10), __webpack_require__(14), __webpack_require__(21), __webpack_require__(27), __webpack_require__(11), __webpack_require__(13), __webpack_require__(24), __webpack_require__(28), __webpack_require__(8), __webpack_require__(9), __webpack_require__(15), __webpack_require__(12), __webpack_require__(25), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports !== "undefined") {
-	    factory(exports, require("../libraries/common"), require("fable-core"), require("../thegamma/ast/ast"), require("../thegamma/providers/providers"), require("../thegamma/providers/pivot"), require("../thegamma/analyzer/interpreter"), require("../thegamma/analyzer/typechecker"), require("../libraries/tables"), require("../thegamma/ast/astops"), require("../gui/html"), require("../thegamma/monaco"), require("../thegamma/ast/typeops"), require("../thegamma/services"), require("../thegamma/codegen/codegen"), require("../libraries/series"), require("../thegamma/codegen/runtime"), require("../libraries/google/charts"), require("../libraries/maps"), require("../thegamma/editors"), require("core-js"));
+	    factory(exports, require("../libraries/common"), require("fable-core"), require("../thegamma/ast/ast"), require("../thegamma/providers/providers"), require("../thegamma/providers/pivot"), require("../thegamma/analyzer/interpreter"), require("../thegamma/analyzer/typechecker"), require("../libraries/tables"), require("../thegamma/ast/astops"), require("../thegamma/monaco"), require("../thegamma/parser/parser"), require("../gui/html"), require("../thegamma/ast/typeops"), require("../thegamma/services"), require("../thegamma/codegen/codegen"), require("../libraries/series"), require("../thegamma/codegen/runtime"), require("../libraries/google/charts"), require("../libraries/maps"), require("../thegamma/editors"), require("core-js"));
 	  } else {
 	    var mod = {
 	      exports: {}
 	    };
-	    factory(mod.exports, global.common, global.fableCore, global.ast, global.providers, global.pivot, global.interpreter, global.typechecker, global.tables, global.astops, global.html, global.monaco, global.typeops, global.services, global.codegen, global.series, global.runtime, global.charts, global.maps, global.editors, global.coreJs);
+	    factory(mod.exports, global.common, global.fableCore, global.ast, global.providers, global.pivot, global.interpreter, global.typechecker, global.tables, global.astops, global.monaco, global.parser, global.html, global.typeops, global.services, global.codegen, global.series, global.runtime, global.charts, global.maps, global.editors, global.coreJs);
 	    global.main = mod.exports;
 	  }
-	})(this, function (exports, _common, _fableCore, _ast, _providers, _pivot, _interpreter, _typechecker, _tables, _astops, _html, _monaco, _typeops, _services, _codegen, _series, _runtime, _charts, _maps, _editors) {
+	})(this, function (exports, _common, _fableCore, _ast, _providers, _pivot, _interpreter, _typechecker, _tables, _astops, _monaco, _parser, _html, _typeops, _services, _codegen, _series, _runtime, _charts, _maps, _editors) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
-	  exports.servicesLookup = exports.PreviewService = exports.PivotSection = exports.globalExprs = exports.globalTypes = exports.types = exports.ProvidedTypes = exports.services = undefined;
+	  exports.__esModule = true;
+	  exports.servicesLookup = exports.PreviewService = exports.marker = exports.PivotEditorState = exports.PivotEditorAction = exports.PivotEditorMenus = exports.PivotSection = exports.globalExprs = exports.globalTypes = exports.types = exports.ProvidedTypes = exports.services = undefined;
 	  exports.findElements = findElements;
 	  exports.tryFindChildElement = tryFindChildElement;
 	  exports.findChildElement = findChildElement;
 	  exports.withClass = withClass;
 	  exports.pickMetaByType = pickMetaByType;
-	  exports.pickPivotChainElement = pickPivotChainElement;
+	  exports.pickPivotFields = pickPivotFields;
+	  exports.pickPivotTransformations = pickPivotTransformations;
 	  exports.tryFindPreview = tryFindPreview;
 	  exports.commandAtLocation = commandAtLocation;
-	  exports.chainElementAtLocation = chainElementAtLocation;
 	  exports.transformName = transformName;
 	  exports.createPivotSections = createPivotSections;
-	  exports.tryCreatePivotPreview = tryCreatePivotPreview;
+	  exports.collectChain = collectChain;
+	  exports.collectFirstChain = collectFirstChain;
+	  exports.updateBody = updateBody;
+	  exports.hideMenus = hideMenus;
+	  exports.editorLocation = editorLocation;
+	  exports.selectName = selectName;
+	  exports.tryTransformChain = tryTransformChain;
+	  exports.replaceAndSelectMarker = replaceAndSelectMarker;
+	  exports.reconstructChain = reconstructChain;
+	  exports.createChainNode = createChainNode;
+	  exports.updatePivotState = updatePivotState;
+	  exports.renderNodeList = renderNodeList;
+	  exports.renderContextMenu = renderContextMenu;
+	  exports.renderAddPropertyMenu = renderAddPropertyMenu;
+	  exports.renderPivot = renderPivot;
 	  exports.callShowMethod = callShowMethod;
 	  exports.renderErrors = renderErrors;
 	  exports.setupEditor = setupEditor;
 	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
-	
 	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
 	    return typeof obj;
 	  } : function (obj) {
-	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	  };
 	
 	  function _classCallCheck(instance, Constructor) {
@@ -161,7 +155,7 @@
 	        };
 	      };
 	
-	      var restTys = _fableCore.List.ofArray([_providers.RestProvider.provideRestType(lookupNamed, "olympics1", services + "olympics", ""), _providers.RestProvider.provideRestType(lookupNamed, "olympics", services + "pivot", "source=" + services + "olympics"), _providers.RestProvider.provideRestType(lookupNamed, "smlouvy1", services + "smlouvy", ""), _providers.RestProvider.provideRestType(lookupNamed, "smlouvy2", services + "pivot", "source=" + services + "smlouvy"), _providers.RestProvider.provideRestType(lookupNamed, "adventure", services + "adventure", ""), _providers.RestProvider.provideRestType(lookupNamed, "world", services + "worldbank", ""), (0, _pivot.providePivotType)(services + "pdata/olympics", "olympics2", lookupNamed, _fableCore.List.ofArray([["Games", new _ast.PrimitiveType("String", [])], ["Year", new _ast.PrimitiveType("Number", [])], ["Sport", new _ast.PrimitiveType("String", [])], ["Discipline", new _ast.PrimitiveType("String", [])], ["Athlete", new _ast.PrimitiveType("String", [])], ["Team", new _ast.PrimitiveType("String", [])], ["Gender", new _ast.PrimitiveType("String", [])], ["Event", new _ast.PrimitiveType("String", [])], ["Medal", new _ast.PrimitiveType("String", [])], ["Gold", new _ast.PrimitiveType("Number", [])], ["Silver", new _ast.PrimitiveType("Number", [])], ["Bronze", new _ast.PrimitiveType("Number", [])]])), (0, _pivot.providePivotType)(services + "pdata/smlouvy", "smlouvy", lookupNamed, _fableCore.List.ofArray([["Uzavřeno", new _ast.PrimitiveType("String", [])], ["Publikováno", new _ast.PrimitiveType("String", [])], ["Hodnota", new _ast.PrimitiveType("Number", [])], ["Chybí hodnota", new _ast.PrimitiveType("String", [])], ["Subjekt", new _ast.PrimitiveType("String", [])], ["Útvar", new _ast.PrimitiveType("String", [])], ["Schválil", new _ast.PrimitiveType("String", [])], ["Předmět", new _ast.PrimitiveType("String", [])], ["Odkaz", new _ast.PrimitiveType("String", [])], ["Platnost", new _ast.PrimitiveType("String", [])], ["Příjemci", new _ast.PrimitiveType("String", [])], ["Příjemci (IČO)", new _ast.PrimitiveType("String", [])]])), new _providers.ProvidedType("NamedType", ["value", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["seq", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["async", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])])]);
+	      var restTys = _fableCore.List.ofArray([_providers.RestProvider.provideRestType(lookupNamed, "olympics1", services + "olympics", ""), _providers.RestProvider.provideRestType(lookupNamed, "olympics3", services + "pivot", "source=" + services + "olympics"), _providers.RestProvider.provideRestType(lookupNamed, "smlouvy1", services + "smlouvy", ""), _providers.RestProvider.provideRestType(lookupNamed, "smlouvy2", services + "pivot", "source=" + services + "smlouvy"), _providers.RestProvider.provideRestType(lookupNamed, "adventure", services + "adventure", ""), _providers.RestProvider.provideRestType(lookupNamed, "world", services + "worldbank", ""), (0, _pivot.providePivotType)(services + "pdata/olympics", "olympics", lookupNamed, _fableCore.List.ofArray([["Games", new _ast.PrimitiveType("String", [])], ["Year", new _ast.PrimitiveType("Number", [])], ["Sport", new _ast.PrimitiveType("String", [])], ["Discipline", new _ast.PrimitiveType("String", [])], ["Athlete", new _ast.PrimitiveType("String", [])], ["Team", new _ast.PrimitiveType("String", [])], ["Gender", new _ast.PrimitiveType("String", [])], ["Event", new _ast.PrimitiveType("String", [])], ["Medal", new _ast.PrimitiveType("String", [])], ["Gold", new _ast.PrimitiveType("Number", [])], ["Silver", new _ast.PrimitiveType("Number", [])], ["Bronze", new _ast.PrimitiveType("Number", [])]])), (0, _pivot.providePivotType)(services + "pdata/smlouvy", "smlouvy", lookupNamed, _fableCore.List.ofArray([["Uzav\u0159eno", new _ast.PrimitiveType("String", [])], ["Publikov\xE1no", new _ast.PrimitiveType("String", [])], ["Hodnota", new _ast.PrimitiveType("Number", [])], ["Chyb\xED hodnota", new _ast.PrimitiveType("String", [])], ["Subjekt", new _ast.PrimitiveType("String", [])], ["\xDAtvar", new _ast.PrimitiveType("String", [])], ["Schv\xE1lil", new _ast.PrimitiveType("String", [])], ["P\u0159edm\u011Bt", new _ast.PrimitiveType("String", [])], ["Odkaz", new _ast.PrimitiveType("String", [])], ["Platnost", new _ast.PrimitiveType("String", [])], ["P\u0159\xEDjemci", new _ast.PrimitiveType("String", [])], ["P\u0159\xEDjemci (I\u010CO)", new _ast.PrimitiveType("String", [])]])), new _providers.ProvidedType("NamedType", ["value", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["seq", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["async", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])])]);
 	
 	      return builder_.Bind(_providers.FSharpProvider.provideFSharpTypes(lookupNamed, "/ext/libraries.json?" + String(function () {
 	        var copyOfStruct = _fableCore.Date.now();
@@ -177,7 +171,7 @@
 	        }));
 	
 	        var globals = _fableCore.List.choose(function (_arg3) {
-	          return _arg3.Case === "GlobalValue" ? [_arg3.Fields[0], _arg3.Fields[1], _arg3.Fields[2]] : null;
+	          return _arg3.Case === "GlobalValue" ? [_arg3.Fields[0], _arg3.Fields[1], _arg3.Fields[2], _arg3.Fields[3]] : null;
 	        }, allTys);
 	
 	        return builder_.Return(new ProvidedTypes(lookupNamed, globals));
@@ -195,7 +189,7 @@
 	        _common.Log.trace("typechecker", "Global values: %O", Array.from(_arg1.Globals));
 	
 	        return builder_.Return(_fableCore.List.map(function (tupledArg) {
-	          return (0, _interpreter.globalEntity)(tupledArg[0], tupledArg[2], tupledArg[1]);
+	          return (0, _interpreter.globalEntity)(tupledArg[0], tupledArg[1], tupledArg[3], tupledArg[2]);
 	        }, _arg1.Globals));
 	      });
 	    });
@@ -209,7 +203,7 @@
 	    return builder_.Delay(function (unitVar) {
 	      return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(types), function (_arg1) {
 	        return builder_.Return(_fableCore.Map.create(_fableCore.List.map(function (tupledArg) {
-	          return [tupledArg[0], tupledArg[1]];
+	          return [tupledArg[0], tupledArg[2]];
 	        }, _arg1.Globals), new _fableCore.GenericComparer(function (x, y) {
 	          return x < y ? -1 : x > y ? 1 : 0;
 	        })));
@@ -221,7 +215,7 @@
 	    var loop = function loop(acc) {
 	      return function (el_1) {
 	        return el_1 == null ? acc : function () {
-	          var acc_1 = (el_1.nodeType === 1 ? f(el_1) : false) ? _fableCore.List.ofArray([el_1], acc) : acc;
+	          var acc_1 = (el_1.nodeType === 1 ? f(el_1) : false) ? new _fableCore.List(el_1, acc) : acc;
 	          return loop(loop(acc_1)(el_1.firstChild))(el_1.nextSibling);
 	        }();
 	      };
@@ -260,20 +254,69 @@
 	    }, metas);
 	  }
 	
-	  function pickPivotChainElement(ents) {
-	    return _fableCore.Seq.tryPick(function (_arg1) {
-	      return _arg1.Kind.Case === "ChainElement" ? function () {
-	        var m = _arg1.Meta;
-	        var matchValue = pickMetaByType("http://thegamma.net", "Pivot", _arg1.Meta);
+	  function pickPivotFields(expr) {
+	    var matchValue = expr.Entity;
 	
-	        if (matchValue != null) {
-	          return [_arg1, matchValue];
+	    var $target0 = function $target0(m) {
+	      var matchValue_1 = pickMetaByType("http://schema.thegamma.net/pivot", "Fields", m);
+	
+	      if (matchValue_1 != null) {
+	        return matchValue_1;
+	      }
+	    };
+	
+	    var $target1 = function $target1() {
+	      return null;
+	    };
+	
+	    if (matchValue != null) {
+	      if (matchValue.Kind.Case === "ChainElement") {
+	        return $target0(matchValue.Meta);
+	      } else {
+	        if (matchValue.Kind.Case === "GlobalValue") {
+	          return $target0(matchValue.Meta);
+	        } else {
+	          if (matchValue.Kind.Case === "Variable") {
+	            return $target0(matchValue.Kind.Fields[1].Meta);
+	          } else {
+	            return $target1();
+	          }
 	        }
-	      }() : null;
-	    }, ents);
+	      }
+	    } else {
+	      return $target1();
+	    }
 	  }
 	
-	  function tryFindPreview(globals, ents, ent) {
+	  function pickPivotTransformations(expr) {
+	    var matchValue = expr.Entity;
+	
+	    var $target2 = function $target2() {
+	      return null;
+	    };
+	
+	    if (matchValue != null) {
+	      if (matchValue.Kind.Case === "ChainElement") {
+	        var m = matchValue.Meta;
+	        var matchValue_1 = pickMetaByType("http://schema.thegamma.net/pivot", "Transformations", m);
+	
+	        if (matchValue_1 != null) {
+	          return matchValue_1;
+	        }
+	      } else {
+	        if (matchValue.Kind.Case === "GlobalValue") {
+	          var _m = matchValue.Meta;
+	          return new _fableCore.List();
+	        } else {
+	          return $target2();
+	        }
+	      }
+	    } else {
+	      return $target2();
+	    }
+	  }
+	
+	  function tryFindPreview(globals, ent) {
 	    var nm = new _ast.Name("preview");
 	    var matchValue = ent.Type;
 	
@@ -283,10 +326,10 @@
 	
 	    if (matchValue != null) {
 	      if (matchValue.Case === "Object") {
-	        var activePatternResult101 = (0, _typechecker.$FindProperty$_$)(nm, matchValue.Fields[0]);
+	        var activePatternResult31632 = (0, _typechecker.$FindProperty$_$)(nm, matchValue.Fields[0]);
 	
-	        if (activePatternResult101 != null) {
-	          var prev = activePatternResult101;
+	        if (activePatternResult31632 != null) {
+	          var prev = activePatternResult31632;
 	          var res = (0, _interpreter.evaluate)(globals, ent);
 	
 	          var $target1_1 = function $target1_1() {
@@ -322,74 +365,21 @@
 	    }
 	  }
 	
-	  function commandAtLocation(loc, ents) {
-	    return _fableCore.Seq.tryFind(function (tupledArg) {
-	      var $target0 = function $target0() {
-	        return true;
-	      };
-	
-	      var $target1 = function $target1() {
-	        return false;
-	      };
-	
-	      if (tupledArg[1].Kind.Case === "LetCommand") {
-	        if (tupledArg[0].Start <= loc ? tupledArg[0].End + 1 >= loc : false) {
-	          return $target0();
-	        } else {
-	          return $target1();
-	        }
-	      } else {
-	        if (tupledArg[1].Kind.Case === "RunCommand") {
-	          if (tupledArg[0].Start <= loc ? tupledArg[0].End + 1 >= loc : false) {
-	            return $target0();
-	          } else {
-	            return $target1();
-	          }
-	        } else {
-	          return $target1();
-	        }
-	      }
-	    }, ents.Entities);
-	  }
-	
-	  function chainElementAtLocation(loc, ents) {
-	    var chainElements = Array.from(_fableCore.Seq.choose(function (tupledArg) {
-	      var $target1 = function $target1() {
-	        return null;
-	      };
-	
-	      if (tupledArg[1].Kind.Case === "ChainElement") {
-	        if (tupledArg[0].Start <= loc ? tupledArg[0].End >= loc : false) {
-	          var n = tupledArg[1].Kind.Fields[1];
-	          return [tupledArg[0], tupledArg[1]];
-	        } else {
-	          return $target1();
-	        }
-	      } else {
-	        return $target1();
-	      }
-	    }, ents.Entities));
-	
-	    if (chainElements.length > 0) {
-	      return _fableCore.Seq.reduce(function (f) {
-	        return function (x, y) {
-	          return f(x) < f(y) ? x : y;
-	        };
-	      }(function (tupledArg) {
-	        return tupledArg[0].End;
-	      }), chainElements);
-	    }
+	  function commandAtLocation(loc, program) {
+	    return _fableCore.Seq.tryFind(function (cmd) {
+	      return cmd.Range.Start <= loc ? cmd.Range.End + 1 >= loc : false;
+	    }, program.Body.Node);
 	  }
 	
 	  function transformName(_arg1) {
-	    return _arg1.Case === "Empty" ? "empty" : _arg1.Case === "FilterBy" ? "filter by" : _arg1.Case === "GetSeries" ? "get series" : _arg1.Case === "GroupBy" ? "group by" : _arg1.Case === "Paging" ? "paging" : _arg1.Case === "SortBy" ? "sort by" : "drop columns";
+	    return _arg1.Case === "Empty" ? "empty" : _arg1.Case === "FilterBy" ? "filter by" : _arg1.Case === "GetSeries" ? "get series" : _arg1.Case === "GetTheData" ? "get the data" : _arg1.Case === "GroupBy" ? "group by" : _arg1.Case === "Paging" ? "paging" : _arg1.Case === "SortBy" ? "sort by" : "drop columns";
 	  }
 	
-	  var PivotSection = exports.PivotSection = function PivotSection(transformation, entities) {
+	  var PivotSection = exports.PivotSection = function PivotSection(transformation, nodes) {
 	    _classCallCheck(this, PivotSection);
 	
 	    this.Transformation = transformation;
-	    this.Entities = entities;
+	    this.Nodes = nodes;
 	  };
 	
 	  _fableCore.Util.setInterfaces(PivotSection.prototype, ["FSharpRecord"], "Main.PivotSection");
@@ -401,12 +391,12 @@
 	          var $target1 = function $target1() {
 	            return _arg1.tail == null ? function () {
 	              var current = new PivotSection(tupledArg[0], _fableCore.List.reverse(tupledArg[1]));
-	              return _fableCore.List.reverse(_fableCore.List.ofArray([current], acc));
+	              return _fableCore.List.reverse(new _fableCore.List(current, acc));
 	            }() : function () {
 	              var tfs = _arg1.head[1];
 	              var e = _arg1.head[0];
 	              var current = new PivotSection(tupledArg[0], _fableCore.List.reverse(tupledArg[1]));
-	              return loop(_fableCore.List.ofArray([current], acc))([tfs.head, _fableCore.List.ofArray([e]), tfs.length])(_arg1.tail);
+	              return loop(new _fableCore.List(current, acc))([tfs.head, _fableCore.List.ofArray([e]), tfs.length])(_arg1.tail);
 	            }();
 	          };
 	
@@ -424,7 +414,7 @@
 	              var e = _arg1.head[0];
 	              var tfs = _arg1.head[1];
 	              var _tfss_ = _arg1.tail;
-	              return loop(acc)([tfs.head, _fableCore.List.ofArray([e], tupledArg[1]), tupledArg[2]])(_tfss_);
+	              return loop(acc)([tfs.head, new _fableCore.List(e, tupledArg[1]), tupledArg[2]])(_tfss_);
 	            } else {
 	              return $target1();
 	            }
@@ -435,15 +425,21 @@
 	      };
 	    };
 	
-	    var tfss_1 = _fableCore.List.choose(function (tupledArg) {
-	      var tfs = _fableCore.List.filter(function (_arg2) {
-	        return _arg2.Case === "Empty" ? false : true;
-	      }, tupledArg[1]);
+	    var tfss_1 = _fableCore.List.choose(function (node) {
+	      var matchValue = pickPivotTransformations(node);
 	
-	      if (tfs.tail == null) {
+	      if (matchValue == null) {
 	        return null;
 	      } else {
-	        return [tupledArg[0], tfs];
+	        var tfs = _fableCore.List.filter(function (_arg2) {
+	          return _arg2.Case === "Empty" ? false : true;
+	        }, matchValue);
+	
+	        if (tfs.tail == null) {
+	          return null;
+	        } else {
+	          return [node, tfs];
+	        }
 	      }
 	    }, tfss);
 	
@@ -456,74 +452,1393 @@
 	    }
 	  }
 	
-	  function tryCreatePivotPreview(globals, loc, bound) {
-	    var matchValue = chainElementAtLocation(loc, bound);
+	  function collectChain(acc, node) {
+	    var $target0 = function $target0(e, n) {
+	      return collectChain(new _fableCore.List([n.Range.Start, node], acc), e);
+	    };
+	
+	    var $target2 = function $target2() {
+	      return null;
+	    };
+	
+	    if (node.Node.Case === "Call") {
+	      if (node.Node.Fields[0] != null) {
+	        return $target0(node.Node.Fields[0], node.Node.Fields[1]);
+	      } else {
+	        return $target2();
+	      }
+	    } else {
+	      if (node.Node.Case === "Property") {
+	        return $target0(node.Node.Fields[0], node.Node.Fields[1]);
+	      } else {
+	        if (node.Node.Case === "Variable") {
+	          var n = node.Node.Fields[0];
+	          return new _fableCore.List([n.Range.Start, node], acc);
+	        } else {
+	          return $target2();
+	        }
+	      }
+	    }
+	  }
+	
+	  function collectFirstChain(expr) {
+	    var matchValue = collectChain(new _fableCore.List(), expr);
+	
+	    var $target1 = function $target1() {
+	      var activePatternResult31650 = (0, _astops.$ExprLeaf$ExprNode$)(expr.Node);
+	
+	      if (activePatternResult31650.Case === "Choice2Of2") {
+	        var _ret2 = function () {
+	          var es = activePatternResult31650.Fields[0][0];
+	          var ns = activePatternResult31650.Fields[0][1];
+	          {
+	            var _ret3 = function () {
+	              var loop = function loop(acc) {
+	                return function (es_1) {
+	                  return es_1.tail != null ? function () {
+	                    var matchValue_1 = collectFirstChain(es_1.head);
+	
+	                    if (matchValue_1 != null) {
+	                      var _ret4 = function () {
+	                        var recreate = matchValue_1[0];
+	                        var chain = matchValue_1[1];
+	
+	                        var recreate_1 = function recreate_1(newChain) {
+	                          var _Node = (0, _astops.rebuildExprNode)(es_1.head.Node, _fableCore.List.append(_fableCore.List.reverse(acc), _fableCore.List.append(_fableCore.List.ofArray([recreate(newChain)]), es_1.tail)), ns);
+	
+	                          return new _ast.Node(expr.WhiteBefore, expr.WhiteAfter, expr.Range, _Node, expr.Entity);
+	                        };
+	
+	                        return {
+	                          v: [recreate_1, chain]
+	                        };
+	                      }();
+	
+	                      if ((typeof _ret4 === "undefined" ? "undefined" : _typeof(_ret4)) === "object") return _ret4.v;
+	                    } else {
+	                      return loop(new _fableCore.List(es_1.head, acc))(es_1.tail);
+	                    }
+	                  }() : null;
+	                };
+	              };
+	
+	              return {
+	                v: {
+	                  v: loop(new _fableCore.List())(es)
+	                }
+	              };
+	            }();
+	
+	            if ((typeof _ret3 === "undefined" ? "undefined" : _typeof(_ret3)) === "object") return _ret3.v;
+	          }
+	        }();
+	
+	        if ((typeof _ret2 === "undefined" ? "undefined" : _typeof(_ret2)) === "object") return _ret2.v;
+	      }
+	    };
 	
 	    if (matchValue != null) {
-	      var _ret2 = function () {
-	        var ent = matchValue[1];
-	        var matchValue_1 = pickPivotChainElement(_fableCore.List.ofArray([ent]));
+	      if (matchValue.tail != null) {
+	        var chain = matchValue;
+	        return [function (x) {
+	          return x;
+	        }, chain];
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
 	
-	        if (matchValue_1 != null) {
-	          var _ret3 = function () {
-	            var before = _fableCore.List.reverse(_common.List.unreduce(function (tupledArg) {
-	              return pickPivotChainElement(_astops.Entity$2Eget_Antecedents.bind(tupledArg[0])());
-	            }, [ent, new _fableCore.List()]));
+	  var PivotEditorMenus = exports.PivotEditorMenus = function () {
+	    function PivotEditorMenus(caseName, fields) {
+	      _classCallCheck(this, PivotEditorMenus);
 	
-	            var after = _common.List.unreduce(function (tupledArg) {
-	              return pickPivotChainElement(bound.GetChildren(tupledArg[0]));
-	            }, [ent, new _fableCore.List()]);
+	      this.Case = caseName;
+	      this.Fields = fields;
+	    }
 	
-	            var sections = createPivotSections(_fableCore.List.append(before, _fableCore.List.append(_fableCore.List.ofArray([matchValue_1]), after)));
-	            var preview = tryFindPreview(globals, bound, ent) != null ? tryFindPreview(globals, bound, ent) : function (value) {
-	              value;
+	    PivotEditorMenus.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    PivotEditorMenus.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
+	
+	    return PivotEditorMenus;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(PivotEditorMenus.prototype, ["FSharpUnion", "System.IEquatable", "System.IComparable"], "Main.PivotEditorMenus");
+	
+	  var PivotEditorAction = exports.PivotEditorAction = function PivotEditorAction(caseName, fields) {
+	    _classCallCheck(this, PivotEditorAction);
+	
+	    this.Case = caseName;
+	    this.Fields = fields;
+	  };
+	
+	  _fableCore.Util.setInterfaces(PivotEditorAction.prototype, ["FSharpUnion"], "Main.PivotEditorAction");
+	
+	  var PivotEditorState = exports.PivotEditorState = function PivotEditorState(globals, code, program, mapper, location, body, menus, selection, focus) {
+	    _classCallCheck(this, PivotEditorState);
+	
+	    this.Globals = globals;
+	    this.Code = code;
+	    this.Program = program;
+	    this.Mapper = mapper;
+	    this.Location = location;
+	    this.Body = body;
+	    this.Menus = menus;
+	    this.Selection = selection;
+	    this.Focus = focus;
+	  };
+	
+	  _fableCore.Util.setInterfaces(PivotEditorState.prototype, ["FSharpRecord"], "Main.PivotEditorState");
+	
+	  function updateBody(state) {
+	    var matchValue = commandAtLocation(state.Location, state.Program);
+	
+	    if (matchValue != null) {
+	      var patternInput = state.Mapper.AbsoluteToLineCol(matchValue.Range.End + 1);
+	
+	      var $target0 = function $target0(expr) {
+	        var Body = expr;
+	        return new PivotEditorState(state.Globals, state.Code, state.Program, state.Mapper, state.Location, Body, state.Menus, state.Selection, state.Focus);
+	      };
+	
+	      if (matchValue.Node.Case === "Let") {
+	        return $target0(matchValue.Node.Fields[1]);
+	      } else {
+	        return $target0(matchValue.Node.Fields[0]);
+	      }
+	    } else {
+	      var Body = null;
+	      return new PivotEditorState(state.Globals, state.Code, state.Program, state.Mapper, state.Location, Body, state.Menus, state.Selection, state.Focus);
+	    }
+	  }
+	
+	  function hideMenus(state) {
+	    var Menus = new PivotEditorMenus("Hidden", []);
+	    return new PivotEditorState(state.Globals, state.Code, state.Program, state.Mapper, state.Location, state.Body, Menus, state.Selection, state.Focus);
+	  }
+	
+	  function editorLocation(mapper, startIndex, endIndex) {
+	    var patternInput = mapper.AbsoluteToLineCol(startIndex);
+	    var patternInput_1 = mapper.AbsoluteToLineCol(endIndex);
+	    var rng = {};
+	    rng.startLineNumber = patternInput[0];
+	    rng.startColumn = patternInput[1];
+	    rng.endLineNumber = patternInput_1[0];
+	    rng.endColumn = patternInput_1[1];
+	    return rng;
+	  }
+	
+	  function selectName(nd, state) {
+	    var rng = function () {
+	      var $target0 = function $target0(n) {
+	        return n.Range;
+	      };
+	
+	      if (nd.Node.Case === "Call") {
+	        return $target0(nd.Node.Fields[1]);
+	      } else {
+	        if (nd.Node.Case === "Property") {
+	          return $target0(nd.Node.Fields[1]);
+	        } else {
+	          return nd.Range;
+	        }
+	      }
+	    }();
+	
+	    var loc = editorLocation(state.Mapper, rng.Start, rng.End + 1);
+	    var Selection = loc;
+	    return new PivotEditorState(state.Globals, state.Code, state.Program, state.Mapper, state.Location, state.Body, state.Menus, Selection, state.Focus);
+	  }
+	
+	  function tryTransformChain(f, state) {
+	    return state.Body != null ? function () {
+	      var matchValue = collectFirstChain(state.Body);
+	
+	      if (matchValue != null) {
+	        var recreate = matchValue[0];
+	        var chain = matchValue[1];
+	        var sections = createPivotSections(_fableCore.List.map(function (tuple) {
+	          return tuple[1];
+	        }, chain));
+	        return hideMenus(f(state.Body)(recreate)(_fableCore.List.map(function (tuple) {
+	          return tuple[1];
+	        }, chain))(sections));
+	      } else {
+	        return hideMenus(state);
+	      }
+	    }() : hideMenus(state);
+	  }
+	
+	  var marker = exports.marker = "InsertPropertyHere";
+	
+	  function replaceAndSelectMarker(newName, state) {
+	    var startIndex = state.Code.indexOf(marker);
+	
+	    var newCode = _fableCore.String.replace(state.Code, marker, (0, _astops.escapeIdent)(newName));
+	
+	    var mapper = new _monaco.LocationMapper(state.Code);
+	    var rng = editorLocation(mapper, startIndex, startIndex + (0, _astops.escapeIdent)(newName).length);
+	    var Selection = rng;
+	    return new PivotEditorState(state.Globals, newCode, state.Program, state.Mapper, state.Location, state.Body, state.Menus, Selection, state.Focus);
+	  }
+	
+	  function reconstructChain(state, body, newNodes) {
+	    var newBody = _fableCore.Seq.fold(function (prev, part) {
+	      return part.Node.Case === "Property" ? function () {
+	        var _Node = new _ast.Expr("Property", [prev, part.Node.Fields[1]]);
+	
+	        return new _ast.Node(part.WhiteBefore, part.WhiteAfter, part.Range, _Node, part.Entity);
+	      }() : part.Node.Case === "Call" ? function () {
+	        var _Node = new _ast.Expr("Call", [prev, part.Node.Fields[1], part.Node.Fields[2]]);
+	
+	        return new _ast.Node(part.WhiteBefore, part.WhiteAfter, part.Range, _Node, part.Entity);
+	      }() : function () {
+	        throw "Unexpected node in call chain";
+	      }();
+	    }, newNodes.head, newNodes.tail);
+	
+	    var newCode = _fableCore.String.trim((0, _astops.formatSingleExpression)(newBody), "both");
+	
+	    var newCode_1 = state.Code.substr(0, body.Range.Start) + newCode + state.Code.substr(body.Range.End + 1);
+	    return new PivotEditorState(state.Globals, newCode_1, state.Program, state.Mapper, state.Location, state.Body, state.Menus, state.Selection, state.Focus);
+	  }
+	
+	  function createChainNode(args) {
+	    var node = function node(nd) {
+	      return (0, _astops.node)(new _ast.Range(0, 0), nd);
+	    };
+	
+	    if (args != null) {
+	      var args_1 = _fableCore.List.map(function (a) {
+	        return new _ast.Argument(null, node(a));
+	      }, args);
+	
+	      return node(new _ast.Expr("Call", [null, node(new _ast.Name(marker)), node(args_1)]));
+	    } else {
+	      return node(new _ast.Expr("Property", [node(new _ast.Expr("Empty", [])), node(new _ast.Name(marker))]));
+	    }
+	  }
+	
+	  function updatePivotState(state, event) {
+	    return event.Case === "UpdateLocation" ? hideMenus(updateBody(new PivotEditorState(state.Globals, state.Code, state.Program, state.Mapper, event.Fields[0], state.Body, state.Menus, state.Selection, state.Focus))) : event.Case === "UpdateSource" ? hideMenus(updateBody(new PivotEditorState(state.Globals, event.Fields[0], event.Fields[2], event.Fields[3], event.Fields[1], state.Body, state.Menus, state.Selection, state.Focus))) : event.Case === "SwitchMenu" ? new PivotEditorState(state.Globals, state.Code, state.Program, state.Mapper, state.Location, state.Body, event.Fields[0], state.Selection, state.Focus) : event.Case === "SetFocus" ? function () {
+	      var Focus = [event.Fields[0], event.Fields[1]];
+	      return new PivotEditorState(state.Globals, state.Code, state.Program, state.Mapper, state.Location, state.Body, state.Menus, state.Selection, Focus);
+	    }() : event.Case === "Multiplex" ? function () {
+	      var folder = function folder(state_1) {
+	        return function (event_1) {
+	          return updatePivotState(state_1, event_1);
+	        };
+	      };
+	
+	      return function (list) {
+	        return _fableCore.Seq.fold(function ($var15, $var16) {
+	          return folder($var15)($var16);
+	        }, state, list);
+	      };
+	    }()(event.Fields[0]) : event.Case === "SelectChainElement" ? tryTransformChain(function (body) {
+	      return function (recreate) {
+	        return function (chain) {
+	          return function (sections) {
+	            var loop = function loop(before) {
+	              return function (chain_1) {
+	                var $target1 = function $target1() {
+	                  return chain_1.tail == null ? [before, before, before] : chain_1.tail.tail == null ? function () {
+	                    var c = chain_1.head;
+	                    return [before, c, c];
+	                  }() : function () {
+	                    var after = chain_1.tail.head;
+	                    var c = chain_1.head;
+	                    return [before, c, after];
+	                  }();
+	                };
+	
+	                if (chain_1.tail != null) {
+	                  if (chain_1.head.Range.End + 1 < state.Location) {
+	                    var c = chain_1.head;
+	                    var chain_2 = chain_1.tail;
+	                    return loop(c)(chain_2);
+	                  } else {
+	                    return $target1();
+	                  }
+	                } else {
+	                  return $target1();
+	                }
+	              };
 	            };
-	            return {
-	              v: {
-	                v: function (arg0) {
-	                  return function (arg1) {
-	                    return _html.El.op_Dynamic(arg0, arg1);
-	                  };
-	                }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "pivot-preview")]))(_fableCore.List.ofArray([function (arg0) {
-	                  return function (arg1) {
-	                    return _html.El.op_Dynamic(arg0, arg1);
-	                  };
-	                }(_html.h)("ul")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "tabs")]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
-	                  return _fableCore.Seq.append(_fableCore.Seq.collect(function (sec) {
-	                    var selected = _fableCore.Seq.exists(function (secEnt) {
-	                      return _fableCore.Util.equals(ent.Symbol, secEnt.Symbol);
-	                    }, sec.Entities);
 	
-	                    return _fableCore.Seq.singleton(function (arg0) {
-	                      return function (arg1) {
-	                        return _html.El.op_Dynamic(arg0, arg1);
-	                      };
-	                    }(_html.h)("li")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", selected ? "selected" : "")]))(_fableCore.List.ofArray([(0, _html.text)(transformName(sec.Transformation))])));
-	                  }, sections), _fableCore.Seq.delay(function (unitVar_1) {
-	                    return _fableCore.Seq.singleton(function (arg0) {
-	                      return function (arg1) {
-	                        return _html.El.op_Dynamic(arg0, arg1);
-	                      };
-	                    }(_html.h)("li")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "add")]))(_fableCore.List.ofArray([function (arg0) {
-	                      return function (arg1) {
-	                        return _html.El.op_Dynamic(arg0, arg1);
-	                      };
-	                    }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-plus")]))(new _fableCore.List())])));
-	                  }));
-	                }))), function (arg0) {
-	                  return function (arg1) {
-	                    return _html.El.op_Dynamic(arg0, arg1);
-	                  };
-	                }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "preview-body")]))(_fableCore.List.ofArray([_html.h.delayed(preview)]))]))
+	            var patternInput = loop(chain.head)(chain.tail);
+	            return selectName(event.Fields[0] < 0 ? patternInput[0] : event.Fields[0] > 0 ? patternInput[2] : patternInput[1], state);
+	          };
+	        };
+	      };
+	    }, state) : event.Case === "SelectRange" ? function () {
+	      var Selection = editorLocation(state.Mapper, event.Fields[0].Start, event.Fields[0].End + 1);
+	      return new PivotEditorState(state.Globals, state.Code, state.Program, state.Mapper, state.Location, state.Body, state.Menus, Selection, state.Focus);
+	    }() : event.Case === "ReplaceRange" ? function () {
+	      _common.Log.trace("live", "Replace '%s' with '%s'", state.Code.substr(event.Fields[0].Start, event.Fields[0].End - event.Fields[0].Start + 1), event.Fields[1]);
+	
+	      var newCode = state.Code.substr(0, event.Fields[0].Start) + event.Fields[1] + state.Code.substr(event.Fields[0].End + 1);
+	      var location = editorLocation(new _monaco.LocationMapper(newCode), event.Fields[0].Start, event.Fields[0].Start + event.Fields[1].length);
+	      var Selection = location;
+	      return new PivotEditorState(state.Globals, newCode, state.Program, state.Mapper, state.Location, state.Body, state.Menus, Selection, state.Focus);
+	    }() : event.Case === "AddElement" ? tryTransformChain(function (body) {
+	      return function (recreate) {
+	        return function (chain) {
+	          return function (sections) {
+	            var newNodes = _fableCore.List.collect(function (nd) {
+	              return !_fableCore.Util.equals(nd.Entity.Symbol, event.Fields[0]) ? _fableCore.List.ofArray([nd]) : _fableCore.List.ofArray([nd, createChainNode(event.Fields[2])]);
+	            }, chain);
+	
+	            return function (state_1) {
+	              return replaceAndSelectMarker(event.Fields[1], state_1);
+	            }(reconstructChain(state, body, newNodes));
+	          };
+	        };
+	      };
+	    }, state) : event.Case === "ReplaceElement" ? tryTransformChain(function (body) {
+	      return function (recreate) {
+	        return function (chain) {
+	          return function (sections) {
+	            var newNodes = _fableCore.List.map(function (nd) {
+	              return !_fableCore.Util.equals(nd.Entity.Symbol, event.Fields[0]) ? nd : createChainNode(event.Fields[2]);
+	            }, chain);
+	
+	            return function (state_1) {
+	              return replaceAndSelectMarker(event.Fields[1], state_1);
+	            }(reconstructChain(state, body, newNodes));
+	          };
+	        };
+	      };
+	    }, state) : event.Case === "RemoveElement" ? tryTransformChain(function (body) {
+	      return function (recreate) {
+	        return function (chain) {
+	          return function (sections) {
+	            var beforeDropped = _fableCore.Seq.tryLast(_fableCore.Seq.toList(_fableCore.Seq.takeWhile(function (nd) {
+	              return !_fableCore.Util.equals(nd.Entity.Symbol, event.Fields[0]);
+	            }, chain)));
+	
+	            var beforeDropped_1 = beforeDropped != null ? beforeDropped : chain.head;
+	
+	            var newNodes = _fableCore.List.filter(function (nd) {
+	              return !_fableCore.Util.equals(nd.Entity.Symbol, event.Fields[0]);
+	            }, chain);
+	
+	            return function (state_1) {
+	              return selectName(beforeDropped_1, state_1);
+	            }(reconstructChain(state, body, newNodes));
+	          };
+	        };
+	      };
+	    }, state) : event.Case === "RemoveSection" ? tryTransformChain(function (body) {
+	      return function (recreate) {
+	        return function (chain) {
+	          return function (sections) {
+	            var beforeDropped = _fableCore.Seq.tryLast(_fableCore.Seq.toList(_fableCore.Seq.takeWhile(function (nd) {
+	              return !_fableCore.Util.equals(nd.Entity.Symbol, event.Fields[0]);
+	            }, _fableCore.List.map(function (sec) {
+	              return sec.Nodes.head;
+	            }, sections))));
+	
+	            var beforeDropped_1 = beforeDropped != null ? beforeDropped : chain.head;
+	
+	            var newNodes = _fableCore.List.filter(function (sec) {
+	              return !_fableCore.Util.equals(sec.Nodes.head.Entity.Symbol, event.Fields[0]);
+	            }, sections);
+	
+	            var newNodes_1 = new _fableCore.List(chain.head, _fableCore.List.collect(function (sec) {
+	              return sec.Nodes;
+	            }, newNodes));
+	            return function (state_1) {
+	              return selectName(beforeDropped_1, state_1);
+	            }(reconstructChain(state, body, newNodes_1));
+	          };
+	        };
+	      };
+	    }, state) : event.Case === "AddTransform" ? tryTransformChain(function (body) {
+	      return function (recreate) {
+	        return function (chain) {
+	          return function (sections) {
+	            var whites = _fableCore.Seq.countBy(function (x) {
+	              return x;
+	            }, _fableCore.List.map(function (sec) {
+	              return (0, _astops.formatWhiteAfterExpr)(_fableCore.Seq.last(sec.Nodes));
+	            }, sections));
+	
+	            var patternInput = _fableCore.Seq.reduce(function (f) {
+	              return function (x, y) {
+	                return f(x) > f(y) ? x : y;
+	              };
+	            }(function (tupledArg) {
+	              return tupledArg[0] === "" ? 0 : tupledArg[1];
+	            }), new _fableCore.List(["", 0], whites));
+	
+	            _common.Log.trace("live", "Whitespace of sections: %O, inserting '%s'", Array.from(whites), patternInput[0]);
+	
+	            var node = function node(n) {
+	              return (0, _astops.node)(new _ast.Range(0, 0), n);
+	            };
+	
+	            var patternInput_1 = function () {
+	              var res = function res(k) {
+	                return function (l) {
+	                  return [k, function (_arg1) {
+	                    return l;
+	                  }];
+	                };
+	              };
+	
+	              if (event.Fields[0].Case === "SortBy") {
+	                return res("sort data")(_fableCore.List.ofArray([marker, "then"]));
+	              } else {
+	                if (event.Fields[0].Case === "FilterBy") {
+	                  return res("filter data")(_fableCore.List.ofArray([marker, "then"]));
+	                } else {
+	                  if (event.Fields[0].Case === "Paging") {
+	                    return res("paging")(_fableCore.List.ofArray([marker, "then"]));
+	                  } else {
+	                    if (event.Fields[0].Case === "GetSeries") {
+	                      return res("get series")(_fableCore.List.ofArray([marker]));
+	                    } else {
+	                      if (event.Fields[0].Case === "GetTheData") {
+	                        return res("get the data")(_fableCore.List.ofArray([marker]));
+	                      } else {
+	                        if (event.Fields[0].Case === "GroupBy") {
+	                          return ["group data", function (expr) {
+	                            _common.Log.trace("live", "Pick fields of %O, got: %O", expr, pickPivotFields(expr));
+	
+	                            var matchValue = pickPivotFields(expr);
+	
+	                            var $target1 = function $target1() {
+	                              return _fableCore.List.ofArray([marker, "by <Property>", "then"]);
+	                            };
+	
+	                            if (matchValue != null) {
+	                              if (matchValue.tail != null) {
+	                                var f = matchValue.head;
+	                                return _fableCore.List.ofArray([marker, "by " + f.Name, "then"]);
+	                              } else {
+	                                return $target1();
+	                              }
+	                            } else {
+	                              return $target1();
+	                            }
+	                          }];
+	                        } else {
+	                          if (event.Fields[0].Case === "Empty") {
+	                            return res("")(new _fableCore.List());
+	                          } else {
+	                            return res("drop columns")(_fableCore.List.ofArray([marker, "then"]));
+	                          }
+	                        }
+	                      }
+	                    }
+	                  }
+	                }
 	              }
+	            }();
+	
+	            var injectCall = function injectCall(expr) {
+	              return (0, _parser.whiteAfter)(_fableCore.List.ofArray([new _ast.Token(new _ast.TokenKind("White", [patternInput[0]]), new _ast.Range(0, 0))]), function () {
+	                var folder = function folder(expr_1) {
+	                  return function (name) {
+	                    return node(new _ast.Expr("Property", [expr_1, node(new _ast.Name(name))]));
+	                  };
+	                };
+	
+	                return function (list) {
+	                  return _fableCore.Seq.fold(function ($var17, $var18) {
+	                    return folder($var17)($var18);
+	                  }, expr, list);
+	                };
+	              }()(patternInput_1[1](expr)));
+	            };
+	
+	            var tryInjectBefore = function tryInjectBefore(prev) {
+	              return function (part) {
+	                var matchValue = pickPivotTransformations(part);
+	
+	                var $target0 = function $target0() {
+	                  return [true, injectCall(prev)];
+	                };
+	
+	                var $target1 = function $target1() {
+	                  return [false, prev];
+	                };
+	
+	                if (matchValue != null) {
+	                  if (matchValue.tail != null) {
+	                    if (matchValue.head.Case === "GetSeries") {
+	                      return $target0();
+	                    } else {
+	                      if (matchValue.head.Case === "GetTheData") {
+	                        return $target0();
+	                      } else {
+	                        return $target1();
+	                      }
+	                    }
+	                  } else {
+	                    return $target1();
+	                  }
+	                } else {
+	                  return $target1();
+	                }
+	              };
+	            };
+	
+	            var patternInput_2 = _fableCore.Seq.fold(function (tupledArg, part) {
+	              var patternInput_2 = tryInjectBefore(tupledArg[1])(part);
+	
+	              if (part.Node.Case === "Property") {
+	                return [patternInput_2[0], function () {
+	                  var _Node = new _ast.Expr("Property", [patternInput_2[1], part.Node.Fields[1]]);
+	
+	                  return new _ast.Node(part.WhiteBefore, part.WhiteAfter, part.Range, _Node, part.Entity);
+	                }()];
+	              } else {
+	                if (part.Node.Case === "Call") {
+	                  return [patternInput_2[0], function () {
+	                    var _Node = new _ast.Expr("Call", [patternInput_2[1], part.Node.Fields[1], part.Node.Fields[2]]);
+	
+	                    return new _ast.Node(part.WhiteBefore, part.WhiteAfter, part.Range, _Node, part.Entity);
+	                  }()];
+	                } else {
+	                  throw "Unexpected node in call chain";
+	                }
+	              }
+	            }, [false, chain.head], chain.tail);
+	
+	            var newBody = recreate(patternInput_2[0] ? patternInput_2[1] : injectCall(patternInput_2[1]));
+	
+	            var newCode = _fableCore.String.trim((0, _astops.formatSingleExpression)(newBody), "both");
+	
+	            var newCode_1 = state.Code.substr(0, body.Range.Start) + newCode + state.Code.substr(body.Range.End + 1);
+	            return function (state_1) {
+	              return replaceAndSelectMarker(patternInput_1[0], state_1);
+	            }(new PivotEditorState(state.Globals, newCode_1, state.Program, state.Mapper, state.Location, state.Body, state.Menus, state.Selection, state.Focus));
+	          };
+	        };
+	      };
+	    }, state) : new PivotEditorState(event.Fields[0], state.Code, state.Program, state.Mapper, state.Location, state.Body, state.Menus, state.Selection, state.Focus);
+	  }
+	
+	  function renderNodeList(trigger, nodes) {
+	    return _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	      return _fableCore.Seq.collect(function (nd) {
+	        var $target1 = function $target1() {
+	          return _fableCore.Seq.empty();
+	        };
+	
+	        if (nd.Node.Case === "Property") {
+	          if (nd.Node.Fields[1].Node.Name !== "then") {
+	            var n = nd.Node.Fields[1];
+	            return _fableCore.Seq.singleton(function (arg0) {
+	              return function (arg1) {
+	                return _html.El.op_Dynamic(arg0, arg1);
+	              };
+	            }(_html.h)("span")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	              return function (arg1) {
+	                return _html.El.op_Dynamic(arg0, arg1);
+	              };
+	            }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [n.Range])))]))(_fableCore.List.ofArray([(0, _html.text)(n.Node.Name)])), function (arg0) {
+	              return function (arg1) {
+	                return _html.El.op_Dynamic(arg0, arg1);
+	              };
+	            }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("RemoveElement", [nd.Entity.Symbol])))]))(_fableCore.List.ofArray([function (arg0) {
+	              return function (arg1) {
+	                return _html.El.op_Dynamic(arg0, arg1);
+	              };
+	            }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-times")]))(new _fableCore.List())]))])));
+	          } else {
+	            return $target1();
+	          }
+	        } else {
+	          return $target1();
+	        }
+	      }, nodes);
+	    }));
+	  }
+	
+	  function renderContextMenu(trigger) {
+	    return function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "right"), (0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SwitchMenu", [new PivotEditorMenus("ContextualDropdownOpen", [])])))]))(_fableCore.List.ofArray([function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-plus")]))(new _fableCore.List())]));
+	  }
+	
+	  function renderAddPropertyMenu(trigger, f, nodes) {
+	    return _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	      var lastNode = _fableCore.Seq.find(function (_arg1) {
+	        return _arg1.Node.Case === "Property" ? function () {
+	          var n = _arg1.Node.Fields[1];
+	          return n.Node.Name !== "then";
+	        }() : true;
+	      }, _fableCore.List.reverse(nodes));
+	
+	      var matchValue = lastNode.Entity.Type;
+	
+	      var $target1 = function $target1() {
+	        return _fableCore.Seq.empty();
+	      };
+	
+	      if (matchValue != null) {
+	        if (matchValue.Case === "Object") {
+	          var _ret5 = function () {
+	            var obj = matchValue.Fields[0];
+	
+	            var members = _fableCore.Seq.sortWith(function (x, y) {
+	              return _fableCore.Util.compare(x, y);
+	            }, _fableCore.Seq.choose(function (_arg2) {
+	              var $target1_1 = function $target1_1() {
+	                return null;
+	              };
+	
+	              if (_arg2.Case === "Property") {
+	                if (f(_arg2.Fields[0])) {
+	                  var n = _arg2.Fields[0];
+	                  return n;
+	                } else {
+	                  return $target1_1();
+	                }
+	              } else {
+	                return $target1_1();
+	              }
+	            }, obj.Members));
+	
+	            return {
+	              v: _fableCore.Seq.singleton(function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("ul")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
+	                return _fableCore.Seq.map(function (n) {
+	                  return function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("AddElement", [lastNode.Entity.Symbol, n, null])))]))(_fableCore.List.ofArray([(0, _html.text)(n)]))]));
+	                }, members);
+	              }))))
 	            };
 	          }();
 	
-	          if ((typeof _ret3 === "undefined" ? "undefined" : _typeof(_ret3)) === "object") return _ret3.v;
+	          if ((typeof _ret5 === "undefined" ? "undefined" : _typeof(_ret5)) === "object") return _ret5.v;
+	        } else {
+	          return $target1();
 	        }
-	      }();
+	      } else {
+	        return $target1();
+	      }
+	    }));
+	  }
 	
-	      if ((typeof _ret2 === "undefined" ? "undefined" : _typeof(_ret2)) === "object") return _ret2.v;
+	  function renderPivot(triggerEvent, state) {
+	    var trigger = function trigger(action) {
+	      return function (_arg1) {
+	        return function (e) {
+	          e.cancelBubble = true;
+	          triggerEvent(action);
+	        };
+	      };
+	    };
+	
+	    var triggerWith = function triggerWith(f) {
+	      return function (el) {
+	        return function (e) {
+	          e.cancelBubble = true;
+	          triggerEvent(f(el));
+	        };
+	      };
+	    };
+	
+	    if (state.Body != null) {
+	      var matchValue = collectFirstChain(state.Body);
+	
+	      if (matchValue != null) {
+	        var _ret6 = function () {
+	          var chainNodes = matchValue[1];
+	          var starts = Array.from(_fableCore.Seq.delay(function (unitVar) {
+	            return _fableCore.Seq.collect(function (matchValue_1) {
+	              return _fableCore.Seq.singleton(_fableCore.String.fsFormat("%d: %s")(function (x) {
+	                return x;
+	              })(matchValue_1[0])(_astops.Entity$2Eget_Name.bind(matchValue_1[1].Entity)()));
+	            }, chainNodes);
+	          }));
+	
+	          _common.Log.trace("live", "Find chain element at %d in %O", state.Location, starts);
+	
+	          var matchValue_1 = _fableCore.Seq.tryLast(_fableCore.List.filter(function (tupledArg) {
+	            return state.Location >= tupledArg[0];
+	          }, chainNodes));
+	
+	          if (matchValue_1 != null) {
+	            var _ret7 = function () {
+	              var selNode = matchValue_1[1];
+	              var selEnt = selNode.Entity;
+	              var sections = createPivotSections(_fableCore.List.map(function (tuple) {
+	                return tuple[1];
+	              }, chainNodes));
+	
+	              var selSec = _fableCore.Seq.tryFind(function (sec) {
+	                return _fableCore.Seq.exists(function (secEnt) {
+	                  return _fableCore.Util.equals(selEnt.Symbol, secEnt.Entity.Symbol);
+	                }, sec.Nodes);
+	              }, sections);
+	
+	              var preview = tryFindPreview(state.Globals, selEnt) != null ? tryFindPreview(state.Globals, selEnt) : function (value) {
+	                value;
+	              };
+	
+	              var dom = function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("div")(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	                return _fableCore.Seq.append(_fableCore.Seq.singleton((0, _html.op_EqualsGreater)("class", "pivot-preview")), _fableCore.Seq.delay(function (unitVar_1) {
+	                  return !state.Menus.Equals(new PivotEditorMenus("Hidden", [])) ? _fableCore.Seq.singleton((0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SwitchMenu", [new PivotEditorMenus("Hidden", [])])))) : _fableCore.Seq.empty();
+	                }));
+	              })))(_fableCore.List.ofArray([function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("ul")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "tabs")]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	                var patternInput = chainNodes.head;
+	                return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("li")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", _fableCore.Util.equals(selNode.Entity.Symbol, patternInput[1].Entity.Symbol) ? "selected" : "")]))(_fableCore.List.ofArray([function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [patternInput[1].Range])))]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
+	                  return patternInput[1].Node.Case === "Variable" ? _fableCore.Seq.singleton((0, _html.text)(patternInput[1].Node.Fields[0].Node.Name)) : _fableCore.Seq.singleton((0, _html.text)("data"));
+	                })))]))), _fableCore.Seq.delay(function (unitVar_1) {
+	                  return _fableCore.Seq.append(_fableCore.Seq.map(function (sec) {
+	                    var selected = _fableCore.Seq.exists(function (secEnt) {
+	                      return _fableCore.Util.equals(selEnt.Symbol, secEnt.Entity.Symbol);
+	                    }, sec.Nodes);
+	
+	                    var secSymbol = sec.Nodes.head.Entity.Symbol;
+	
+	                    var identRange = function () {
+	                      var $target0 = function $target0(n) {
+	                        return n.Range;
+	                      };
+	
+	                      var $target1 = function $target1() {
+	                        throw "Unexpected node in pivot call chain";
+	                      };
+	
+	                      if (sec.Nodes.tail != null) {
+	                        if (sec.Nodes.head.Node.Case === "Variable") {
+	                          return $target0(sec.Nodes.head.Node.Fields[0]);
+	                        } else {
+	                          if (sec.Nodes.head.Node.Case === "Call") {
+	                            return $target0(sec.Nodes.head.Node.Fields[1]);
+	                          } else {
+	                            if (sec.Nodes.head.Node.Case === "Property") {
+	                              return $target0(sec.Nodes.head.Node.Fields[1]);
+	                            } else {
+	                              return $target1();
+	                            }
+	                          }
+	                        }
+	                      } else {
+	                        return $target1();
+	                      }
+	                    }();
+	
+	                    return function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("li")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", selected ? "selected" : "")]))(_fableCore.List.ofArray([function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [identRange])))]))(_fableCore.List.ofArray([(0, _html.text)(transformName(sec.Transformation))])), function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("RemoveSection", [secSymbol])))]))(_fableCore.List.ofArray([function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-times")]))(new _fableCore.List())]))]));
+	                  }, sections), _fableCore.Seq.delay(function (unitVar_2) {
+	                    return _fableCore.Seq.singleton(function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("li")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", state.Menus.Equals(new PivotEditorMenus("AddDropdownOpen", [])) ? "add selected" : "add")]))(_fableCore.List.ofArray([function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SwitchMenu", [new PivotEditorMenus("AddDropdownOpen", [])])))]))(_fableCore.List.ofArray([function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-plus")]))(new _fableCore.List())]))])));
+	                  }));
+	                }));
+	              }))), function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "add-menu")]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	                var clickHandler = function clickHandler(tfs) {
+	                  return (0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("AddTransform", [tfs])));
+	                };
+	
+	                if (state.Menus.Equals(new PivotEditorMenus("AddDropdownOpen", []))) {
+	                  return _fableCore.Seq.singleton(function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("ul")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
+	                    return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                      return function (arg1) {
+	                        return _html.El.op_Dynamic(arg0, arg1);
+	                      };
+	                    }(_html.h)("a")(_fableCore.List.ofArray([clickHandler(new _pivot.Transformation("DropColumns", [new _fableCore.List()]))]))(_fableCore.List.ofArray([(0, _html.text)("drop columns")]))]))), _fableCore.Seq.delay(function (unitVar_2) {
+	                      return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                        return function (arg1) {
+	                          return _html.El.op_Dynamic(arg0, arg1);
+	                        };
+	                      }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                        return function (arg1) {
+	                          return _html.El.op_Dynamic(arg0, arg1);
+	                        };
+	                      }(_html.h)("a")(_fableCore.List.ofArray([clickHandler(new _pivot.Transformation("FilterBy", [new _fableCore.List()]))]))(_fableCore.List.ofArray([(0, _html.text)("filter by")]))]))), _fableCore.Seq.delay(function (unitVar_3) {
+	                        return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                          return function (arg1) {
+	                            return _html.El.op_Dynamic(arg0, arg1);
+	                          };
+	                        }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                          return function (arg1) {
+	                            return _html.El.op_Dynamic(arg0, arg1);
+	                          };
+	                        }(_html.h)("a")(_fableCore.List.ofArray([clickHandler(new _pivot.Transformation("GroupBy", [new _fableCore.List(), new _fableCore.List()]))]))(_fableCore.List.ofArray([(0, _html.text)("group by")]))]))), _fableCore.Seq.delay(function (unitVar_4) {
+	                          return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                            return function (arg1) {
+	                              return _html.El.op_Dynamic(arg0, arg1);
+	                            };
+	                          }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                            return function (arg1) {
+	                              return _html.El.op_Dynamic(arg0, arg1);
+	                            };
+	                          }(_html.h)("a")(_fableCore.List.ofArray([clickHandler(new _pivot.Transformation("Paging", [new _fableCore.List()]))]))(_fableCore.List.ofArray([(0, _html.text)("paging")]))]))), _fableCore.Seq.delay(function (unitVar_5) {
+	                            return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                              return function (arg1) {
+	                                return _html.El.op_Dynamic(arg0, arg1);
+	                              };
+	                            }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                              return function (arg1) {
+	                                return _html.El.op_Dynamic(arg0, arg1);
+	                              };
+	                            }(_html.h)("a")(_fableCore.List.ofArray([clickHandler(new _pivot.Transformation("SortBy", [new _fableCore.List()]))]))(_fableCore.List.ofArray([(0, _html.text)("sort by")]))]))), _fableCore.Seq.delay(function (unitVar_6) {
+	                              var getDataCalled = _fableCore.Seq.exists(function (_arg70) {
+	                                var $target0 = function $target0() {
+	                                  return true;
+	                                };
+	
+	                                if (_arg70.Transformation.Case === "GetTheData") {
+	                                  return $target0();
+	                                } else {
+	                                  if (_arg70.Transformation.Case === "GetSeries") {
+	                                    return $target0();
+	                                  } else {
+	                                    return false;
+	                                  }
+	                                }
+	                              }, sections);
+	
+	                              if (!getDataCalled) {
+	                                return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("a")(_fableCore.List.ofArray([clickHandler(new _pivot.Transformation("GetTheData", []))]))(_fableCore.List.ofArray([(0, _html.text)("get the data")]))]))), _fableCore.Seq.delay(function (unitVar_7) {
+	                                  return _fableCore.Seq.singleton(function (arg0) {
+	                                    return function (arg1) {
+	                                      return _html.El.op_Dynamic(arg0, arg1);
+	                                    };
+	                                  }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                                    return function (arg1) {
+	                                      return _html.El.op_Dynamic(arg0, arg1);
+	                                    };
+	                                  }(_html.h)("a")(_fableCore.List.ofArray([clickHandler(new _pivot.Transformation("GetSeries", ["!", "!"]))]))(_fableCore.List.ofArray([(0, _html.text)("get series")]))])));
+	                                }));
+	                              } else {
+	                                return _fableCore.Seq.empty();
+	                              }
+	                            }));
+	                          }));
+	                        }));
+	                      }));
+	                    }));
+	                  }))));
+	                } else {
+	                  return _fableCore.Seq.empty();
+	                }
+	              }))), function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "toolbar")]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	                return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("span")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "navig")]))(_fableCore.List.ofArray([function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("a")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectChainElement", [-1]))), (0, _html.op_EqualsGreater)("class", "fa fa-chevron-left")]))(new _fableCore.List())])), function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("a")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectChainElement", [0]))), (0, _html.op_EqualsGreater)("class", "fa fa-circle")]))(new _fableCore.List())])), function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("a")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectChainElement", [1]))), (0, _html.op_EqualsGreater)("class", "fa fa-chevron-right")]))(new _fableCore.List())]))]))), _fableCore.Seq.delay(function (unitVar_1) {
+	                  var $target4 = function $target4() {
+	                    return _fableCore.Seq.empty();
+	                  };
+	
+	                  if (selSec != null) {
+	                    if (selSec.Transformation.Case === "GroupBy") {
+	                      var _ret8 = function () {
+	                        var nodes = selSec.Nodes;
+	                        var patternInput = nodes.tail != null ? nodes.tail.tail != null ? function () {
+	                          var aggs = nodes.tail.tail;
+	                          var gby = nodes.head;
+	                          var sel = nodes.tail.head;
+	                          return [gby, sel, aggs];
+	                        }() : function () {
+	                          var gby = nodes.head;
+	                          return [gby, null, new _fableCore.List()];
+	                        }() : function () {
+	                          throw "No group by node in group by transformation";
+	                        }();
+	
+	                        var patternInput_1 = function () {
+	                          var $target1 = function $target1() {
+	                            return ["", null];
+	                          };
+	
+	                          if (patternInput[1] != null) {
+	                            if (patternInput[1].Node.Case === "Property") {
+	                              if (patternInput[1].Entity != null) {
+	                                var e = patternInput[1].Entity;
+	                                var n = patternInput[1].Node.Fields[1];
+	                                return [n.Node.Name, e.Symbol];
+	                              } else {
+	                                return $target1();
+	                              }
+	                            } else {
+	                              return $target1();
+	                            }
+	                          } else {
+	                            return $target1();
+	                          }
+	                        }();
+	
+	                        return {
+	                          v: _fableCore.Seq.append(function () {
+	                            var matchValue_2 = patternInput[0].Entity.Type;
+	
+	                            var $target1 = function $target1() {
+	                              return _fableCore.Seq.empty();
+	                            };
+	
+	                            if (matchValue_2 != null) {
+	                              if (matchValue_2.Case === "Object") {
+	                                var _ret9 = function () {
+	                                  var obj = matchValue_2.Fields[0];
+	                                  return {
+	                                    v: _fableCore.Seq.singleton(function (arg0) {
+	                                      return function (arg1) {
+	                                        return _html.El.op_Dynamic(arg0, arg1);
+	                                      };
+	                                    }(_html.h)("select")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("change", triggerWith(function (el) {
+	                                      return patternInput_1[1] != null ? new PivotEditorAction("ReplaceElement", [patternInput_1[1], el.value, null]) : new PivotEditorAction("AddElement", [patternInput[0].Entity.Symbol, el.value, null]);
+	                                    }))]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
+	                                      return _fableCore.Seq.collect(function (m) {
+	                                        var $target1_1 = function $target1_1() {
+	                                          return _fableCore.Seq.empty();
+	                                        };
+	
+	                                        if (m.Case === "Property") {
+	                                          if (m.Fields[0].indexOf("by") === 0) {
+	                                            var _ret10 = function () {
+	                                              var n = m.Fields[0];
+	                                              return {
+	                                                v: _fableCore.Seq.singleton(function (arg0) {
+	                                                  return function (arg1) {
+	                                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                                  };
+	                                                }(_html.h)("option")(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_3) {
+	                                                  return _fableCore.Seq.append(_fableCore.Seq.singleton((0, _html.op_EqualsGreater)("value", n)), _fableCore.Seq.delay(function (unitVar_4) {
+	                                                    return patternInput_1[0] === n ? _fableCore.Seq.singleton((0, _html.op_EqualsGreater)("selected", "selected")) : _fableCore.Seq.empty();
+	                                                  }));
+	                                                })))(_fableCore.List.ofArray([(0, _html.text)(n)])))
+	                                              };
+	                                            }();
+	
+	                                            if ((typeof _ret10 === "undefined" ? "undefined" : _typeof(_ret10)) === "object") return _ret10.v;
+	                                          } else {
+	                                            return $target1_1();
+	                                          }
+	                                        } else {
+	                                          return $target1_1();
+	                                        }
+	                                      }, obj.Members);
+	                                    }))))
+	                                  };
+	                                }();
+	
+	                                if ((typeof _ret9 === "undefined" ? "undefined" : _typeof(_ret9)) === "object") return _ret9.v;
+	                              } else {
+	                                return $target1();
+	                              }
+	                            } else {
+	                              return $target1();
+	                            }
+	                          }(), _fableCore.Seq.delay(function (unitVar_2) {
+	                            return _fableCore.Seq.append(renderNodeList(trigger, patternInput[2]), _fableCore.Seq.delay(function (unitVar_3) {
+	                              return _fableCore.Seq.singleton(renderContextMenu(trigger));
+	                            }));
+	                          }))
+	                        };
+	                      }();
+	
+	                      if ((typeof _ret8 === "undefined" ? "undefined" : _typeof(_ret8)) === "object") return _ret8.v;
+	                    } else {
+	                      if (selSec.Transformation.Case === "Paging") {
+	                        var _ret11 = function () {
+	                          var nodes = selSec.Nodes;
+	
+	                          var methods = _fableCore.Set.create(_fableCore.List.map(function (_arg113) {
+	                            return _arg113.Node.Case === "Call" ? function () {
+	                              var n = _arg113.Node.Fields[1];
+	                              return n.Node.Name;
+	                            }() : "";
+	                          }, nodes), new _fableCore.GenericComparer(function (x, y) {
+	                            return x < y ? -1 : x > y ? 1 : 0;
+	                          }));
+	
+	                          return {
+	                            v: _fableCore.Seq.append(_fableCore.Seq.collect(function (nd) {
+	                              var $target1 = function $target1() {
+	                                return _fableCore.Seq.empty();
+	                              };
+	
+	                              if (nd.Node.Case === "Call") {
+	                                if (nd.Node.Fields[2].Node.tail != null) {
+	                                  if (nd.Node.Fields[2].Node.tail.tail == null) {
+	                                    var _ret12 = function () {
+	                                      var arg = nd.Node.Fields[2].Node.head;
+	                                      var n = nd.Node.Fields[1];
+	                                      {
+	                                        var removeOp = n.Node.Name === "take" ? new PivotEditorAction("ReplaceElement", [nd.Entity.Symbol, "then", null]) : new PivotEditorAction("RemoveElement", [nd.Entity.Symbol]);
+	                                        return {
+	                                          v: _fableCore.Seq.singleton(function (arg0) {
+	                                            return function (arg1) {
+	                                              return _html.El.op_Dynamic(arg0, arg1);
+	                                            };
+	                                          }(_html.h)("span")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                                            return function (arg1) {
+	                                              return _html.El.op_Dynamic(arg0, arg1);
+	                                            };
+	                                          }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [n.Range])))]))(_fableCore.List.ofArray([(0, _html.text)(n.Node.Name)])), function (arg0) {
+	                                            return function (arg1) {
+	                                              return _html.El.op_Dynamic(arg0, arg1);
+	                                            };
+	                                          }(_html.h)("input")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", "input-pg-" + n.Node.Name), (0, _html.op_EqualsBangGreater)("input", function (el) {
+	                                            return function (_arg2) {
+	                                              var input = el;
+	                                              var patternInput = (0, _parser.parseProgram)(input.value);
+	
+	                                              if (patternInput[1].length === 0 ? patternInput[0].Body.Node.length === 1 : false) {
+	                                                el.setCustomValidity("");
+	                                                triggerEvent(new PivotEditorAction("Multiplex", [_fableCore.List.ofArray([new PivotEditorAction("SetFocus", ["input-pg-" + n.Node.Name, (input.selectionStart + 0x80000000 >>> 0) - 0x80000000]), new PivotEditorAction("ReplaceRange", [arg.Value.Range, input.value])])]));
+	                                              } else {
+	                                                el.setCustomValidity("Cannot parse expression");
+	                                              }
+	                                            };
+	                                          }), (0, _html.op_EqualsGreater)("value", (0, _astops.formatSingleExpression)(arg.Value))]))(new _fableCore.List()), function (arg0) {
+	                                            return function (arg1) {
+	                                              return _html.El.op_Dynamic(arg0, arg1);
+	                                            };
+	                                          }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(removeOp))]))(_fableCore.List.ofArray([function (arg0) {
+	                                            return function (arg1) {
+	                                              return _html.El.op_Dynamic(arg0, arg1);
+	                                            };
+	                                          }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-times")]))(new _fableCore.List())]))])))
+	                                        };
+	                                      }
+	                                    }();
+	
+	                                    if ((typeof _ret12 === "undefined" ? "undefined" : _typeof(_ret12)) === "object") return _ret12.v;
+	                                  } else {
+	                                    return $target1();
+	                                  }
+	                                } else {
+	                                  return $target1();
+	                                }
+	                              } else {
+	                                return $target1();
+	                              }
+	                            }, nodes), _fableCore.Seq.delay(function (unitVar_2) {
+	                              return !(methods.has("take") ? methods.has("skip") : false) ? _fableCore.Seq.singleton(renderContextMenu(trigger)) : _fableCore.Seq.empty();
+	                            }))
+	                          };
+	                        }();
+	
+	                        if ((typeof _ret11 === "undefined" ? "undefined" : _typeof(_ret11)) === "object") return _ret11.v;
+	                      } else {
+	                        if (selSec.Transformation.Case === "SortBy") {
+	                          var _ret13 = function () {
+	                            var nodes = selSec.Nodes;
+	
+	                            var props = _fableCore.List.choose(function (_arg129) {
+	                              var $target1 = function $target1() {
+	                                return null;
+	                              };
+	
+	                              if (_arg129.Node.Case === "Property") {
+	                                if (_arg129.Entity != null) {
+	                                  if (function () {
+	                                    var sym = _arg129.Entity.Symbol;
+	                                    var n = _arg129.Node.Fields[1];
+	
+	                                    if (n.Node.Name !== "then") {
+	                                      return n.Node.Name !== "sort data";
+	                                    } else {
+	                                      return false;
+	                                    }
+	                                  }()) {
+	                                    var n = _arg129.Node.Fields[1];
+	                                    var sym = _arg129.Entity.Symbol;
+	                                    return [sym, n];
+	                                  } else {
+	                                    return $target1();
+	                                  }
+	                                } else {
+	                                  return $target1();
+	                                }
+	                              } else {
+	                                return $target1();
+	                              }
+	                            }, nodes);
+	
+	                            var last = _fableCore.Seq.tryLast(props);
+	
+	                            return {
+	                              v: _fableCore.Seq.append(_fableCore.Seq.collect(function (matchValue_2) {
+	                                return _fableCore.Seq.singleton(function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("span")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
+	                                  return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                                    return function (arg1) {
+	                                      return _html.El.op_Dynamic(arg0, arg1);
+	                                    };
+	                                  }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [matchValue_2[1].Range])))]))(_fableCore.List.ofArray([(0, _html.text)(matchValue_2[1].Node.Name)]))), _fableCore.Seq.delay(function (unitVar_3) {
+	                                    return matchValue_2[1].Node.Name === last[1].Node.Name ? _fableCore.Seq.singleton(function (arg0) {
+	                                      return function (arg1) {
+	                                        return _html.El.op_Dynamic(arg0, arg1);
+	                                      };
+	                                    }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("RemoveElement", [matchValue_2[0]])))]))(_fableCore.List.ofArray([function (arg0) {
+	                                      return function (arg1) {
+	                                        return _html.El.op_Dynamic(arg0, arg1);
+	                                      };
+	                                    }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-times")]))(new _fableCore.List())]))) : _fableCore.Seq.empty();
+	                                  }));
+	                                }))));
+	                              }, props), _fableCore.Seq.delay(function (unitVar_2) {
+	                                return _fableCore.Seq.singleton(renderContextMenu(trigger));
+	                              }))
+	                            };
+	                          }();
+	
+	                          if ((typeof _ret13 === "undefined" ? "undefined" : _typeof(_ret13)) === "object") return _ret13.v;
+	                        } else {
+	                          if (selSec.Transformation.Case === "DropColumns") {
+	                            var _nodes = selSec.Nodes;
+	                            return _fableCore.Seq.append(renderNodeList(trigger, _nodes.tail), _fableCore.Seq.delay(function (unitVar_2) {
+	                              return _fableCore.Seq.singleton(renderContextMenu(trigger));
+	                            }));
+	                          } else {
+	                            return $target4();
+	                          }
+	                        }
+	                      }
+	                    }
+	                  } else {
+	                    return $target4();
+	                  }
+	                }));
+	              }))), function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "add-menu")]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	                var matchValue_2 = [state.Menus, selSec];
+	
+	                var $target4 = function $target4() {
+	                  return _fableCore.Seq.empty();
+	                };
+	
+	                if (matchValue_2[0].Case === "ContextualDropdownOpen") {
+	                  if (matchValue_2[1] != null) {
+	                    if (matchValue_2[1].Transformation.Case === "Paging") {
+	                      var _ret14 = function () {
+	                        var nodes = matchValue_2[1].Nodes;
+	                        var methods = new Map(_fableCore.List.choose(function (_arg145) {
+	                          var $target0 = function $target0(e, n) {
+	                            return [n.Node.Name, e.Symbol];
+	                          };
+	
+	                          if (_arg145.Node.Case === "Property") {
+	                            return $target0(_arg145.Entity, _arg145.Node.Fields[1]);
+	                          } else {
+	                            if (_arg145.Node.Case === "Call") {
+	                              return $target0(_arg145.Entity, _arg145.Node.Fields[1]);
+	                            }
+	                          }
+	                        }, nodes));
+	
+	                        var lastSym = _fableCore.Seq.last(nodes).Entity.Symbol;
+	
+	                        var firstSym = nodes.head.Entity.Symbol;
+	                        return {
+	                          v: _fableCore.Seq.singleton(function (arg0) {
+	                            return function (arg1) {
+	                              return _html.El.op_Dynamic(arg0, arg1);
+	                            };
+	                          }(_html.h)("ul")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
+	                            return _fableCore.Seq.append(!methods.has("take") ? function () {
+	                              var op = methods.has("then") ? new PivotEditorAction("ReplaceElement", [methods.get("then"), "take", _fableCore.List.ofArray([new _ast.Expr("Number", [10])])]) : new PivotEditorAction("AddElement", [lastSym, "take", _fableCore.List.ofArray([new _ast.Expr("Number", [10])])]);
+	                              return _fableCore.Seq.singleton(function (arg0) {
+	                                return function (arg1) {
+	                                  return _html.El.op_Dynamic(arg0, arg1);
+	                                };
+	                              }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                                return function (arg1) {
+	                                  return _html.El.op_Dynamic(arg0, arg1);
+	                                };
+	                              }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(op))]))(_fableCore.List.ofArray([(0, _html.text)("take")]))])));
+	                            }() : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_2) {
+	                              return !methods.has("skip") ? function () {
+	                                var op = new PivotEditorAction("AddElement", [firstSym, "skip", _fableCore.List.ofArray([new _ast.Expr("Number", [10])])]);
+	                                return _fableCore.Seq.singleton(function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("li")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(op))]))(_fableCore.List.ofArray([(0, _html.text)("skip")]))])));
+	                              }() : _fableCore.Seq.empty();
+	                            }));
+	                          }))))
+	                        };
+	                      }();
+	
+	                      if ((typeof _ret14 === "undefined" ? "undefined" : _typeof(_ret14)) === "object") return _ret14.v;
+	                    } else {
+	                      if (matchValue_2[1].Transformation.Case === "GroupBy") {
+	                        var _nodes2 = matchValue_2[1].Nodes;
+	                        return renderAddPropertyMenu(trigger, function (n) {
+	                          return (n !== "then" ? n !== "preview" : false) ? !(n.indexOf("and") === 0) : false;
+	                        }, _nodes2);
+	                      } else {
+	                        if (matchValue_2[1].Transformation.Case === "SortBy") {
+	                          var _nodes3 = matchValue_2[1].Nodes;
+	                          return renderAddPropertyMenu(trigger, function (n) {
+	                            return n !== "then" ? n !== "preview" : false;
+	                          }, _nodes3);
+	                        } else {
+	                          if (matchValue_2[1].Transformation.Case === "DropColumns") {
+	                            var _nodes4 = matchValue_2[1].Nodes;
+	                            return renderAddPropertyMenu(trigger, function (n) {
+	                              return n !== "then" ? n !== "preview" : false;
+	                            }, _nodes4);
+	                          } else {
+	                            return $target4();
+	                          }
+	                        }
+	                      }
+	                    }
+	                  } else {
+	                    return $target4();
+	                  }
+	                } else {
+	                  return $target4();
+	                }
+	              }))), function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "preview-body")]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	                return _fableCore.Seq.singleton(_html.h.delayed(preview));
+	              })))]));
+	
+	              var patternInput = state.Mapper.AbsoluteToLineCol(state.Body.Range.End);
+	              return {
+	                v: {
+	                  v: [patternInput[0], dom]
+	                }
+	              };
+	            }();
+	
+	            if ((typeof _ret7 === "undefined" ? "undefined" : _typeof(_ret7)) === "object") return _ret7.v;
+	          }
+	        }();
+	
+	        if ((typeof _ret6 === "undefined" ? "undefined" : _typeof(_ret6)) === "object") return _ret6.v;
+	      }
 	    }
 	  }
 	
@@ -533,110 +1848,285 @@
 	
 	      _classCallCheck(this, PreviewService);
 	
+	      this.checker = checker;
 	      this.ed = ed;
-	      this.lastZone = null;
-	      {
-	        this.ed.onDidChangeCursorPosition(function (ce) {
+	      this.currentZone = null;
+	      this.lastCode = "";
+	      this.lastMapper = new _monaco.LocationMapper("");
+	      this.changingEditor = false;
+	
+	      var trigger = function (ed_1) {
+	        return _this.createPivotPreview(ed_1);
+	      }(this.ed);
+	
+	      this.ed.onDidChangeCursorPosition(function (ce) {
+	        if (!_this.changingEditor) {
+	          var code = _this.ed.getModel().getValue(1, false);
+	
+	          _common.Log.trace("live", "Cursor position changed: code <> lastCode = %s", code !== _this.lastCode);
+	
 	          (function (arg00) {
 	            _fableCore.Async.startImmediate(arg00);
 	          })(function (builder_) {
 	            return builder_.Delay(function (unitVar) {
-	              var code = _this.ed.getModel().getValue(1, false);
-	
-	              var mapper = new _monaco.LocationMapper(code);
-	              var loc = mapper.LineColToAbsolute((ce.position.lineNumber + 0x80000000 >>> 0) - 0x80000000, (ce.position.column + 0x80000000 >>> 0) - 0x80000000);
-	              return builder_.Bind(checker.TypeCheck(code), function (_arg1) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(globalTypes), function (_arg2) {
-	                  return builder_.Combine(function () {
-	                    var matchValue = commandAtLocation(loc, _arg1[1]);
-	
-	                    if (matchValue != null) {
-	                      var cmdRange = matchValue[0];
-	                      var patternInput = mapper.AbsoluteToLineCol(cmdRange.End + 1);
-	                      var matchValue_1 = tryCreatePivotPreview(_arg2, loc, _arg1[1]);
-	
-	                      if (matchValue_1 != null) {
-	                        {
-	                          var endLine = patternInput[0] + 0;
-	
-	                          _this.createAndAddZone(endLine, matchValue_1);
-	                        }
-	                        return builder_.Zero();
-	                      } else {
-	                        _this.removeZone();
-	
-	                        return builder_.Zero();
-	                      }
-	                    } else {
-	                      _this.removeZone();
-	
-	                      return builder_.Zero();
-	                    }
-	                  }(), builder_.Delay(function (unitVar_1) {
-	                    return builder_.Zero();
-	                  }));
-	                });
+	              return builder_.Bind(_this.getUpdateEventAfterChange(), function (_arg4) {
+	                trigger(_arg4);
+	                return builder_.Zero();
 	              });
 	            });
 	          }(_fableCore.AsyncBuilder.singleton));
-	        });
-	      }
+	        }
+	      });
 	    }
 	
-	    _createClass(PreviewService, [{
-	      key: "removeZone",
-	      value: function removeZone() {
-	        var matchValue = this.lastZone;
+	    PreviewService.prototype.removeZone = function removeZone() {
+	      var _this2 = this;
+	
+	      {
+	        var matchValue = this.currentZone;
 	
 	        if (matchValue == null) {} else {
-	          this.ed.changeViewZones(function (accessor) {
-	            accessor.removeZone(matchValue);
-	          });
+	          (function () {
+	            var id = matchValue[0];
+	
+	            _this2.ed.changeViewZones(function (accessor) {
+	              accessor.removeZone(id);
+	            });
+	          })();
 	        }
 	      }
-	    }, {
-	      key: "createAndAddZone",
-	      value: function createAndAddZone(endLine, html) {
-	        var _this2 = this;
+	      this.currentZone = null;
+	    };
 	
-	        var zoneId = -1;
-	        var zone = {};
-	        var node = document.createElement('div');
-	        var wrapper = document.createElement('div');
-	        node.appendChild(wrapper);
-	        this.ed.changeViewZones(function (accessor) {
-	          _fableCore.Seq.iterate(function (arg00) {
-	            accessor.removeZone(arg00);
-	          }, function () {
-	            var $var1 = _this2.lastZone;
+	    PreviewService.prototype.createAndAddZone = function createAndAddZone(endLine) {
+	      var _this3 = this;
 	
-	            if ($var1 != null) {
-	              return [$var1];
-	            } else {
-	              return [];
+	      var zoneId = -1;
+	      var zone = {};
+	      var node = document.createElement('div');
+	      var wrapper = document.createElement('div');
+	      node.appendChild(wrapper);
+	      this.ed.changeViewZones(function (accessor) {
+	        {
+	          var matchValue = _this3.currentZone;
+	
+	          if (matchValue != null) {
+	            var id = matchValue[0];
+	            accessor.removeZone(id);
+	          }
+	        }
+	        zone.afterLineNumber = endLine;
+	        zone.heightInPx = 300;
+	        zone.domNode = node;
+	        zoneId = accessor.addZone(zone);
+	        _this3.currentZone = [zoneId, zone, wrapper];
+	      });
+	    };
+	
+	    PreviewService.prototype.updateZones = function updateZones(dom) {
+	      var _this4 = this;
+	
+	      if (dom != null) {
+	        var line = dom[0];
+	        var dom_1 = dom[1];
+	
+	        if (function () {
+	          return _this4.currentZone == null;
+	        }()) {
+	          var endLine = 0;
+	          this.createAndAddZone(endLine);
+	        }
+	
+	        _common.Log.trace("live", "Render %O to zone %O", dom_1, this.currentZone);
+	
+	        var matchValue = this.currentZone;
+	
+	        if (matchValue != null) {
+	          (function () {
+	            var zone = matchValue[1];
+	            var wrapper = matchValue[2];
+	            var id = matchValue[0];
+	
+	            if (zone.afterLineNumber !== line) {
+	              zone.afterLineNumber = line;
+	
+	              _this4.ed.changeViewZones(function (accessor) {
+	                accessor.layoutZone(id);
+	              });
 	            }
-	          }());
 	
-	          zone.afterLineNumber = endLine;
-	          zone.heightInPx = 100;
-	          zone.domNode = node;
-	          zoneId = accessor.addZone(zone);
-	          _this2.lastZone = zoneId;
-	        });
-	
-	        (function (dom) {
-	          (0, _html.renderTo)(wrapper, dom);
-	        })(html);
-	
-	        window.setTimeout(function (unitVar0) {
-	          zone.heightInPx = wrapper.clientHeight;
-	
-	          _this2.ed.changeViewZones(function (a) {
-	            a.layoutZone(zoneId);
-	          });
-	        }, 1);
+	            (function (dom_2) {
+	              (0, _html.renderTo)(wrapper, dom_2);
+	            })(dom_1);
+	          })();
+	        }
+	      } else {
+	        this.removeZone();
 	      }
-	    }]);
+	    };
+	
+	    PreviewService.prototype.getUpdateEventAfterChange = function getUpdateEventAfterChange() {
+	      var _this5 = this;
+	
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var code = _this5.ed.getModel().getValue(1, false);
+	
+	          var position = _this5.ed.getPosition();
+	
+	          if (code !== _this5.lastCode) {
+	            var _ret17 = function () {
+	              _this5.lastCode = code;
+	              _this5.lastMapper = new _monaco.LocationMapper(code);
+	
+	              var loc = _this5.lastMapper.LineColToAbsolute((position.lineNumber + 0x80000000 >>> 0) - 0x80000000, (position.column + 0x80000000 >>> 0) - 0x80000000);
+	
+	              return {
+	                v: builder_.Bind(_this5.checker.TypeCheck(code), function (_arg1) {
+	                  return builder_.Return(new PivotEditorAction("UpdateSource", [code, loc, _arg1[2], _this5.lastMapper]));
+	                })
+	              };
+	            }();
+	
+	            if ((typeof _ret17 === "undefined" ? "undefined" : _typeof(_ret17)) === "object") return _ret17.v;
+	          } else {
+	            var _loc = _this5.lastMapper.LineColToAbsolute((position.lineNumber + 0x80000000 >>> 0) - 0x80000000, (position.column + 0x80000000 >>> 0) - 0x80000000);
+	
+	            return builder_.Return(new PivotEditorAction("UpdateLocation", [_loc]));
+	          }
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
+	    PreviewService.prototype.createPivotPreview = function createPivotPreview(ed) {
+	      var _this6 = this;
+	
+	      var pivotEvent = new _fableCore.Event();
+	
+	      var pivotState = function () {
+	        var Selection = null;
+	        var Focus = null;
+	        var Mapper = new _monaco.LocationMapper("");
+	        var Code = "";
+	        var Globals = new _fableCore.List();
+	        var Location = 0;
+	        var Body = null;
+	        return new PivotEditorState(Globals, Code, new _ast.Program((0, _astops.node)(new _ast.Range(0, 0), new _fableCore.List())), Mapper, Location, Body, new PivotEditorMenus("Hidden", []), Selection, Focus);
+	      }();
+	
+	      _fableCore.Observable.add(function (evt) {
+	        try {
+	          _common.Log.trace("live", "Updating state %O with event %O", pivotState, evt);
+	
+	          var oldState = pivotState;
+	          pivotState = updatePivotState(pivotState, evt);
+	
+	          if ((evt.Case === "UpdateSource" ? false : true) ? oldState.Code !== pivotState.Code : false) {
+	            _this6.changingEditor = true;
+	            ed.getModel().setValue(pivotState.Code);
+	          }
+	
+	          {
+	            var matchValue = pivotState.Selection;
+	
+	            if (matchValue != null) {
+	              _this6.changingEditor = true;
+	              ed.setSelection(matchValue);
+	              {
+	                var Selection = null;
+	                pivotState = new PivotEditorState(pivotState.Globals, pivotState.Code, pivotState.Program, pivotState.Mapper, pivotState.Location, pivotState.Body, pivotState.Menus, Selection, pivotState.Focus);
+	              }
+	            }
+	          }
+	
+	          if (_this6.changingEditor === true) {
+	            _this6.changingEditor = false;
+	
+	            (function (arg00) {
+	              _fableCore.Async.startImmediate(arg00);
+	            })(function (builder_) {
+	              return builder_.Delay(function (unitVar) {
+	                _common.Log.trace("live", "Editor changed. Getting after change event...");
+	
+	                return builder_.Bind(_this6.getUpdateEventAfterChange(), function (_arg2) {
+	                  _common.Log.trace("live", "Editor changed. Updating state %O with event %O", pivotState, _arg2);
+	
+	                  pivotState = updatePivotState(pivotState, _arg2);
+	                  {
+	                    var dom = renderPivot(function (arg00) {
+	                      pivotEvent.Trigger(arg00);
+	                    }, pivotState);
+	
+	                    _this6.updateZones(dom);
+	                  }
+	                  var matchValue = pivotState.Focus;
+	
+	                  if (matchValue != null) {
+	                    var _ret18 = function () {
+	                      var sel = matchValue[1];
+	                      var focus = matchValue[0];
+	
+	                      _common.Log.trace("live", "Set focus to element #%s", focus);
+	
+	                      {
+	                        var Focus = null;
+	                        pivotState = new PivotEditorState(pivotState.Globals, pivotState.Code, pivotState.Program, pivotState.Mapper, pivotState.Location, pivotState.Body, pivotState.Menus, pivotState.Selection, Focus);
+	                      }
+	                      var element = document.getElementById(focus);
+	                      element.focus();
+	
+	                      _fableCore.Seq.iterate(function (s) {
+	                        element.selectionStart = s;
+	                        element.selectionEnd = s;
+	                      }, function () {
+	                        var $var19 = sel;
+	
+	                        if ($var19 != null) {
+	                          return [$var19];
+	                        } else {
+	                          return [];
+	                        }
+	                      }());
+	
+	                      return {
+	                        v: builder_.Zero()
+	                      };
+	                    }();
+	
+	                    if ((typeof _ret18 === "undefined" ? "undefined" : _typeof(_ret18)) === "object") return _ret18.v;
+	                  } else {
+	                    return builder_.Zero();
+	                  }
+	                });
+	              });
+	            }(_fableCore.AsyncBuilder.singleton));
+	          } else {
+	            var dom = renderPivot(function (arg00) {
+	              pivotEvent.Trigger(arg00);
+	            }, pivotState);
+	
+	            _this6.updateZones(dom);
+	          }
+	        } catch (e) {
+	          _common.Log.exn("live", "Error when updating state %O with event %O: %O", pivotState, evt, e);
+	        }
+	      }, pivotEvent.Publish);
+	
+	      (function (arg00) {
+	        _fableCore.Async.startImmediate(arg00);
+	      })(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(globalTypes), function (_arg3) {
+	            pivotEvent.Trigger(new PivotEditorAction("InitializeGlobals", [_arg3]));
+	            return builder_.Zero();
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	
+	      return function (arg00) {
+	        pivotEvent.Trigger(arg00);
+	      };
+	    };
 	
 	    return PreviewService;
 	  }();
@@ -776,19 +2266,19 @@
 	    }(), parent).innerText, "both");
 	
 	    var compiled = function () {
-	      var $var2 = tryFindChildElement(function () {
+	      var $var20 = tryFindChildElement(function () {
 	        var cls = "ia-compiled";
 	        return function (el) {
 	          return withClass(cls, el);
 	        };
 	      }(), parent);
 	
-	      if ($var2 != null) {
+	      if ($var20 != null) {
 	        return function (el) {
 	          return _fableCore.String.trim(el.innerText, "both");
-	        }($var2);
+	        }($var20);
 	      } else {
-	        return $var2;
+	        return $var20;
 	      }
 	    }();
 	
@@ -1044,10 +2534,10 @@
 	        return null;
 	      };
 	    }, function () {
-	      var $var3 = showOptionsBtn;
+	      var $var21 = showOptionsBtn;
 	
-	      if ($var3 != null) {
-	        return [$var3];
+	      if ($var21 != null) {
+	        return [$var21];
 	      } else {
 	        return [];
 	      }
@@ -1138,32 +2628,25 @@
 	        return withClass(cls, el);
 	      };
 	    }(), document.body);
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
 	
-	    try {
-	      for (var _iterator = inputSequence[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	        var el = _step.value;
-	        servicesLookup.push(setupEditor(el));
+	    for (var _iterator = inputSequence, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	      var _ref;
+	
+	      if (_isArray) {
+	        if (_i >= _iterator.length) break;
+	        _ref = _iterator[_i++];
+	      } else {
+	        _i = _iterator.next();
+	        if (_i.done) break;
+	        _ref = _i.value;
 	      }
-	    } catch (err) {
-	      _didIteratorError = true;
-	      _iteratorError = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion && _iterator.return) {
-	          _iterator.return();
-	        }
-	      } finally {
-	        if (_didIteratorError) {
-	          throw _iteratorError;
-	        }
-	      }
+	
+	      var el = _ref;
+	      servicesLookup.push(setupEditor(el));
 	    }
 	  }
 	});
-	//# sourceMappingURL=main.js.map
+
 
 /***/ },
 /* 1 */
@@ -1184,26 +2667,9 @@
 	})(this, function (exports, _fableCore) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.List = exports.ListDictionaryModule = exports.ListDictionaryNode = exports.Async = exports.Async$2EStartAsNamedFuture$2EStatic = exports.Async$2ECreateNamedFuture$2EStatic = exports.Async$2EStartAsFuture$2EStatic = exports.Async$2ECreateFuture$2EStatic = exports.Async$2EFuture$2EStatic = exports.Async$2EAwaitFuture$2EStatic = exports.Http = exports.Log = exports.enabledCategories = undefined;
 	  exports.isLocalHost = isLocalHost;
-	
-	  function _defineProperty(obj, key, value) {
-	    if (key in obj) {
-	      Object.defineProperty(obj, key, {
-	        value: value,
-	        enumerable: true,
-	        configurable: true,
-	        writable: true
-	      });
-	    } else {
-	      obj[key] = value;
-	    }
-	
-	    return obj;
-	  }
 	
 	  function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
@@ -1211,31 +2677,13 @@
 	    }
 	  }
 	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
-	
 	  function isLocalHost() {
 	    return (typeof window == 'undefined' ? true : window.location.hostname === "localhost") ? true : window.location.hostname === "127.0.0.1";
 	  }
 	
 	  var enabledCategories = exports.enabledCategories = !isLocalHost() ? _fableCore.Set.create(new _fableCore.List(), new _fableCore.GenericComparer(function (x, y) {
 	    return x < y ? -1 : x > y ? 1 : 0;
-	  })) : _fableCore.Set.create(_fableCore.List.ofArray(["SYSTEM", "PARSING", "BINDER", "COMPLETIONS", "EDITORS", "TYPECHECKER", "PROVIDERS", "SERVICE", "CODEGEN", "INTERPRETER", "RUNTIME"]), new _fableCore.GenericComparer(function (x, y) {
+	  })) : _fableCore.Set.create(_fableCore.List.ofArray(["LIVE", "INTERPRETER"]), new _fableCore.GenericComparer(function (x, y) {
 	    return x < y ? -1 : x > y ? 1 : 0;
 	  }));
 	
@@ -1244,103 +2692,95 @@
 	      _classCallCheck(this, Log);
 	    }
 	
-	    _createClass(Log, null, [{
-	      key: "setEnabled",
-	      value: function setEnabled(cats) {
-	        exports.enabledCategories = enabledCategories = cats;
+	    Log.setEnabled = function setEnabled(cats) {
+	      exports.enabledCategories = enabledCategories = cats;
+	    };
+	
+	    Log.event = function event(category, evt, article, data) {
+	      logEvent(category, evt, article, data);
+	    };
+	
+	    Log.message = function message(level, category, msg) {
+	      for (var _len = arguments.length, args = Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+	        args[_key - 3] = arguments[_key];
 	      }
-	    }, {
-	      key: "event",
-	      value: function event(category, evt, article, data) {
-	        logEvent(category, evt, article, data);
+	
+	      var args_1 = args == null ? [] : args;
+	      var category_1 = category.toLocaleUpperCase();
+	
+	      if (!isLocalHost() ? level === "EXCEPTION" : false) {
+	        logEvent("system", "exception", "", {
+	          category: category_1,
+	          msg: msg,
+	          args: args_1
+	        });
 	      }
-	    }, {
-	      key: "message",
-	      value: function message(level, category, msg) {
-	        for (var _len = arguments.length, args = Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-	          args[_key - 3] = arguments[_key];
-	        }
 	
-	        var args_1 = args == null ? [] : args;
-	        var category_1 = category.toLocaleUpperCase();
+	      if ((level === "EXCEPTION" ? true : level === "ERROR") ? true : enabledCategories.has(category_1)) {
+	        var dt = _fableCore.Date.now();
 	
-	        if (!isLocalHost() ? level === "EXCEPTION" : false) {
-	          logEvent("system", "exception", "", {
-	            category: category_1,
-	            msg: msg,
-	            args: args_1
-	          });
-	        }
+	        var p2 = function p2(s) {
+	          return _fableCore.String.padLeft(String(s), 2, "0");
+	        };
 	
-	        if ((level === "EXCEPTION" ? true : level === "ERROR") ? true : enabledCategories.has(category_1)) {
-	          var dt = _fableCore.Date.now();
+	        var p4 = function p4(s) {
+	          return _fableCore.String.padLeft(String(s), 4, "0");
+	        };
 	
-	          var p2 = function p2(s) {
-	            return _fableCore.String.padLeft(String(s), 2, "0");
-	          };
+	        var prefix = _fableCore.String.fsFormat("[%s:%s:%s:%s] %s: ")(function (x) {
+	          return x;
+	        })(p2(_fableCore.Date.hour(dt)))(p2(_fableCore.Date.minute(dt)))(p2(_fableCore.Date.second(dt)))(p4(_fableCore.Date.millisecond(dt)))(category_1);
 	
-	          var p4 = function p4(s) {
-	            return _fableCore.String.padLeft(String(s), 4, "0");
-	          };
+	        var color = function () {
+	          var $var1 = null;
 	
-	          var prefix = _fableCore.String.fsFormat("[%s:%s:%s:%s] %s: ")(function (x) {
-	            return x;
-	          })(p2(_fableCore.Date.hour(dt)))(p2(_fableCore.Date.minute(dt)))(p2(_fableCore.Date.second(dt)))(p4(_fableCore.Date.millisecond(dt)))(category_1);
+	          switch (level) {
+	            case "TRACE":
+	              $var1 = "color:#808080";
+	              break;
 	
-	          var color = function () {
-	            var $var1 = null;
+	            case "EXCEPTION":
+	              $var1 = "color:#c00000";
+	              break;
 	
-	            switch (level) {
-	              case "TRACE":
-	                $var1 = "color:#808080";
-	                break;
+	            case "ERROR":
+	              $var1 = "color:#900000";
+	              break;
 	
-	              case "EXCEPTION":
-	                $var1 = "color:#c00000";
-	                break;
+	            default:
+	              $var1 = "";
+	          }
 	
-	              case "ERROR":
-	                $var1 = "color:#900000";
-	                break;
+	          return $var1;
+	        }();
 	
-	              default:
-	                $var1 = "";
-	            }
-	
-	            return $var1;
-	          }();
-	
-	          console.log.apply(console, Array.from(_fableCore.Seq.append(["%c" + prefix + msg, color], args_1)));
-	        }
+	        console.log.apply(console, Array.from(_fableCore.Seq.append(["%c" + prefix + msg, color], args_1)));
 	      }
-	    }, {
-	      key: "trace",
-	      value: function trace(category, msg) {
-	        for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-	          args[_key2 - 2] = arguments[_key2];
-	        }
+	    };
 	
-	        Log.message.apply(Log, ["TRACE", category, msg].concat(args));
+	    Log.trace = function trace(category, msg) {
+	      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	        args[_key2 - 2] = arguments[_key2];
 	      }
-	    }, {
-	      key: "exn",
-	      value: function exn(category, msg) {
-	        for (var _len3 = arguments.length, args = Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
-	          args[_key3 - 2] = arguments[_key3];
-	        }
 	
-	        Log.message.apply(Log, ["EXCEPTION", category, msg].concat(args));
-	      }
-	    }, {
-	      key: "error",
-	      value: function error(category, msg) {
-	        for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
-	          args[_key4 - 2] = arguments[_key4];
-	        }
+	      Log.message.apply(Log, ["TRACE", category, msg].concat(args));
+	    };
 	
-	        Log.message.apply(Log, ["ERROR", category, msg].concat(args));
+	    Log.exn = function exn(category, msg) {
+	      for (var _len3 = arguments.length, args = Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
+	        args[_key3 - 2] = arguments[_key3];
 	      }
-	    }]);
+	
+	      Log.message.apply(Log, ["EXCEPTION", category, msg].concat(args));
+	    };
+	
+	    Log.error = function error(category, msg) {
+	      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+	        args[_key4 - 2] = arguments[_key4];
+	      }
+	
+	      Log.message.apply(Log, ["ERROR", category, msg].concat(args));
+	    };
 	
 	    return Log;
 	  }();
@@ -1352,39 +2792,36 @@
 	      _classCallCheck(this, Http);
 	    }
 	
-	    _createClass(Http, null, [{
-	      key: "Request",
-	      value: function Request(meth, url, data, cookies) {
-	        return _fableCore.Async.fromContinuations(function (tupledArg) {
-	          var xhr = new XMLHttpRequest();
-	          xhr.open(meth, url, true);
-	          {
-	            var $target1 = function $target1() {};
+	    Http.Request = function Request(meth, url, data, cookies) {
+	      return _fableCore.Async.fromContinuations(function (tupledArg) {
+	        var xhr = new XMLHttpRequest();
+	        xhr.open(meth, url, true);
+	        {
+	          var $target1 = function $target1() {};
 	
-	            if (cookies != null) {
-	              if (cookies !== "") {
-	                var cookies_1 = cookies;
-	                xhr.setRequestHeader("X-Cookie", cookies_1);
-	              } else {
-	                $target1();
-	              }
+	          if (cookies != null) {
+	            if (cookies !== "") {
+	              var cookies_1 = cookies;
+	              xhr.setRequestHeader("X-Cookie", cookies_1);
 	            } else {
 	              $target1();
 	            }
+	          } else {
+	            $target1();
+	          }
+	        }
+	
+	        xhr.onreadystatechange = function (_arg1) {
+	          if (xhr.readyState > 3 ? xhr.status === 200 : false) {
+	            tupledArg[0](xhr.responseText);
 	          }
 	
-	          xhr.onreadystatechange = function (_arg1) {
-	            if (xhr.readyState > 3 ? xhr.status === 200 : false) {
-	              tupledArg[0](xhr.responseText);
-	            }
+	          return {};
+	        };
 	
-	            return {};
-	          };
-	
-	          xhr.send(data != null ? data : "");
-	        });
-	      }
-	    }]);
+	        xhr.send(data != null ? data : "");
+	      });
+	    };
 	
 	    return Http;
 	  }();
@@ -1415,7 +2852,7 @@
 	          var e = res.Fields[0];
 	          throw e;
 	        } else {
-	          handlers = _fableCore.List.ofArray([h], handlers);
+	          handlers = new _fableCore.List(h, handlers);
 	        }
 	      }
 	    };
@@ -1476,10 +2913,10 @@
 	      ensureStarted();
 	    }
 	
-	    return _ref = {}, _defineProperty(_ref, _fableCore.Symbol.interfaces, ["TheGamma.Common.Future"]), _defineProperty(_ref, "Then", function Then(f) {
+	    return _ref = {}, _ref[_fableCore.Symbol.interfaces] = ["TheGamma.Common.Future"], _ref.Then = function Then(f) {
 	      ensureStarted();
 	      trigger(f);
-	    }), _ref;
+	    }, _ref;
 	  }
 	
 	  exports.Async$2EFuture$2EStatic = Async_Future_Static;
@@ -1599,7 +3036,7 @@
 	        return builder_.Delay(function (unitVar) {
 	          return l.tail == null ? builder_.Return(new _fableCore.List()) : builder_.Bind(f(l.head), function (_arg1) {
 	            return builder_.Bind(choose(f, l.tail), function (_arg2) {
-	              return builder_.Return(_arg1 != null ? _fableCore.List.ofArray([_arg1], _arg2) : _arg2);
+	              return builder_.Return(_arg1 != null ? new _fableCore.List(_arg1, _arg2) : _arg2);
 	            });
 	          });
 	        });
@@ -1611,7 +3048,7 @@
 	        return builder_.Delay(function (unitVar) {
 	          return l.tail == null ? builder_.Return(new _fableCore.List()) : builder_.Bind(f(l.head), function (_arg1) {
 	            return builder_.Bind(map(f, l.tail), function (_arg2) {
-	              return builder_.Return(_fableCore.List.ofArray([_arg1], _arg2));
+	              return builder_.Return(new _fableCore.List(_arg1, _arg2));
 	            });
 	          });
 	        });
@@ -1623,7 +3060,7 @@
 	        return builder_.Delay(function (unitVar) {
 	          return l.tail == null ? builder_.Return([st, new _fableCore.List()]) : builder_.Bind(f(st)(l.head), function (_arg1) {
 	            return builder_.Bind(foldMap(f, _arg1[1], l.tail), function (_arg2) {
-	              return builder_.Return([_arg2[0], _fableCore.List.ofArray([_arg1[0]], _arg2[1])]);
+	              return builder_.Return([_arg2[0], new _fableCore.List(_arg1[0], _arg2[1])]);
 	            });
 	          });
 	        });
@@ -1651,12 +3088,9 @@
 	      this.Nested = nested;
 	    }
 	
-	    _createClass(ListDictionaryNode, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }]);
+	    ListDictionaryNode.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
 	
 	    return ListDictionaryNode;
 	  }();
@@ -1752,41 +3186,34 @@
 	  var List = exports.List = function ($exports) {
 	    var groupWith = $exports.groupWith = function groupWith(f, list) {
 	      var groups = [];
-	      var _iteratorNormalCompletion = true;
-	      var _didIteratorError = false;
-	      var _iteratorError = undefined;
 	
-	      try {
-	        for (var _iterator = list[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	          var e = _step.value;
-	          var added = false;
-	          var i = 0;
+	      for (var _iterator = list, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	        var _ref2;
 	
-	          while (!added ? i < groups.length : false) {
-	            if (f(e)(groups[i][0])) {
-	              groups[i][1].push(e);
-	              added = true;
-	            }
-	
-	            i = i + 1;
-	          }
-	
-	          if (!added) {
-	            groups.push([e, Array.from(_fableCore.List.ofArray([e]))]);
-	          }
+	        if (_isArray) {
+	          if (_i >= _iterator.length) break;
+	          _ref2 = _iterator[_i++];
+	        } else {
+	          _i = _iterator.next();
+	          if (_i.done) break;
+	          _ref2 = _i.value;
 	        }
-	      } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
-	      } finally {
-	        try {
-	          if (!_iteratorNormalCompletion && _iterator.return) {
-	            _iterator.return();
+	
+	        var e = _ref2;
+	        var added = false;
+	        var i = 0;
+	
+	        while (!added ? i < groups.length : false) {
+	          if (f(e)(groups[i][0])) {
+	            groups[i][1].push(e);
+	            added = true;
 	          }
-	        } finally {
-	          if (_didIteratorError) {
-	            throw _iteratorError;
-	          }
+	
+	          i = i + 1;
+	        }
+	
+	        if (!added) {
+	          groups.push([e, Array.from(_fableCore.List.ofArray([e]))]);
 	        }
 	      }
 	
@@ -2679,6 +4106,9 @@
 	                        case "e":
 	                        case "E":
 	                            rep = rep.toExponential(precision);
+	                            break;
+	                        case "O":
+	                            rep = Util.toString(rep);
 	                            break;
 	                        case "A":
 	                            try {
@@ -3669,11 +5099,21 @@
 	
 	
 	        Seq.groupBy = function groupBy(f, xs) {
-	            return Seq.fold(function (acc, x) {
+	            var keys = [];
+	            var map = Seq.fold(function (acc, x) {
 	                var k = f(x),
-	                    vs = acc.get(k);
-	                return vs != null ? acc.set(k, new List(x, vs)) : acc.set(k, List.singleton(x));
-	            }, new Map(), xs);
+	                    vs = FMap.tryFind(k, acc);
+	                if (vs == null) {
+	                    keys.push(k);
+	                    return FMap.add(k, [x], acc);
+	                } else {
+	                    vs.push(x);
+	                    return acc;
+	                }
+	            }, FMap.create(), xs);
+	            return keys.map(function (k) {
+	                return [k, map.get(k)];
+	            });
 	        };
 	
 	        Seq.tryHead = function tryHead(xs) {
@@ -3887,7 +5327,7 @@
 	        };
 	
 	        Seq.pairwise = function pairwise(xs) {
-	            return Seq.skip(1, Seq.scan(function (last, next) {
+	            return Seq.skip(2, Seq.scan(function (last, next) {
 	                return Tuple(last[1], next);
 	            }, Tuple(0, 0), xs));
 	        };
@@ -5685,12 +7125,12 @@
 	            return function (ctx) {
 	                if (ctx.cancelToken.isCancelled) ctx.onCancel("cancelled");else if (ctx.trampoline.incrementAndCheck()) ctx.trampoline.hijack(function () {
 	                    try {
-	                        return f(ctx);
+	                        f(ctx);
 	                    } catch (err) {
 	                        ctx.onError(err);
 	                    }
 	                });else try {
-	                    return f(ctx);
+	                    f(ctx);
 	                } catch (err) {
 	                    ctx.onError(err);
 	                }
@@ -5786,7 +7226,11 @@
 	                    cancelToken: ctx.cancelToken,
 	                    trampoline: ctx.trampoline,
 	                    onError: function onError(ex) {
-	                        return catchHandler(ex)(ctx);
+	                        try {
+	                            catchHandler(ex)(ctx);
+	                        } catch (ex2) {
+	                            ctx.onError(ex2);
+	                        }
 	                    }
 	                });
 	            });
@@ -6420,16 +7864,8 @@
 	})(this, function (exports, _fableCore) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.Expr = exports.Command = exports.Program = exports.Argument = exports.Node = exports.EntityValue = exports.Entity = exports.EntityKind = exports.Constant = exports.Name = exports.Type = exports.PrimitiveType = exports.ObjectType = exports.Member = exports.Documentation = exports.Metadata = exports.Emitter = exports.Token = exports.TokenKind = exports.Operator = exports.Error = exports.Range = undefined;
-	
-	  function _classCallCheck(instance, Constructor) {
-	    if (!(instance instanceof Constructor)) {
-	      throw new TypeError("Cannot call a class as a function");
-	    }
-	  }
 	
 	  var _createClass = function () {
 	    function defineProperties(target, props) {
@@ -6449,6 +7885,12 @@
 	    };
 	  }();
 	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
 	  var _Range = function () {
 	    function _Range(start, end) {
 	      _classCallCheck(this, _Range);
@@ -6457,17 +7899,13 @@
 	      this.End = end;
 	    }
 	
-	    _createClass(_Range, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    _Range.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    _Range.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return _Range;
 	  }();
@@ -6485,17 +7923,13 @@
 	      this.Range = range;
 	    }
 	
-	    _createClass(Error, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    Error.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    Error.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return Error;
 	  }();
@@ -6510,17 +7944,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(Operator, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    Operator.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    Operator.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return Operator;
 	  }();
@@ -6535,17 +7965,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(TokenKind, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    TokenKind.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    TokenKind.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return TokenKind;
 	  }();
@@ -6560,17 +7986,13 @@
 	      this.Range = range;
 	    }
 	
-	    _createClass(Token, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    Token.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    Token.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return Token;
 	  }();
@@ -6594,12 +8016,9 @@
 	      this.Data = data;
 	    }
 	
-	    _createClass(Metadata, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }]);
+	    Metadata.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
 	
 	    return Metadata;
 	  }();
@@ -6614,17 +8033,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(Documentation, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    Documentation.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    Documentation.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return Documentation;
 	  }();
@@ -6675,17 +8090,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(PrimitiveType, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    PrimitiveType.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    PrimitiveType.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return PrimitiveType;
 	  }();
@@ -6708,17 +8119,13 @@
 	      this.Name = name;
 	    }
 	
-	    _createClass(Name, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    Name.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    Name.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return Name;
 	  }();
@@ -6733,17 +8140,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(Constant, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    Constant.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    Constant.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return Constant;
 	  }();
@@ -6780,12 +8183,9 @@
 	      this.Preview = preview;
 	    }
 	
-	    _createClass(EntityValue, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }]);
+	    EntityValue.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
 	
 	    return EntityValue;
 	  }();
@@ -6862,34 +8262,14 @@
 	})(this, function (exports, _fableCore, _ast, _common, _babel) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.RestProvider = exports.FSharpProvider = exports.ProviderHelpers = exports.ProvidedType = undefined;
 	
 	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
 	    return typeof obj;
 	  } : function (obj) {
-	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	  };
-	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
 	
 	  function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
@@ -6922,17 +8302,13 @@
 	        this.kind = kind;
 	      }
 	
-	      _createClass(AnyType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      AnyType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      AnyType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return AnyType;
 	    }();
@@ -6947,17 +8323,13 @@
 	        this.name = name;
 	      }
 	
-	      _createClass(GenericParameterType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      GenericParameterType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      GenericParameterType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return GenericParameterType;
 	    }();
@@ -6972,17 +8344,13 @@
 	        this.element = element;
 	      }
 	
-	      _createClass(ArrayType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      ArrayType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      ArrayType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return ArrayType;
 	    }();
@@ -6997,17 +8365,13 @@
 	        this.name = name;
 	      }
 	
-	      _createClass(PrimitiveType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      PrimitiveType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      PrimitiveType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return PrimitiveType;
 	    }();
@@ -7023,17 +8387,13 @@
 	        this.returns = returns;
 	      }
 	
-	      _createClass(FunctionType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      FunctionType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      FunctionType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return FunctionType;
 	    }();
@@ -7049,17 +8409,13 @@
 	        this.typargs = typargs;
 	      }
 	
-	      _createClass(NamedType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      NamedType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      NamedType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return NamedType;
 	    }();
@@ -7073,17 +8429,13 @@
 	        this.kind = kind;
 	      }
 	
-	      _createClass(Member, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      Member.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      Member.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return Member;
 	    }();
@@ -7099,17 +8451,13 @@
 	        this.type = type;
 	      }
 	
-	      _createClass(Argument, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      Argument.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      Argument.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return Argument;
 	    }();
@@ -7127,17 +8475,13 @@
 	        this.returns = returns;
 	      }
 	
-	      _createClass(MethodMember, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      MethodMember.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      MethodMember.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return MethodMember;
 	    }();
@@ -7153,17 +8497,13 @@
 	        this.returns = returns;
 	      }
 	
-	      _createClass(PropertyMember, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      PropertyMember.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      PropertyMember.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return PropertyMember;
 	    }();
@@ -7181,17 +8521,13 @@
 	        this.members = members;
 	      }
 	
-	      _createClass(ExportedType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      ExportedType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      ExportedType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return ExportedType;
 	    }();
@@ -7200,71 +8536,71 @@
 	
 	    var provideFSharpTypes = $exports.provideFSharpTypes = function provideFSharpTypes(lookupNamed, url) {
 	      var mapType = function mapType(t) {
-	        var $var11 = null;
+	        var $var10 = null;
 	
 	        switch (t.kind) {
 	          case "primitive":
 	            {
 	              var matchValue = t.name;
-	              var $var12 = null;
+	              var $var11 = null;
 	
 	              switch (matchValue) {
 	                case "object":
-	                  $var12 = new _ast.Type("Any", []);
+	                  $var11 = new _ast.Type("Any", []);
 	                  break;
 	
 	                case "int":
 	                case "float":
-	                  $var12 = new _ast.Type("Primitive", [new _ast.PrimitiveType("Number", [])]);
+	                  $var11 = new _ast.Type("Primitive", [new _ast.PrimitiveType("Number", [])]);
 	                  break;
 	
 	                case "string":
-	                  $var12 = new _ast.Type("Primitive", [new _ast.PrimitiveType("String", [])]);
+	                  $var11 = new _ast.Type("Primitive", [new _ast.PrimitiveType("String", [])]);
 	                  break;
 	
 	                case "bool":
-	                  $var12 = new _ast.Type("Primitive", [new _ast.PrimitiveType("Bool", [])]);
+	                  $var11 = new _ast.Type("Primitive", [new _ast.PrimitiveType("Bool", [])]);
 	                  break;
 	
 	                case "unit":
-	                  $var12 = new _ast.Type("Primitive", [new _ast.PrimitiveType("Unit", [])]);
+	                  $var11 = new _ast.Type("Primitive", [new _ast.PrimitiveType("Unit", [])]);
 	                  break;
 	
 	                default:
 	                  throw "provideFSharpType: Unsupported type: " + matchValue;
 	              }
 	
-	              $var11 = $var12;
+	              $var10 = $var11;
 	            }
 	            break;
 	
 	          case "function":
 	            {
 	              var t_1 = t;
-	              $var11 = new _ast.Type("Function", [_fableCore.Seq.toList(t_1.arguments.map(mapType)), mapType(t_1.returns)]);
+	              $var10 = new _ast.Type("Function", [_fableCore.Seq.toList(t_1.arguments.map(mapType)), mapType(t_1.returns)]);
 	            }
 	            break;
 	
 	          case "named":
 	            {
 	              var _t_ = t;
-	              $var11 = lookupNamed(_t_.name)(_fableCore.List.ofArray(_t_.typargs.map(mapType)));
+	              $var10 = lookupNamed(_t_.name)(_fableCore.List.ofArray(_t_.typargs.map(mapType)));
 	            }
 	            break;
 	
 	          case "parameter":
-	            $var11 = new _ast.Type("Parameter", [t.name]);
+	            $var10 = new _ast.Type("Parameter", [t.name]);
 	            break;
 	
 	          case "array":
-	            $var11 = new _ast.Type("List", [mapType(t.element)]);
+	            $var10 = new _ast.Type("List", [mapType(t.element)]);
 	            break;
 	
 	          default:
 	            throw "provideFSharpType: Unexpected type";
 	        }
 	
-	        return $var11;
+	        return $var10;
 	      };
 	
 	      var getTypeParameters = function getTypeParameters(typars) {
@@ -7353,7 +8689,7 @@
 	                    }
 	                  }();
 	
-	                  return new ProvidedType("GlobalValue", [exp.name, e, ty_1]);
+	                  return new ProvidedType("GlobalValue", [exp.name, new _fableCore.List(), e, ty_1]);
 	                } else {
 	                  return new ProvidedType("NamedType", [exp.name, getTypeParameters(exp.typepars), ty]);
 	                }
@@ -7375,17 +8711,13 @@
 	        this.kind = kind;
 	      }
 	
-	      _createClass(AnyType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      AnyType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      AnyType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return AnyType;
 	    }();
@@ -7400,17 +8732,13 @@
 	        this.endpoint = endpoint;
 	      }
 	
-	      _createClass(TypeNested, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      TypeNested.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      TypeNested.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return TypeNested;
 	    }();
@@ -7426,12 +8754,9 @@
 	        this.endpoint = endpoint;
 	      }
 	
-	      _createClass(TypePrimitive, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }]);
+	      TypePrimitive.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
 	
 	      return TypePrimitive;
 	    }();
@@ -7446,17 +8771,13 @@
 	        this.type = type;
 	      }
 	
-	      _createClass(Parameter, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      Parameter.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      Parameter.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return Parameter;
 	    }();
@@ -7471,17 +8792,13 @@
 	        this.details = details;
 	      }
 	
-	      _createClass(Documentation, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      Documentation.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      Documentation.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return Documentation;
 	    }();
@@ -7500,12 +8817,9 @@
 	        this.trace = trace;
 	      }
 	
-	      _createClass(Member, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }]);
+	      Member.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
 	
 	      return Member;
 	    }();
@@ -7520,17 +8834,13 @@
 	        this.Fields = fields;
 	      }
 	
-	      _createClass(ResultType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsUnions(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareUnions(this, other);
-	        }
-	      }]);
+	      ResultType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsUnions(this, other);
+	      };
+	
+	      ResultType.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareUnions(this, other);
+	      };
 	
 	      return ResultType;
 	    }();
@@ -7545,12 +8855,9 @@
 	        this.type = type;
 	      }
 	
-	      _createClass(RawField, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }]);
+	      RawField.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
 	
 	      return RawField;
 	    }();
@@ -7566,12 +8873,9 @@
 	        this.params = params;
 	      }
 	
-	      _createClass(RawResultType, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }]);
+	      RawResultType.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
 	
 	      return RawResultType;
 	    }();
@@ -7673,8 +8977,8 @@
 	          };
 	
 	          return function (source) {
-	            return _fableCore.Seq.fold(function ($var13, $var14) {
-	              return folder($var13)($var14);
+	            return _fableCore.Seq.fold(function ($var12, $var13) {
+	              return folder($var12)($var13);
 	            }, withTrace, source);
 	          };
 	        }()(_fableCore.Seq.zip(argNames, tupledArg[1]));
@@ -7805,19 +9109,19 @@
 	    };
 	
 	    var mapParamType = $exports.mapParamType = function mapParamType(_arg1) {
-	      var $var15 = null;
+	      var $var14 = null;
 	
 	      switch (_arg1) {
 	        case "int":
 	        case "float":
-	          $var15 = new _ast.PrimitiveType("Number", []);
+	          $var14 = new _ast.PrimitiveType("Number", []);
 	          break;
 	
 	        default:
 	          throw "mapParamType: Unsupported parameter type";
 	      }
 	
-	      return $var15;
+	      return $var14;
 	    };
 	
 	    var restTypeCache = $exports.restTypeCache = new Map();
@@ -7838,7 +9142,7 @@
 	                  return new _ast.Metadata("http://schema.org", Type, m.schema);
 	                }()]) : new _fableCore.List();
 	                var matchValue_1 = m.returns.kind;
-	                var $var16 = null;
+	                var $var15 = null;
 	
 	                switch (matchValue_1) {
 	                  case "nested":
@@ -7847,7 +9151,7 @@
 	                      var retTyp = createRestType(lookupNamed, root, cookies, returns.endpoint);
 	
 	                      if (m.parameters == null) {
-	                        $var16 = new _ast.Member("Property", [m.name, retTyp, _fableCore.List.ofArray([ProviderHelpers.docMeta(parseDoc(m.documentation))], schema), propAccess(m.trace)]);
+	                        $var15 = new _ast.Member("Property", [m.name, retTyp, new _fableCore.List(ProviderHelpers.docMeta(parseDoc(m.documentation)), schema), propAccess(m.trace)]);
 	                      } else {
 	                        var args = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
 	                          return _fableCore.Seq.map(function (p) {
@@ -7861,7 +9165,7 @@
 	                          }, m.parameters);
 	                        }));
 	
-	                        $var16 = new _ast.Member("Method", [m.name, args, retTyp, _fableCore.List.ofArray([ProviderHelpers.docMeta(parseDoc(m.documentation))]), methCall(argNames, m.trace)]);
+	                        $var15 = new _ast.Member("Method", [m.name, args, retTyp, _fableCore.List.ofArray([ProviderHelpers.docMeta(parseDoc(m.documentation))]), methCall(argNames, m.trace)]);
 	                      }
 	                    }
 	                    break;
@@ -7873,7 +9177,7 @@
 	                      var _ty = fromRawType(_returns.type);
 	
 	                      var patternInput = getTypeAndEmitter(lookupNamed, _ty);
-	                      $var16 = new _ast.Member("Property", [m.name, patternInput[0], _fableCore.List.ofArray([ProviderHelpers.docMeta(parseDoc(m.documentation))], schema), dataCall(patternInput[1], m.trace, _returns.endpoint)]);
+	                      $var15 = new _ast.Member("Property", [m.name, patternInput[0], new _fableCore.List(ProviderHelpers.docMeta(parseDoc(m.documentation)), schema), dataCall(patternInput[1], m.trace, _returns.endpoint)]);
 	                    }
 	                    break;
 	
@@ -7881,7 +9185,7 @@
 	                    throw "?";
 	                }
 	
-	                return $var16;
+	                return $var15;
 	              }))]));
 	            });
 	          });
@@ -7899,7 +9203,7 @@
 	
 	    var provideRestType = $exports.provideRestType = function provideRestType(lookupNamed, name, root, cookies) {
 	      var ctx = op_Dynamic(ident("_runtime"), "RuntimeContext");
-	      return new ProvidedType("GlobalValue", [name, new _babel.Expression("NewExpression", [ctx, _fableCore.List.ofArray([str(root), str(cookies), str("")]), null]), createRestType(lookupNamed, root, cookies, "/")]);
+	      return new ProvidedType("GlobalValue", [name, new _fableCore.List(), new _babel.Expression("NewExpression", [ctx, _fableCore.List.ofArray([str(root), str(cookies), str("")]), null]), createRestType(lookupNamed, root, cookies, "/")]);
 	    };
 	
 	    return $exports;
@@ -7926,9 +9230,7 @@
 	})(this, function (exports, _fableCore) {
 	    "use strict";
 	
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
+	    exports.__esModule = true;
 	    exports.Serializer = exports.Program = exports.Statement = exports.Expression = exports.VariableDeclarator = exports.VariableDeclarationKind = exports.Pattern = exports.BinaryOperator = exports.AssignmentOperator = exports.SourceLocation = exports.Position = undefined;
 	
 	    function _classCallCheck(instance, Constructor) {
@@ -7936,24 +9238,6 @@
 	            throw new TypeError("Cannot call a class as a function");
 	        }
 	    }
-	
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-	
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
 	
 	    var Position = exports.Position = function () {
 	        function Position(line, column) {
@@ -7963,17 +9247,13 @@
 	            this.column = column;
 	        }
 	
-	        _createClass(Position, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsRecords(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareRecords(this, other);
-	            }
-	        }]);
+	        Position.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        Position.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
 	
 	        return Position;
 	    }();
@@ -7988,17 +9268,13 @@
 	            this.end = end;
 	        }
 	
-	        _createClass(SourceLocation, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsRecords(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareRecords(this, other);
-	            }
-	        }]);
+	        SourceLocation.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        SourceLocation.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
 	
 	        return SourceLocation;
 	    }();
@@ -8013,17 +9289,13 @@
 	            this.Fields = fields;
 	        }
 	
-	        _createClass(AssignmentOperator, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsUnions(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareUnions(this, other);
-	            }
-	        }]);
+	        AssignmentOperator.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsUnions(this, other);
+	        };
+	
+	        AssignmentOperator.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareUnions(this, other);
+	        };
 	
 	        return AssignmentOperator;
 	    }();
@@ -8038,17 +9310,13 @@
 	            this.Fields = fields;
 	        }
 	
-	        _createClass(BinaryOperator, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsUnions(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareUnions(this, other);
-	            }
-	        }]);
+	        BinaryOperator.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsUnions(this, other);
+	        };
+	
+	        BinaryOperator.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareUnions(this, other);
+	        };
 	
 	        return BinaryOperator;
 	    }();
@@ -8063,17 +9331,13 @@
 	            this.Fields = fields;
 	        }
 	
-	        _createClass(Pattern, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsUnions(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareUnions(this, other);
-	            }
-	        }]);
+	        Pattern.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsUnions(this, other);
+	        };
+	
+	        Pattern.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareUnions(this, other);
+	        };
 	
 	        return Pattern;
 	    }();
@@ -8088,17 +9352,13 @@
 	            this.Fields = fields;
 	        }
 	
-	        _createClass(VariableDeclarationKind, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsUnions(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareUnions(this, other);
-	            }
-	        }]);
+	        VariableDeclarationKind.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsUnions(this, other);
+	        };
+	
+	        VariableDeclarationKind.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareUnions(this, other);
+	        };
 	
 	        return VariableDeclarationKind;
 	    }();
@@ -8113,17 +9373,13 @@
 	            this.Fields = fields;
 	        }
 	
-	        _createClass(VariableDeclarator, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsUnions(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareUnions(this, other);
-	            }
-	        }]);
+	        VariableDeclarator.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsUnions(this, other);
+	        };
+	
+	        VariableDeclarator.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareUnions(this, other);
+	        };
 	
 	        return VariableDeclarator;
 	    }();
@@ -8138,17 +9394,13 @@
 	            this.Fields = fields;
 	        }
 	
-	        _createClass(Expression, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsUnions(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareUnions(this, other);
-	            }
-	        }]);
+	        Expression.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsUnions(this, other);
+	        };
+	
+	        Expression.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareUnions(this, other);
+	        };
 	
 	        return Expression;
 	    }();
@@ -8163,17 +9415,13 @@
 	            this.Fields = fields;
 	        }
 	
-	        _createClass(Statement, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsUnions(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareUnions(this, other);
-	            }
-	        }]);
+	        Statement.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsUnions(this, other);
+	        };
+	
+	        Statement.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareUnions(this, other);
+	        };
 	
 	        return Statement;
 	    }();
@@ -8188,17 +9436,13 @@
 	            this.body = body;
 	        }
 	
-	        _createClass(Program, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsRecords(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareRecords(this, other);
-	            }
-	        }]);
+	        Program.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        Program.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
 	
 	        return Program;
 	    }();
@@ -8299,9 +9543,7 @@
 	})(this, function (exports, _fableCore, _ast, _babel, _providers, _common) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.Context = exports.propertyEmitter = exports.Transform = exports.Field = exports.Transformation = exports.Paging = exports.SortDirection = exports.Aggregation = undefined;
 	  exports.trimLeft = trimLeft;
 	  exports.trimRight = trimRight;
@@ -8344,24 +9586,6 @@
 	    }
 	  }
 	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
-	
 	  var Aggregation = exports.Aggregation = function () {
 	    function Aggregation(caseName, fields) {
 	      _classCallCheck(this, Aggregation);
@@ -8370,17 +9594,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(Aggregation, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    Aggregation.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    Aggregation.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return Aggregation;
 	  }();
@@ -8395,17 +9615,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(SortDirection, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    SortDirection.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    SortDirection.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return SortDirection;
 	  }();
@@ -8420,17 +9636,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(Paging, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    Paging.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    Paging.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return Paging;
 	  }();
@@ -8445,17 +9657,13 @@
 	      this.Fields = fields;
 	    }
 	
-	    _createClass(Transformation, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsUnions(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareUnions(this, other);
-	      }
-	    }]);
+	    Transformation.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    Transformation.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
 	
 	    return Transformation;
 	  }();
@@ -8470,17 +9678,13 @@
 	      this.Type = type;
 	    }
 	
-	    _createClass(Field, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    Field.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    Field.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return Field;
 	  }();
@@ -8494,26 +9698,26 @@
 	
 	    var toUrl = $exports.toUrl = function toUrl(transforms) {
 	      return _fableCore.String.join("/", _fableCore.List.concat(_fableCore.List.mapIndexed(function (i, l) {
-	        return i === 0 ? l : _fableCore.List.ofArray(["then"], l);
+	        return i === 0 ? l : new _fableCore.List("then", l);
 	      }, _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	        return _fableCore.Seq.map(function (t) {
-	          return t.Case === "DropColumns" ? _fableCore.List.ofArray(["drop"], t.Fields[0]) : t.Case === "SortBy" ? _fableCore.List.ofArray(["sort"], _fableCore.List.collect(function (tupledArg) {
+	          return t.Case === "FilterBy" ? new _fableCore.List("filter", _fableCore.List.collect(function (tupledArg) {
+	            return _fableCore.List.ofArray([tupledArg[0], tupledArg[1] ? "eq" : "neq", tupledArg[2]]);
+	          }, t.Fields[0])) : t.Case === "DropColumns" ? new _fableCore.List("drop", t.Fields[0]) : t.Case === "SortBy" ? new _fableCore.List("sort", _fableCore.List.collect(function (tupledArg) {
 	            return _fableCore.List.ofArray([tupledArg[0], tupledArg[1].Equals(new SortDirection("Ascending", [])) ? "asc" : "desc"]);
-	          }, t.Fields[0])) : t.Case === "GroupBy" ? _fableCore.List.ofArray(["group"], _fableCore.List.append(_fableCore.List.map(function (f) {
+	          }, t.Fields[0])) : t.Case === "GroupBy" ? new _fableCore.List("group", _fableCore.List.append(_fableCore.List.map(function (f) {
 	            return "by-" + f;
 	          }, t.Fields[0]), _fableCore.List.collect(function (_arg1) {
 	            return formatAgg(_arg1);
-	          }, t.Fields[1]))) : t.Case === "Paging" ? _fableCore.List.ofArray(["page"], _fableCore.List.collect(function (_arg1) {
+	          }, t.Fields[1]))) : t.Case === "Paging" ? new _fableCore.List("page", _fableCore.List.collect(function (_arg1) {
 	            return _arg1.Case === "Skip" ? _fableCore.List.ofArray(["skip", _arg1.Fields[0]]) : _fableCore.List.ofArray(["take", _arg1.Fields[0]]);
-	          }, t.Fields[0])) : t.Case === "GetSeries" ? _fableCore.List.ofArray(["series", t.Fields[0], t.Fields[1]]) : t.Case === "Empty" ? new _fableCore.List() : _fableCore.List.ofArray(["filter"], _fableCore.List.collect(function (tupledArg) {
-	            return _fableCore.List.ofArray([tupledArg[0], tupledArg[1] ? "eq" : "neq", tupledArg[2]]);
-	          }, t.Fields[0]));
+	          }, t.Fields[0])) : t.Case === "GetSeries" ? _fableCore.List.ofArray(["series", t.Fields[0], t.Fields[1]]) : t.Case === "Empty" ? new _fableCore.List() : _fableCore.List.ofArray(["data"]);
 	        }, _fableCore.List.reverse(transforms));
 	      })))));
 	    };
 	
 	    var singleTransformFields = $exports.singleTransformFields = function singleTransformFields(fields, _arg1) {
-	      return _arg1.Case === "SortBy" ? fields : _arg1.Case === "Paging" ? fields : _arg1.Case === "FilterBy" ? fields : _arg1.Case === "GetSeries" ? _fableCore.List.ofArray([_fableCore.Seq.find(function (f) {
+	      return _arg1.Case === "GetTheData" ? fields : _arg1.Case === "SortBy" ? fields : _arg1.Case === "Paging" ? fields : _arg1.Case === "FilterBy" ? fields : _arg1.Case === "GetSeries" ? _fableCore.List.ofArray([_fableCore.Seq.find(function (f) {
 	        return f.Name === _arg1.Fields[0];
 	      }, fields), _fableCore.Seq.find(function (f) {
 	        return f.Name === _arg1.Fields[1];
@@ -8688,17 +9892,19 @@
 	  _fableCore.Util.setInterfaces(Context.prototype, ["FSharpRecord"], "TheGamma.TypeProviders.Pivot.Context");
 	
 	  function makeProperty(ctx, name, tfs) {
-	    var meta = new _ast.Metadata("http://thegamma.net", "Pivot", tfs);
-	    return new _ast.Member("Property", [name, makePivotType(ctx, tfs), _fableCore.List.ofArray([meta]), propertyEmitter]);
+	    var meta1 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Transformations", tfs);
+	    var meta2 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Fields", ctx.Fields);
+	    return new _ast.Member("Property", [name, makePivotType(ctx, tfs), _fableCore.List.ofArray([meta1, meta2]), propertyEmitter]);
 	  }
 	
 	  function makeMethod(ctx, name, tfs, callid, args) {
-	    var meta = new _ast.Metadata("http://thegamma.net", "Pivot", tfs);
+	    var meta1 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Transformations", tfs);
+	    var meta2 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Fields", ctx.Fields);
 	    return new _ast.Member("Method", [name, _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	      return _fableCore.Seq.collect(function (matchValue) {
 	        return _fableCore.Seq.singleton([matchValue[0], false, new _ast.Type("Primitive", [matchValue[1]])]);
 	      }, args);
-	    })), makePivotType(ctx, tfs), _fableCore.List.ofArray([meta]), makeMethodEmitter(callid, args)]);
+	    })), makePivotType(ctx, tfs), _fableCore.List.ofArray([meta1, meta2]), makeMethodEmitter(callid, args)]);
 	  }
 	
 	  function makeDataMember(ctx, name, isPreview, tfs) {
@@ -8746,8 +9952,9 @@
 	      }
 	    }();
 	
-	    var meta = new _ast.Metadata("http://thegamma.net", "Pivot", tfs);
-	    return new _ast.Member("Property", [name, patternInput[0], _fableCore.List.ofArray([meta]), makeDataEmitter(isPreview, patternInput[1], tfs)]);
+	    var meta1 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Transformations", new _fableCore.List(new Transformation("GetTheData", []), tfs));
+	    var meta2 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Fields", ctx.Fields);
+	    return new _ast.Member("Property", [name, patternInput[0], _fableCore.List.ofArray([meta1, meta2]), makeDataEmitter(isPreview, patternInput[1], tfs)]);
 	  }
 	
 	  function handleGetSeriesRequest(ctx, rest, k, v) {
@@ -8761,7 +9968,7 @@
 	      if (matchValue[1] === "!") {
 	        return makeObjectType(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	          return _fableCore.Seq.map(function (field) {
-	            return makeProperty(ctx, "with key " + field.Name, _fableCore.List.ofArray([new Transformation("GetSeries", [field.Name, "!"])], rest));
+	            return makeProperty(ctx, "with key " + field.Name, new _fableCore.List(new Transformation("GetSeries", [field.Name, "!"]), rest));
 	          }, ctx.Fields);
 	        })));
 	      } else {
@@ -8771,7 +9978,7 @@
 	      if (matchValue[1] === "!") {
 	        return makeObjectType(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	          return _fableCore.Seq.map(function (field) {
-	            return makeDataMember(ctx, "and value " + field.Name, false, _fableCore.List.ofArray([new Transformation("GetSeries", [matchValue[0], field.Name])], rest));
+	            return makeDataMember(ctx, "and value " + field.Name, false, new _fableCore.List(new Transformation("GetSeries", [matchValue[0], field.Name]), rest));
 	          }, ctx.Fields);
 	        })));
 	      } else {
@@ -8781,8 +9988,8 @@
 	  }
 	
 	  function handlePagingRequest(ctx, rest, pgid, ops) {
-	    var takeMemb = makeMethod(ctx, "take", _fableCore.List.ofArray([new Transformation("Empty", []), new Transformation("Paging", [_fableCore.List.reverse(_fableCore.List.ofArray([new Paging("Take", [pgid + "-take"])], ops))])], rest), pgid + "-take", _fableCore.List.ofArray([["count", new _ast.PrimitiveType("Number", [])]]));
-	    var skipMemb = makeMethod(ctx, "skip", _fableCore.List.ofArray([new Transformation("Paging", [_fableCore.List.ofArray([new Paging("Skip", [pgid + "-skip"])], ops)])], rest), pgid + "-skip", _fableCore.List.ofArray([["count", new _ast.PrimitiveType("Number", [])]]));
+	    var takeMemb = makeMethod(ctx, "take", _fableCore.List.ofArray([new Transformation("Empty", []), new Transformation("Paging", [_fableCore.List.reverse(new _fableCore.List(new Paging("Take", [pgid + "-take"]), ops))])], rest), pgid + "-take", _fableCore.List.ofArray([["count", new _ast.PrimitiveType("Number", [])]]));
+	    var skipMemb = makeMethod(ctx, "skip", new _fableCore.List(new Transformation("Paging", [new _fableCore.List(new Paging("Skip", [pgid + "-skip"]), ops)]), rest), pgid + "-skip", _fableCore.List.ofArray([["count", new _ast.PrimitiveType("Number", [])]]));
 	    var thenMemb = makeProperty(ctx, "then", _fableCore.List.ofArray([new Transformation("Empty", []), new Transformation("Paging", [_fableCore.List.reverse(ops)])], rest));
 	    return makeObjectType(function () {
 	      var $target2 = function $target2() {
@@ -8800,7 +10007,7 @@
 	          return $target2();
 	        }
 	      } else {
-	        return _fableCore.List.ofArray([skipMemb, takeMemb]);
+	        return _fableCore.List.ofArray([skipMemb, takeMemb, thenMemb]);
 	      }
 	    }());
 	  }
@@ -8813,7 +10020,7 @@
 	    return makeObjectType(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	      return _fableCore.Seq.append(_fableCore.Seq.singleton(makeProperty(ctx, "then", _fableCore.List.ofArray([new Transformation("Empty", []), new Transformation("DropColumns", [dropped])], rest))), _fableCore.Seq.delay(function (unitVar_1) {
 	        return _fableCore.Seq.collect(function (field) {
-	          return !droppedFields.has(field.Name) ? _fableCore.Seq.singleton(makeProperty(ctx, "drop " + field.Name, _fableCore.List.ofArray([new Transformation("DropColumns", [_fableCore.List.ofArray([field.Name], dropped)])], rest))) : _fableCore.Seq.empty();
+	          return !droppedFields.has(field.Name) ? _fableCore.Seq.singleton(makeProperty(ctx, "drop " + field.Name, new _fableCore.List(new Transformation("DropColumns", [new _fableCore.List(field.Name, dropped)]), rest))) : _fableCore.Seq.empty();
 	        }, ctx.Fields);
 	      }));
 	    })));
@@ -8835,8 +10042,8 @@
 	            })(field.Name);
 	
 	            var prefix = keys.Equals(new _fableCore.List()) ? "by " : "and by ";
-	            return _fableCore.Seq.append(_fableCore.Seq.singleton(makeProperty(ctx, prefix + field.Name, _fableCore.List.ofArray([new Transformation("SortBy", [_fableCore.List.ofArray([[field.Name, new SortDirection("Ascending", [])]], keys)])], rest))), _fableCore.Seq.delay(function (unitVar_2) {
-	              return _fableCore.Seq.singleton(makeProperty(ctx, prefix + field.Name + " descending", _fableCore.List.ofArray([new Transformation("SortBy", [_fableCore.List.ofArray([[field.Name, new SortDirection("Descending", [])]], keys)])], rest)));
+	            return _fableCore.Seq.append(_fableCore.Seq.singleton(makeProperty(ctx, prefix + field.Name, new _fableCore.List(new Transformation("SortBy", [new _fableCore.List([field.Name, new SortDirection("Ascending", [])], keys)]), rest))), _fableCore.Seq.delay(function (unitVar_2) {
+	              return _fableCore.Seq.singleton(makeProperty(ctx, prefix + field.Name + " descending", new _fableCore.List(new Transformation("SortBy", [new _fableCore.List([field.Name, new SortDirection("Descending", [])], keys)]), rest)));
 	            }));
 	          }() : _fableCore.Seq.empty();
 	        }, ctx.Fields);
@@ -8892,7 +10099,7 @@
 	
 	    var makeAggMember = function makeAggMember(name) {
 	      return function (agg) {
-	        return makeProperty(ctx, name, _fableCore.List.ofArray([new Transformation("GroupBy", [keys, _fableCore.List.ofArray([agg], aggs)])], rest));
+	        return makeProperty(ctx, name, new _fableCore.List(new Transformation("GroupBy", [keys, new _fableCore.List(agg, aggs)]), rest));
 	      };
 	    };
 	
@@ -8923,7 +10130,7 @@
 	    var prefix = keys.tail == null ? "by " : "and ";
 	    return makeObjectType(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	      return _fableCore.Seq.append(_fableCore.Seq.map(function (field) {
-	        return makeProperty(ctx, prefix + field.Name, _fableCore.List.ofArray([new Transformation("GroupBy", [_fableCore.List.ofArray([field.Name], keys), new _fableCore.List()])], rest));
+	        return makeProperty(ctx, prefix + field.Name, new _fableCore.List(new Transformation("GroupBy", [new _fableCore.List(field.Name, keys), new _fableCore.List()]), rest));
 	      }, ctx.Fields), _fableCore.Seq.delay(function (unitVar_1) {
 	        return !(keys.tail == null) ? aggregationMembers(ctx, rest, keys, _fableCore.List.ofArray([new Aggregation("GroupKey", [])])) : _fableCore.Seq.empty();
 	      }));
@@ -8933,12 +10140,12 @@
 	  function handleFilterEqNeqRequest(ctx, rest, fld, eq, conds) {
 	    return function (builder_) {
 	      return builder_.Delay(function (unitVar) {
-	        var url = concatUrl(concatUrl(ctx.Root, "range"), Transform.toUrl(_fableCore.List.reverse(_fableCore.List.ofArray([new Transformation("FilterBy", [conds])], rest))));
+	        var url = concatUrl(concatUrl(ctx.Root, "range"), Transform.toUrl(_fableCore.List.reverse(new _fableCore.List(new Transformation("FilterBy", [conds]), rest))));
 	        return builder_.Bind(_common.Http.Request("GET", url + "?" + fld), function (_arg2) {
 	          var options = JSON.parse(_arg2);
 	          return builder_.Return(makeObjectType(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
 	            return _fableCore.Seq.map(function (opt) {
-	              return makeProperty(ctx, opt, _fableCore.List.ofArray([new Transformation("FilterBy", [_fableCore.List.ofArray([[fld, eq, opt]], conds)])], rest));
+	              return makeProperty(ctx, opt, new _fableCore.List(new Transformation("FilterBy", [new _fableCore.List([fld, eq, opt], conds)]), rest));
 	            }, options);
 	          }))));
 	        });
@@ -8950,8 +10157,8 @@
 	    var prefix = conds.tail == null ? "" : "and ";
 	    return makeObjectType(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	      return _fableCore.Seq.append(_fableCore.Seq.collect(function (field) {
-	        return _fableCore.Seq.append(_fableCore.Seq.singleton(makeProperty(ctx, prefix + field.Name + " is", _fableCore.List.ofArray([new Transformation("FilterBy", [_fableCore.List.ofArray([[field.Name, true, "!"]], conds)])], rest))), _fableCore.Seq.delay(function (unitVar_1) {
-	          return _fableCore.Seq.singleton(makeProperty(ctx, prefix + field.Name + " is not", _fableCore.List.ofArray([new Transformation("FilterBy", [_fableCore.List.ofArray([[field.Name, false, "!"]], conds)])], rest)));
+	        return _fableCore.Seq.append(_fableCore.Seq.singleton(makeProperty(ctx, prefix + field.Name + " is", new _fableCore.List(new Transformation("FilterBy", [new _fableCore.List([field.Name, true, "!"], conds)]), rest))), _fableCore.Seq.delay(function (unitVar_1) {
+	          return _fableCore.Seq.singleton(makeProperty(ctx, prefix + field.Name + " is not", new _fableCore.List(new Transformation("FilterBy", [new _fableCore.List([field.Name, false, "!"], conds)]), rest)));
 	        }));
 	      }, ctx.Fields), _fableCore.Seq.delay(function (unitVar_1) {
 	        return !(conds.tail == null) ? _fableCore.Seq.singleton(makeProperty(ctx, "then", _fableCore.List.ofArray([new Transformation("Empty", []), new Transformation("FilterBy", [conds])], rest))) : _fableCore.Seq.empty();
@@ -9021,7 +10228,13 @@
 	                      return builder_.Return(handleGroupAggRequest(ctx_1, patternInput[1], _flds, aggs));
 	                    }
 	                  } else {
-	                    return builder_.Return(makeObjectType(_fableCore.List.ofArray([makeProperty(ctx_1, "group data", _fableCore.List.ofArray([new Transformation("GroupBy", [new _fableCore.List(), new _fableCore.List()])], patternInput[1])), makeProperty(ctx_1, "filter data", _fableCore.List.ofArray([new Transformation("FilterBy", [new _fableCore.List()])], patternInput[1])), makeProperty(ctx_1, "sort data", _fableCore.List.ofArray([new Transformation("SortBy", [new _fableCore.List()])], patternInput[1])), makeProperty(ctx_1, "drop columns", _fableCore.List.ofArray([new Transformation("DropColumns", [new _fableCore.List()])], patternInput[1])), makeProperty(ctx_1, "paging", _fableCore.List.ofArray([new Transformation("Paging", [new _fableCore.List()])], patternInput[1])), makeProperty(ctx_1, "get series", _fableCore.List.ofArray([new Transformation("GetSeries", ["!", "!"])], patternInput[1])), makeDataMember(ctx_1, "get the data", false, patternInput[1])])));
+	                    if (patternInput[0].Case === "GetTheData") {
+	                      return builder_.Return(function () {
+	                        throw "makePivotTypeImmediate: Get the data shouldn't be of pivot type";
+	                      }());
+	                    } else {
+	                      return builder_.Return(makeObjectType(_fableCore.List.ofArray([makeProperty(ctx_1, "group data", new _fableCore.List(new Transformation("GroupBy", [new _fableCore.List(), new _fableCore.List()]), patternInput[1])), makeProperty(ctx_1, "filter data", new _fableCore.List(new Transformation("FilterBy", [new _fableCore.List()]), patternInput[1])), makeProperty(ctx_1, "sort data", new _fableCore.List(new Transformation("SortBy", [new _fableCore.List()]), patternInput[1])), makeProperty(ctx_1, "drop columns", new _fableCore.List(new Transformation("DropColumns", [new _fableCore.List()]), patternInput[1])), makeProperty(ctx_1, "paging", new _fableCore.List(new Transformation("Paging", [new _fableCore.List()]), patternInput[1])), makeProperty(ctx_1, "get series", new _fableCore.List(new Transformation("GetSeries", ["!", "!"]), patternInput[1])), makeDataMember(ctx_1, "get the data", false, patternInput[1])])));
+	                    }
 	                  }
 	                }
 	              }
@@ -9046,7 +10259,7 @@
 	          if (tfs.head.Fields[1].tail == null) {
 	            var k = tfs.head.Fields[0];
 	            var _tfs_ = tfs.tail;
-	            return _fableCore.List.ofArray([new Transformation("GroupBy", [k, _fableCore.List.ofArray([new Aggregation("GroupKey", [])])])], _tfs_);
+	            return new _fableCore.List(new Transformation("GroupBy", [k, _fableCore.List.ofArray([new Aggregation("GroupKey", [])])]), _tfs_);
 	          } else {
 	            return $target2();
 	          }
@@ -9095,7 +10308,9 @@
 	
 	    var typ = makePivotType(new Context(root, lookupNamed, fields_1, fields_1), new _fableCore.List());
 	    var ctx = op_Dynamic(ident("_runtime"), "PivotContext");
-	    return new _providers.ProvidedType("GlobalValue", [name, new _babel.Expression("NewExpression", [ctx, _fableCore.List.ofArray([str(concatUrl(root, "data")), new _babel.Expression("ArrayExpression", [new _fableCore.List(), null])]), null]), typ]);
+	    var meta1 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Transformations", new _fableCore.List());
+	    var meta2 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Fields", fields_1);
+	    return new _providers.ProvidedType("GlobalValue", [name, _fableCore.List.ofArray([meta1, meta2]), new _babel.Expression("NewExpression", [ctx, _fableCore.List.ofArray([str(concatUrl(root, "data")), new _babel.Expression("ArrayExpression", [new _fableCore.List(), null])]), null]), typ]);
 	  }
 	});
 
@@ -9106,7 +10321,7 @@
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(1), __webpack_require__(8), __webpack_require__(9), !(function webpackMissingModule() { var e = new Error("Cannot find module \"../../libraries/google/charts\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()), __webpack_require__(10), __webpack_require__(12), __webpack_require__(3), __webpack_require__(13), __webpack_require__(14)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(1), __webpack_require__(8), __webpack_require__(9), __webpack_require__(15), __webpack_require__(10), __webpack_require__(12), __webpack_require__(3), __webpack_require__(13), __webpack_require__(14)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports !== "undefined") {
 	    factory(exports, require("fable-core"), require("./../common/babel"), require("../../libraries/common"), require("../../libraries/series"), require("./../codegen/runtime"), require("../../libraries/google/charts"), require("../../libraries/tables"), require("../../libraries/maps"), require("./../ast/ast"), require("./../ast/typeops"), require("./../ast/astops"));
 	  } else {
@@ -9119,14 +10334,13 @@
 	})(this, function (exports, _fableCore, _babel, _common, _series, _runtime, _charts, _tables, _maps, _ast, _typeops, _astops) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.EvaluationContext = exports.BabelResult = exports.BabelOptions = undefined;
 	  exports.$FindProperty$_$ = $FindProperty$_$;
 	  exports.$FindMethod$_$ = $FindMethod$_$;
 	  exports.storeArguments = storeArguments;
 	  exports.evaluateExpression = evaluateExpression;
+	  exports.evaluateExpr = evaluateExpr;
 	  exports.evaluateCall = evaluateCall;
 	  exports.evaluatePreview = evaluatePreview;
 	  exports.ensureValue = ensureValue;
@@ -9139,7 +10353,7 @@
 	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
 	    return typeof obj;
 	  } : function (obj) {
-	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	  };
 	
 	  function _classCallCheck(instance, Constructor) {
@@ -9148,24 +10362,6 @@
 	    }
 	  }
 	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
-	
 	  var BabelOptions = exports.BabelOptions = function () {
 	    function BabelOptions(presets) {
 	      _classCallCheck(this, BabelOptions);
@@ -9173,17 +10369,13 @@
 	      this.presets = presets;
 	    }
 	
-	    _createClass(BabelOptions, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    BabelOptions.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    BabelOptions.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return BabelOptions;
 	  }();
@@ -9197,17 +10389,13 @@
 	      this.code = code;
 	    }
 	
-	    _createClass(BabelResult, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    BabelResult.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    BabelResult.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return BabelResult;
 	  }();
@@ -9221,12 +10409,9 @@
 	      this.Globals = globals;
 	    }
 	
-	    _createClass(EvaluationContext, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }]);
+	    EvaluationContext.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
 	
 	    return EvaluationContext;
 	  }();
@@ -9320,8 +10505,13 @@
 	    }
 	  }
 	
+	  function evaluateExpr(args, exprBuilder) {
+	    var patternInput = storeArguments(args);
+	    return evaluateExpression(patternInput[0], exprBuilder(patternInput[1]));
+	  }
+	
 	  function evaluateCall(emitter, inst, args) {
-	    var patternInput = storeArguments(_fableCore.List.ofArray([inst], args));
+	    var patternInput = storeArguments(new _fableCore.List(inst, args));
 	    return evaluateExpression(patternInput[0], emitter.Emit([patternInput[1].head, patternInput[1].tail]));
 	  }
 	
@@ -9334,10 +10524,10 @@
 	
 	    if (typ != null) {
 	      if (typ.Case === "Object") {
-	        var activePatternResult5260 = $FindProperty$_$(previewName, typ.Fields[0]);
+	        var activePatternResult5319 = $FindProperty$_$(previewName, typ.Fields[0]);
 	
-	        if (activePatternResult5260 != null) {
-	          var e = activePatternResult5260;
+	        if (activePatternResult5319 != null) {
+	          var e = activePatternResult5319;
 	          return evaluateCall(e, value, new _fableCore.List());
 	        } else {
 	          return $target1();
@@ -9373,7 +10563,13 @@
 	  }
 	
 	  function evaluateEntity(ctx, e) {
-	    var $target7 = function $target7() {
+	    var $target10 = function $target10() {
+	      return null;
+	    };
+	
+	    var $target11 = function $target11() {
+	      _common.Log.error("interpreter", "Cannot evaluate entity: %O", e);
+	
 	      return null;
 	    };
 	
@@ -9396,22 +10592,11 @@
 	      }
 	    } else {
 	      if (e.Kind.Case === "GlobalValue") {
+	        var expr = e.Kind.Fields[1];
 	        var name = e.Kind.Fields[0];
-	        var matchValue = ctx.Globals.has(name.Name) ? [true, ctx.Globals.get(name.Name)] : [false, null];
 	
-	        var $target1 = function $target1() {
-	          return null;
-	        };
-	
-	        if (matchValue[0]) {
-	          if (matchValue[1].Value != null) {
-	            var value = matchValue[1].Value;
-	            return value.Value;
-	          } else {
-	            return $target1();
-	          }
-	        } else {
-	          return $target1();
+	        if (expr != null) {
+	          return evaluateExpression([], expr);
 	        }
 	      } else {
 	        if (e.Kind.Case === "ChainElement") {
@@ -9420,27 +10605,27 @@
 	              var inst = e.Kind.Fields[3];
 	              var _name = e.Kind.Fields[1];
 	              {
-	                var _matchValue = (0, _typeops.reduceType)(inst.Type);
+	                var matchValue = (0, _typeops.reduceType)(inst.Type);
 	
-	                var _$target = function _$target() {
+	                var $target1 = function $target1() {
 	                  return null;
 	                };
 	
-	                if (_matchValue.Case === "Object") {
-	                  var activePatternResult5268 = $FindProperty$_$(_name, _matchValue.Fields[0]);
+	                if (matchValue.Case === "Object") {
+	                  var activePatternResult5327 = $FindProperty$_$(_name, matchValue.Fields[0]);
 	
-	                  if (activePatternResult5268 != null) {
-	                    var e_1 = activePatternResult5268;
+	                  if (activePatternResult5327 != null) {
+	                    var e_1 = activePatternResult5327;
 	                    return evaluateCall(e_1, getValue(ctx, inst), new _fableCore.List());
 	                  } else {
-	                    return _$target();
+	                    return $target1();
 	                  }
 	                } else {
-	                  return _$target();
+	                  return $target1();
 	                }
 	              }
 	            } else {
-	              return $target7();
+	              return $target11();
 	            }
 	          } else {
 	            if (e.Kind.Fields[3] != null) {
@@ -9476,11 +10661,11 @@
 	                      };
 	
 	                      if (matchValue.Case === "Object") {
-	                        var activePatternResult5275 = $FindMethod$_$(_name2, matchValue.Fields[0]);
+	                        var activePatternResult5334 = $FindMethod$_$(_name2, matchValue.Fields[0]);
 	
-	                        if (activePatternResult5275 != null) {
-	                          var _e_ = activePatternResult5275[1];
-	                          var pars = activePatternResult5275[0];
+	                        if (activePatternResult5334 != null) {
+	                          var _e_ = activePatternResult5334[1];
+	                          var pars = activePatternResult5334[0];
 	                          {
 	                            var args_1 = _fableCore.List.mapIndexed(function (i, tupledArg) {
 	                              return i < positionBased.length ? positionBased[i] : nameBased.has(tupledArg[0]) ? nameBased.get(tupledArg[0]) : null;
@@ -9505,17 +10690,105 @@
 	                    if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
 	                  }
 	                } else {
-	                  return $target7();
+	                  return $target11();
 	                }
 	              } else {
-	                return $target7();
+	                return $target11();
 	              }
 	            } else {
-	              return $target7();
+	              return $target11();
 	            }
 	          }
 	        } else {
-	          return $target7();
+	          if (e.Kind.Case === "Operator") {
+	            if (e.Kind.Fields[1].Case === "Power") {
+	              var l = e.Kind.Fields[0];
+	              var r = e.Kind.Fields[2];
+	              return evaluateExpr(_fableCore.List.ofArray([getValue(ctx, l), getValue(ctx, r)]), function (_arg4) {
+	                var $target1 = function $target1() {
+	                  throw "evaluateEntity: Expected two arguments";
+	                };
+	
+	                if (_arg4.tail != null) {
+	                  if (_arg4.tail.tail != null) {
+	                    if (_arg4.tail.tail.tail == null) {
+	                      var l_1 = _arg4.head;
+	                      var r_1 = _arg4.tail.head;
+	                      {
+	                        var pow = new _babel.Expression("MemberExpression", [new _babel.Expression("IdentifierExpression", ["pow", null]), new _babel.Expression("IdentifierExpression", ["Math", null]), false, null]);
+	                        return new _babel.Expression("CallExpression", [pow, _fableCore.List.ofArray([l_1, r_1]), null]);
+	                      }
+	                    } else {
+	                      return $target1();
+	                    }
+	                  } else {
+	                    return $target1();
+	                  }
+	                } else {
+	                  return $target1();
+	                }
+	              });
+	            } else {
+	              var _ret2 = function () {
+	                var l = e.Kind.Fields[0];
+	                var op = e.Kind.Fields[1];
+	                var r = e.Kind.Fields[2];
+	                return {
+	                  v: evaluateExpr(_fableCore.List.ofArray([getValue(ctx, l), getValue(ctx, r)]), function (_arg5) {
+	                    var $target1 = function $target1() {
+	                      throw "evaluateEntity: Expected two arguments";
+	                    };
+	
+	                    if (_arg5.tail != null) {
+	                      if (_arg5.tail.tail != null) {
+	                        if (_arg5.tail.tail.tail == null) {
+	                          var l_1 = _arg5.head;
+	                          var r_1 = _arg5.tail.head;
+	                          {
+	                            var op_1 = op.Case === "Plus" ? new _babel.BinaryOperator("BinaryPlus", []) : op.Case === "Minus" ? new _babel.BinaryOperator("BinaryMinus", []) : op.Case === "Multiply" ? new _babel.BinaryOperator("BinaryMultiply", []) : op.Case === "Divide" ? new _babel.BinaryOperator("BinaryDivide", []) : op.Case === "GreaterThan" ? new _babel.BinaryOperator("BinaryGreater", []) : op.Case === "LessThan" ? new _babel.BinaryOperator("BinaryLess", []) : op.Case === "GreaterThanOrEqual" ? new _babel.BinaryOperator("BinaryGreaterOrEqual", []) : op.Case === "LessThanOrEqual" ? new _babel.BinaryOperator("BinaryLessOrEqual", []) : op.Case === "Power" ? function () {
+	                              throw "evaluateEntity: Power is not a binary operation";
+	                            }() : new _babel.BinaryOperator("BinaryEqualStrict", []);
+	                            return new _babel.Expression("BinaryExpression", [op_1, l_1, r_1, null]);
+	                          }
+	                        } else {
+	                          return $target1();
+	                        }
+	                      } else {
+	                        return $target1();
+	                      }
+	                    } else {
+	                      return $target1();
+	                    }
+	                  })
+	                };
+	              }();
+	
+	              if ((typeof _ret2 === "undefined" ? "undefined" : _typeof(_ret2)) === "object") return _ret2.v;
+	            }
+	          } else {
+	            if (e.Kind.Case === "Variable") {
+	              var value = e.Kind.Fields[1];
+	              var $var9 = value.Value;
+	
+	              if ($var9 != null) {
+	                return function (v) {
+	                  return v.Value;
+	                }($var9);
+	              } else {
+	                return $var9;
+	              }
+	            } else {
+	              if (e.Kind.Case === "ArgumentList") {
+	                return $target10();
+	              } else {
+	                if (e.Kind.Case === "NamedMember") {
+	                  return $target10();
+	                } else {
+	                  return $target11();
+	                }
+	              }
+	            }
+	          }
 	        }
 	      }
 	    }
@@ -9532,28 +10805,20 @@
 	        {
 	          var inputSequence = _astops.Entity$2Eget_Antecedents.bind(e_1)();
 	
-	          var _iteratorNormalCompletion = true;
-	          var _didIteratorError = false;
-	          var _iteratorError = undefined;
+	          for (var _iterator = inputSequence, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	            var _ref;
 	
-	          try {
-	            for (var _iterator = inputSequence[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	              var e_2 = _step.value;
-	              loop(e_2);
+	            if (_isArray) {
+	              if (_i >= _iterator.length) break;
+	              _ref = _iterator[_i++];
+	            } else {
+	              _i = _iterator.next();
+	              if (_i.done) break;
+	              _ref = _i.value;
 	            }
-	          } catch (err) {
-	            _didIteratorError = true;
-	            _iteratorError = err;
-	          } finally {
-	            try {
-	              if (!_iteratorNormalCompletion && _iterator.return) {
-	                _iterator.return();
-	              }
-	            } finally {
-	              if (_didIteratorError) {
-	                throw _iteratorError;
-	              }
-	            }
+	
+	            var e_2 = _ref;
+	            loop(e_2);
 	          }
 	        }
 	        ensureValue(ctx, e_1);
@@ -9564,21 +10829,13 @@
 	    return e.Value;
 	  }
 	
-	  function globalEntity(name, typ, expr) {
-	    var value = expr != null ? function () {
-	      var value = evaluateExpression([], expr);
-	      return new _ast.EntityValue(value, evaluatePreview(typ, value));
-	    }() : null;
-	
-	    _common.Log.trace("interpreter", "Initializing global value '%s' = %O", name, value);
-	
-	    var Kind = new _ast.EntityKind("GlobalValue", [new _ast.Name(name)]);
+	  function globalEntity(name, meta, typ, expr) {
+	    var Kind = new _ast.EntityKind("GlobalValue", [new _ast.Name(name), expr]);
 	
 	    var _Symbol = Symbol();
 	
 	    var Type = typ;
-	    var Meta = new _fableCore.List();
-	    return new _ast.Entity(Kind, _Symbol, value, Meta, Type, new _fableCore.List());
+	    return new _ast.Entity(Kind, _Symbol, null, meta, Type, new _fableCore.List());
 	  }
 	
 	  function evaluate(globals, e) {
@@ -9617,28 +10874,8 @@
 	})(this, function (exports, _fableCore, _common) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.series = exports.helpers = exports.SeriesInternals = undefined;
-	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
 	
 	  function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
@@ -9661,55 +10898,40 @@
 	      var d1 = dictAny(arr1);
 	      var d2 = dictAny(arr2);
 	      var res = [];
-	      var _iteratorNormalCompletion = true;
-	      var _didIteratorError = false;
-	      var _iteratorError = undefined;
 	
-	      try {
-	        for (var _iterator = d1[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	          var kv1 = _step.value;
-	          var v2 = d2.has(kv1[0]) ? d2.get(kv1[0]) : null;
-	          res.push([kv1[0], [kv1[1], v2]]);
+	      for (var _iterator = d1, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	        var _ref;
+	
+	        if (_isArray) {
+	          if (_i >= _iterator.length) break;
+	          _ref = _iterator[_i++];
+	        } else {
+	          _i = _iterator.next();
+	          if (_i.done) break;
+	          _ref = _i.value;
 	        }
-	      } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
-	      } finally {
-	        try {
-	          if (!_iteratorNormalCompletion && _iterator.return) {
-	            _iterator.return();
-	          }
-	        } finally {
-	          if (_didIteratorError) {
-	            throw _iteratorError;
-	          }
-	        }
+	
+	        var kv1 = _ref;
+	        var v2 = d2.has(kv1[0]) ? d2.get(kv1[0]) : null;
+	        res.push([kv1[0], [kv1[1], v2]]);
 	      }
 	
-	      var _iteratorNormalCompletion2 = true;
-	      var _didIteratorError2 = false;
-	      var _iteratorError2 = undefined;
+	      for (var _iterator2 = d2, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+	        var _ref2;
 	
-	      try {
-	        for (var _iterator2 = d2[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	          var kv2 = _step2.value;
-	
-	          if (!d1.has(kv2[0])) {
-	            res.push([kv2[0], [null, kv2[1]]]);
-	          }
+	        if (_isArray2) {
+	          if (_i2 >= _iterator2.length) break;
+	          _ref2 = _iterator2[_i2++];
+	        } else {
+	          _i2 = _iterator2.next();
+	          if (_i2.done) break;
+	          _ref2 = _i2.value;
 	        }
-	      } catch (err) {
-	        _didIteratorError2 = true;
-	        _iteratorError2 = err;
-	      } finally {
-	        try {
-	          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	            _iterator2.return();
-	          }
-	        } finally {
-	          if (_didIteratorError2) {
-	            throw _iteratorError2;
-	          }
+	
+	        var kv2 = _ref2;
+	
+	        if (!d1.has(kv2[0])) {
+	          res.push([kv2[0], [null, kv2[1]]]);
 	        }
 	      }
 	
@@ -9836,438 +11058,412 @@
 	      this.seriesName = seriesName;
 	    }
 	
-	    _createClass(series, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "set",
-	      value: function set(data, keyName, valueName, seriesName) {
-	        return new series(data, keyName != null ? keyName : this.keyName, valueName != null ? valueName : this.valueName, seriesName != null ? seriesName : this.seriesName);
-	      }
-	    }, {
-	      key: "setProperties",
-	      value: function setProperties(keyName, valueName, seriesName) {
-	        var keyName_1 = keyName != null ? keyName : this.keyName;
-	        var valueName_1 = valueName != null ? valueName : this.valueName;
-	        var seriesName_1 = seriesName != null ? seriesName : this.seriesName;
-	        return new series(this.data, keyName_1, valueName_1, seriesName_1);
-	      }
-	    }, {
-	      key: "sortKeys",
-	      value: function sortKeys(reverse) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function (arr) {
-	          return (_fableCore.Util.equals(reverse, true) ? function (array) {
-	            return array.reverse();
-	          } : function (x) {
-	            return x;
-	          })(Array.from(_fableCore.Seq.sortWith(function (tupledArg, tupledArg_1) {
-	            return tupledArg[0] < tupledArg_1[0] ? -1 : tupledArg[0] == tupledArg_1[0] ? 0 : 1;
-	          }, arr)));
-	        })(this);
-	      }
-	    }, {
-	      key: "sortValues",
-	      value: function sortValues(reverse) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function (arr) {
-	          return (_fableCore.Util.equals(reverse, true) ? function (array) {
-	            return array.reverse();
-	          } : function (x) {
-	            return x;
-	          })(Array.from(_fableCore.Seq.sortWith(function (tupledArg, tupledArg_1) {
-	            return tupledArg[1] < tupledArg_1[1] ? -1 : tupledArg[1] == tupledArg_1[1] ? 0 : 1;
-	          }, arr)));
-	        })(this);
-	      }
-	    }, {
-	      key: "sortBy",
-	      value: function sortBy(f, reverse) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function (arr) {
-	          return (_fableCore.Util.equals(reverse, true) ? function (array) {
-	            return array.reverse();
-	          } : function (x) {
-	            return x;
-	          })(Array.from(_fableCore.Seq.sortWith(function (tupledArg, tupledArg_1) {
-	            return f(tupledArg[1]) < f(tupledArg_1[1]) ? -1 : f(tupledArg[1]) == f(tupledArg_1[1]) ? 0 : 1;
-	          }, arr)));
-	        })(this);
-	      }
-	    }, {
-	      key: "reverse",
-	      value: function reverse() {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function (array) {
-	          return array.reverse();
-	        })(this);
-	      }
-	    }, {
-	      key: "take",
-	      value: function take(count) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function (arr) {
-	          return SeriesInternals.slice(0, (arr.length < count ? arr.length : count) - 1, arr);
-	        })(this);
-	      }
-	    }, {
-	      key: "skip",
-	      value: function skip(count) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function (arr) {
-	          return SeriesInternals.slice(arr.length < count ? arr.length : count, arr.length - 1, arr);
-	        })(this);
-	      }
-	    }, {
-	      key: "map",
-	      value: function map(f) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function () {
-	          var mapping = function mapping(tupledArg) {
-	            return [tupledArg[0], f(tupledArg[1])];
-	          };
+	    series.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
 	
-	          return function (array) {
-	            return array.map(mapping);
-	          };
-	        }())(this);
-	      }
-	    }, {
-	      key: "mapKeys",
-	      value: function mapKeys(f) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function () {
-	          var mapping = function mapping(tupledArg) {
-	            return [f(tupledArg[0]), tupledArg[1]];
-	          };
+	    series.prototype.set = function set(data, keyName, valueName, seriesName) {
+	      return new series(data, keyName != null ? keyName : this.keyName, valueName != null ? valueName : this.valueName, seriesName != null ? seriesName : this.seriesName);
+	    };
 	
-	          return function (array) {
-	            return array.map(mapping);
-	          };
-	        }())(this);
-	      }
-	    }, {
-	      key: "mapPairs",
-	      value: function mapPairs(f) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function () {
-	          var mapping = function mapping(tupledArg) {
-	            return [tupledArg[0], f(tupledArg[0])(tupledArg[1])];
-	          };
+	    series.prototype.setProperties = function setProperties(keyName, valueName, seriesName) {
+	      var keyName_1 = keyName != null ? keyName : this.keyName;
+	      var valueName_1 = valueName != null ? valueName : this.valueName;
+	      var seriesName_1 = seriesName != null ? seriesName : this.seriesName;
+	      return new series(this.data, keyName_1, valueName_1, seriesName_1);
+	    };
 	
-	          return function (array) {
-	            return array.map(mapping);
-	          };
-	        }())(this);
-	      }
-	    }, {
-	      key: "filter",
-	      value: function filter(f) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function () {
-	          var predicate = function predicate($var6) {
-	            return f(function (tuple) {
-	              return tuple[1];
-	            }($var6));
-	          };
+	    series.create = function create(data, keyName, valueName, seriesName) {
+	      return new series((0, _common.Async$2EStartAsFuture$2EStatic)(data), keyName, valueName, seriesName);
+	    };
 	
-	          return function (array) {
-	            return array.filter(predicate);
-	          };
-	        }())(this);
-	      }
-	    }, {
-	      key: "choose",
-	      value: function choose(f) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function () {
-	          var chooser = function chooser(tupledArg) {
-	            var matchValue = f(tupledArg[1]);
+	    series.values = function values(_values) {
+	      var data = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Return(Array.from(_fableCore.Seq.mapIndexed(function (i, v) {
+	            return [i, v];
+	          }, _values)));
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	      return new series(data, "key", "value", "");
+	    };
 	
-	            if (matchValue != null) {
-	              return [tupledArg[0], matchValue];
-	            }
-	          };
+	    series.range = function range(from, to) {
+	      return series.values(Int32Array.from(_fableCore.Seq.range(from, to)));
+	    };
 	
-	          return function (array) {
-	            return Array.from(_fableCore.Seq.choose(chooser, array));
-	          };
-	        }())(this);
-	      }
-	    }, {
-	      key: "joinOuter",
-	      value: function joinOuter(s2) {
-	        var _this = this;
+	    series.rangeBy = function rangeBy(from, to, step) {
+	      return series.values(Int32Array.from(_fableCore.Seq.rangeStep(from, step, to)));
+	    };
 	
-	        var data = function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this.data), function (_arg4) {
-	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(s2.data), function (_arg5) {
-	                return builder_.Return(SeriesInternals.zipAny(_arg4, _arg5));
+	    series.ordinal = function ordinal(data, keyName, valueName, seriesName) {
+	      var data_1 = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind(data, function (_arg3) {
+	            return builder_.Return(Array.from(_fableCore.Seq.mapIndexed(function (i, v) {
+	              return [i, v];
+	            }, _arg3)));
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	      return new series(data_1, keyName, valueName, seriesName);
+	    };
+	
+	    series.prototype.sortKeys = function sortKeys(reverse) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
 	              });
 	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function (arr) {
+	        return (_fableCore.Util.equals(reverse, true) ? function (array) {
+	          return array.reverse();
+	        } : function (x) {
+	          return x;
+	        })(Array.from(_fableCore.Seq.sortWith(function (tupledArg, tupledArg_1) {
+	          return tupledArg[0] < tupledArg_1[0] ? -1 : tupledArg[0] == tupledArg_1[0] ? 0 : 1;
+	        }, arr)));
+	      })(this);
+	    };
+	
+	    series.prototype.sortValues = function sortValues(reverse) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function (arr) {
+	        return (_fableCore.Util.equals(reverse, true) ? function (array) {
+	          return array.reverse();
+	        } : function (x) {
+	          return x;
+	        })(Array.from(_fableCore.Seq.sortWith(function (tupledArg, tupledArg_1) {
+	          return tupledArg[1] < tupledArg_1[1] ? -1 : tupledArg[1] == tupledArg_1[1] ? 0 : 1;
+	        }, arr)));
+	      })(this);
+	    };
+	
+	    series.prototype.sortBy = function sortBy(f, reverse) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function (arr) {
+	        return (_fableCore.Util.equals(reverse, true) ? function (array) {
+	          return array.reverse();
+	        } : function (x) {
+	          return x;
+	        })(Array.from(_fableCore.Seq.sortWith(function (tupledArg, tupledArg_1) {
+	          return f(tupledArg[1]) < f(tupledArg_1[1]) ? -1 : f(tupledArg[1]) == f(tupledArg_1[1]) ? 0 : 1;
+	        }, arr)));
+	      })(this);
+	    };
+	
+	    series.prototype.reverse = function reverse() {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function (array) {
+	        return array.reverse();
+	      })(this);
+	    };
+	
+	    series.prototype.take = function take(count) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function (arr) {
+	        return SeriesInternals.slice(0, (arr.length < count ? arr.length : count) - 1, arr);
+	      })(this);
+	    };
+	
+	    series.prototype.skip = function skip(count) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function (arr) {
+	        return SeriesInternals.slice(arr.length < count ? arr.length : count, arr.length - 1, arr);
+	      })(this);
+	    };
+	
+	    series.prototype.map = function map(f) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function () {
+	        var mapping = function mapping(tupledArg) {
+	          return [tupledArg[0], f(tupledArg[1])];
+	        };
+	
+	        return function (array) {
+	          return array.map(mapping);
+	        };
+	      }())(this);
+	    };
+	
+	    series.prototype.mapKeys = function mapKeys(f) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function () {
+	        var mapping = function mapping(tupledArg) {
+	          return [f(tupledArg[0]), tupledArg[1]];
+	        };
+	
+	        return function (array) {
+	          return array.map(mapping);
+	        };
+	      }())(this);
+	    };
+	
+	    series.prototype.mapPairs = function mapPairs(f) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function () {
+	        var mapping = function mapping(tupledArg) {
+	          return [tupledArg[0], f(tupledArg[0])(tupledArg[1])];
+	        };
+	
+	        return function (array) {
+	          return array.map(mapping);
+	        };
+	      }())(this);
+	    };
+	
+	    series.prototype.filter = function filter(f) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function () {
+	        var predicate = function predicate($var6) {
+	          return f(function (tuple) {
+	            return tuple[1];
+	          }($var6));
+	        };
+	
+	        return function (array) {
+	          return array.filter(predicate);
+	        };
+	      }())(this);
+	    };
+	
+	    series.prototype.choose = function choose(f) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function () {
+	        var chooser = function chooser(tupledArg) {
+	          var matchValue = f(tupledArg[1]);
+	
+	          if (matchValue != null) {
+	            return [tupledArg[0], matchValue];
+	          }
+	        };
+	
+	        return function (array) {
+	          return Array.from(_fableCore.Seq.choose(chooser, array));
+	        };
+	      }())(this);
+	    };
+	
+	    series.prototype.joinOuter = function joinOuter(s2) {
+	      var _this = this;
+	
+	      var data = function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this.data), function (_arg4) {
+	            return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(s2.data), function (_arg5) {
+	              return builder_.Return(SeriesInternals.zipAny(_arg4, _arg5));
+	            });
 	          });
-	        }(_fableCore.AsyncBuilder.singleton);
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
 	
-	        return series.create(data, this.keyName, "Values", this.seriesName + " and " + s2.seriesName);
-	      }
-	    }, {
-	      key: "joinInner",
-	      value: function joinInner(s2) {
-	        return this.joinOuter(s2).choose(function (_arg6) {
-	          var $target1 = function $target1() {
-	            return null;
-	          };
+	      return series.create(data, this.keyName, "Values", this.seriesName + " and " + s2.seriesName);
+	    };
 	
-	          if (_arg6[0] != null) {
-	            if (_arg6[1] != null) {
-	              var v1 = _arg6[0];
-	              var v2 = _arg6[1];
-	              return [v1, v2];
-	            } else {
-	              return $target1();
-	            }
+	    series.prototype.joinInner = function joinInner(s2) {
+	      return this.joinOuter(s2).choose(function (_arg6) {
+	        var $target1 = function $target1() {
+	          return null;
+	        };
+	
+	        if (_arg6[0] != null) {
+	          if (_arg6[1] != null) {
+	            var v1 = _arg6[0];
+	            var v2 = _arg6[1];
+	            return [v1, v2];
 	          } else {
 	            return $target1();
 	          }
-	        });
-	      }
-	    }, {
-	      key: "appendScalar",
-	      value: function appendScalar(key, value) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
-	                  return builder_.Return(arg00(_arg1));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function (arr) {
-	          return arr.concat([[key, value]]);
-	        })(this);
-	      }
-	    }, {
-	      key: "append",
-	      value: function append(s2) {
-	        var _this2 = this;
+	        } else {
+	          return $target1();
+	        }
+	      });
+	    };
 	
-	        return this.set((0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this2.data), function (_arg7) {
-	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(s2.data), function (_arg8) {
-	                return builder_.Return(_arg7.concat(_arg8));
-	              });
-	            });
-	          });
-	        }(_fableCore.AsyncBuilder.singleton)));
-	      }
-	    }, {
-	      key: "realign",
-	      value: function realign(newKeys, defaultValue) {
-	        return function (arg00) {
-	          return function (arg10) {
-	            var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	              return builder_.Delay(function (unitVar) {
-	                return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg2) {
-	                  return builder_.ReturnFrom(arg00(_arg2));
-	                });
-	              });
-	            }(_fableCore.AsyncBuilder.singleton));
-	            return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
-	          };
-	        }(function (arr) {
-	          return function (builder_) {
+	    series.prototype.appendScalar = function appendScalar(key, value) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
 	            return builder_.Delay(function (unitVar) {
-	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(newKeys.data), function (_arg9) {
-	                var newKeys_1 = _arg9.map(function (tupledArg) {
-	                  return tupledArg[1];
-	                });
-	
-	                var lookup = _fableCore.Map.create(arr, new _fableCore.GenericComparer(function (x, y) {
-	                  return x < y ? -1 : x > y ? 1 : 0;
-	                }));
-	
-	                return builder_.Return(newKeys_1.map(function (k) {
-	                  var matchValue = _fableCore.Map.tryFind(k, lookup);
-	
-	                  if (matchValue == null) {
-	                    return [k, defaultValue];
-	                  } else {
-	                    return [k, matchValue];
-	                  }
-	                }));
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg1) {
+	                return builder_.Return(arg00(_arg1));
 	              });
 	            });
-	          }(_fableCore.AsyncBuilder.singleton);
-	        })(this);
-	      }
-	    }], [{
-	      key: "create",
-	      value: function create(data, keyName, valueName, seriesName) {
-	        return new series((0, _common.Async$2EStartAsFuture$2EStatic)(data), keyName, valueName, seriesName);
-	      }
-	    }, {
-	      key: "values",
-	      value: function values(_values) {
-	        var data = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            return builder_.Return(Array.from(_fableCore.Seq.mapIndexed(function (i, v) {
-	              return [i, v];
-	            }, _values)));
-	          });
-	        }(_fableCore.AsyncBuilder.singleton));
-	        return new series(data, "key", "value", "");
-	      }
-	    }, {
-	      key: "range",
-	      value: function range(from, to) {
-	        return series.values(Int32Array.from(_fableCore.Seq.range(from, to)));
-	      }
-	    }, {
-	      key: "rangeBy",
-	      value: function rangeBy(from, to, step) {
-	        return series.values(Int32Array.from(_fableCore.Seq.rangeStep(from, step, to)));
-	      }
-	    }, {
-	      key: "ordinal",
-	      value: function ordinal(data, keyName, valueName, seriesName) {
-	        var data_1 = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            return builder_.Bind(data, function (_arg3) {
-	              return builder_.Return(Array.from(_fableCore.Seq.mapIndexed(function (i, v) {
-	                return [i, v];
-	              }, _arg3)));
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function (arr) {
+	        return arr.concat([[key, value]]);
+	      })(this);
+	    };
+	
+	    series.prototype.append = function append(s2) {
+	      var _this2 = this;
+	
+	      return this.set((0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this2.data), function (_arg7) {
+	            return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(s2.data), function (_arg8) {
+	              return builder_.Return(_arg7.concat(_arg8));
 	            });
 	          });
-	        }(_fableCore.AsyncBuilder.singleton));
-	        return new series(data_1, keyName, valueName, seriesName);
-	      }
-	    }]);
+	        });
+	      }(_fableCore.AsyncBuilder.singleton)));
+	    };
+	
+	    series.prototype.realign = function realign(newKeys, defaultValue) {
+	      return function (arg00) {
+	        return function (arg10) {
+	          var nd = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(arg10.data), function (_arg2) {
+	                return builder_.ReturnFrom(arg00(_arg2));
+	              });
+	            });
+	          }(_fableCore.AsyncBuilder.singleton));
+	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
+	        };
+	      }(function (arr) {
+	        return function (builder_) {
+	          return builder_.Delay(function (unitVar) {
+	            return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(newKeys.data), function (_arg9) {
+	              var newKeys_1 = _arg9.map(function (tupledArg) {
+	                return tupledArg[1];
+	              });
+	
+	              var lookup = _fableCore.Map.create(arr, new _fableCore.GenericComparer(function (x, y) {
+	                return x < y ? -1 : x > y ? 1 : 0;
+	              }));
+	
+	              return builder_.Return(newKeys_1.map(function (k) {
+	                var matchValue = _fableCore.Map.tryFind(k, lookup);
+	
+	                if (matchValue == null) {
+	                  return [k, defaultValue];
+	                } else {
+	                  return [k, matchValue];
+	                }
+	              }));
+	            });
+	          });
+	        }(_fableCore.AsyncBuilder.singleton);
+	      })(this);
+	    };
 	
 	    return series;
 	  }();
-	
+
 	  exports.series = series;
-	
+
 	  _fableCore.Util.setInterfaces(series.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.Series.series");
 	});
-	//# sourceMappingURL=series.js.map
+
 
 /***/ },
 /* 9 */
@@ -10288,9 +11484,7 @@
 	})(this, function (exports, _fableCore, _common) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.PivotContext = exports.RuntimeContext = undefined;
 	  exports.convertTupleSequence = convertTupleSequence;
 	  exports.convertSequence = convertSequence;
@@ -10371,33 +11565,31 @@
 	      this["trace@19"] = trace;
 	    }
 	
-	    _createClass(RuntimeContext, [{
-	      key: "addTrace",
-	      value: function addTrace(suffix) {
-	        var _this = this;
+	    RuntimeContext.prototype.addTrace = function addTrace(suffix) {
+	      var _this = this;
 	
-	        var traces = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
-	          return _fableCore.Seq.append(!_fableCore.String.isNullOrEmpty(_this["trace@19"]) ? _fableCore.Seq.singleton(_this["trace@19"]) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_1) {
-	            return !_fableCore.String.isNullOrEmpty(suffix) ? _fableCore.Seq.singleton(suffix) : _fableCore.Seq.empty();
-	          }));
+	      var traces = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	        return _fableCore.Seq.append(!_fableCore.String.isNullOrEmpty(_this["trace@19"]) ? _fableCore.Seq.singleton(_this["trace@19"]) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_1) {
+	          return !_fableCore.String.isNullOrEmpty(suffix) ? _fableCore.Seq.singleton(suffix) : _fableCore.Seq.empty();
 	        }));
+	      }));
 	
-	        return new RuntimeContext(this["root@19"], this.cookies, _fableCore.String.join("&", traces));
-	      }
-	    }, {
-	      key: "getValue",
-	      value: function getValue(endpoint) {
-	        var _this2 = this;
+	      return new RuntimeContext(this["root@19"], this.cookies, _fableCore.String.join("&", traces));
+	    };
 	
-	        return function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            return builder_.Bind(_common.Http.Request("POST", concatUrl(_this2["root@19"], endpoint), _this2["trace@19"], _this2.cookies), function (_arg1) {
-	              return builder_.Return(JSON.parse(_arg1));
-	            });
+	    RuntimeContext.prototype.getValue = function getValue(endpoint) {
+	      var _this2 = this;
+	
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind(_common.Http.Request("POST", concatUrl(_this2["root@19"], endpoint), _this2["trace@19"], _this2.cookies), function (_arg1) {
+	            return builder_.Return(JSON.parse(_arg1));
 	          });
-	        }(_fableCore.AsyncBuilder.singleton);
-	      }
-	    }, {
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
+	    _createClass(RuntimeContext, [{
 	      key: "root",
 	      get: function get() {
 	        return this["root@19"];
@@ -10422,47 +11614,43 @@
 	      this.calls = calls;
 	    }
 	
-	    _createClass(PivotContext, [{
-	      key: "addCall",
-	      value: function addCall(callid, values) {
-	        return new PivotContext(this.root, [[callid, values]].concat(this.calls));
-	      }
-	    }, {
-	      key: "getData",
-	      value: function getData(tfs, isPreview) {
-	        var _this3 = this;
+	    PivotContext.prototype.addCall = function addCall(callid, values) {
+	      return new PivotContext(this.root, [[callid, values]].concat(this.calls));
+	    };
 	
-	        return function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            var url = function () {
-	              var folder = function folder(tfs_1) {
-	                return function (tupledArg) {
-	                  if (tupledArg[1].length !== 1) {
-	                    throw "PivotContext.getData: Expected one argument";
-	                  }
+	    PivotContext.prototype.getData = function getData(tfs, isPreview) {
+	      var _this3 = this;
 	
-	                  return _fableCore.String.replace(tfs_1, tupledArg[0], _fableCore.Util.toString(tupledArg[1][0]));
-	                };
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var url = function () {
+	            var folder = function folder(tfs_1) {
+	              return function (tupledArg) {
+	                if (tupledArg[1].length !== 1) {
+	                  throw "PivotContext.getData: Expected one argument";
+	                }
+	
+	                return _fableCore.String.replace(tfs_1, tupledArg[0], _fableCore.Util.toString(tupledArg[1][0]));
 	              };
+	            };
 	
-	              return function (array) {
-	                return _fableCore.Seq.fold(function ($var8, $var9) {
-	                  return folder($var8)($var9);
-	                }, tfs, array);
-	              };
-	            }()(_this3.calls);
+	            return function (array) {
+	              return _fableCore.Seq.fold(function ($var6, $var7) {
+	                return folder($var6)($var7);
+	              }, tfs, array);
+	            };
+	          }()(_this3.calls);
 	
-	            _common.Log.trace("runtime", "Pivot: %s", concatUrl(_this3.root, url));
+	          _common.Log.trace("runtime", "Pivot: %s", concatUrl(_this3.root, url));
 	
-	            var url_1 = isPreview ? concatUrl(_this3.root, url) + "?preview" : concatUrl(_this3.root, url);
-	            return builder_.Bind(_common.Http.Request("GET", url_1), function (_arg1) {
-	              return builder_.Return(JSON.parse(_arg1));
-	            });
+	          var url_1 = isPreview ? concatUrl(_this3.root, url) + "?preview" : concatUrl(_this3.root, url);
+	          return builder_.Bind(_common.Http.Request("GET", url_1), function (_arg1) {
+	            return builder_.Return(JSON.parse(_arg1));
 	          });
-	        }(_fableCore.AsyncBuilder.singleton);
-	      }
-	    }]);
-
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
 	    return PivotContext;
 	  }();
 
@@ -10489,15 +11677,13 @@
 	})(this, function (exports, _html, _fableCore, _common) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.empty = exports.table = exports.html = exports.TableHelpers = undefined;
 	
 	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
 	    return typeof obj;
 	  } : function (obj) {
-	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	  };
 	
 	  function _classCallCheck(instance, Constructor) {
@@ -10505,24 +11691,6 @@
 	      throw new TypeError("Cannot call a class as a function");
 	    }
 	  }
-	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
 	
 	  var TableHelpers = exports.TableHelpers = function ($exports) {
 	    return $exports;
@@ -10533,16 +11701,13 @@
 	      _classCallCheck(this, html);
 	    }
 	
-	    _createClass(html, null, [{
-	      key: "img",
-	      value: function img(url) {
-	        return function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("img")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("src", url)]))(new _fableCore.List());
-	      }
-	    }]);
+	    html.img = function img(url) {
+	      return function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("img")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("src", url)]))(new _fableCore.List());
+	    };
 	
 	    return html;
 	  }();
@@ -10559,208 +11724,200 @@
 	      this.addedColumns = addedColumns;
 	    }
 	
-	    _createClass(table, [{
-	      key: "set",
-	      value: function set(title, showKey) {
-	        var data = this.data.set(this.data.data, null, null, title != null ? title : this.data.seriesName);
-	        return new table(data, showKey != null ? showKey : this.showKey, this.hiddenColumns, this.addedColumns);
-	      }
-	    }, {
-	      key: "hideColumns",
-	      value: function hideColumns(names) {
-	        var hiddenColumns = _fableCore.Set.create(names, new _fableCore.GenericComparer(function (x, y) {
-	          return x < y ? -1 : x > y ? 1 : 0;
-	        }));
+	    table.create = function create(data) {
+	      var hiddenColumns = _fableCore.Set.create(null, new _fableCore.GenericComparer(function (x, y) {
+	        return x < y ? -1 : x > y ? 1 : 0;
+	      }));
 	
-	        return new table(this.data, this.showKey, hiddenColumns, this.addedColumns);
-	      }
-	    }, {
-	      key: "addColumn",
-	      value: function addColumn(name, f) {
-	        var addedColumns = _fableCore.List.ofArray([[name, f]], this.addedColumns);
+	      var addedColumns = new _fableCore.List();
+	      return new table(data, true, hiddenColumns, addedColumns);
+	    };
 	
-	        return new table(this.data, this.showKey, this.hiddenColumns, addedColumns);
-	      }
-	    }, {
-	      key: "show",
-	      value: function show(outputId) {
-	        var _this = this;
+	    table.prototype.set = function set(title, showKey) {
+	      var data = this.data.set(this.data.data, null, null, title != null ? title : this.data.seriesName);
+	      return new table(data, showKey != null ? showKey : this.showKey, this.hiddenColumns, this.addedColumns);
+	    };
 	
-	        var row = function row(el) {
-	          return function (k) {
-	            return function (things) {
-	              return function (arg0) {
-	                return function (arg1) {
-	                  return _html.El.op_Dynamic(arg0, arg1);
-	                };
-	              }(_html.h)("tr")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
-	                return _fableCore.Seq.append(_this.showKey ? _fableCore.Seq.singleton(function (arg0) {
-	                  return function (arg1) {
-	                    return _html.El.op_Dynamic(arg0, arg1);
-	                  };
-	                }(_html.h)(el)(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(k)]))) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_1) {
-	                  return _fableCore.Seq.map(function (t) {
-	                    return function (arg0) {
-	                      return function (arg1) {
-	                        return _html.El.op_Dynamic(arg0, arg1);
-	                      };
-	                    }(_html.h)(el)(new _fableCore.List())(_fableCore.List.ofArray([t]));
-	                  }, things);
-	                }));
-	              })));
-	            };
-	          };
-	        };
+	    table.prototype.hideColumns = function hideColumns(names) {
+	      var hiddenColumns = _fableCore.Set.create(names, new _fableCore.GenericComparer(function (x, y) {
+	        return x < y ? -1 : x > y ? 1 : 0;
+	      }));
 	
-	        var render = function render(nd) {
-	          (0, _html.renderTo)(document.getElementById(outputId), nd);
-	        };
+	      return new table(this.data, this.showKey, hiddenColumns, this.addedColumns);
+	    };
 	
-	        var makeTable = function makeTable(k) {
-	          return function (header) {
-	            return function (body) {
-	              return function (arg0) {
-	                return function (arg1) {
-	                  return _html.El.op_Dynamic(arg0, arg1);
-	                };
-	              }(_html.h)("table")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "table table-striped")]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
-	                return _fableCore.Seq.append(!_fableCore.String.isNullOrWhiteSpace(_this.data.seriesName) ? _fableCore.Seq.singleton(function (arg0) {
-	                  return function (arg1) {
-	                    return _html.El.op_Dynamic(arg0, arg1);
-	                  };
-	                }(_html.h)("caption")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(_this.data.seriesName)]))) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_1) {
-	                  return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
-	                    return function (arg1) {
-	                      return _html.El.op_Dynamic(arg0, arg1);
-	                    };
-	                  }(_html.h)("thead")(new _fableCore.List())(_fableCore.List.ofArray([row("th")(k)(header)]))), _fableCore.Seq.delay(function (unitVar_2) {
-	                    return _fableCore.Seq.singleton(function (arg0) {
-	                      return function (arg1) {
-	                        return _html.El.op_Dynamic(arg0, arg1);
-	                      };
-	                    }(_html.h)("tbody")(new _fableCore.List())(body));
-	                  }));
-	                }));
-	              })));
-	            };
-	          };
-	        };
+	    table.prototype.addColumn = function addColumn(name, f) {
+	      var addedColumns = new _fableCore.List([name, f], this.addedColumns);
+	      return new table(this.data, this.showKey, this.hiddenColumns, addedColumns);
+	    };
 	
-	        var formatAdded = function formatAdded(o) {
-	          var isSeries = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
-	            return _fableCore.Seq.map(function (kv) {
-	              return kv.key;
-	            }, function (o) {
-	              return Object.keys(o).map(function (k) {
-	                return {
-	                  "key": k,
-	                  "value": o[k]
-	                };
-	              });
-	            }(o));
-	          })).Equals(_fableCore.List.ofArray(["data", "keyName", "valueName", "seriesName"]));
+	    table.prototype.show = function show(outputId) {
+	      var _this = this;
 	
-	          if (isSeries) {
-	            var result = null;
-	            o.data.Then(function (r) {
-	              result = r;
-	            });
+	      var row = function row(el) {
+	        return function (k) {
+	          return function (things) {
 	            return function (arg0) {
 	              return function (arg1) {
 	                return _html.El.op_Dynamic(arg0, arg1);
 	              };
-	            }(_html.h)("span")(new _fableCore.List())(_fableCore.List.ofArray(result.map(function (tuple) {
-	              return tuple[1];
-	            })));
-	          } else {
-	            return (0, _html.text)(_fableCore.Util.toString(o));
-	          }
-	        };
-	
-	        (function (arg00) {
-	          _fableCore.Async.startImmediate(arg00);
-	        })(function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            return builder_.TryWith(builder_.Delay(function (unitVar_1) {
-	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this.data.data), function (_arg25) {
-	                var filteredProperties = function filteredProperties(o) {
-	                  return function (o) {
-	                    return Object.keys(o).map(function (k) {
-	                      return {
-	                        "key": k,
-	                        "value": o[k]
-	                      };
-	                    });
-	                  }(o).filter(function (kv) {
-	                    return !_this.hiddenColumns.has(kv.key);
-	                  });
+	            }(_html.h)("tr")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	              return _fableCore.Seq.append(_this.showKey ? _fableCore.Seq.singleton(function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
 	                };
-	
-	                var patternInput = _fableCore.Seq.head(_arg25);
-	
-	                var headers = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
-	                  return _fableCore.Seq.append(_typeof(patternInput[1]) == 'object' ? _fableCore.Seq.map(function (kv) {
-	                    return (0, _html.text)(kv.key);
-	                  }, filteredProperties(patternInput[1])) : _fableCore.Seq.singleton((0, _html.text)(_this.data.valueName)), _fableCore.Seq.delay(function (unitVar_3) {
-	                    return _fableCore.Seq.collect(function (matchValue) {
-	                      return _fableCore.Seq.singleton((0, _html.text)(matchValue[0]));
-	                    }, _this.addedColumns);
-	                  }));
-	                }));
-	
-	                render(function (arg00) {
-	                  var clo1 = makeTable(arg00);
-	                  return function (arg10) {
-	                    var clo2 = clo1(arg10);
-	                    return function (arg20) {
-	                      return clo2(arg20);
+	              }(_html.h)(el)(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(k)]))) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_1) {
+	                return _fableCore.Seq.map(function (t) {
+	                  return function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
 	                    };
-	                  };
-	                }(_this.data.keyName)(headers)(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
-	                  return _fableCore.Seq.collect(function (matchValue) {
-	                    return _fableCore.Seq.singleton(function () {
-	                      var formattedVals = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_3) {
-	                        return _fableCore.Seq.append(_typeof(matchValue[1]) == 'object' ? _fableCore.Seq.map(function (kv) {
-	                          return (0, _html.text)(kv.value);
-	                        }, filteredProperties(matchValue[1])) : !(typeof matchValue[1] == 'number') ? _fableCore.Seq.singleton((0, _html.text)(_fableCore.Util.toString(matchValue[1]))) : isNaN(matchValue[1]) ? _fableCore.Seq.singleton((0, _html.text)("")) : _fableCore.Seq.singleton(matchValue[1]), _fableCore.Seq.delay(function (unitVar_4) {
-	                          return _fableCore.Seq.collect(function (matchValue_1) {
-	                            return _fableCore.Seq.singleton(formatAdded(matchValue_1[1](matchValue[1])));
-	                          }, _this.addedColumns);
-	                        }));
-	                      }));
+	                  }(_html.h)(el)(new _fableCore.List())(_fableCore.List.ofArray([t]));
+	                }, things);
+	              }));
+	            })));
+	          };
+	        };
+	      };
 	
-	                      return function (arg00) {
-	                        var clo1 = row(arg00);
-	                        return function (arg10) {
-	                          var clo2 = clo1(arg10);
-	                          return function (arg20) {
-	                            return clo2(arg20);
-	                          };
+	      var render = function render(nd) {
+	        (0, _html.renderTo)(document.getElementById(outputId), nd);
+	      };
+	
+	      var makeTable = function makeTable(k) {
+	        return function (header) {
+	          return function (body) {
+	            return function (arg0) {
+	              return function (arg1) {
+	                return _html.El.op_Dynamic(arg0, arg1);
+	              };
+	            }(_html.h)("table")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "table table-striped")]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	              return _fableCore.Seq.append(!_fableCore.String.isNullOrWhiteSpace(_this.data.seriesName) ? _fableCore.Seq.singleton(function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("caption")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(_this.data.seriesName)]))) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_1) {
+	                return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("thead")(new _fableCore.List())(_fableCore.List.ofArray([row("th")(k)(header)]))), _fableCore.Seq.delay(function (unitVar_2) {
+	                  return _fableCore.Seq.singleton(function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("tbody")(new _fableCore.List())(body));
+	                }));
+	              }));
+	            })));
+	          };
+	        };
+	      };
+	
+	      var formatAdded = function formatAdded(o) {
+	        var isSeries = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	          return _fableCore.Seq.map(function (kv) {
+	            return kv.key;
+	          }, function (o) {
+	            return Object.keys(o).map(function (k) {
+	              return {
+	                "key": k,
+	                "value": o[k]
+	              };
+	            });
+	          }(o));
+	        })).Equals(_fableCore.List.ofArray(["data", "keyName", "valueName", "seriesName"]));
+	
+	        if (isSeries) {
+	          var result = null;
+	          o.data.Then(function (r) {
+	            result = r;
+	          });
+	          return function (arg0) {
+	            return function (arg1) {
+	              return _html.El.op_Dynamic(arg0, arg1);
+	            };
+	          }(_html.h)("span")(new _fableCore.List())(_fableCore.List.ofArray(result.map(function (tuple) {
+	            return tuple[1];
+	          })));
+	        } else {
+	          return (0, _html.text)(_fableCore.Util.toString(o));
+	        }
+	      };
+	
+	      (function (arg00) {
+	        _fableCore.Async.startImmediate(arg00);
+	      })(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.TryWith(builder_.Delay(function (unitVar_1) {
+	            return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this.data.data), function (_arg25) {
+	              var filteredProperties = function filteredProperties(o) {
+	                return function (o) {
+	                  return Object.keys(o).map(function (k) {
+	                    return {
+	                      "key": k,
+	                      "value": o[k]
+	                    };
+	                  });
+	                }(o).filter(function (kv) {
+	                  return !_this.hiddenColumns.has(kv.key);
+	                });
+	              };
+	
+	              var patternInput = _fableCore.Seq.head(_arg25);
+	
+	              var headers = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
+	                return _fableCore.Seq.append(_typeof(patternInput[1]) == 'object' ? _fableCore.Seq.map(function (kv) {
+	                  return (0, _html.text)(kv.key);
+	                }, filteredProperties(patternInput[1])) : _fableCore.Seq.singleton((0, _html.text)(_this.data.valueName)), _fableCore.Seq.delay(function (unitVar_3) {
+	                  return _fableCore.Seq.collect(function (matchValue) {
+	                    return _fableCore.Seq.singleton((0, _html.text)(matchValue[0]));
+	                  }, _this.addedColumns);
+	                }));
+	              }));
+	
+	              render(function (arg00) {
+	                var clo1 = makeTable(arg00);
+	                return function (arg10) {
+	                  var clo2 = clo1(arg10);
+	                  return function (arg20) {
+	                    return clo2(arg20);
+	                  };
+	                };
+	              }(_this.data.keyName)(headers)(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
+	                return _fableCore.Seq.collect(function (matchValue) {
+	                  return _fableCore.Seq.singleton(function () {
+	                    var formattedVals = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_3) {
+	                      return _fableCore.Seq.append(_typeof(matchValue[1]) == 'object' ? _fableCore.Seq.map(function (kv) {
+	                        return (0, _html.text)(kv.value);
+	                      }, filteredProperties(matchValue[1])) : !(typeof matchValue[1] == 'number') ? _fableCore.Seq.singleton((0, _html.text)(_fableCore.Util.toString(matchValue[1]))) : isNaN(matchValue[1]) ? _fableCore.Seq.singleton((0, _html.text)("")) : _fableCore.Seq.singleton(matchValue[1]), _fableCore.Seq.delay(function (unitVar_4) {
+	                        return _fableCore.Seq.collect(function (matchValue_1) {
+	                          return _fableCore.Seq.singleton(formatAdded(matchValue_1[1](matchValue[1])));
+	                        }, _this.addedColumns);
+	                      }));
+	                    }));
+	
+	                    return function (arg00) {
+	                      var clo1 = row(arg00);
+	                      return function (arg10) {
+	                        var clo2 = clo1(arg10);
+	                        return function (arg20) {
+	                          return clo2(arg20);
 	                        };
-	                      }("td")(matchValue[0])(formattedVals);
-	                    }());
-	                  }, _arg25);
-	                }))));
-	                return builder_.Zero();
-	              });
-	            }), function (_arg26) {
-	              console.log("Getting data for table failed: %O", _arg26);
+	                      };
+	                    }("td")(matchValue[0])(formattedVals);
+	                  }());
+	                }, _arg25);
+	              }))));
 	              return builder_.Zero();
 	            });
+	          }), function (_arg26) {
+	            console.log("Getting data for table failed: %O", _arg26);
+	            return builder_.Zero();
 	          });
-	        }(_fableCore.AsyncBuilder.singleton));
-	      }
-	    }], [{
-	      key: "create",
-	      value: function create(data) {
-	        var hiddenColumns = _fableCore.Set.create(null, new _fableCore.GenericComparer(function (x, y) {
-	          return x < y ? -1 : x > y ? 1 : 0;
-	        }));
-	
-	        var addedColumns = new _fableCore.List();
-	        return new table(data, true, hiddenColumns, addedColumns);
-	      }
-	    }]);
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	    };
 	
 	    return table;
 	  }();
@@ -10772,32 +11929,28 @@
 	      _classCallCheck(this, empty);
 	    }
 	
-	    _createClass(empty, [{
-	      key: "show",
-	      value: function show(outputId) {
-	        (0, _html.renderTo)(document.getElementById(outputId), function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "loading")]))(_fableCore.List.ofArray([function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("p")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)("No output produced.")]))])));
-	      }
-	    }], [{
-	      key: "create",
-	      value: function create() {
-	        return new empty();
-	      }
-	    }]);
+	    empty.create = function create() {
+	      return new empty();
+	    };
+	
+	    empty.prototype.show = function show(outputId) {
+	      (0, _html.renderTo)(document.getElementById(outputId), function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "loading")]))(_fableCore.List.ofArray([function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("p")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)("No output produced.")]))])));
+	    };
 	
 	    return empty;
 	  }();
-	
+
 	  _fableCore.Util.setInterfaces(empty.prototype, [], "TheGamma.empty");
 	});
-	//# sourceMappingURL=tables.js.map
+
 
 /***/ },
 /* 11 */
@@ -10818,33 +11971,13 @@
 	})(this, function (exports, _fableCore) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.h = exports.El = exports.counter = exports.DomNode = exports.DomAttribute = undefined;
 	  exports.render = render;
 	  exports.renderTo = renderTo;
 	  exports.text = text;
 	  exports.op_EqualsGreater = op_EqualsGreater;
 	  exports.op_EqualsBangGreater = op_EqualsBangGreater;
-	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
 	
 	  function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
@@ -10967,98 +12100,86 @@
 	      _classCallCheck(this, El);
 	    }
 	
-	    _createClass(El, [{
-	      key: "delayed",
-	      value: function delayed(f) {
-	        return new DomNode("Delayed", [f]);
-	      }
-	    }, {
-	      key: "part",
-	      value: function part(initial, fold) {
-	        var evt = new _fableCore.Event();
-	        var state = initial;
-	        var container = null;
-	        var renderer = null;
+	    El.op_Dynamic = function op_Dynamic(_arg1, n) {
+	      return function (a) {
+	        return function (b) {
+	          var patternInput = n !== "chosen" ? [n, null] : ["select", function (el) {
+	            jQuery(el).chosen();
 	
-	        var render_1 = function render_1(unitVar0) {
-	          var matchValue = [container, renderer];
+	            for (var _iterator = a, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	              var _ref;
 	
-	          var $target1 = function $target1() {};
+	              if (_isArray) {
+	                if (_i >= _iterator.length) break;
+	                _ref = _iterator[_i++];
+	              } else {
+	                _i = _iterator.next();
+	                if (_i.done) break;
+	                _ref = _i.value;
+	              }
 	
-	          if (matchValue[0] != null) {
-	            if (matchValue[1] != null) {
-	              (function () {
-	                var el = matchValue[0];
-	                var r = matchValue[1];
+	              var forLoopVar = _ref;
 	
-	                (function (dom) {
-	                  renderTo(el, dom);
-	                })(r(state));
-	              })();
-	            } else {
-	              $target1();
+	              if (forLoopVar[1].Case === "Event") {
+	                jQuery(el).on(forLoopVar[0], function (unitVar0) {
+	                  forLoopVar[1].Fields[0](el)(event);
+	                });
+	              }
 	            }
+	          }];
+	          return new DomNode("Element", [patternInput[0], Array.from(a), Array.from(b), patternInput[1]]);
+	        };
+	      };
+	    };
+	
+	    El.prototype.delayed = function delayed(f) {
+	      return new DomNode("Delayed", [f]);
+	    };
+	
+	    El.prototype.part = function part(initial, fold) {
+	      var evt = new _fableCore.Event();
+	      var state = initial;
+	      var container = null;
+	      var renderer = null;
+	
+	      var render_1 = function render_1(unitVar0) {
+	        var matchValue = [container, renderer];
+	
+	        var $target1 = function $target1() {};
+	
+	        if (matchValue[0] != null) {
+	          if (matchValue[1] != null) {
+	            (function () {
+	              var el = matchValue[0];
+	              var r = matchValue[1];
+	
+	              (function (dom) {
+	                renderTo(el, dom);
+	              })(r(state));
+	            })();
 	          } else {
 	            $target1();
 	          }
-	        };
+	        } else {
+	          $target1();
+	        }
+	      };
 	
-	        _fableCore.Observable.add(function (e) {
-	          state = fold(state)(e);
+	      _fableCore.Observable.add(function (e) {
+	        state = fold(state)(e);
+	        render_1();
+	      }, evt.Publish);
+	
+	      return [function (arg00) {
+	        evt.Trigger(arg00);
+	      }, function (r) {
+	        renderer = r;
+	        return new DomNode("Part", [function (el) {
+	          container = el;
 	          render_1();
-	        }, evt.Publish);
-	
-	        return [function (arg00) {
-	          evt.Trigger(arg00);
-	        }, function (r) {
-	          renderer = r;
-	          return new DomNode("Part", [function (el) {
-	            container = el;
-	            render_1();
-	          }]);
-	        }];
-	      }
-	    }], [{
-	      key: "op_Dynamic",
-	      value: function op_Dynamic(_arg1, n) {
-	        return function (a) {
-	          return function (b) {
-	            var f = n !== "select" ? null : function (el) {
-	              jQuery(el).chosen();
-	              var _iteratorNormalCompletion = true;
-	              var _didIteratorError = false;
-	              var _iteratorError = undefined;
-	
-	              try {
-	                for (var _iterator = a[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	                  var forLoopVar = _step.value;
-	
-	                  if (forLoopVar[1].Case === "Event") {
-	                    jQuery(el).on(forLoopVar[0], function (unitVar0) {
-	                      forLoopVar[1].Fields[0](el)(event);
-	                    });
-	                  }
-	                }
-	              } catch (err) {
-	                _didIteratorError = true;
-	                _iteratorError = err;
-	              } finally {
-	                try {
-	                  if (!_iteratorNormalCompletion && _iterator.return) {
-	                    _iterator.return();
-	                  }
-	                } finally {
-	                  if (_didIteratorError) {
-	                    throw _iteratorError;
-	                  }
-	                }
-	              }
-	            };
-	            return new DomNode("Element", [n, Array.from(a), Array.from(b), f]);
-	          };
-	        };
-	      }
-	    }]);
+	        }]);
+	      }];
+	    };
 	
 	    return El;
 	  }();
@@ -11067,7 +12188,7 @@
 	
 	  var h = exports.h = new El();
 	});
-	//# sourceMappingURL=html.js.map
+
 
 /***/ },
 /* 12 */
@@ -11088,9 +12209,7 @@
 	})(this, function (exports, _fableCore, _common, _html) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.timeline = exports.math = exports.geo = exports.GeoGlobals = exports.JsHelpers = exports.JsDatamap = exports.BubblesConfig = exports.DatamapConfig = exports.GeographyConfig = undefined;
 	
 	  function _classCallCheck(instance, Constructor) {
@@ -11098,24 +12217,6 @@
 	      throw new TypeError("Cannot call a class as a function");
 	    }
 	  }
-	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
 	
 	  var GeographyConfig = exports.GeographyConfig = function () {
 	    function GeographyConfig(popupOnHover, highlightOnHover) {
@@ -11125,17 +12226,13 @@
 	      this.highlightOnHover = highlightOnHover;
 	    }
 	
-	    _createClass(GeographyConfig, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    GeographyConfig.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    GeographyConfig.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return GeographyConfig;
 	  }();
@@ -11153,12 +12250,9 @@
 	      this.data = data;
 	    }
 	
-	    _createClass(DatamapConfig, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }]);
+	    DatamapConfig.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
 	
 	    return DatamapConfig;
 	  }();
@@ -11173,12 +12267,9 @@
 	      this.key = key;
 	    }
 	
-	    _createClass(BubblesConfig, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }]);
+	    BubblesConfig.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
 	
 	    return BubblesConfig;
 	  }();
@@ -11202,17 +12293,13 @@
 	        this.coordinates = coordinates;
 	      }
 	
-	      _createClass(Locations, [{
-	        key: "Equals",
-	        value: function Equals(other) {
-	          return _fableCore.Util.equalsRecords(this, other);
-	        }
-	      }, {
-	        key: "CompareTo",
-	        value: function CompareTo(other) {
-	          return _fableCore.Util.compareRecords(this, other);
-	        }
-	      }]);
+	      Locations.prototype.Equals = function Equals(other) {
+	        return _fableCore.Util.equalsRecords(this, other);
+	      };
+	
+	      Locations.prototype.CompareTo = function CompareTo(other) {
+	        return _fableCore.Util.compareRecords(this, other);
+	      };
 	
 	      return Locations;
 	    }();
@@ -11245,18 +12332,15 @@
 	      _classCallCheck(this, geo);
 	    }
 	
-	    _createClass(geo, null, [{
-	      key: "lookup",
-	      value: function lookup(country) {
-	        return function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(GeoGlobals.locations), function (_arg1) {
-	              return builder_.Return(_fableCore.Map.tryFind(country, _arg1) != null ? _fableCore.Map.tryFind(country, _arg1) : new Float64Array([0, 0]));
-	            });
+	    geo.lookup = function lookup(country) {
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(GeoGlobals.locations), function (_arg1) {
+	            return builder_.Return(_fableCore.Map.tryFind(country, _arg1) != null ? _fableCore.Map.tryFind(country, _arg1) : new Float64Array([0, 0]));
 	          });
-	        }(_fableCore.AsyncBuilder.singleton);
-	      }
-	    }]);
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
 	
 	    return geo;
 	  }();
@@ -11268,52 +12352,41 @@
 	      _classCallCheck(this, math);
 	    }
 	
-	    _createClass(math, null, [{
-	      key: "sqrt",
-	      value: function sqrt(f) {
-	        return Math.sqrt(f);
-	      }
-	    }, {
-	      key: "pow",
-	      value: function pow(f, k) {
-	        return Math.pow(f, k);
-	      }
-	    }, {
-	      key: "log",
-	      value: function log(f, b) {
-	        return b != null ? Math.log(f, b) : Math.log(f);
-	      }
-	    }, {
-	      key: "min",
-	      value: function min(f1, f2) {
-	        return f1 < f2 ? f1 : f2;
-	      }
-	    }, {
-	      key: "max",
-	      value: function max(f1, f2) {
-	        return f1 > f2 ? f1 : f2;
-	      }
-	    }, {
-	      key: "add",
-	      value: function add(f1, f2) {
-	        return f1 + f2;
-	      }
-	    }, {
-	      key: "times",
-	      value: function times(f1, f2) {
-	        return f1 * f2;
-	      }
-	    }, {
-	      key: "sub",
-	      value: function sub(f1, f2) {
-	        return f1 - f2;
-	      }
-	    }, {
-	      key: "div",
-	      value: function div(f1, f2) {
-	        return f1 / f2;
-	      }
-	    }]);
+	    math.sqrt = function sqrt(f) {
+	      return Math.sqrt(f);
+	    };
+	
+	    math.pow = function pow(f, k) {
+	      return Math.pow(f, k);
+	    };
+	
+	    math.log = function log(f, b) {
+	      return b != null ? Math.log(f, b) : Math.log(f);
+	    };
+	
+	    math.min = function min(f1, f2) {
+	      return f1 < f2 ? f1 : f2;
+	    };
+	
+	    math.max = function max(f1, f2) {
+	      return f1 > f2 ? f1 : f2;
+	    };
+	
+	    math.add = function add(f1, f2) {
+	      return f1 + f2;
+	    };
+	
+	    math.times = function times(f1, f2) {
+	      return f1 * f2;
+	    };
+	
+	    math.sub = function sub(f1, f2) {
+	      return f1 - f2;
+	    };
+	
+	    math.div = function div(f1, f2) {
+	      return f1 / f2;
+	    };
 	
 	    return math;
 	  }();
@@ -11337,283 +12410,277 @@
 	      this.timeSelector = timeSelector;
 	    }
 	
-	    _createClass(timeline, [{
-	      key: "set",
-	      value: function set(fill, colors, title, delay, overflowDelay, details) {
-	        var colors_1 = colors != null ? colors : this.colors;
-	        var defaultFill = fill != null ? fill : this.defaultFill;
-	        var titleTemplate = title != null ? title : this.titleTemplate;
-	        var delay_1 = delay != null ? delay : this.delay;
-	        var detailsSelector = details != null ? details : this.detailsSelector;
-	        var overflowDelay_1 = overflowDelay != null ? overflowDelay : this.overflowDelay;
-	        return new timeline(this.data, colors_1, titleTemplate, defaultFill, delay_1, overflowDelay_1, this.infoSelector, this.locSelector, this.sizeSelector, detailsSelector, this.timeSelector);
-	      }
-	    }, {
-	      key: "using",
-	      value: function using(coordinates, time, size, info) {
-	        return new timeline(this.data, this.colors, this.titleTemplate, this.defaultFill, this.delay, this.overflowDelay, info, coordinates, size, this.detailsSelector, time);
-	      }
-	    }, {
-	      key: "show",
-	      value: function show(outputId) {
-	        var _this = this;
+	    timeline.create = function create(data) {
+	      var colors = ["red"];
+	      var defaultFill = "blue";
+	      var delay = 750;
+	      var detailsSelector = null;
+	      var overflowDelay = 2000;
+	      var titleTemplate = "%title";
 	
-	        var id = "map" + function () {
-	          var copyOfStruct = function () {
-	            var copyOfStruct = _fableCore.Date.now();
+	      var infoSelector = function infoSelector(_arg1) {
+	        return "";
+	      };
 	
-	            return _fableCore.Date.ticks(copyOfStruct);
-	          }();
+	      var timeSelector = function timeSelector(_arg2) {
+	        return 0;
+	      };
 	
-	          return String(copyOfStruct);
+	      var sizeSelector = function sizeSelector(_arg3) {
+	        return 10;
+	      };
+	
+	      return new timeline(data, colors, titleTemplate, defaultFill, delay, overflowDelay, infoSelector, function (_arg4) {
+	        throw "!";
+	      }, sizeSelector, detailsSelector, timeSelector);
+	    };
+	
+	    timeline.prototype.set = function set(fill, colors, title, delay, overflowDelay, details) {
+	      var colors_1 = colors != null ? colors : this.colors;
+	      var defaultFill = fill != null ? fill : this.defaultFill;
+	      var titleTemplate = title != null ? title : this.titleTemplate;
+	      var delay_1 = delay != null ? delay : this.delay;
+	      var detailsSelector = details != null ? details : this.detailsSelector;
+	      var overflowDelay_1 = overflowDelay != null ? overflowDelay : this.overflowDelay;
+	      return new timeline(this.data, colors_1, titleTemplate, defaultFill, delay_1, overflowDelay_1, this.infoSelector, this.locSelector, this.sizeSelector, detailsSelector, this.timeSelector);
+	    };
+	
+	    timeline.prototype.using = function using(coordinates, time, size, info) {
+	      return new timeline(this.data, this.colors, this.titleTemplate, this.defaultFill, this.delay, this.overflowDelay, info, coordinates, size, this.detailsSelector, time);
+	    };
+	
+	    timeline.prototype.show = function show(outputId) {
+	      var _this = this;
+	
+	      var id = "map" + function () {
+	        var copyOfStruct = function () {
+	          var copyOfStruct = _fableCore.Date.now();
+	
+	          return _fableCore.Date.ticks(copyOfStruct);
 	        }();
 	
-	        (0, _html.renderTo)(document.getElementById(outputId), function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "map")]))(_fableCore.List.ofArray([function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", id + "_title")]))(_fableCore.List.ofArray([(0, _html.text)("")])), function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", id), (0, _html.op_EqualsGreater)("class", "mapcontainer")]))(new _fableCore.List()), function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("div")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "buttons")]))(_fableCore.List.ofArray([function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", id + "_btn")]))(_fableCore.List.ofArray([function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-pause")]))(new _fableCore.List())]))])), function (arg0) {
-	          return function (arg1) {
-	            return _html.El.op_Dynamic(arg0, arg1);
-	          };
-	        }(_html.h)("input")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", id + "_player"), (0, _html.op_EqualsGreater)("type", "range")]))(new _fableCore.List())]))])));
-	        var fills = Array.from(_fableCore.Seq.mapIndexed(function (i, c) {
-	          return [_fableCore.String.fsFormat("item%d")(function (x) {
-	            return x;
-	          })(i), c];
-	        }, this.colors));
-	        var map = new Datamap(new DatamapConfig(document.getElementById(id), "world", new GeographyConfig(false, false), _fableCore.Util.createObj(_fableCore.List.ofArray([["defaultFill", this.defaultFill]], _fableCore.List.ofArray(fills))), {}));
+	        return String(copyOfStruct);
+	      }();
 	
-	        var objects = function objects(data) {
-	          return function (infos) {
-	            return function (time) {
-	              var res = [];
+	      (0, _html.renderTo)(document.getElementById(outputId), function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "map")]))(_fableCore.List.ofArray([function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", id + "_title")]))(_fableCore.List.ofArray([(0, _html.text)("")])), function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", id), (0, _html.op_EqualsGreater)("class", "mapcontainer")]))(new _fableCore.List()), function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("div")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "buttons")]))(_fableCore.List.ofArray([function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", id + "_btn")]))(_fableCore.List.ofArray([function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-pause")]))(new _fableCore.List())]))])), function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("input")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", id + "_player"), (0, _html.op_EqualsGreater)("type", "range")]))(new _fableCore.List())]))])));
+	      var fills = Array.from(_fableCore.Seq.mapIndexed(function (i, c) {
+	        return [_fableCore.String.fsFormat("item%d")(function (x) {
+	          return x;
+	        })(i), c];
+	      }, this.colors));
+	      var map = new Datamap(new DatamapConfig(document.getElementById(id), "world", new GeographyConfig(false, false), _fableCore.Util.createObj(new _fableCore.List(["defaultFill", this.defaultFill], _fableCore.List.ofArray(fills))), {}));
 	
-	              for (var i = 0; i <= data.length - 1; i++) {
-	                var patternInput = data[i];
+	      var objects = function objects(data) {
+	        return function (infos) {
+	          return function (time) {
+	            var res = [];
 	
-	                if (_fableCore.Util.equals(patternInput[3], time)) {
-	                  (function (arg00) {
-	                    res.push(arg00);
-	                  })(_fableCore.Util.createObj(_fableCore.List.append(_this.detailsSelector != null ? _fableCore.List.ofArray([["details", _fableCore.String.join("", _fableCore.Seq.map(function (value) {
-	                    return _fableCore.Util.toString(value);
-	                  }, _this.detailsSelector(patternInput[2])))]]) : new _fableCore.List(), _fableCore.List.ofArray([["radius", _this.sizeSelector(patternInput[2])], ["borderWidth", "1px"], ["fillKey", _fableCore.String.fsFormat("item%d")(function (x) {
-	                    return x;
-	                  })(patternInput[0] % fills.length)], ["info", _fableCore.Map.tryFind(_fableCore.String.fsFormat("%O, %O")(function (x) {
-	                    return x;
-	                  })(patternInput[1][0])(patternInput[1][1]), infos) != null ? _fableCore.Map.tryFind(_fableCore.String.fsFormat("%O, %O")(function (x) {
-	                    return x;
-	                  })(patternInput[1][0])(patternInput[1][1]), infos) : ""], ["latitude", patternInput[1][0]], ["longitude", patternInput[1][1]]]))));
-	                }
+	            for (var i = 0; i <= data.length - 1; i++) {
+	              var patternInput = data[i];
+	
+	              if (_fableCore.Util.equals(patternInput[3], time)) {
+	                (function (arg00) {
+	                  res.push(arg00);
+	                })(_fableCore.Util.createObj(_fableCore.List.append(_this.detailsSelector != null ? _fableCore.List.ofArray([["details", _fableCore.String.join("", _fableCore.Seq.map(function (value) {
+	                  return _fableCore.Util.toString(value);
+	                }, _this.detailsSelector(patternInput[2])))]]) : new _fableCore.List(), _fableCore.List.ofArray([["radius", _this.sizeSelector(patternInput[2])], ["borderWidth", "1px"], ["fillKey", _fableCore.String.fsFormat("item%d")(function (x) {
+	                  return x;
+	                })(patternInput[0] % fills.length)], ["info", _fableCore.Map.tryFind(_fableCore.String.fsFormat("%O, %O")(function (x) {
+	                  return x;
+	                })(patternInput[1][0])(patternInput[1][1]), infos) != null ? _fableCore.Map.tryFind(_fableCore.String.fsFormat("%O, %O")(function (x) {
+	                  return x;
+	                })(patternInput[1][0])(patternInput[1][1]), infos) : ""], ["latitude", patternInput[1][0]], ["longitude", patternInput[1][1]]]))));
 	              }
+	            }
 	
-	              return Array.from(res);
-	            };
+	            return Array.from(res);
 	          };
 	        };
+	      };
 	
-	        (function (arg00) {
-	          _fableCore.Async.startImmediate(arg00);
-	        })(function (builder_) {
-	          return builder_.Delay(function (unitVar) {
-	            return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this.data.data), function (_arg25) {
-	              var locs = new Array(_arg25.length);
-	              return builder_.Combine(builder_.For(_fableCore.Seq.range(0, _arg25.length - 1), function (_arg26) {
-	                return builder_.Bind(_this.locSelector(_arg25[_arg26][1]), function (_arg27) {
-	                  locs[_arg26] = _arg27;
-	                  return builder_.Zero();
-	                });
-	              }), builder_.Delay(function (unitVar_1) {
-	                var colorLookup = _fableCore.Map.create(_fableCore.Seq.mapIndexed(function (i, l) {
-	                  return [_fableCore.List.ofArray(l), i];
-	                }, _fableCore.Seq.distinct(locs)), new _fableCore.GenericComparer(function (x, y) {
-	                  return x.CompareTo(y);
-	                }));
-	
-	                var data = Array.from(_fableCore.Seq.map2(function (tupledArg, locs_1) {
-	                  return [colorLookup.get(_fableCore.List.ofArray(locs_1)), locs_1, tupledArg[1], _this.timeSelector(tupledArg[1])];
-	                }, _arg25, locs));
-	
-	                var infosLookup = _fableCore.Map.create(_fableCore.Seq.map(function (tupledArg) {
-	                  return [tupledArg[0], _fableCore.String.join("<br />", _fableCore.Seq.distinct(_fableCore.Seq.map(function (tupledArg_1) {
-	                    return _this.infoSelector(tupledArg_1[2]);
-	                  }, tupledArg[1])))];
-	                }, _fableCore.Seq.groupBy(function (tupledArg) {
-	                  return _fableCore.String.fsFormat("%O, %O")(function (x) {
-	                    return x;
-	                  })(tupledArg[1][0])(tupledArg[1][1]);
-	                }, data)), new _fableCore.GenericComparer(function (x, y) {
-	                  return x < y ? -1 : x > y ? 1 : 0;
-	                }));
-	
-	                var times = Int32Array.from(_fableCore.Seq.sortWith(function (x, y) {
-	                  return _fableCore.Util.compare(x, y);
-	                }, _fableCore.Seq.distinct(Int32Array.from(_fableCore.Seq.map(function (tupledArg) {
-	                  return tupledArg[3];
-	                }, data)))));
-	                var patternInput = [_fableCore.Seq.reduce(function (x, y) {
-	                  return Math.min(x, y);
-	                }, times), _fableCore.Seq.reduce(function (x, y) {
-	                  return Math.max(x, y);
-	                }, times)];
-	                var player = document.getElementById(id + "_player");
-	                var btn = document.getElementById(id + "_btn");
-	                return builder_.Combine(times.length === 1 ? function () {
-	                  player.style.display = "none";
-	                  btn.style.display = "none";
-	                  return builder_.Zero();
-	                }() : builder_.Zero(), builder_.Delay(function (unitVar_2) {
-	                  player.min = String(0);
-	                  player.value = String(0);
-	                  player.max = String(times.length - 1);
-	
-	                  var render = function render(unitVar0) {
-	                    var y = times[Number.parseInt(player.value)];
-	                    var o = objects(data)(infosLookup)(y);
-	                    (0, _html.renderTo)(document.getElementById(id + "_title"), function (arg0) {
-	                      return function (arg1) {
-	                        return _html.El.op_Dynamic(arg0, arg1);
-	                      };
-	                    }(_html.h)("h2")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(_fableCore.String.replace(_this.titleTemplate, "%title", String(y)))])));
-	
-	                    var config = function () {
-	                      var key = function key(data_1) {
-	                        return JSON.stringify([data_1["latitude"], data_1["longitude"]]);
-	                      };
-	
-	                      return new BubblesConfig(function (geo_1, data_1) {
-	                        return _this.detailsSelector != null ? _fableCore.String.fsFormat("<div style='pointer-events:none' class='hoverinfo'><strong>%s</strong><br /> %s </div>")(function (x) {
-	                          return x;
-	                        })(data_1["info"])(data_1["details"]) : _fableCore.String.fsFormat("<div style='pointer-events:none' class='hoverinfo'>%s</div>")(function (x) {
-	                          return x;
-	                        })(data_1["info"]);
-	                      }, key);
-	                    }();
-	
-	                    map.bubbles(o, config);
-	                  };
-	
-	                  var autoPlay = true;
-	
-	                  var startPlay = function startPlay(unitVar0) {
-	                    (function (arg00) {
-	                      _fableCore.Async.startImmediate(arg00);
-	                    })(function (builder__1) {
-	                      return builder__1.Delay(function (unitVar_3) {
-	                        return builder__1.While(function (unitVar_4) {
-	                          return autoPlay;
-	                        }, builder__1.Delay(function (unitVar_4) {
-	                          var value = Number.parseInt(player.value);
-	                          render();
-	                          player.value = String(value + 1 === times.length ? 0 : value + 1);
-	                          return builder__1.Bind(_fableCore.Async.sleep(value + 1 === times.length ? _this.overflowDelay : _this.delay), function (_arg31) {
-	                            return builder__1.Return();
-	                          });
-	                        }));
-	                      });
-	                    }(_fableCore.AsyncBuilder.singleton));
-	                  };
-	
-	                  player.onchange = function (e) {
-	                    autoPlay = false;
-	
-	                    (function (dom) {
-	                      (0, _html.renderTo)(btn, dom);
-	                    })(function (arg0) {
-	                      return function (arg1) {
-	                        return _html.El.op_Dynamic(arg0, arg1);
-	                      };
-	                    }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-play")]))(new _fableCore.List()));
-	
-	                    return render();
-	                  };
-	
-	                  player.oninput = player.onchange;
-	
-	                  btn.onclick = function (e) {
-	                    autoPlay = !autoPlay;
-	
-	                    (function (dom) {
-	                      (0, _html.renderTo)(btn, dom);
-	                    })(function (arg0) {
-	                      return function (arg1) {
-	                        return _html.El.op_Dynamic(arg0, arg1);
-	                      };
-	                    }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", autoPlay ? "fa fa-pause" : "fa fa-play")]))(new _fableCore.List()));
-	
-	                    if (autoPlay) {
-	                      startPlay();
-	                    }
-	
-	                    return null;
-	                  };
-	
-	                  startPlay();
-	                  return builder_.Zero();
-	                }));
+	      (function (arg00) {
+	        _fableCore.Async.startImmediate(arg00);
+	      })(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this.data.data), function (_arg25) {
+	            var locs = new Array(_arg25.length);
+	            return builder_.Combine(builder_.For(_fableCore.Seq.range(0, _arg25.length - 1), function (_arg26) {
+	              return builder_.Bind(_this.locSelector(_arg25[_arg26][1]), function (_arg27) {
+	                locs[_arg26] = _arg27;
+	                return builder_.Zero();
+	              });
+	            }), builder_.Delay(function (unitVar_1) {
+	              var colorLookup = _fableCore.Map.create(_fableCore.Seq.mapIndexed(function (i, l) {
+	                return [_fableCore.List.ofArray(l), i];
+	              }, _fableCore.Seq.distinct(locs)), new _fableCore.GenericComparer(function (x, y) {
+	                return x.CompareTo(y);
 	              }));
-	            });
+	
+	              var data = Array.from(_fableCore.Seq.map2(function (tupledArg, locs_1) {
+	                return [colorLookup.get(_fableCore.List.ofArray(locs_1)), locs_1, tupledArg[1], _this.timeSelector(tupledArg[1])];
+	              }, _arg25, locs));
+	
+	              var infosLookup = _fableCore.Map.create(_fableCore.Seq.map(function (tupledArg) {
+	                return [tupledArg[0], _fableCore.String.join("<br />", _fableCore.Seq.distinct(_fableCore.Seq.map(function (tupledArg_1) {
+	                  return _this.infoSelector(tupledArg_1[2]);
+	                }, tupledArg[1])))];
+	              }, _fableCore.Seq.groupBy(function (tupledArg) {
+	                return _fableCore.String.fsFormat("%O, %O")(function (x) {
+	                  return x;
+	                })(tupledArg[1][0])(tupledArg[1][1]);
+	              }, data)), new _fableCore.GenericComparer(function (x, y) {
+	                return x < y ? -1 : x > y ? 1 : 0;
+	              }));
+	
+	              var times = Int32Array.from(_fableCore.Seq.sortWith(function (x, y) {
+	                return _fableCore.Util.compare(x, y);
+	              }, _fableCore.Seq.distinct(Int32Array.from(_fableCore.Seq.map(function (tupledArg) {
+	                return tupledArg[3];
+	              }, data)))));
+	              var patternInput = [_fableCore.Seq.reduce(function (x, y) {
+	                return Math.min(x, y);
+	              }, times), _fableCore.Seq.reduce(function (x, y) {
+	                return Math.max(x, y);
+	              }, times)];
+	              var player = document.getElementById(id + "_player");
+	              var btn = document.getElementById(id + "_btn");
+	              return builder_.Combine(times.length === 1 ? function () {
+	                player.style.display = "none";
+	                btn.style.display = "none";
+	                return builder_.Zero();
+	              }() : builder_.Zero(), builder_.Delay(function (unitVar_2) {
+	                player.min = String(0);
+	                player.value = String(0);
+	                player.max = String(times.length - 1);
+	
+	                var render = function render(unitVar0) {
+	                  var y = times[Number.parseInt(player.value)];
+	                  var o = objects(data)(infosLookup)(y);
+	                  (0, _html.renderTo)(document.getElementById(id + "_title"), function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("h2")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(_fableCore.String.replace(_this.titleTemplate, "%title", String(y)))])));
+	
+	                  var config = function () {
+	                    var key = function key(data_1) {
+	                      return JSON.stringify([data_1["latitude"], data_1["longitude"]]);
+	                    };
+	
+	                    return new BubblesConfig(function (geo_1, data_1) {
+	                      return _this.detailsSelector != null ? _fableCore.String.fsFormat("<div style='pointer-events:none' class='hoverinfo'><strong>%s</strong><br /> %s </div>")(function (x) {
+	                        return x;
+	                      })(data_1["info"])(data_1["details"]) : _fableCore.String.fsFormat("<div style='pointer-events:none' class='hoverinfo'>%s</div>")(function (x) {
+	                        return x;
+	                      })(data_1["info"]);
+	                    }, key);
+	                  }();
+	
+	                  map.bubbles(o, config);
+	                };
+	
+	                var autoPlay = true;
+	
+	                var startPlay = function startPlay(unitVar0) {
+	                  (function (arg00) {
+	                    _fableCore.Async.startImmediate(arg00);
+	                  })(function (builder__1) {
+	                    return builder__1.Delay(function (unitVar_3) {
+	                      return builder__1.While(function (unitVar_4) {
+	                        return autoPlay;
+	                      }, builder__1.Delay(function (unitVar_4) {
+	                        var value = Number.parseInt(player.value);
+	                        render();
+	                        player.value = String(value + 1 === times.length ? 0 : value + 1);
+	                        return builder__1.Bind(_fableCore.Async.sleep(value + 1 === times.length ? _this.overflowDelay : _this.delay), function (_arg31) {
+	                          return builder__1.Return();
+	                        });
+	                      }));
+	                    });
+	                  }(_fableCore.AsyncBuilder.singleton));
+	                };
+	
+	                player.onchange = function (e) {
+	                  autoPlay = false;
+	
+	                  (function (dom) {
+	                    (0, _html.renderTo)(btn, dom);
+	                  })(function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-play")]))(new _fableCore.List()));
+	
+	                  return render();
+	                };
+	
+	                player.oninput = player.onchange;
+	
+	                btn.onclick = function (e) {
+	                  autoPlay = !autoPlay;
+	
+	                  (function (dom) {
+	                    (0, _html.renderTo)(btn, dom);
+	                  })(function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", autoPlay ? "fa fa-pause" : "fa fa-play")]))(new _fableCore.List()));
+	
+	                  if (autoPlay) {
+	                    startPlay();
+	                  }
+	
+	                  return null;
+	                };
+	
+	                startPlay();
+	                return builder_.Zero();
+	              }));
+	            }));
 	          });
-	        }(_fableCore.AsyncBuilder.singleton));
-	      }
-	    }], [{
-	      key: "create",
-	      value: function create(data) {
-	        var colors = ["red"];
-	        var defaultFill = "blue";
-	        var delay = 750;
-	        var detailsSelector = null;
-	        var overflowDelay = 2000;
-	        var titleTemplate = "%title";
-	
-	        var infoSelector = function infoSelector(_arg1) {
-	          return "";
-	        };
-	
-	        var timeSelector = function timeSelector(_arg2) {
-	          return 0;
-	        };
-	
-	        var sizeSelector = function sizeSelector(_arg3) {
-	          return 10;
-	        };
-	
-	        return new timeline(data, colors, titleTemplate, defaultFill, delay, overflowDelay, infoSelector, function (_arg4) {
-	          throw "!";
-	        }, sizeSelector, detailsSelector, timeSelector);
-	      }
-	    }]);
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	    };
 	
 	    return timeline;
 	  }();
-	
+
 	  _fableCore.Util.setInterfaces(timeline.prototype, ["FSharpRecord"], "TheGamma.Maps.timeline");
 	});
-	//# sourceMappingURL=maps.js.map
+
 
 /***/ },
 /* 13 */
@@ -11634,9 +12701,7 @@
 	})(this, function (exports, _fableCore, _ast) {
 	    "use strict";
 	
-	    Object.defineProperty(exports, "__esModule", {
-	        value: true
-	    });
+	    exports.__esModule = true;
 	    exports.UnifictionContext = exports.typesEqual = exports.TypeContext = undefined;
 	    exports.listsEqual = listsEqual;
 	    exports.arraysEqual = arraysEqual;
@@ -11650,25 +12715,10 @@
 	    exports.unifyTypes = unifyTypes;
 	    exports.reduceType = reduceType;
 	
-	    function _defineProperty(obj, key, value) {
-	        if (key in obj) {
-	            Object.defineProperty(obj, key, {
-	                value: value,
-	                enumerable: true,
-	                configurable: true,
-	                writable: true
-	            });
-	        } else {
-	            obj[key] = value;
-	        }
-	
-	        return obj;
-	    }
-	
 	    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
 	        return typeof obj;
 	    } : function (obj) {
-	        return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	    };
 	
 	    function _classCallCheck(instance, Constructor) {
@@ -11677,24 +12727,6 @@
 	        }
 	    }
 	
-	    var _createClass = function () {
-	        function defineProperties(target, props) {
-	            for (var i = 0; i < props.length; i++) {
-	                var descriptor = props[i];
-	                descriptor.enumerable = descriptor.enumerable || false;
-	                descriptor.configurable = true;
-	                if ("value" in descriptor) descriptor.writable = true;
-	                Object.defineProperty(target, descriptor.key, descriptor);
-	            }
-	        }
-	
-	        return function (Constructor, protoProps, staticProps) {
-	            if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	            if (staticProps) defineProperties(Constructor, staticProps);
-	            return Constructor;
-	        };
-	    }();
-	
 	    var TypeContext = exports.TypeContext = function () {
 	        function TypeContext(equivalentVars) {
 	            _classCallCheck(this, TypeContext);
@@ -11702,17 +12734,13 @@
 	            this.EquivalentVars = equivalentVars;
 	        }
 	
-	        _createClass(TypeContext, [{
-	            key: "Equals",
-	            value: function Equals(other) {
-	                return _fableCore.Util.equalsRecords(this, other);
-	            }
-	        }, {
-	            key: "CompareTo",
-	            value: function CompareTo(other) {
-	                return _fableCore.Util.compareRecords(this, other);
-	            }
-	        }]);
+	        TypeContext.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        TypeContext.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
 	
 	        return TypeContext;
 	    }();
@@ -11801,18 +12829,18 @@
 	        };
 	
 	        if (matchValue[0].Case === "Method") {
-	            var activePatternResult4521 = $BoundTypeVariables$(matchValue[0].Fields[2]);
+	            var activePatternResult4574 = $BoundTypeVariables$(matchValue[0].Fields[2]);
 	
 	            if (matchValue[1].Case === "Method") {
-	                var activePatternResult4522 = $BoundTypeVariables$(matchValue[1].Fields[2]);
+	                var activePatternResult4575 = $BoundTypeVariables$(matchValue[1].Fields[2]);
 	                var a1 = matchValue[0].Fields[1];
 	                var a2 = matchValue[1].Fields[1];
 	                var n1 = matchValue[0].Fields[0];
 	                var n2 = matchValue[1].Fields[0];
-	                var r1 = activePatternResult4521[1];
-	                var r2 = activePatternResult4522[1];
-	                var v1 = activePatternResult4521[0];
-	                var v2 = activePatternResult4522[0];
+	                var r1 = activePatternResult4574[1];
+	                var r2 = activePatternResult4575[1];
+	                var v1 = activePatternResult4574[0];
+	                var v2 = activePatternResult4575[0];
 	                {
 	                    var _ret = function () {
 	                        var ctx_1 = new TypeContext(_fableCore.List.append(_fableCore.Seq.toList(_fableCore.Seq.zip(v1, v2)), ctx.EquivalentVars));
@@ -11882,7 +12910,7 @@
 	                        var ts2 = matchValue[1].Fields[1];
 	                        return _fableCore.Seq.forAll(function (tupledArg) {
 	                            return typesEqualAux(ctx, tupledArg[0], tupledArg[1]);
-	                        }, _fableCore.List.ofArray([[t1_1, t2_1]], _fableCore.Seq.toList(_fableCore.Seq.zip(ts1, ts2))));
+	                        }, new _fableCore.List([t1_1, t2_1], _fableCore.Seq.toList(_fableCore.Seq.zip(ts1, ts2))));
 	                    } else {
 	                        return $target1();
 	                    }
@@ -11953,7 +12981,7 @@
 	                                    var a2 = matchValue[1].Fields[0];
 	                                    var r1 = matchValue[0].Fields[1];
 	                                    var r2 = matchValue[1].Fields[1];
-	                                    return listsEqual(_fableCore.List.ofArray([r1], a1), _fableCore.List.ofArray([r2], a2), function (t1_1) {
+	                                    return listsEqual(new _fableCore.List(r1, a1), new _fableCore.List(r2, a2), function (t1_1) {
 	                                        return function (t2_1) {
 	                                            return typesEqualAux(ctx, t1_1, t2_1);
 	                                        };
@@ -12048,7 +13076,7 @@
 	    function substituteMembers(assigns, members) {
 	        return members.map(function (_arg1) {
 	            return _arg1.Case === "Property" ? new _ast.Member("Property", [_arg1.Fields[0], substituteTypes(assigns, _arg1.Fields[1]), _arg1.Fields[2], _arg1.Fields[3]]) : function () {
-	                var activePatternResult4534 = $BoundTypeVariables$(_arg1.Fields[2]);
+	                var activePatternResult4587 = $BoundTypeVariables$(_arg1.Fields[2]);
 	
 	                var assigns_1 = function () {
 	                    var folder = function folder(assigns_1) {
@@ -12062,13 +13090,13 @@
 	                            return folder($var2)($var3);
 	                        }, assigns, list);
 	                    };
-	                }()(activePatternResult4534[0]);
+	                }()(activePatternResult4587[0]);
 	
 	                var ars = _fableCore.List.map(function (tupledArg) {
 	                    return [tupledArg[0], tupledArg[1], substituteTypes(assigns_1, tupledArg[2])];
 	                }, _arg1.Fields[1]);
 	
-	                return new _ast.Member("Method", [_arg1.Fields[0], ars, substituteTypes(assigns_1, activePatternResult4534[1]), _arg1.Fields[3], _arg1.Fields[4]]);
+	                return new _ast.Member("Method", [_arg1.Fields[0], ars, substituteTypes(assigns_1, activePatternResult4587[1]), _arg1.Fields[3], _arg1.Fields[4]]);
 	            }();
 	        });
 	    }
@@ -12099,11 +13127,11 @@
 	                                if (t.Case === "Delayed") {
 	                                    var _f;
 	
-	                                    var f = (_f = {}, _defineProperty(_f, _fableCore.Symbol.interfaces, ["TheGamma.Common.Future"]), _defineProperty(_f, "Then", function Then(g) {
+	                                    var f = (_f = {}, _f[_fableCore.Symbol.interfaces] = ["TheGamma.Common.Future"], _f.Then = function Then(g) {
 	                                        t.Fields[1].Then(function (t_1) {
 	                                            g(substituteTypes(assigns, t_1));
 	                                        });
-	                                    }), _f);
+	                                    }, _f);
 	                                    return new _ast.Type("Delayed", [t.Fields[0], f]);
 	                                } else {
 	                                    if (t.Case === "App") {
@@ -12189,8 +13217,7 @@
 	                                        var ts2_1 = matchValue[1].tail;
 	                                        return {
 	                                            v: unifyTypesAux(function () {
-	                                                var Errors = _fableCore.List.ofArray([[t1, t2]], ctx.Errors);
-	
+	                                                var Errors = new _fableCore.List([t1, t2], ctx.Errors);
 	                                                return new UnifictionContext(ctx.FreeVars, ctx.Assignments, ctx.EquivalentVars, Errors);
 	                                            }(), ts1_1, ts2_1)
 	                                        };
@@ -12247,7 +13274,7 @@
 	                                        var ta2 = matchValue[1].head.Fields[1];
 	                                        var tb1 = matchValue[0].tail;
 	                                        var tb2 = matchValue[1].tail;
-	                                        return unifyTypesAux(ctx, _fableCore.List.ofArray([t1], _fableCore.List.append(ta1, tb1)), _fableCore.List.ofArray([t2], _fableCore.List.append(ta2, tb2)));
+	                                        return unifyTypesAux(ctx, new _fableCore.List(t1, _fableCore.List.append(ta1, tb1)), new _fableCore.List(t2, _fableCore.List.append(ta2, tb2)));
 	                                    } else {
 	                                        return $target1();
 	                                    }
@@ -12273,7 +13300,7 @@
 	                                var t2 = matchValue[1].head.Fields[0];
 	                                var ts1_1 = matchValue[0].tail;
 	                                var ts2_1 = matchValue[1].tail;
-	                                return unifyTypesAux(ctx, _fableCore.List.ofArray([t1], ts1_1), _fableCore.List.ofArray([t2], ts2_1));
+	                                return unifyTypesAux(ctx, new _fableCore.List(t1, ts1_1), new _fableCore.List(t2, ts2_1));
 	                            } else {
 	                                return $target2();
 	                            }
@@ -12308,7 +13335,7 @@
 	                                                }();
 	
 	                                                return {
-	                                                    v: unifyTypesAux(ctx_1, _fableCore.List.ofArray([t1], ts1_1), _fableCore.List.ofArray([t2], ts2_1))
+	                                                    v: unifyTypesAux(ctx_1, new _fableCore.List(t1, ts1_1), new _fableCore.List(t2, ts2_1))
 	                                                };
 	                                            }
 	                                        }();
@@ -12342,7 +13369,7 @@
 	                            var to2 = matchValue[1].head.Fields[1];
 	                            var ts1_1 = matchValue[0].tail;
 	                            var ts2_1 = matchValue[1].tail;
-	                            return unifyTypesAux(ctx, _fableCore.List.append(_fableCore.List.ofArray([to1], tis1), ts1_1), _fableCore.List.append(_fableCore.List.ofArray([to2], tis2), ts2_1));
+	                            return unifyTypesAux(ctx, _fableCore.List.append(new _fableCore.List(to1, tis1), ts1_1), _fableCore.List.append(new _fableCore.List(to2, tis2), ts2_1));
 	                        } else {
 	                            return $target2();
 	                        }
@@ -12413,8 +13440,7 @@
 	                            var ts2_1 = matchValue[1].tail;
 	                            return {
 	                                v: unifyTypesAux(function () {
-	                                    var Assignments = _fableCore.List.ofArray([[n, t]], ctx.Assignments);
-	
+	                                    var Assignments = new _fableCore.List([n, t], ctx.Assignments);
 	                                    return new UnifictionContext(ctx.FreeVars, Assignments, ctx.EquivalentVars, ctx.Errors);
 	                                }(), ts1_1, ts2_1)
 	                            };
@@ -12492,10 +13518,8 @@
 	})(this, function (exports, _fableCore, _ast) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
-	  exports.Entity$2Eget_Name = exports.Entity$2Eget_Antecedents = exports.anonymous = undefined;
+	  exports.__esModule = true;
+	  exports.Entity$2Eget_Name = exports.Entity$2Eget_Antecedents = exports.anonymous = exports.FormattingContext = undefined;
 	  exports.node = node;
 	  exports.needsEscaping = needsEscaping;
 	  exports.escapeIdent = escapeIdent;
@@ -12504,6 +13528,14 @@
 	  exports.formatToken = formatToken;
 	  exports.formatTokenInfo = formatTokenInfo;
 	  exports.formatTokens = formatTokens;
+	  exports.formatNode = formatNode;
+	  exports.formatName = formatName;
+	  exports.formatArgument = formatArgument;
+	  exports.formatExpression = formatExpression;
+	  exports.formatCommand = formatCommand;
+	  exports.formatSingleExpression = formatSingleExpression;
+	  exports.formatProgram = formatProgram;
+	  exports.formatWhiteAfterExpr = formatWhiteAfterExpr;
 	  exports.formatEntityKind = formatEntityKind;
 	  exports.entityCodeNameAndAntecedents = entityCodeNameAndAntecedents;
 	  exports.formatType = formatType;
@@ -12514,8 +13546,14 @@
 	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
 	    return typeof obj;
 	  } : function (obj) {
-	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	  };
+	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
 	
 	  function node(rng, node_1) {
 	    var Entity = null;
@@ -12838,6 +13876,317 @@
 	    }, tokens));
 	  }
 	
+	  var FormattingContext = exports.FormattingContext = function () {
+	    function FormattingContext(strings) {
+	      _classCallCheck(this, FormattingContext);
+	
+	      this.Strings = strings;
+	    }
+	
+	    FormattingContext.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    FormattingContext.prototype.Add = function Add(tok) {
+	      this.Strings.push(formatToken(tok));
+	    };
+	
+	    return FormattingContext;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(FormattingContext.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.Ast.FormattingContext");
+	
+	  function formatNode(ctx, f, node_1) {
+	    for (var _iterator = node_1.WhiteBefore, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	      var _ref;
+	
+	      if (_isArray) {
+	        if (_i >= _iterator.length) break;
+	        _ref = _iterator[_i++];
+	      } else {
+	        _i = _iterator.next();
+	        if (_i.done) break;
+	        _ref = _i.value;
+	      }
+	
+	      var t = _ref;
+	      ctx.Add(t.Token);
+	    }
+	
+	    f(ctx)(node_1.Node);
+	
+	    for (var _iterator2 = node_1.WhiteAfter, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+	      var _ref2;
+	
+	      if (_isArray2) {
+	        if (_i2 >= _iterator2.length) break;
+	        _ref2 = _iterator2[_i2++];
+	      } else {
+	        _i2 = _iterator2.next();
+	        if (_i2.done) break;
+	        _ref2 = _i2.value;
+	      }
+	
+	      var _t = _ref2;
+	      ctx.Add(_t.Token);
+	    }
+	  }
+	
+	  function formatName(ctx, name) {
+	    if (name.Name === "") {} else {
+	      if (needsEscaping(name.Name)) {
+	        ctx.Add(new _ast.TokenKind("QIdent", [name.Name]));
+	      } else {
+	        ctx.Add(new _ast.TokenKind("Ident", [name.Name]));
+	      }
+	    }
+	  }
+	
+	  function formatArgument(ctx, arg) {
+	    if (arg.Name != null) {
+	      formatNode(ctx, function (ctx_1) {
+	        return function (name) {
+	          formatName(ctx_1, name);
+	        };
+	      }, arg.Name);
+	      ctx.Add(new _ast.TokenKind("Equals", []));
+	    }
+	
+	    formatNode(ctx, function (ctx_1) {
+	      return function (expr) {
+	        formatExpression(ctx_1, expr);
+	      };
+	    }, arg.Value);
+	  }
+	
+	  function formatExpression(ctx, expr) {
+	    if (expr.Case === "Property") {
+	      formatNode(ctx, function (ctx_1) {
+	        return function (expr_1) {
+	          formatExpression(ctx_1, expr_1);
+	        };
+	      }, expr.Fields[0]);
+	      ctx.Add(new _ast.TokenKind("Dot", []));
+	      formatNode(ctx, function (ctx_1) {
+	        return function (name) {
+	          formatName(ctx_1, name);
+	        };
+	      }, expr.Fields[1]);
+	    } else {
+	      if (expr.Case === "Call") {
+	        if (expr.Fields[0] != null) {
+	          formatNode(ctx, function (ctx_1) {
+	            return function (expr_1) {
+	              formatExpression(ctx_1, expr_1);
+	            };
+	          }, expr.Fields[0]);
+	        }
+	
+	        ctx.Add(new _ast.TokenKind("Dot", []));
+	        formatNode(ctx, function (ctx_1) {
+	          return function (name) {
+	            formatName(ctx_1, name);
+	          };
+	        }, expr.Fields[1]);
+	        ctx.Add(new _ast.TokenKind("LParen", []));
+	        (function () {
+	          var f = function f(ctx_1) {
+	            return function (args) {
+	              _fableCore.Seq.iterateIndexed(function (i, arg) {
+	                if (i !== 0) {
+	                  ctx_1.Add(new _ast.TokenKind("Comma", []));
+	                }
+	
+	                formatArgument(ctx_1, arg);
+	              }, args);
+	            };
+	          };
+	
+	          return function (node_1) {
+	            formatNode(ctx, f, node_1);
+	          };
+	        })()(expr.Fields[2]);
+	        ctx.Add(new _ast.TokenKind("RParen", []));
+	      } else {
+	        if (expr.Case === "String") {
+	          ctx.Add(new _ast.TokenKind("String", [expr.Fields[0]]));
+	        } else {
+	          if (expr.Case === "Number") {
+	            ctx.Add(new _ast.TokenKind("Number", [String(expr.Fields[0]), expr.Fields[0]]));
+	          } else {
+	            if (expr.Case === "Boolean") {
+	              ctx.Add(new _ast.TokenKind("Boolean", [expr.Fields[0]]));
+	            } else {
+	              if (expr.Case === "Binary") {
+	                formatNode(ctx, function (ctx_1) {
+	                  return function (expr_1) {
+	                    formatExpression(ctx_1, expr_1);
+	                  };
+	                }, expr.Fields[0]);
+	                (function () {
+	                  var f = function f(ctx_1) {
+	                    return function (op) {
+	                      ctx_1.Add(new _ast.TokenKind("Operator", [op]));
+	                    };
+	                  };
+	
+	                  return function (node_1) {
+	                    formatNode(ctx, f, node_1);
+	                  };
+	                })()(expr.Fields[1]);
+	                formatNode(ctx, function (ctx_1) {
+	                  return function (expr_1) {
+	                    formatExpression(ctx_1, expr_1);
+	                  };
+	                }, expr.Fields[2]);
+	              } else {
+	                if (expr.Case === "Function") {
+	                  ctx.Add(new _ast.TokenKind("Fun", []));
+	                  formatNode(ctx, function (ctx_1) {
+	                    return function (name) {
+	                      formatName(ctx_1, name);
+	                    };
+	                  }, expr.Fields[0]);
+	                  ctx.Add(new _ast.TokenKind("Arrow", []));
+	                  formatNode(ctx, function (ctx_1) {
+	                    return function (expr_1) {
+	                      formatExpression(ctx_1, expr_1);
+	                    };
+	                  }, expr.Fields[1]);
+	                } else {
+	                  if (expr.Case === "List") {
+	                    ctx.Add(new _ast.TokenKind("LSquare", []));
+	
+	                    for (var _iterator3 = expr.Fields[0], _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+	                      var _ref3;
+	
+	                      if (_isArray3) {
+	                        if (_i3 >= _iterator3.length) break;
+	                        _ref3 = _iterator3[_i3++];
+	                      } else {
+	                        _i3 = _iterator3.next();
+	                        if (_i3.done) break;
+	                        _ref3 = _i3.value;
+	                      }
+	
+	                      var e = _ref3;
+	                      formatNode(ctx, function (ctx_1) {
+	                        return function (expr_1) {
+	                          formatExpression(ctx_1, expr_1);
+	                        };
+	                      }, e);
+	                    }
+	
+	                    ctx.Add(new _ast.TokenKind("RSquare", []));
+	                  } else {
+	                    if (expr.Case === "Empty") {} else {
+	                      formatNode(ctx, function (ctx_1) {
+	                        return function (name) {
+	                          formatName(ctx_1, name);
+	                        };
+	                      }, expr.Fields[0]);
+	                    }
+	                  }
+	                }
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	
+	  function formatCommand(ctx, cmd) {
+	    if (cmd.Case === "Let") {
+	      ctx.Add(new _ast.TokenKind("Let", []));
+	      formatNode(ctx, function (ctx_1) {
+	        return function (name) {
+	          formatName(ctx_1, name);
+	        };
+	      }, cmd.Fields[0]);
+	      ctx.Add(new _ast.TokenKind("Equals", []));
+	      formatNode(ctx, function (ctx_1) {
+	        return function (expr) {
+	          formatExpression(ctx_1, expr);
+	        };
+	      }, cmd.Fields[1]);
+	    } else {
+	      formatNode(ctx, function (ctx_1) {
+	        return function (expr) {
+	          formatExpression(ctx_1, expr);
+	        };
+	      }, cmd.Fields[0]);
+	    }
+	  }
+	
+	  function formatSingleExpression(expr) {
+	    var ctx = new FormattingContext([]);
+	    formatNode(ctx, function (ctx_1) {
+	      return function (expr_1) {
+	        formatExpression(ctx_1, expr_1);
+	      };
+	    }, expr);
+	    return _fableCore.String.join("", ctx.Strings);
+	  }
+	
+	  function formatProgram(prog) {
+	    var ctx = new FormattingContext([]);
+	    (function () {
+	      var f = function f(ctx_1) {
+	        return function (cmds) {
+	          for (var _iterator4 = cmds, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
+	            var _ref4;
+	
+	            if (_isArray4) {
+	              if (_i4 >= _iterator4.length) break;
+	              _ref4 = _iterator4[_i4++];
+	            } else {
+	              _i4 = _iterator4.next();
+	              if (_i4.done) break;
+	              _ref4 = _i4.value;
+	            }
+	
+	            var cmd = _ref4;
+	            formatNode(ctx_1, function (ctx_2) {
+	              return function (cmd_1) {
+	                formatCommand(ctx_2, cmd_1);
+	              };
+	            }, cmd);
+	          }
+	        };
+	      };
+	
+	      return function (node_1) {
+	        formatNode(ctx, f, node_1);
+	      };
+	    })()(prog.Body);
+	    return _fableCore.String.join("", ctx.Strings);
+	  }
+	
+	  function formatWhiteAfterExpr(nd) {
+	    var wa = function () {
+	      var $target0 = function $target0(n) {
+	        return _fableCore.List.append(n.WhiteAfter, nd.WhiteAfter);
+	      };
+	
+	      if (nd.Node.Case === "Variable") {
+	        return $target0(nd.Node.Fields[0]);
+	      } else {
+	        if (nd.Node.Case === "Property") {
+	          return $target0(nd.Node.Fields[1]);
+	        } else {
+	          return nd.WhiteAfter;
+	        }
+	      }
+	    }();
+	
+	    return _fableCore.String.join("", _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	      return _fableCore.Seq.map(function (t) {
+	        return formatToken(t.Token);
+	      }, wa);
+	    })));
+	  }
+	
 	  function formatEntityKind(_arg1) {
 	    return _arg1.Case === "Variable" ? "variable" : _arg1.Case === "Binding" ? "binding" : _arg1.Case === "Operator" ? function () {
 	      var op = _arg1.Fields[1];
@@ -13092,7 +14441,7 @@
 	                    var _ret2 = function () {
 	                      var patternInput = function () {
 	                        return inst != null;
-	                      }() ? [e_1, es_1] : [null, _fableCore.List.ofArray([e_1], es_1)];
+	                      }() ? [e_1, es_1] : [null, new _fableCore.List(e_1, es_1)];
 	
 	                      var rebuildArgs = function rebuildArgs(args_1) {
 	                        return function (es_2) {
@@ -13122,7 +14471,7 @@
 	                                    var es_3 = matchValue_1[1].tail;
 	                                    var n_1 = matchValue_1[2].head;
 	                                    var ns_3 = matchValue_1[2].tail;
-	                                    return _fableCore.List.ofArray([new _ast.Argument(n_1, e_2)], rebuildArgs(args_2)(es_3)(ns_3));
+	                                    return new _fableCore.List(new _ast.Argument(n_1, e_2), rebuildArgs(args_2)(es_3)(ns_3));
 	                                  } else {
 	                                    return $target3();
 	                                  }
@@ -13135,7 +14484,7 @@
 	                                  var _e_2 = matchValue_1[1].head;
 	                                  var _es_ = matchValue_1[1].tail;
 	                                  var _ns_ = matchValue_1[2];
-	                                  return _fableCore.List.ofArray([new _ast.Argument(null, _e_2)], rebuildArgs(_args_)(_es_)(_ns_));
+	                                  return new _fableCore.List(new _ast.Argument(null, _e_2), rebuildArgs(_args_)(_es_)(_ns_));
 	                                } else {
 	                                  return $target3();
 	                                }
@@ -13228,7 +14577,7 @@
 	              return _fableCore.Seq.map(function (a) {
 	                return a.Value;
 	              }, args.Node);
-	            })), _fableCore.List.ofArray([n], _fableCore.List.choose(function (a) {
+	            })), new _fableCore.List(n, _fableCore.List.choose(function (a) {
 	              return a.Name;
 	            }, args.Node))]])
 	          };
@@ -13241,11 +14590,11 @@
 	          var e_1 = e.Fields[0];
 	          var n = e.Fields[1];
 	          return {
-	            v: new _fableCore.Choice("Choice2Of2", [[_fableCore.List.ofArray([e_1], _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	            v: new _fableCore.Choice("Choice2Of2", [[new _fableCore.List(e_1, _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	              return _fableCore.Seq.map(function (a) {
 	                return a.Value;
 	              }, args.Node);
-	            }))), _fableCore.List.ofArray([n], _fableCore.List.choose(function (a) {
+	            }))), new _fableCore.List(n, _fableCore.List.choose(function (a) {
 	              return a.Name;
 	            }, args.Node))]])
 	          };
@@ -13302,10 +14651,1656 @@
 
 
 /***/ },
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(16), __webpack_require__(17), __webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== "undefined") {
+	    factory(exports, require("./extensions"), require("./core"), require("fable-core"));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, global.extensions, global.core, global.fableCore);
+	    global.charts = mod.exports;
+	  }
+	})(this, function (exports, _extensions, _core, _fableCore) {
+	  "use strict";
+	
+	  exports.__esModule = true;
+	  exports.chart = undefined;
+	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
+	  var chart = exports.chart = function () {
+	    function chart() {
+	      _classCallCheck(this, chart);
+	    }
+	
+	    chart.scatter = function scatter(xval, yval) {
+	      return new _extensions.Scatter(_core.ChartDataOperations.twoValues(xval, yval), "ScatterChart", (0, _extensions.ScatterChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.geo = function geo(data) {
+	      return new _extensions.Geo(_core.ChartDataOperations.oneKeyValue("string", data), "GeoChart", (0, _extensions.GeoChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.pie = function pie(data) {
+	      return new _extensions.Pie(_core.ChartDataOperations.oneKeyValue("string", data), "PieChart", (0, _extensions.PieChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.bar = function bar(data) {
+	      return new _extensions.Bar(_core.ChartDataOperations.oneKeyValue("string", data), "BarChart", (0, _extensions.BarChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.column = function column(data) {
+	      return new _extensions.Column(_core.ChartDataOperations.oneKeyValue("string", data), "ColumnChart", (0, _extensions.ColumnChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.columns = function columns(data, colors) {
+	      return new _extensions.Line(_core.ChartDataOperations.oneKeyAppendValues("string", data, colors), "ColumnChart", (0, _extensions.LineChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.line = function line(data) {
+	      return new _extensions.Line(_core.ChartDataOperations.oneKeyValue("number", data), "LineChart", (0, _extensions.LineChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.lines = function lines(data) {
+	      return new _extensions.Line(_core.ChartDataOperations.oneKeyNValues("number", data), "LineChart", (0, _extensions.LineChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.area = function area(data) {
+	      return new _extensions.Area(_core.ChartDataOperations.oneKeyValue("number", data), "AreaChart", (0, _extensions.AreaChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.areas = function areas(data, names) {
+	      var i = {
+	        contents: 0
+	      };
+	      var data_1 = names == null ? data : data.map(function (s) {
+	        void i.contents++;
+	        return s.setProperties(null, null, names[i.contents - 1]);
+	      });
+	      return new _extensions.Area(_core.ChartDataOperations.oneKeyNValues("number", data_1), "AreaChart", (0, _extensions.AreaChartOptions$2Eget_empty$2EStatic)());
+	    };
+	
+	    chart.show = function show(chart_1) {
+	      return function (outputId) {
+	        _core.Helpers.showChart(chart_1, outputId);
+	      };
+	    };
+	
+	    return chart;
+	  }();
+
+	  _fableCore.Util.setInterfaces(chart.prototype, [], "TheGamma.GoogleCharts.chart");
+	});
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(global,factory){if(true){!(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports,__webpack_require__(17),__webpack_require__(18),__webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));}else if(typeof exports!=="undefined"){factory(exports,require("./core"),require("./options"),require("fable-core"));}else{var mod={exports:{}};factory(mod.exports,global.core,global.options,global.fableCore);global.extensions=mod.exports;}})(this,function(exports,_core,_options,_fableCore){"use strict";exports.__esModule=true;exports.options=exports.CandlestickChartOptions$2Eget_empty$2EStatic=exports.TimelineOptions$2Eget_empty$2EStatic=exports.TableOptions$2Eget_empty$2EStatic=exports.TreeMapOptions$2Eget_empty$2EStatic=exports.BubbleChartOptions$2Eget_empty$2EStatic=exports.PieChartOptions$2Eget_empty$2EStatic=exports.SteppedAreaChartOptions$2Eget_empty$2EStatic=exports.AnnotationChartOptions$2Eget_empty$2EStatic=exports.AreaChartOptions$2Eget_empty$2EStatic=exports.HistogramOptions$2Eget_empty$2EStatic=exports.BarChartOptions$2Eget_empty$2EStatic=exports.LineChartOptions$2Eget_empty$2EStatic=exports.ColumnChartOptions$2Eget_empty$2EStatic=exports.ScatterChartOptions$2Eget_empty$2EStatic=exports.GeoChartOptions$2Eget_empty$2EStatic=exports.Candlestick=exports.Timeline=exports.Table=exports.TreeMap=exports.Bubble=exports.Pie=exports.SteppedArea=exports.Annotation=exports.Area=exports.Histogram=exports.Bar=exports.Line=exports.Column=exports.Scatter=exports.Geo=undefined;function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}var Geo=exports.Geo=function(){function Geo(data,typeName,options){_classCallCheck(this,Geo);this.data=data;this.typeName=typeName;this.options=options;}Geo.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Geo.prototype.set=function set(backgroundColor,datalessRegionColor,displayMode,enableRegionInteractivity,height,keepAspectRatio,region,markerOpacity,resolution,width){var _this=this;var newOptions=function(){var backgroundColor_1=_core.Helpers.right(_this.options,"backgroundColor",backgroundColor);var datalessRegionColor_1=_core.Helpers.right(_this.options,"datalessRegionColor",datalessRegionColor);var displayMode_1=_core.Helpers.right(_this.options,"displayMode",displayMode);var enableRegionInteractivity_1=_core.Helpers.right(_this.options,"enableRegionInteractivity",enableRegionInteractivity);var height_1=_core.Helpers.right(_this.options,"height",height);var keepAspectRatio_1=_core.Helpers.right(_this.options,"keepAspectRatio",keepAspectRatio);var region_1=_core.Helpers.right(_this.options,"region",region);var markerOpacity_1=_core.Helpers.right(_this.options,"markerOpacity",markerOpacity);var resolution_1=_core.Helpers.right(_this.options,"resolution",resolution);var width_1=_core.Helpers.right(_this.options,"width",width);return new _options.GeoChartOptions(backgroundColor_1,_this.options.colorAxis,datalessRegionColor_1,displayMode_1,enableRegionInteractivity_1,height_1,keepAspectRatio_1,_this.options.legend,region_1,_this.options.magnifyingGlass,markerOpacity_1,resolution_1,_this.options.sizeAxis,_this.options.tooltip,width_1);}();return new Geo(this.data,this.typeName,newOptions);};Geo.prototype.colorAxis=function colorAxis(minValue,maxValue,values,colors){var o=this.options.colorAxis;var newNested=new _options.ChartColorAxis(_core.Helpers.right(o,"minValue",minValue),_core.Helpers.right(o,"maxValue",maxValue),_core.Helpers.right(o,"values",function(){var $var7=values;if($var7!=null){return function(source){return Float64Array.from(source);}($var7);}else{return $var7;}}()),_core.Helpers.right(o,"colors",function(){var $var8=colors;if($var8!=null){return function(source){return Array.from(source);}($var8);}else{return $var8;}}()),_core.Helpers.copy(o,"legend"));var options=new _options.GeoChartOptions(this.options.backgroundColor,newNested,this.options.datalessRegionColor,this.options.displayMode,this.options.enableRegionInteractivity,this.options.height,this.options.keepAspectRatio,this.options.legend,this.options.region,this.options.magnifyingGlass,this.options.markerOpacity,this.options.resolution,this.options.sizeAxis,this.options.tooltip,this.options.width);return new Geo(this.data,this.typeName,options);};Geo.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.GeoChartOptions(this.options.backgroundColor,this.options.colorAxis,this.options.datalessRegionColor,this.options.displayMode,this.options.enableRegionInteractivity,this.options.height,this.options.keepAspectRatio,newNested,this.options.region,this.options.magnifyingGlass,this.options.markerOpacity,this.options.resolution,this.options.sizeAxis,this.options.tooltip,this.options.width);return new Geo(this.data,this.typeName,options);};Geo.prototype.magnifyingGlass=function magnifyingGlass(enable,zoomFactor){var o=this.options.magnifyingGlass;var newNested=new _options.GeoChartMagnifyingGlass(_core.Helpers.right(o,"enable",enable),_core.Helpers.right(o,"zoomFactor",zoomFactor));var options=new _options.GeoChartOptions(this.options.backgroundColor,this.options.colorAxis,this.options.datalessRegionColor,this.options.displayMode,this.options.enableRegionInteractivity,this.options.height,this.options.keepAspectRatio,this.options.legend,this.options.region,newNested,this.options.markerOpacity,this.options.resolution,this.options.sizeAxis,this.options.tooltip,this.options.width);return new Geo(this.data,this.typeName,options);};Geo.prototype.sizeAxis=function sizeAxis(maxSize,maxValue,minSize,minValue){var o=this.options.sizeAxis;var newNested=new _options.ChartSizeAxis(_core.Helpers.right(o,"maxSize",maxSize),_core.Helpers.right(o,"maxValue",maxValue),_core.Helpers.right(o,"minSize",minSize),_core.Helpers.right(o,"minValue",minValue));var options=new _options.GeoChartOptions(this.options.backgroundColor,this.options.colorAxis,this.options.datalessRegionColor,this.options.displayMode,this.options.enableRegionInteractivity,this.options.height,this.options.keepAspectRatio,this.options.legend,this.options.region,this.options.magnifyingGlass,this.options.markerOpacity,this.options.resolution,newNested,this.options.tooltip,this.options.width);return new Geo(this.data,this.typeName,options);};Geo.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.GeoChartOptions(this.options.backgroundColor,this.options.colorAxis,this.options.datalessRegionColor,this.options.displayMode,this.options.enableRegionInteractivity,this.options.height,this.options.keepAspectRatio,this.options.legend,this.options.region,this.options.magnifyingGlass,this.options.markerOpacity,this.options.resolution,this.options.sizeAxis,newNested,this.options.width);return new Geo(this.data,this.typeName,options);};return Geo;}();_fableCore.Util.setInterfaces(Geo.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Geo");var Scatter=function(){function Scatter(data,typeName,options){_classCallCheck(this,Scatter);this.data=data;this.typeName=typeName;this.options=options;}Scatter.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Scatter.prototype.set=function set(aggregationTarget,axisTitlesPosition,backgroundColor,colors,curveType,dataOpacity,enableInteractivity,fontSize,fontName,forceIFrame,height,lineWidth,pointSize,selectionMode,series,theme,title,titlePosition,width){var _this2=this;var newOptions=function(){var aggregationTarget_1=_core.Helpers.right(_this2.options,"aggregationTarget",aggregationTarget);var axisTitlesPosition_1=_core.Helpers.right(_this2.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this2.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this2.options,"colors",function(){var $var9=colors;if($var9!=null){return function(source){return Array.from(source);}($var9);}else{return $var9;}}());var curveType_1=_core.Helpers.right(_this2.options,"curveType",curveType);var dataOpacity_1=_core.Helpers.right(_this2.options,"dataOpacity",dataOpacity);var enableInteractivity_1=_core.Helpers.right(_this2.options,"enableInteractivity",enableInteractivity);var fontSize_1=_core.Helpers.right(_this2.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this2.options,"fontName",fontName);var forceIFrame_1=_core.Helpers.right(_this2.options,"forceIFrame",forceIFrame);var height_1=_core.Helpers.right(_this2.options,"height",height);var lineWidth_1=_core.Helpers.right(_this2.options,"lineWidth",lineWidth);var pointSize_1=_core.Helpers.right(_this2.options,"pointSize",pointSize);var selectionMode_1=_core.Helpers.right(_this2.options,"selectionMode",selectionMode);var series_1=_core.Helpers.right(_this2.options,"series",series);var theme_1=_core.Helpers.right(_this2.options,"theme",theme);var title_1=_core.Helpers.right(_this2.options,"title",title);var titlePosition_1=_core.Helpers.right(_this2.options,"titlePosition",titlePosition);var width_1=_core.Helpers.right(_this2.options,"width",width);return new _options.ScatterChartOptions(aggregationTarget_1,_this2.options.animation,_this2.options.annotations,axisTitlesPosition_1,backgroundColor_1,_this2.options.chartArea,colors_1,_this2.options.crosshair,curveType_1,dataOpacity_1,enableInteractivity_1,_this2.options.explorer,fontSize_1,fontName_1,forceIFrame_1,_this2.options.hAxis,height_1,_this2.options.legend,lineWidth_1,pointSize_1,selectionMode_1,series_1,theme_1,title_1,titlePosition_1,_this2.options.titleTextStyle,_this2.options.tooltip,_this2.options.trendlines,_this2.options.vAxis,width_1);}();return new Scatter(this.data,this.typeName,newOptions);};Scatter.prototype.trendlines=function trendlines(_trendlines){var _this3=this;var options=function(){var trendlines_1=_core.Helpers.right(_this3.options,"trendlines",function(){var $var10=_trendlines;if($var10!=null){return function(source){return Array.from(source);}($var10);}else{return $var10;}}());return new _options.ScatterChartOptions(_this3.options.aggregationTarget,_this3.options.animation,_this3.options.annotations,_this3.options.axisTitlesPosition,_this3.options.backgroundColor,_this3.options.chartArea,_this3.options.colors,_this3.options.crosshair,_this3.options.curveType,_this3.options.dataOpacity,_this3.options.enableInteractivity,_this3.options.explorer,_this3.options.fontSize,_this3.options.fontName,_this3.options.forceIFrame,_this3.options.hAxis,_this3.options.height,_this3.options.legend,_this3.options.lineWidth,_this3.options.pointSize,_this3.options.selectionMode,_this3.options.series,_this3.options.theme,_this3.options.title,_this3.options.titlePosition,_this3.options.titleTextStyle,_this3.options.tooltip,trendlines_1,_this3.options.vAxis,_this3.options.width);}();return new Scatter(this.data,this.typeName,options);};Scatter.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.ScatterChartOptions(this.options.aggregationTarget,newNested,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.trendlines,this.options.vAxis,this.options.width);return new Scatter(this.data,this.typeName,options);};Scatter.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.ScatterChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.trendlines,this.options.vAxis,this.options.width);return new Scatter(this.data,this.typeName,options);};Scatter.prototype.crosshair=function crosshair(color,opacity,orientation,trigger){var o=this.options.crosshair;var newNested=function(){var color_1=_core.Helpers.right(o,"color",color);var opacity_1=_core.Helpers.right(o,"opacity",opacity);var orientation_1=_core.Helpers.right(o,"orientation",orientation);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartCrosshair(color_1,_core.Helpers.copy(o,"focused"),opacity_1,orientation_1,_core.Helpers.copy(o,"selected"),trigger_1);}();var options=new _options.ScatterChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,newNested,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.trendlines,this.options.vAxis,this.options.width);return new Scatter(this.data,this.typeName,options);};Scatter.prototype.explorer=function explorer(actions,axis,keepInBounds,maxZoomIn,maxZoomOut,zoomDelta){var o=this.options.explorer;var newNested=new _options.ChartExplorer(_core.Helpers.right(o,"actions",function(){var $var11=actions;if($var11!=null){return function(source){return Array.from(source);}($var11);}else{return $var11;}}()),_core.Helpers.right(o,"axis",axis),_core.Helpers.right(o,"keepInBounds",keepInBounds),_core.Helpers.right(o,"maxZoomIn",maxZoomIn),_core.Helpers.right(o,"maxZoomOut",maxZoomOut),_core.Helpers.right(o,"zoomDelta",zoomDelta));var options=new _options.ScatterChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,newNested,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.trendlines,this.options.vAxis,this.options.width);return new Scatter(this.data,this.typeName,options);};Scatter.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var12=ticks;if($var12!=null){return function(source){return Array.from(source);}($var12);}else{return $var12;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.ScatterChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,newNested,this.options.height,this.options.legend,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.trendlines,this.options.vAxis,this.options.width);return new Scatter(this.data,this.typeName,options);};Scatter.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.ScatterChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,newNested,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.trendlines,this.options.vAxis,this.options.width);return new Scatter(this.data,this.typeName,options);};Scatter.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.ScatterChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.trendlines,this.options.vAxis,this.options.width);return new Scatter(this.data,this.typeName,options);};Scatter.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.ScatterChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.trendlines,this.options.vAxis,this.options.width);return new Scatter(this.data,this.typeName,options);};Scatter.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var13=ticks;if($var13!=null){return function(source){return Array.from(source);}($var13);}else{return $var13;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.ScatterChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.lineWidth,this.options.pointSize,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.trendlines,newNested,this.options.width);return new Scatter(this.data,this.typeName,options);};return Scatter;}();exports.Scatter=Scatter;_fableCore.Util.setInterfaces(Scatter.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Scatter");var Column=exports.Column=function(){function Column(data,typeName,options){_classCallCheck(this,Column);this.data=data;this.typeName=typeName;this.options=options;}Column.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Column.prototype.set=function set(aggregationTarget,axisTitlesPosition,backgroundColor,colors,enableInteractivity,focusTarget,fontSize,fontName,height,isStacked,reverseCategories,selectionMode,series,theme,title,titlePosition,vAxes,width){var _this4=this;var newOptions=function(){var aggregationTarget_1=_core.Helpers.right(_this4.options,"aggregationTarget",aggregationTarget);var axisTitlesPosition_1=_core.Helpers.right(_this4.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this4.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this4.options,"colors",function(){var $var14=colors;if($var14!=null){return function(source){return Array.from(source);}($var14);}else{return $var14;}}());var enableInteractivity_1=_core.Helpers.right(_this4.options,"enableInteractivity",enableInteractivity);var focusTarget_1=_core.Helpers.right(_this4.options,"focusTarget",focusTarget);var fontSize_1=_core.Helpers.right(_this4.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this4.options,"fontName",fontName);var height_1=_core.Helpers.right(_this4.options,"height",height);var isStacked_1=_core.Helpers.right(_this4.options,"isStacked",isStacked);var reverseCategories_1=_core.Helpers.right(_this4.options,"reverseCategories",reverseCategories);var selectionMode_1=_core.Helpers.right(_this4.options,"selectionMode",selectionMode);var series_1=_core.Helpers.right(_this4.options,"series",series);var theme_1=_core.Helpers.right(_this4.options,"theme",theme);var title_1=_core.Helpers.right(_this4.options,"title",title);var titlePosition_1=_core.Helpers.right(_this4.options,"titlePosition",titlePosition);var vAxes_1=_core.Helpers.right(_this4.options,"vAxes",vAxes);var width_1=_core.Helpers.right(_this4.options,"width",width);return new _options.ColumnChartOptions(aggregationTarget_1,_this4.options.animation,_this4.options.annotations,axisTitlesPosition_1,backgroundColor_1,_this4.options.bar,_this4.options.chartArea,colors_1,enableInteractivity_1,focusTarget_1,fontSize_1,fontName_1,_this4.options.hAxis,height_1,isStacked_1,_this4.options.legend,reverseCategories_1,selectionMode_1,series_1,theme_1,title_1,titlePosition_1,_this4.options.titleTextStyle,_this4.options.tooltip,vAxes_1,_this4.options.vAxis,width_1);}();return new Column(this.data,this.typeName,newOptions);};Column.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.ColumnChartOptions(this.options.aggregationTarget,newNested,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Column(this.data,this.typeName,options);};Column.prototype.bar=function bar(groupWidth){var o=this.options.bar;var newNested=new _options.GroupWidth(_core.Helpers.right(o,"groupWidth",groupWidth));var options=new _options.ColumnChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Column(this.data,this.typeName,options);};Column.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.ColumnChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,newNested,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Column(this.data,this.typeName,options);};Column.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var15=ticks;if($var15!=null){return function(source){return Array.from(source);}($var15);}else{return $var15;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.ColumnChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,newNested,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Column(this.data,this.typeName,options);};Column.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.ColumnChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.isStacked,newNested,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Column(this.data,this.typeName,options);};Column.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.ColumnChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Column(this.data,this.typeName,options);};Column.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.ColumnChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.vAxes,this.options.vAxis,this.options.width);return new Column(this.data,this.typeName,options);};Column.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var16=ticks;if($var16!=null){return function(source){return Array.from(source);}($var16);}else{return $var16;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.ColumnChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,newNested,this.options.width);return new Column(this.data,this.typeName,options);};return Column;}();_fableCore.Util.setInterfaces(Column.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Column");var Line=exports.Line=function(){function Line(data,typeName,options){_classCallCheck(this,Line);this.data=data;this.typeName=typeName;this.options=options;}Line.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Line.prototype.set=function set(aggregationTarget,axisTitlesPosition,backgroundColor,colors,curveType,dataOpacity,enableInteractivity,focusTarget,fontSize,fontName,height,interpolateNulls,lineWidth,orientation,pointSize,reverseCategories,selectionMode,series,theme,title,titlePosition,vAxes,width){var _this5=this;var newOptions=function(){var aggregationTarget_1=_core.Helpers.right(_this5.options,"aggregationTarget",aggregationTarget);var axisTitlesPosition_1=_core.Helpers.right(_this5.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this5.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this5.options,"colors",function(){var $var17=colors;if($var17!=null){return function(source){return Array.from(source);}($var17);}else{return $var17;}}());var curveType_1=_core.Helpers.right(_this5.options,"curveType",curveType);var dataOpacity_1=_core.Helpers.right(_this5.options,"dataOpacity",dataOpacity);var enableInteractivity_1=_core.Helpers.right(_this5.options,"enableInteractivity",enableInteractivity);var focusTarget_1=_core.Helpers.right(_this5.options,"focusTarget",focusTarget);var fontSize_1=_core.Helpers.right(_this5.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this5.options,"fontName",fontName);var height_1=_core.Helpers.right(_this5.options,"height",height);var interpolateNulls_1=_core.Helpers.right(_this5.options,"interpolateNulls",interpolateNulls);var lineWidth_1=_core.Helpers.right(_this5.options,"lineWidth",lineWidth);var orientation_1=_core.Helpers.right(_this5.options,"orientation",orientation);var pointSize_1=_core.Helpers.right(_this5.options,"pointSize",pointSize);var reverseCategories_1=_core.Helpers.right(_this5.options,"reverseCategories",reverseCategories);var selectionMode_1=_core.Helpers.right(_this5.options,"selectionMode",selectionMode);var series_1=_core.Helpers.right(_this5.options,"series",series);var theme_1=_core.Helpers.right(_this5.options,"theme",theme);var title_1=_core.Helpers.right(_this5.options,"title",title);var titlePosition_1=_core.Helpers.right(_this5.options,"titlePosition",titlePosition);var vAxes_1=_core.Helpers.right(_this5.options,"vAxes",vAxes);var width_1=_core.Helpers.right(_this5.options,"width",width);return new _options.LineChartOptions(aggregationTarget_1,_this5.options.animation,_this5.options.annotations,axisTitlesPosition_1,backgroundColor_1,_this5.options.chartArea,colors_1,_this5.options.crosshair,curveType_1,dataOpacity_1,enableInteractivity_1,_this5.options.explorer,focusTarget_1,fontSize_1,fontName_1,_this5.options.hAxis,height_1,interpolateNulls_1,_this5.options.legend,lineWidth_1,orientation_1,pointSize_1,reverseCategories_1,selectionMode_1,series_1,theme_1,title_1,titlePosition_1,_this5.options.titleTextStyle,_this5.options.tooltip,vAxes_1,_this5.options.vAxis,width_1);}();return new Line(this.data,this.typeName,newOptions);};Line.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.LineChartOptions(this.options.aggregationTarget,newNested,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Line(this.data,this.typeName,options);};Line.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.LineChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Line(this.data,this.typeName,options);};Line.prototype.crosshair=function crosshair(color,opacity,orientation,trigger){var o=this.options.crosshair;var newNested=function(){var color_1=_core.Helpers.right(o,"color",color);var opacity_1=_core.Helpers.right(o,"opacity",opacity);var orientation_1=_core.Helpers.right(o,"orientation",orientation);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartCrosshair(color_1,_core.Helpers.copy(o,"focused"),opacity_1,orientation_1,_core.Helpers.copy(o,"selected"),trigger_1);}();var options=new _options.LineChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,newNested,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Line(this.data,this.typeName,options);};Line.prototype.explorer=function explorer(actions,axis,keepInBounds,maxZoomIn,maxZoomOut,zoomDelta){var o=this.options.explorer;var newNested=new _options.ChartExplorer(_core.Helpers.right(o,"actions",function(){var $var18=actions;if($var18!=null){return function(source){return Array.from(source);}($var18);}else{return $var18;}}()),_core.Helpers.right(o,"axis",axis),_core.Helpers.right(o,"keepInBounds",keepInBounds),_core.Helpers.right(o,"maxZoomIn",maxZoomIn),_core.Helpers.right(o,"maxZoomOut",maxZoomOut),_core.Helpers.right(o,"zoomDelta",zoomDelta));var options=new _options.LineChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,newNested,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Line(this.data,this.typeName,options);};Line.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var19=ticks;if($var19!=null){return function(source){return Array.from(source);}($var19);}else{return $var19;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.LineChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,newNested,this.options.height,this.options.interpolateNulls,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Line(this.data,this.typeName,options);};Line.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.LineChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,newNested,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Line(this.data,this.typeName,options);};Line.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.LineChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Line(this.data,this.typeName,options);};Line.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.LineChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.vAxes,this.options.vAxis,this.options.width);return new Line(this.data,this.typeName,options);};Line.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var20=ticks;if($var20!=null){return function(source){return Array.from(source);}($var20);}else{return $var20;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.LineChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.curveType,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,newNested,this.options.width);return new Line(this.data,this.typeName,options);};return Line;}();_fableCore.Util.setInterfaces(Line.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Line");var Bar=exports.Bar=function(){function Bar(data,typeName,options){_classCallCheck(this,Bar);this.data=data;this.typeName=typeName;this.options=options;}Bar.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Bar.prototype.set=function set(aggregationTarget,axisTitlesPosition,backgroundColor,colors,dataOpacity,enableInteractivity,focusTarget,fontSize,fontName,hAxes,height,isStacked,reverseCategories,series,theme,title,titlePosition,vAxes,width){var _this6=this;var newOptions=function(){var aggregationTarget_1=_core.Helpers.right(_this6.options,"aggregationTarget",aggregationTarget);var axisTitlesPosition_1=_core.Helpers.right(_this6.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this6.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this6.options,"colors",function(){var $var21=colors;if($var21!=null){return function(source){return Array.from(source);}($var21);}else{return $var21;}}());var dataOpacity_1=_core.Helpers.right(_this6.options,"dataOpacity",dataOpacity);var enableInteractivity_1=_core.Helpers.right(_this6.options,"enableInteractivity",enableInteractivity);var focusTarget_1=_core.Helpers.right(_this6.options,"focusTarget",focusTarget);var fontSize_1=_core.Helpers.right(_this6.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this6.options,"fontName",fontName);var hAxes_1=_core.Helpers.right(_this6.options,"hAxes",hAxes);var height_1=_core.Helpers.right(_this6.options,"height",height);var isStacked_1=_core.Helpers.right(_this6.options,"isStacked",isStacked);var reverseCategories_1=_core.Helpers.right(_this6.options,"reverseCategories",reverseCategories);var series_1=_core.Helpers.right(_this6.options,"series",series);var theme_1=_core.Helpers.right(_this6.options,"theme",theme);var title_1=_core.Helpers.right(_this6.options,"title",title);var titlePosition_1=_core.Helpers.right(_this6.options,"titlePosition",titlePosition);var vAxes_1=_core.Helpers.right(_this6.options,"vAxes",vAxes);var width_1=_core.Helpers.right(_this6.options,"width",width);return new _options.BarChartOptions(aggregationTarget_1,_this6.options.animation,_this6.options.annotations,axisTitlesPosition_1,backgroundColor_1,_this6.options.bar,_this6.options.chartArea,colors_1,dataOpacity_1,enableInteractivity_1,focusTarget_1,fontSize_1,fontName_1,hAxes_1,_this6.options.hAxis,height_1,isStacked_1,_this6.options.legend,reverseCategories_1,series_1,theme_1,title_1,titlePosition_1,_this6.options.titleTextStyle,_this6.options.tooltip,vAxes_1,_this6.options.vAxis,width_1);}();return new Bar(this.data,this.typeName,newOptions);};Bar.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.BarChartOptions(this.options.aggregationTarget,newNested,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxes,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Bar(this.data,this.typeName,options);};Bar.prototype.bar=function bar(groupWidth){var o=this.options.bar;var newNested=new _options.GroupWidth(_core.Helpers.right(o,"groupWidth",groupWidth));var options=new _options.BarChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxes,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Bar(this.data,this.typeName,options);};Bar.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.BarChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,newNested,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxes,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Bar(this.data,this.typeName,options);};Bar.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var22=ticks;if($var22!=null){return function(source){return Array.from(source);}($var22);}else{return $var22;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.BarChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxes,newNested,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Bar(this.data,this.typeName,options);};Bar.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.BarChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxes,this.options.hAxis,this.options.height,this.options.isStacked,newNested,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Bar(this.data,this.typeName,options);};Bar.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.BarChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxes,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Bar(this.data,this.typeName,options);};Bar.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.BarChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxes,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.vAxes,this.options.vAxis,this.options.width);return new Bar(this.data,this.typeName,options);};Bar.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var23=ticks;if($var23!=null){return function(source){return Array.from(source);}($var23);}else{return $var23;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.BarChartOptions(this.options.aggregationTarget,this.options.animation,this.options.annotations,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxes,this.options.hAxis,this.options.height,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,newNested,this.options.width);return new Bar(this.data,this.typeName,options);};return Bar;}();_fableCore.Util.setInterfaces(Bar.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Bar");var Histogram=exports.Histogram=function(){function Histogram(data,typeName,options){_classCallCheck(this,Histogram);this.data=data;this.typeName=typeName;this.options=options;}Histogram.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Histogram.prototype.set=function set(axisTitlesPosition,backgroundColor,colors,dataOpacity,enableInteractivity,focusTarget,fontSize,fontName,height,interpolateNulls,isStacked,orientation,reverseCategories,series,theme,title,titlePosition,vAxes,width){var _this7=this;var newOptions=function(){var axisTitlesPosition_1=_core.Helpers.right(_this7.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this7.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this7.options,"colors",function(){var $var24=colors;if($var24!=null){return function(source){return Array.from(source);}($var24);}else{return $var24;}}());var dataOpacity_1=_core.Helpers.right(_this7.options,"dataOpacity",dataOpacity);var enableInteractivity_1=_core.Helpers.right(_this7.options,"enableInteractivity",enableInteractivity);var focusTarget_1=_core.Helpers.right(_this7.options,"focusTarget",focusTarget);var fontSize_1=_core.Helpers.right(_this7.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this7.options,"fontName",fontName);var height_1=_core.Helpers.right(_this7.options,"height",height);var interpolateNulls_1=_core.Helpers.right(_this7.options,"interpolateNulls",interpolateNulls);var isStacked_1=_core.Helpers.right(_this7.options,"isStacked",isStacked);var orientation_1=_core.Helpers.right(_this7.options,"orientation",orientation);var reverseCategories_1=_core.Helpers.right(_this7.options,"reverseCategories",reverseCategories);var series_1=_core.Helpers.right(_this7.options,"series",series);var theme_1=_core.Helpers.right(_this7.options,"theme",theme);var title_1=_core.Helpers.right(_this7.options,"title",title);var titlePosition_1=_core.Helpers.right(_this7.options,"titlePosition",titlePosition);var vAxes_1=_core.Helpers.right(_this7.options,"vAxes",vAxes);var width_1=_core.Helpers.right(_this7.options,"width",width);return new _options.HistogramOptions(_this7.options.animation,axisTitlesPosition_1,backgroundColor_1,_this7.options.bar,_this7.options.chartArea,colors_1,dataOpacity_1,enableInteractivity_1,focusTarget_1,fontSize_1,fontName_1,_this7.options.hAxis,_this7.options.histogram,height_1,interpolateNulls_1,isStacked_1,_this7.options.legend,orientation_1,reverseCategories_1,series_1,theme_1,title_1,titlePosition_1,_this7.options.titleTextStyle,_this7.options.tooltip,vAxes_1,_this7.options.vAxis,width_1);}();return new Histogram(this.data,this.typeName,newOptions);};Histogram.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.HistogramOptions(newNested,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.histogram,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Histogram(this.data,this.typeName,options);};Histogram.prototype.bar=function bar(groupWidth){var o=this.options.bar;var newNested=new _options.GroupWidth(_core.Helpers.right(o,"groupWidth",groupWidth));var options=new _options.HistogramOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.histogram,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Histogram(this.data,this.typeName,options);};Histogram.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.HistogramOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,newNested,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.histogram,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Histogram(this.data,this.typeName,options);};Histogram.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var25=ticks;if($var25!=null){return function(source){return Array.from(source);}($var25);}else{return $var25;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.HistogramOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,newNested,this.options.histogram,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Histogram(this.data,this.typeName,options);};Histogram.prototype.histogram=function histogram(bucketSize,hideBucketItems,lastBucketPercentile){var o=this.options.histogram;var newNested=new _options.HistogramHistogram(_core.Helpers.right(o,"bucketSize",bucketSize),_core.Helpers.right(o,"hideBucketItems",hideBucketItems),_core.Helpers.right(o,"lastBucketPercentile",lastBucketPercentile));var options=new _options.HistogramOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,newNested,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Histogram(this.data,this.typeName,options);};Histogram.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.HistogramOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.histogram,this.options.height,this.options.interpolateNulls,this.options.isStacked,newNested,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Histogram(this.data,this.typeName,options);};Histogram.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.HistogramOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.histogram,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Histogram(this.data,this.typeName,options);};Histogram.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.HistogramOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.histogram,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.vAxes,this.options.vAxis,this.options.width);return new Histogram(this.data,this.typeName,options);};Histogram.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var26=ticks;if($var26!=null){return function(source){return Array.from(source);}($var26);}else{return $var26;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.HistogramOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.chartArea,this.options.colors,this.options.dataOpacity,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.histogram,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,newNested,this.options.width);return new Histogram(this.data,this.typeName,options);};return Histogram;}();_fableCore.Util.setInterfaces(Histogram.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Histogram");var Area=exports.Area=function(){function Area(data,typeName,options){_classCallCheck(this,Area);this.data=data;this.typeName=typeName;this.options=options;}Area.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Area.prototype.set=function set(aggregationTarget,areaOpacity,axisTitlesPosition,backgroundColor,colors,dataOpacity,enableInteractivity,focusTarget,fontSize,fontName,height,interpolateNulls,isStacked,lineWidth,orientation,pointSize,reverseCategories,selectionMode,series,theme,title,titlePosition,vAxes,width){var _this8=this;var newOptions=function(){var aggregationTarget_1=_core.Helpers.right(_this8.options,"aggregationTarget",aggregationTarget);var areaOpacity_1=_core.Helpers.right(_this8.options,"areaOpacity",areaOpacity);var axisTitlesPosition_1=_core.Helpers.right(_this8.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this8.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this8.options,"colors",function(){var $var27=colors;if($var27!=null){return function(source){return Array.from(source);}($var27);}else{return $var27;}}());var dataOpacity_1=_core.Helpers.right(_this8.options,"dataOpacity",dataOpacity);var enableInteractivity_1=_core.Helpers.right(_this8.options,"enableInteractivity",enableInteractivity);var focusTarget_1=_core.Helpers.right(_this8.options,"focusTarget",focusTarget);var fontSize_1=_core.Helpers.right(_this8.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this8.options,"fontName",fontName);var height_1=_core.Helpers.right(_this8.options,"height",height);var interpolateNulls_1=_core.Helpers.right(_this8.options,"interpolateNulls",interpolateNulls);var isStacked_1=_core.Helpers.right(_this8.options,"isStacked",isStacked);var lineWidth_1=_core.Helpers.right(_this8.options,"lineWidth",lineWidth);var orientation_1=_core.Helpers.right(_this8.options,"orientation",orientation);var pointSize_1=_core.Helpers.right(_this8.options,"pointSize",pointSize);var reverseCategories_1=_core.Helpers.right(_this8.options,"reverseCategories",reverseCategories);var selectionMode_1=_core.Helpers.right(_this8.options,"selectionMode",selectionMode);var series_1=_core.Helpers.right(_this8.options,"series",series);var theme_1=_core.Helpers.right(_this8.options,"theme",theme);var title_1=_core.Helpers.right(_this8.options,"title",title);var titlePosition_1=_core.Helpers.right(_this8.options,"titlePosition",titlePosition);var vAxes_1=_core.Helpers.right(_this8.options,"vAxes",vAxes);var width_1=_core.Helpers.right(_this8.options,"width",width);return new _options.AreaChartOptions(aggregationTarget_1,_this8.options.animation,areaOpacity_1,axisTitlesPosition_1,backgroundColor_1,_this8.options.chartArea,colors_1,_this8.options.crosshair,dataOpacity_1,enableInteractivity_1,_this8.options.explorer,focusTarget_1,fontSize_1,fontName_1,_this8.options.hAxis,height_1,interpolateNulls_1,isStacked_1,_this8.options.legend,lineWidth_1,orientation_1,pointSize_1,reverseCategories_1,selectionMode_1,series_1,theme_1,title_1,titlePosition_1,_this8.options.titleTextStyle,_this8.options.tooltip,vAxes_1,_this8.options.vAxis,width_1);}();return new Area(this.data,this.typeName,newOptions);};Area.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.AreaChartOptions(this.options.aggregationTarget,newNested,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Area(this.data,this.typeName,options);};Area.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.AreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.colors,this.options.crosshair,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Area(this.data,this.typeName,options);};Area.prototype.crosshair=function crosshair(color,opacity,orientation,trigger){var o=this.options.crosshair;var newNested=function(){var color_1=_core.Helpers.right(o,"color",color);var opacity_1=_core.Helpers.right(o,"opacity",opacity);var orientation_1=_core.Helpers.right(o,"orientation",orientation);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartCrosshair(color_1,_core.Helpers.copy(o,"focused"),opacity_1,orientation_1,_core.Helpers.copy(o,"selected"),trigger_1);}();var options=new _options.AreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,newNested,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Area(this.data,this.typeName,options);};Area.prototype.explorer=function explorer(actions,axis,keepInBounds,maxZoomIn,maxZoomOut,zoomDelta){var o=this.options.explorer;var newNested=new _options.ChartExplorer(_core.Helpers.right(o,"actions",function(){var $var28=actions;if($var28!=null){return function(source){return Array.from(source);}($var28);}else{return $var28;}}()),_core.Helpers.right(o,"axis",axis),_core.Helpers.right(o,"keepInBounds",keepInBounds),_core.Helpers.right(o,"maxZoomIn",maxZoomIn),_core.Helpers.right(o,"maxZoomOut",maxZoomOut),_core.Helpers.right(o,"zoomDelta",zoomDelta));var options=new _options.AreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.dataOpacity,this.options.enableInteractivity,newNested,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Area(this.data,this.typeName,options);};Area.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var29=ticks;if($var29!=null){return function(source){return Array.from(source);}($var29);}else{return $var29;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.AreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,newNested,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Area(this.data,this.typeName,options);};Area.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.AreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,newNested,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Area(this.data,this.typeName,options);};Area.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.AreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Area(this.data,this.typeName,options);};Area.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.AreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.vAxes,this.options.vAxis,this.options.width);return new Area(this.data,this.typeName,options);};Area.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var30=ticks;if($var30!=null){return function(source){return Array.from(source);}($var30);}else{return $var30;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.AreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.crosshair,this.options.dataOpacity,this.options.enableInteractivity,this.options.explorer,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.lineWidth,this.options.orientation,this.options.pointSize,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,newNested,this.options.width);return new Area(this.data,this.typeName,options);};return Area;}();_fableCore.Util.setInterfaces(Area.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Area");var Annotation=exports.Annotation=function(){function Annotation(data,typeName,options){_classCallCheck(this,Annotation);this.data=data;this.typeName=typeName;this.options=options;}Annotation.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Annotation.prototype.set=function set(allowHtml,allValuesSuffix,annotationsWidth,colors,dateFormat,displayAnnotations,displayAnnotationsFilter,displayDateTimeBarSeparator,displayExactValues,displayLegendDots,displayLegendValues,displayRangeSelector,displayZoomButtons,fill,legendPosition,max,min,numberFormats,scaleColumns,scaleFormat,scaleType,thickness,zoomEndTime,zoomStartTime){var newOptions=new _options.AnnotationChartOptions(_core.Helpers.right(this.options,"allowHtml",allowHtml),_core.Helpers.right(this.options,"allValuesSuffix",allValuesSuffix),_core.Helpers.right(this.options,"annotationsWidth",annotationsWidth),_core.Helpers.right(this.options,"colors",function(){var $var31=colors;if($var31!=null){return function(source){return Array.from(source);}($var31);}else{return $var31;}}()),_core.Helpers.right(this.options,"dateFormat",dateFormat),_core.Helpers.right(this.options,"displayAnnotations",displayAnnotations),_core.Helpers.right(this.options,"displayAnnotationsFilter",displayAnnotationsFilter),_core.Helpers.right(this.options,"displayDateTimeBarSeparator",displayDateTimeBarSeparator),_core.Helpers.right(this.options,"displayExactValues",displayExactValues),_core.Helpers.right(this.options,"displayLegendDots",displayLegendDots),_core.Helpers.right(this.options,"displayLegendValues",displayLegendValues),_core.Helpers.right(this.options,"displayRangeSelector",displayRangeSelector),_core.Helpers.right(this.options,"displayZoomButtons",displayZoomButtons),_core.Helpers.right(this.options,"fill",fill),_core.Helpers.right(this.options,"legendPosition",legendPosition),_core.Helpers.right(this.options,"max",max),_core.Helpers.right(this.options,"min",min),_core.Helpers.right(this.options,"numberFormats",numberFormats),_core.Helpers.right(this.options,"scaleColumns",function(){var $var32=scaleColumns;if($var32!=null){return function(source){return Float64Array.from(source);}($var32);}else{return $var32;}}()),_core.Helpers.right(this.options,"scaleFormat",scaleFormat),_core.Helpers.right(this.options,"scaleType",scaleType),_core.Helpers.right(this.options,"thickness",thickness),_core.Helpers.right(this.options,"zoomEndTime",zoomEndTime),_core.Helpers.right(this.options,"zoomStartTime",zoomStartTime));return new Annotation(this.data,this.typeName,newOptions);};return Annotation;}();_fableCore.Util.setInterfaces(Annotation.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Annotation");var SteppedArea=exports.SteppedArea=function(){function SteppedArea(data,typeName,options){_classCallCheck(this,SteppedArea);this.data=data;this.typeName=typeName;this.options=options;}SteppedArea.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};SteppedArea.prototype.set=function set(aggregationTarget,areaOpacity,axisTitlesPosition,backgroundColor,colors,connectSteps,enableInteractivity,focusTarget,fontSize,fontName,height,interpolateNulls,isStacked,reverseCategories,selectionMode,series,theme,title,titlePosition,vAxes,width){var _this9=this;var newOptions=function(){var aggregationTarget_1=_core.Helpers.right(_this9.options,"aggregationTarget",aggregationTarget);var areaOpacity_1=_core.Helpers.right(_this9.options,"areaOpacity",areaOpacity);var axisTitlesPosition_1=_core.Helpers.right(_this9.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this9.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this9.options,"colors",function(){var $var33=colors;if($var33!=null){return function(source){return Array.from(source);}($var33);}else{return $var33;}}());var connectSteps_1=_core.Helpers.right(_this9.options,"connectSteps",connectSteps);var enableInteractivity_1=_core.Helpers.right(_this9.options,"enableInteractivity",enableInteractivity);var focusTarget_1=_core.Helpers.right(_this9.options,"focusTarget",focusTarget);var fontSize_1=_core.Helpers.right(_this9.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this9.options,"fontName",fontName);var height_1=_core.Helpers.right(_this9.options,"height",height);var interpolateNulls_1=_core.Helpers.right(_this9.options,"interpolateNulls",interpolateNulls);var isStacked_1=_core.Helpers.right(_this9.options,"isStacked",isStacked);var reverseCategories_1=_core.Helpers.right(_this9.options,"reverseCategories",reverseCategories);var selectionMode_1=_core.Helpers.right(_this9.options,"selectionMode",selectionMode);var series_1=_core.Helpers.right(_this9.options,"series",series);var theme_1=_core.Helpers.right(_this9.options,"theme",theme);var title_1=_core.Helpers.right(_this9.options,"title",title);var titlePosition_1=_core.Helpers.right(_this9.options,"titlePosition",titlePosition);var vAxes_1=_core.Helpers.right(_this9.options,"vAxes",vAxes);var width_1=_core.Helpers.right(_this9.options,"width",width);return new _options.SteppedAreaChartOptions(aggregationTarget_1,_this9.options.animation,areaOpacity_1,axisTitlesPosition_1,backgroundColor_1,_this9.options.chartArea,colors_1,connectSteps_1,enableInteractivity_1,focusTarget_1,fontSize_1,fontName_1,_this9.options.hAxis,height_1,interpolateNulls_1,isStacked_1,_this9.options.legend,reverseCategories_1,selectionMode_1,series_1,theme_1,title_1,titlePosition_1,_this9.options.titleTextStyle,_this9.options.tooltip,vAxes_1,_this9.options.vAxis,width_1);}();return new SteppedArea(this.data,this.typeName,newOptions);};SteppedArea.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.SteppedAreaChartOptions(this.options.aggregationTarget,newNested,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.connectSteps,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new SteppedArea(this.data,this.typeName,options);};SteppedArea.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.SteppedAreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.colors,this.options.connectSteps,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new SteppedArea(this.data,this.typeName,options);};SteppedArea.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var34=ticks;if($var34!=null){return function(source){return Array.from(source);}($var34);}else{return $var34;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.SteppedAreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.connectSteps,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,newNested,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new SteppedArea(this.data,this.typeName,options);};SteppedArea.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.SteppedAreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.connectSteps,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,newNested,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new SteppedArea(this.data,this.typeName,options);};SteppedArea.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.SteppedAreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.connectSteps,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new SteppedArea(this.data,this.typeName,options);};SteppedArea.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.SteppedAreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.connectSteps,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.vAxes,this.options.vAxis,this.options.width);return new SteppedArea(this.data,this.typeName,options);};SteppedArea.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var35=ticks;if($var35!=null){return function(source){return Array.from(source);}($var35);}else{return $var35;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.SteppedAreaChartOptions(this.options.aggregationTarget,this.options.animation,this.options.areaOpacity,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.connectSteps,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.interpolateNulls,this.options.isStacked,this.options.legend,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,newNested,this.options.width);return new SteppedArea(this.data,this.typeName,options);};return SteppedArea;}();_fableCore.Util.setInterfaces(SteppedArea.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.SteppedArea");var Pie=exports.Pie=function(){function Pie(data,typeName,options){_classCallCheck(this,Pie);this.data=data;this.typeName=typeName;this.options=options;}Pie.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Pie.prototype.set=function set(backgroundColor,colors,enableInteractivity,fontSize,fontName,height,is3D,pieHole,pieSliceBorderColor,pieSliceText,pieStartAngle,reverseCategories,pieResidueSliceColor,pieResidueSliceLabel,slices,sliceVisibilityThreshold,title,width){var _this10=this;var newOptions=function(){var backgroundColor_1=_core.Helpers.right(_this10.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this10.options,"colors",function(){var $var36=colors;if($var36!=null){return function(source){return Array.from(source);}($var36);}else{return $var36;}}());var enableInteractivity_1=_core.Helpers.right(_this10.options,"enableInteractivity",enableInteractivity);var fontSize_1=_core.Helpers.right(_this10.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this10.options,"fontName",fontName);var height_1=_core.Helpers.right(_this10.options,"height",height);var is3D_1=_core.Helpers.right(_this10.options,"is3D",is3D);var pieHole_1=_core.Helpers.right(_this10.options,"pieHole",pieHole);var pieSliceBorderColor_1=_core.Helpers.right(_this10.options,"pieSliceBorderColor",pieSliceBorderColor);var pieSliceText_1=_core.Helpers.right(_this10.options,"pieSliceText",pieSliceText);var pieStartAngle_1=_core.Helpers.right(_this10.options,"pieStartAngle",pieStartAngle);var reverseCategories_1=_core.Helpers.right(_this10.options,"reverseCategories",reverseCategories);var pieResidueSliceColor_1=_core.Helpers.right(_this10.options,"pieResidueSliceColor",pieResidueSliceColor);var pieResidueSliceLabel_1=_core.Helpers.right(_this10.options,"pieResidueSliceLabel",pieResidueSliceLabel);var slices_1=_core.Helpers.right(_this10.options,"slices",slices);var sliceVisibilityThreshold_1=_core.Helpers.right(_this10.options,"sliceVisibilityThreshold",sliceVisibilityThreshold);var title_1=_core.Helpers.right(_this10.options,"title",title);var width_1=_core.Helpers.right(_this10.options,"width",width);return new _options.PieChartOptions(backgroundColor_1,_this10.options.chartArea,colors_1,enableInteractivity_1,fontSize_1,fontName_1,height_1,is3D_1,_this10.options.legend,pieHole_1,pieSliceBorderColor_1,pieSliceText_1,_this10.options.pieSliceTextStyle,pieStartAngle_1,reverseCategories_1,pieResidueSliceColor_1,pieResidueSliceLabel_1,slices_1,sliceVisibilityThreshold_1,title_1,_this10.options.titleTextStyle,_this10.options.tooltip,width_1);}();return new Pie(this.data,this.typeName,newOptions);};Pie.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.PieChartOptions(this.options.backgroundColor,newNested,this.options.colors,this.options.enableInteractivity,this.options.fontSize,this.options.fontName,this.options.height,this.options.is3D,this.options.legend,this.options.pieHole,this.options.pieSliceBorderColor,this.options.pieSliceText,this.options.pieSliceTextStyle,this.options.pieStartAngle,this.options.reverseCategories,this.options.pieResidueSliceColor,this.options.pieResidueSliceLabel,this.options.slices,this.options.sliceVisibilityThreshold,this.options.title,this.options.titleTextStyle,this.options.tooltip,this.options.width);return new Pie(this.data,this.typeName,options);};Pie.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.PieChartOptions(this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.fontSize,this.options.fontName,this.options.height,this.options.is3D,newNested,this.options.pieHole,this.options.pieSliceBorderColor,this.options.pieSliceText,this.options.pieSliceTextStyle,this.options.pieStartAngle,this.options.reverseCategories,this.options.pieResidueSliceColor,this.options.pieResidueSliceLabel,this.options.slices,this.options.sliceVisibilityThreshold,this.options.title,this.options.titleTextStyle,this.options.tooltip,this.options.width);return new Pie(this.data,this.typeName,options);};Pie.prototype.pieSliceTextStyle=function pieSliceTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.pieSliceTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.PieChartOptions(this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.fontSize,this.options.fontName,this.options.height,this.options.is3D,this.options.legend,this.options.pieHole,this.options.pieSliceBorderColor,this.options.pieSliceText,newNested,this.options.pieStartAngle,this.options.reverseCategories,this.options.pieResidueSliceColor,this.options.pieResidueSliceLabel,this.options.slices,this.options.sliceVisibilityThreshold,this.options.title,this.options.titleTextStyle,this.options.tooltip,this.options.width);return new Pie(this.data,this.typeName,options);};Pie.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.PieChartOptions(this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.fontSize,this.options.fontName,this.options.height,this.options.is3D,this.options.legend,this.options.pieHole,this.options.pieSliceBorderColor,this.options.pieSliceText,this.options.pieSliceTextStyle,this.options.pieStartAngle,this.options.reverseCategories,this.options.pieResidueSliceColor,this.options.pieResidueSliceLabel,this.options.slices,this.options.sliceVisibilityThreshold,this.options.title,newNested,this.options.tooltip,this.options.width);return new Pie(this.data,this.typeName,options);};Pie.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.PieChartOptions(this.options.backgroundColor,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.fontSize,this.options.fontName,this.options.height,this.options.is3D,this.options.legend,this.options.pieHole,this.options.pieSliceBorderColor,this.options.pieSliceText,this.options.pieSliceTextStyle,this.options.pieStartAngle,this.options.reverseCategories,this.options.pieResidueSliceColor,this.options.pieResidueSliceLabel,this.options.slices,this.options.sliceVisibilityThreshold,this.options.title,this.options.titleTextStyle,newNested,this.options.width);return new Pie(this.data,this.typeName,options);};return Pie;}();_fableCore.Util.setInterfaces(Pie.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Pie");var Bubble=exports.Bubble=function(){function Bubble(data,typeName,options){_classCallCheck(this,Bubble);this.data=data;this.typeName=typeName;this.options=options;}Bubble.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Bubble.prototype.set=function set(axisTitlesPosition,backgroundColor,colors,enableInteractivity,fontSize,fontName,forceIFrame,height,selectionMode,series,sortBubblesBySize,theme,title,titlePosition,width){var _this11=this;var newOptions=function(){var axisTitlesPosition_1=_core.Helpers.right(_this11.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this11.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this11.options,"colors",function(){var $var37=colors;if($var37!=null){return function(source){return Array.from(source);}($var37);}else{return $var37;}}());var enableInteractivity_1=_core.Helpers.right(_this11.options,"enableInteractivity",enableInteractivity);var fontSize_1=_core.Helpers.right(_this11.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this11.options,"fontName",fontName);var forceIFrame_1=_core.Helpers.right(_this11.options,"forceIFrame",forceIFrame);var height_1=_core.Helpers.right(_this11.options,"height",height);var selectionMode_1=_core.Helpers.right(_this11.options,"selectionMode",selectionMode);var series_1=_core.Helpers.right(_this11.options,"series",series);var sortBubblesBySize_1=_core.Helpers.right(_this11.options,"sortBubblesBySize",sortBubblesBySize);var theme_1=_core.Helpers.right(_this11.options,"theme",theme);var title_1=_core.Helpers.right(_this11.options,"title",title);var titlePosition_1=_core.Helpers.right(_this11.options,"titlePosition",titlePosition);var width_1=_core.Helpers.right(_this11.options,"width",width);return new _options.BubbleChartOptions(_this11.options.animation,axisTitlesPosition_1,backgroundColor_1,_this11.options.bubble,_this11.options.chartArea,colors_1,_this11.options.colorAxis,enableInteractivity_1,_this11.options.explorer,fontSize_1,fontName_1,forceIFrame_1,_this11.options.hAxis,height_1,_this11.options.legend,selectionMode_1,series_1,_this11.options.sizeAxis,sortBubblesBySize_1,theme_1,title_1,titlePosition_1,_this11.options.titleTextStyle,_this11.options.tooltip,_this11.options.vAxis,width_1);}();return new Bubble(this.data,this.typeName,newOptions);};Bubble.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.BubbleChartOptions(newNested,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.bubble=function bubble(opacity,stroke){var o=this.options.bubble;var newNested=new _options.ChartBubble(_core.Helpers.right(o,"opacity",opacity),_core.Helpers.right(o,"stroke",stroke),_core.Helpers.copy(o,"textStyle"));var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,newNested,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.colorAxis=function colorAxis(minValue,maxValue,values,colors){var o=this.options.colorAxis;var newNested=new _options.ChartColorAxis(_core.Helpers.right(o,"minValue",minValue),_core.Helpers.right(o,"maxValue",maxValue),_core.Helpers.right(o,"values",function(){var $var38=values;if($var38!=null){return function(source){return Float64Array.from(source);}($var38);}else{return $var38;}}()),_core.Helpers.right(o,"colors",function(){var $var39=colors;if($var39!=null){return function(source){return Array.from(source);}($var39);}else{return $var39;}}()),_core.Helpers.copy(o,"legend"));var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,newNested,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.explorer=function explorer(actions,axis,keepInBounds,maxZoomIn,maxZoomOut,zoomDelta){var o=this.options.explorer;var newNested=new _options.ChartExplorer(_core.Helpers.right(o,"actions",function(){var $var40=actions;if($var40!=null){return function(source){return Array.from(source);}($var40);}else{return $var40;}}()),_core.Helpers.right(o,"axis",axis),_core.Helpers.right(o,"keepInBounds",keepInBounds),_core.Helpers.right(o,"maxZoomIn",maxZoomIn),_core.Helpers.right(o,"maxZoomOut",maxZoomOut),_core.Helpers.right(o,"zoomDelta",zoomDelta));var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,newNested,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var41=ticks;if($var41!=null){return function(source){return Array.from(source);}($var41);}else{return $var41;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,newNested,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,newNested,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.sizeAxis=function sizeAxis(maxSize,maxValue,minSize,minValue){var o=this.options.sizeAxis;var newNested=new _options.ChartSizeAxis(_core.Helpers.right(o,"maxSize",maxSize),_core.Helpers.right(o,"maxValue",maxValue),_core.Helpers.right(o,"minSize",minSize),_core.Helpers.right(o,"minValue",minValue));var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,newNested,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.vAxis,this.options.width);return new Bubble(this.data,this.typeName,options);};Bubble.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var42=ticks;if($var42!=null){return function(source){return Array.from(source);}($var42);}else{return $var42;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.BubbleChartOptions(this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bubble,this.options.chartArea,this.options.colors,this.options.colorAxis,this.options.enableInteractivity,this.options.explorer,this.options.fontSize,this.options.fontName,this.options.forceIFrame,this.options.hAxis,this.options.height,this.options.legend,this.options.selectionMode,this.options.series,this.options.sizeAxis,this.options.sortBubblesBySize,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,newNested,this.options.width);return new Bubble(this.data,this.typeName,options);};return Bubble;}();_fableCore.Util.setInterfaces(Bubble.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Bubble");var TreeMap=exports.TreeMap=function(){function TreeMap(data,typeName,options){_classCallCheck(this,TreeMap);this.data=data;this.typeName=typeName;this.options=options;}TreeMap.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};TreeMap.prototype.set=function set(fontColor,fontFamily,fontSize,forceIFrame,headerColor,headerHeight,headerHighlightColor,hintOpacity,maxColor,maxDepth,maxHighlightColor,maxPostDepth,maxColorValue,midColor,midHighlightColor,minColor,minHighlightColor,minColorValue,showScale,showTooltips,title,useWeightedAverageForAggregation){var _this12=this;var newOptions=function(){var fontColor_1=_core.Helpers.right(_this12.options,"fontColor",fontColor);var fontFamily_1=_core.Helpers.right(_this12.options,"fontFamily",fontFamily);var fontSize_1=_core.Helpers.right(_this12.options,"fontSize",fontSize);var forceIFrame_1=_core.Helpers.right(_this12.options,"forceIFrame",forceIFrame);var headerColor_1=_core.Helpers.right(_this12.options,"headerColor",headerColor);var headerHeight_1=_core.Helpers.right(_this12.options,"headerHeight",headerHeight);var headerHighlightColor_1=_core.Helpers.right(_this12.options,"headerHighlightColor",headerHighlightColor);var hintOpacity_1=_core.Helpers.right(_this12.options,"hintOpacity",hintOpacity);var maxColor_1=_core.Helpers.right(_this12.options,"maxColor",maxColor);var maxDepth_1=_core.Helpers.right(_this12.options,"maxDepth",maxDepth);var maxHighlightColor_1=_core.Helpers.right(_this12.options,"maxHighlightColor",maxHighlightColor);var maxPostDepth_1=_core.Helpers.right(_this12.options,"maxPostDepth",maxPostDepth);var maxColorValue_1=_core.Helpers.right(_this12.options,"maxColorValue",maxColorValue);var midColor_1=_core.Helpers.right(_this12.options,"midColor",midColor);var midHighlightColor_1=_core.Helpers.right(_this12.options,"midHighlightColor",midHighlightColor);var minColor_1=_core.Helpers.right(_this12.options,"minColor",minColor);var minHighlightColor_1=_core.Helpers.right(_this12.options,"minHighlightColor",minHighlightColor);var minColorValue_1=_core.Helpers.right(_this12.options,"minColorValue",minColorValue);var showScale_1=_core.Helpers.right(_this12.options,"showScale",showScale);var showTooltips_1=_core.Helpers.right(_this12.options,"showTooltips",showTooltips);var title_1=_core.Helpers.right(_this12.options,"title",title);var useWeightedAverageForAggregation_1=_core.Helpers.right(_this12.options,"useWeightedAverageForAggregation",useWeightedAverageForAggregation);return new _options.TreeMapOptions(fontColor_1,fontFamily_1,fontSize_1,forceIFrame_1,headerColor_1,headerHeight_1,headerHighlightColor_1,hintOpacity_1,maxColor_1,maxDepth_1,maxHighlightColor_1,maxPostDepth_1,maxColorValue_1,midColor_1,midHighlightColor_1,minColor_1,minHighlightColor_1,minColorValue_1,showScale_1,showTooltips_1,_this12.options.textStyle,title_1,_this12.options.titleTextStyle,useWeightedAverageForAggregation_1);}();return new TreeMap(this.data,this.typeName,newOptions);};TreeMap.prototype.textStyle=function textStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.textStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.TreeMapOptions(this.options.fontColor,this.options.fontFamily,this.options.fontSize,this.options.forceIFrame,this.options.headerColor,this.options.headerHeight,this.options.headerHighlightColor,this.options.hintOpacity,this.options.maxColor,this.options.maxDepth,this.options.maxHighlightColor,this.options.maxPostDepth,this.options.maxColorValue,this.options.midColor,this.options.midHighlightColor,this.options.minColor,this.options.minHighlightColor,this.options.minColorValue,this.options.showScale,this.options.showTooltips,newNested,this.options.title,this.options.titleTextStyle,this.options.useWeightedAverageForAggregation);return new TreeMap(this.data,this.typeName,options);};TreeMap.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.TreeMapOptions(this.options.fontColor,this.options.fontFamily,this.options.fontSize,this.options.forceIFrame,this.options.headerColor,this.options.headerHeight,this.options.headerHighlightColor,this.options.hintOpacity,this.options.maxColor,this.options.maxDepth,this.options.maxHighlightColor,this.options.maxPostDepth,this.options.maxColorValue,this.options.midColor,this.options.midHighlightColor,this.options.minColor,this.options.minHighlightColor,this.options.minColorValue,this.options.showScale,this.options.showTooltips,this.options.textStyle,this.options.title,newNested,this.options.useWeightedAverageForAggregation);return new TreeMap(this.data,this.typeName,options);};return TreeMap;}();_fableCore.Util.setInterfaces(TreeMap.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.TreeMap");var Table=exports.Table=function(){function Table(data,typeName,options){_classCallCheck(this,Table);this.data=data;this.typeName=typeName;this.options=options;}Table.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Table.prototype.set=function set(allowHtml,alternatingRowStyle,firstRowNumber,height,page,pageSize,rtlTable,scrollLeftStartPosition,showRowNumber,sort,sortAscending,sortColumn,startPage,width){var _this13=this;var newOptions=function(){var allowHtml_1=_core.Helpers.right(_this13.options,"allowHtml",allowHtml);var alternatingRowStyle_1=_core.Helpers.right(_this13.options,"alternatingRowStyle",alternatingRowStyle);var firstRowNumber_1=_core.Helpers.right(_this13.options,"firstRowNumber",firstRowNumber);var height_1=_core.Helpers.right(_this13.options,"height",height);var page_1=_core.Helpers.right(_this13.options,"page",page);var pageSize_1=_core.Helpers.right(_this13.options,"pageSize",pageSize);var rtlTable_1=_core.Helpers.right(_this13.options,"rtlTable",rtlTable);var scrollLeftStartPosition_1=_core.Helpers.right(_this13.options,"scrollLeftStartPosition",scrollLeftStartPosition);var showRowNumber_1=_core.Helpers.right(_this13.options,"showRowNumber",showRowNumber);var sort_1=_core.Helpers.right(_this13.options,"sort",sort);var sortAscending_1=_core.Helpers.right(_this13.options,"sortAscending",sortAscending);var sortColumn_1=_core.Helpers.right(_this13.options,"sortColumn",sortColumn);var startPage_1=_core.Helpers.right(_this13.options,"startPage",startPage);var width_1=_core.Helpers.right(_this13.options,"width",width);return new _options.TableOptions(allowHtml_1,alternatingRowStyle_1,_this13.options.cssClassName,firstRowNumber_1,height_1,page_1,pageSize_1,rtlTable_1,scrollLeftStartPosition_1,showRowNumber_1,sort_1,sortAscending_1,sortColumn_1,startPage_1,width_1);}();return new Table(this.data,this.typeName,newOptions);};Table.prototype.cssClassName=function cssClassName(headerRow,tableRow,oddTableRow,selectedTableRow,hoverTableRow,headerCell,tableCell,rowNumberCell){var o=this.options.cssClassName;var newNested=new _options.CssClassNames(_core.Helpers.right(o,"headerRow",headerRow),_core.Helpers.right(o,"tableRow",tableRow),_core.Helpers.right(o,"oddTableRow",oddTableRow),_core.Helpers.right(o,"selectedTableRow",selectedTableRow),_core.Helpers.right(o,"hoverTableRow",hoverTableRow),_core.Helpers.right(o,"headerCell",headerCell),_core.Helpers.right(o,"tableCell",tableCell),_core.Helpers.right(o,"rowNumberCell",rowNumberCell));var options=new _options.TableOptions(this.options.allowHtml,this.options.alternatingRowStyle,newNested,this.options.firstRowNumber,this.options.height,this.options.page,this.options.pageSize,this.options.rtlTable,this.options.scrollLeftStartPosition,this.options.showRowNumber,this.options.sort,this.options.sortAscending,this.options.sortColumn,this.options.startPage,this.options.width);return new Table(this.data,this.typeName,options);};return Table;}();_fableCore.Util.setInterfaces(Table.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Table");var Timeline=exports.Timeline=function(){function Timeline(data,typeName,options){_classCallCheck(this,Timeline);this.data=data;this.typeName=typeName;this.options=options;}Timeline.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Timeline.prototype.set=function set(avoidOverlappingGridLines,backgroundColor,colors,enableInteractivity,forceIFrame,height,width){var _this14=this;var newOptions=function(){var avoidOverlappingGridLines_1=_core.Helpers.right(_this14.options,"avoidOverlappingGridLines",avoidOverlappingGridLines);var backgroundColor_1=_core.Helpers.right(_this14.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this14.options,"colors",function(){var $var43=colors;if($var43!=null){return function(source){return Array.from(source);}($var43);}else{return $var43;}}());var enableInteractivity_1=_core.Helpers.right(_this14.options,"enableInteractivity",enableInteractivity);var forceIFrame_1=_core.Helpers.right(_this14.options,"forceIFrame",forceIFrame);var height_1=_core.Helpers.right(_this14.options,"height",height);var width_1=_core.Helpers.right(_this14.options,"width",width);return new _options.TimelineOptions(avoidOverlappingGridLines_1,backgroundColor_1,colors_1,enableInteractivity_1,forceIFrame_1,height_1,_this14.options.timeline,width_1);}();return new Timeline(this.data,this.typeName,newOptions);};Timeline.prototype.timeline=function timeline(colorByRowLabel,groupByRowLabel,showRowLabels,singleColor){var o=this.options.timeline;var newNested=function(){var colorByRowLabel_1=_core.Helpers.right(o,"colorByRowLabel",colorByRowLabel);var groupByRowLabel_1=_core.Helpers.right(o,"groupByRowLabel",groupByRowLabel);var showRowLabels_1=_core.Helpers.right(o,"showRowLabels",showRowLabels);var singleColor_1=_core.Helpers.right(o,"singleColor",singleColor);return new _options.TimelineTimeline(_core.Helpers.copy(o,"barLabelStyle"),colorByRowLabel_1,groupByRowLabel_1,_core.Helpers.copy(o,"rowLabelStyle"),showRowLabels_1,singleColor_1);}();var options=new _options.TimelineOptions(this.options.avoidOverlappingGridLines,this.options.backgroundColor,this.options.colors,this.options.enableInteractivity,this.options.forceIFrame,this.options.height,newNested,this.options.width);return new Timeline(this.data,this.typeName,options);};return Timeline;}();_fableCore.Util.setInterfaces(Timeline.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Timeline");var Candlestick=exports.Candlestick=function(){function Candlestick(data,typeName,options){_classCallCheck(this,Candlestick);this.data=data;this.typeName=typeName;this.options=options;}Candlestick.prototype.show=function show(outputId){_core.Helpers.showChart(this,outputId);};Candlestick.prototype.set=function set(aggregationTarget,axisTitlesPosition,backgroundColor,colors,enableInteractivity,focusTarget,fontSize,fontName,height,orientation,reverseCategories,selectionMode,series,theme,title,titlePosition,vAxes,width){var _this15=this;var newOptions=function(){var aggregationTarget_1=_core.Helpers.right(_this15.options,"aggregationTarget",aggregationTarget);var axisTitlesPosition_1=_core.Helpers.right(_this15.options,"axisTitlesPosition",axisTitlesPosition);var backgroundColor_1=_core.Helpers.right(_this15.options,"backgroundColor",backgroundColor);var colors_1=_core.Helpers.right(_this15.options,"colors",function(){var $var44=colors;if($var44!=null){return function(source){return Array.from(source);}($var44);}else{return $var44;}}());var enableInteractivity_1=_core.Helpers.right(_this15.options,"enableInteractivity",enableInteractivity);var focusTarget_1=_core.Helpers.right(_this15.options,"focusTarget",focusTarget);var fontSize_1=_core.Helpers.right(_this15.options,"fontSize",fontSize);var fontName_1=_core.Helpers.right(_this15.options,"fontName",fontName);var height_1=_core.Helpers.right(_this15.options,"height",height);var orientation_1=_core.Helpers.right(_this15.options,"orientation",orientation);var reverseCategories_1=_core.Helpers.right(_this15.options,"reverseCategories",reverseCategories);var selectionMode_1=_core.Helpers.right(_this15.options,"selectionMode",selectionMode);var series_1=_core.Helpers.right(_this15.options,"series",series);var theme_1=_core.Helpers.right(_this15.options,"theme",theme);var title_1=_core.Helpers.right(_this15.options,"title",title);var titlePosition_1=_core.Helpers.right(_this15.options,"titlePosition",titlePosition);var vAxes_1=_core.Helpers.right(_this15.options,"vAxes",vAxes);var width_1=_core.Helpers.right(_this15.options,"width",width);return new _options.CandlestickChartOptions(aggregationTarget_1,_this15.options.animation,axisTitlesPosition_1,backgroundColor_1,_this15.options.bar,_this15.options.candlestick,_this15.options.chartArea,colors_1,enableInteractivity_1,focusTarget_1,fontSize_1,fontName_1,_this15.options.hAxis,height_1,_this15.options.legend,orientation_1,reverseCategories_1,selectionMode_1,series_1,theme_1,title_1,titlePosition_1,_this15.options.titleTextStyle,_this15.options.tooltip,vAxes_1,_this15.options.vAxis,width_1);}();return new Candlestick(this.data,this.typeName,newOptions);};Candlestick.prototype.animation=function animation(duration,easing){var o=this.options.animation;var newNested=new _options.TransitionAnimation(_core.Helpers.right(o,"duration",duration),_core.Helpers.right(o,"easing",easing));var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,newNested,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.candlestick,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Candlestick(this.data,this.typeName,options);};Candlestick.prototype.bar=function bar(groupWidth){var o=this.options.bar;var newNested=new _options.GroupWidth(_core.Helpers.right(o,"groupWidth",groupWidth));var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,newNested,this.options.candlestick,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Candlestick(this.data,this.typeName,options);};Candlestick.prototype.candlestick=function candlestick(hollowIsRising){var o=this.options.candlestick;var newNested=new _options.CandlestickCandlestick(_core.Helpers.right(o,"hollowIsRising",hollowIsRising),_core.Helpers.copy(o,"fallingColor"),_core.Helpers.copy(o,"risingColor"));var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,newNested,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Candlestick(this.data,this.typeName,options);};Candlestick.prototype.chartArea=function chartArea(top,left,width,height){var o=this.options.chartArea;var newNested=new _options.ChartArea(_core.Helpers.right(o,"top",top),_core.Helpers.right(o,"left",left),_core.Helpers.right(o,"width",width),_core.Helpers.right(o,"height",height));var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.candlestick,newNested,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Candlestick(this.data,this.typeName,options);};Candlestick.prototype.hAxis=function hAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.hAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var45=ticks;if($var45!=null){return function(source){return Array.from(source);}($var45);}else{return $var45;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.candlestick,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,newNested,this.options.height,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Candlestick(this.data,this.typeName,options);};Candlestick.prototype.legend=function legend(alignment,maxLines,position,numberFormat){var o=this.options.legend;var newNested=function(){var alignment_1=_core.Helpers.right(o,"alignment",alignment);var maxLines_1=_core.Helpers.right(o,"maxLines",maxLines);var position_1=_core.Helpers.right(o,"position",position);var numberFormat_1=_core.Helpers.right(o,"numberFormat",numberFormat);return new _options.ChartLegend(alignment_1,maxLines_1,position_1,_core.Helpers.copy(o,"textStyle"),numberFormat_1);}();var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.candlestick,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,newNested,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Candlestick(this.data,this.typeName,options);};Candlestick.prototype.titleTextStyle=function titleTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){var o=this.options.titleTextStyle;var newNested=new _options.ChartTextStyle(_core.Helpers.right(o,"fontName",fontName),_core.Helpers.right(o,"fontSize",fontSize),_core.Helpers.right(o,"bold",bold),_core.Helpers.right(o,"italic",italic),_core.Helpers.right(o,"color",color),_core.Helpers.right(o,"auraColor",auraColor),_core.Helpers.right(o,"opacity",opacity));var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.candlestick,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,newNested,this.options.tooltip,this.options.vAxes,this.options.vAxis,this.options.width);return new Candlestick(this.data,this.typeName,options);};Candlestick.prototype.tooltip=function tooltip(isHtml,showColorCode,trigger){var o=this.options.tooltip;var newNested=function(){var isHtml_1=_core.Helpers.right(o,"isHtml",isHtml);var showColorCode_1=_core.Helpers.right(o,"showColorCode",showColorCode);var trigger_1=_core.Helpers.right(o,"trigger",trigger);return new _options.ChartTooltip(isHtml_1,showColorCode_1,_core.Helpers.copy(o,"textStyle"),trigger_1);}();var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.candlestick,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,newNested,this.options.vAxes,this.options.vAxis,this.options.width);return new Candlestick(this.data,this.typeName,options);};Candlestick.prototype.vAxis=function vAxis(baseline,baselineColor,direction,format,logScale,textPosition,ticks,title,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode){var o=this.options.vAxis;var newNested=function(){var baseline_1=_core.Helpers.right(o,"baseline",baseline);var baselineColor_1=_core.Helpers.right(o,"baselineColor",baselineColor);var direction_1=_core.Helpers.right(o,"direction",direction);var format_1=_core.Helpers.right(o,"format",format);var logScale_1=_core.Helpers.right(o,"logScale",logScale);var textPosition_1=_core.Helpers.right(o,"textPosition",textPosition);var ticks_1=_core.Helpers.right(o,"ticks",function(){var $var46=ticks;if($var46!=null){return function(source){return Array.from(source);}($var46);}else{return $var46;}}());var title_1=_core.Helpers.right(o,"title",title);var allowContainerBoundaryTextCufoff_1=_core.Helpers.right(o,"allowContainerBoundaryTextCufoff",allowContainerBoundaryTextCufoff);var slantedText_1=_core.Helpers.right(o,"slantedText",slantedText);var slantedTextAngle_1=_core.Helpers.right(o,"slantedTextAngle",slantedTextAngle);var maxAlternation_1=_core.Helpers.right(o,"maxAlternation",maxAlternation);var maxTextLines_1=_core.Helpers.right(o,"maxTextLines",maxTextLines);var minTextSpacing_1=_core.Helpers.right(o,"minTextSpacing",minTextSpacing);var showTextEvery_1=_core.Helpers.right(o,"showTextEvery",showTextEvery);var maxValue_1=_core.Helpers.right(o,"maxValue",maxValue);var minValue_1=_core.Helpers.right(o,"minValue",minValue);var viewWindowMode_1=_core.Helpers.right(o,"viewWindowMode",viewWindowMode);return new _options.ChartAxis(baseline_1,baselineColor_1,direction_1,format_1,_core.Helpers.copy(o,"gridlines"),_core.Helpers.copy(o,"minorGridlines"),logScale_1,textPosition_1,_core.Helpers.copy(o,"textStyle"),ticks_1,title_1,_core.Helpers.copy(o,"titleTextStyle"),allowContainerBoundaryTextCufoff_1,slantedText_1,slantedTextAngle_1,maxAlternation_1,maxTextLines_1,minTextSpacing_1,showTextEvery_1,maxValue_1,minValue_1,viewWindowMode_1,_core.Helpers.copy(o,"viewWindow"));}();var options=new _options.CandlestickChartOptions(this.options.aggregationTarget,this.options.animation,this.options.axisTitlesPosition,this.options.backgroundColor,this.options.bar,this.options.candlestick,this.options.chartArea,this.options.colors,this.options.enableInteractivity,this.options.focusTarget,this.options.fontSize,this.options.fontName,this.options.hAxis,this.options.height,this.options.legend,this.options.orientation,this.options.reverseCategories,this.options.selectionMode,this.options.series,this.options.theme,this.options.title,this.options.titlePosition,this.options.titleTextStyle,this.options.tooltip,this.options.vAxes,newNested,this.options.width);return new Candlestick(this.data,this.typeName,options);};return Candlestick;}();_fableCore.Util.setInterfaces(Candlestick.prototype,["FSharpRecord","TheGamma.GoogleCharts.Chart"],"TheGamma.GoogleCharts.Extensions.Candlestick");function GeoChartOptions_get_empty_Static(){return new _options.GeoChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.GeoChartOptions$2Eget_empty$2EStatic=GeoChartOptions_get_empty_Static;function ScatterChartOptions_get_empty_Static(){return new _options.ScatterChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.ScatterChartOptions$2Eget_empty$2EStatic=ScatterChartOptions_get_empty_Static;function ColumnChartOptions_get_empty_Static(){return new _options.ColumnChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.ColumnChartOptions$2Eget_empty$2EStatic=ColumnChartOptions_get_empty_Static;function LineChartOptions_get_empty_Static(){return new _options.LineChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.LineChartOptions$2Eget_empty$2EStatic=LineChartOptions_get_empty_Static;function BarChartOptions_get_empty_Static(){return new _options.BarChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.BarChartOptions$2Eget_empty$2EStatic=BarChartOptions_get_empty_Static;function HistogramOptions_get_empty_Static(){return new _options.HistogramOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.HistogramOptions$2Eget_empty$2EStatic=HistogramOptions_get_empty_Static;function AreaChartOptions_get_empty_Static(){return new _options.AreaChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.AreaChartOptions$2Eget_empty$2EStatic=AreaChartOptions_get_empty_Static;function AnnotationChartOptions_get_empty_Static(){return new _options.AnnotationChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.AnnotationChartOptions$2Eget_empty$2EStatic=AnnotationChartOptions_get_empty_Static;function SteppedAreaChartOptions_get_empty_Static(){return new _options.SteppedAreaChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.SteppedAreaChartOptions$2Eget_empty$2EStatic=SteppedAreaChartOptions_get_empty_Static;function PieChartOptions_get_empty_Static(){return new _options.PieChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.PieChartOptions$2Eget_empty$2EStatic=PieChartOptions_get_empty_Static;function BubbleChartOptions_get_empty_Static(){return new _options.BubbleChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.BubbleChartOptions$2Eget_empty$2EStatic=BubbleChartOptions_get_empty_Static;function TreeMapOptions_get_empty_Static(){return new _options.TreeMapOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.TreeMapOptions$2Eget_empty$2EStatic=TreeMapOptions_get_empty_Static;function TableOptions_get_empty_Static(){return new _options.TableOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.TableOptions$2Eget_empty$2EStatic=TableOptions_get_empty_Static;function TimelineOptions_get_empty_Static(){return new _options.TimelineOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.TimelineOptions$2Eget_empty$2EStatic=TimelineOptions_get_empty_Static;function CandlestickChartOptions_get_empty_Static(){return new _options.CandlestickChartOptions(undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined);}exports.CandlestickChartOptions$2Eget_empty$2EStatic=CandlestickChartOptions_get_empty_Static;var options=function(){function options(){_classCallCheck(this,options);}options.chartSizeAxis=function chartSizeAxis(maxSize,maxValue,minSize,minValue){return new _options.ChartSizeAxis(_core.Helpers.orDefault(maxSize),_core.Helpers.orDefault(maxValue),_core.Helpers.orDefault(minSize),_core.Helpers.orDefault(minValue));};options.chartTextStyle=function chartTextStyle(fontName,fontSize,bold,italic,color,auraColor,opacity){return new _options.ChartTextStyle(_core.Helpers.orDefault(fontName),_core.Helpers.orDefault(fontSize),_core.Helpers.orDefault(bold),_core.Helpers.orDefault(italic),_core.Helpers.orDefault(color),_core.Helpers.orDefault(auraColor),_core.Helpers.orDefault(opacity));};options.chartTooltip=function chartTooltip(isHtml,showColorCode,textStyle,trigger){return new _options.ChartTooltip(_core.Helpers.orDefault(isHtml),_core.Helpers.orDefault(showColorCode),_core.Helpers.orDefault(textStyle),_core.Helpers.orDefault(trigger));};options.chartLegend=function chartLegend(alignment,maxLines,position,textStyle,numberFormat){return new _options.ChartLegend(_core.Helpers.orDefault(alignment),_core.Helpers.orDefault(maxLines),_core.Helpers.orDefault(position),_core.Helpers.orDefault(textStyle),_core.Helpers.orDefault(numberFormat));};options.chartColorAxis=function chartColorAxis(minValue,maxValue,values,colors,legend){return new _options.ChartColorAxis(_core.Helpers.orDefault(minValue),_core.Helpers.orDefault(maxValue),_core.Helpers.orDefault(function(){var $var47=values;if($var47!=null){return function(source){return Float64Array.from(source);}($var47);}else{return $var47;}}()),_core.Helpers.orDefault(function(){var $var48=colors;if($var48!=null){return function(source){return Array.from(source);}($var48);}else{return $var48;}}()),_core.Helpers.orDefault(legend));};options.geoChartMagnifyingGlass=function geoChartMagnifyingGlass(enable,zoomFactor){return new _options.GeoChartMagnifyingGlass(_core.Helpers.orDefault(enable),_core.Helpers.orDefault(zoomFactor));};options.chartBoxStyleGradient=function chartBoxStyleGradient(color1,color2,x1,y1,x2,y2,useObjectBoundingBoxUnits){return new _options.ChartBoxStyleGradient(_core.Helpers.orDefault(color1),_core.Helpers.orDefault(color2),_core.Helpers.orDefault(x1),_core.Helpers.orDefault(y1),_core.Helpers.orDefault(x2),_core.Helpers.orDefault(y2),_core.Helpers.orDefault(useObjectBoundingBoxUnits));};options.chartBoxStyle=function chartBoxStyle(stroke,strokeWidth,rx,ry,gradient){return new _options.ChartBoxStyle(_core.Helpers.orDefault(stroke),_core.Helpers.orDefault(strokeWidth),_core.Helpers.orDefault(rx),_core.Helpers.orDefault(ry),_core.Helpers.orDefault(gradient));};options.chartAnnotations=function chartAnnotations(boxStyle,textStyle){return new _options.ChartAnnotations(_core.Helpers.orDefault(boxStyle),_core.Helpers.orDefault(textStyle));};options.chartCrosshairFocused=function chartCrosshairFocused(color,opacity){return new _options.ChartCrosshairFocused(_core.Helpers.orDefault(color),_core.Helpers.orDefault(opacity));};options.chartCrosshairSelected=function chartCrosshairSelected(color,opacity){return new _options.ChartCrosshairSelected(_core.Helpers.orDefault(color),_core.Helpers.orDefault(opacity));};options.chartCrosshair=function chartCrosshair(color,focused,opacity,orientation,selected,trigger){return new _options.ChartCrosshair(_core.Helpers.orDefault(color),_core.Helpers.orDefault(focused),_core.Helpers.orDefault(opacity),_core.Helpers.orDefault(orientation),_core.Helpers.orDefault(selected),_core.Helpers.orDefault(trigger));};options.chartExplorer=function chartExplorer(actions,axis,keepInBounds,maxZoomIn,maxZoomOut,zoomDelta){return new _options.ChartExplorer(_core.Helpers.orDefault(function(){var $var49=actions;if($var49!=null){return function(source){return Array.from(source);}($var49);}else{return $var49;}}()),_core.Helpers.orDefault(axis),_core.Helpers.orDefault(keepInBounds),_core.Helpers.orDefault(maxZoomIn),_core.Helpers.orDefault(maxZoomOut),_core.Helpers.orDefault(zoomDelta));};options.chartStroke=function chartStroke(stroke,strokeWidth,fill){return new _options.ChartStroke(_core.Helpers.orDefault(stroke),_core.Helpers.orDefault(strokeWidth),_core.Helpers.orDefault(fill));};options.chartArea=function chartArea(top,left,width,height){return new _options.ChartArea(_core.Helpers.orDefault(top),_core.Helpers.orDefault(left),_core.Helpers.orDefault(width),_core.Helpers.orDefault(height));};options.transitionAnimation=function transitionAnimation(duration,easing){return new _options.TransitionAnimation(_core.Helpers.orDefault(duration),_core.Helpers.orDefault(easing));};options.chartGridlines=function chartGridlines(color,count){return new _options.ChartGridlines(_core.Helpers.orDefault(color),_core.Helpers.orDefault(count));};options.chartViewWindow=function chartViewWindow(max,min){return new _options.ChartViewWindow(_core.Helpers.orDefault(max),_core.Helpers.orDefault(min));};options.chartAxis=function chartAxis(baseline,baselineColor,direction,format,gridlines,minorGridlines,logScale,textPosition,textStyle,ticks,title,titleTextStyle,allowContainerBoundaryTextCufoff,slantedText,slantedTextAngle,maxAlternation,maxTextLines,minTextSpacing,showTextEvery,maxValue,minValue,viewWindowMode,viewWindow){return new _options.ChartAxis(_core.Helpers.orDefault(baseline),_core.Helpers.orDefault(baselineColor),_core.Helpers.orDefault(direction),_core.Helpers.orDefault(format),_core.Helpers.orDefault(gridlines),_core.Helpers.orDefault(minorGridlines),_core.Helpers.orDefault(logScale),_core.Helpers.orDefault(textPosition),_core.Helpers.orDefault(textStyle),_core.Helpers.orDefault(function(){var $var50=ticks;if($var50!=null){return function(source){return Array.from(source);}($var50);}else{return $var50;}}()),_core.Helpers.orDefault(title),_core.Helpers.orDefault(titleTextStyle),_core.Helpers.orDefault(allowContainerBoundaryTextCufoff),_core.Helpers.orDefault(slantedText),_core.Helpers.orDefault(slantedTextAngle),_core.Helpers.orDefault(maxAlternation),_core.Helpers.orDefault(maxTextLines),_core.Helpers.orDefault(minTextSpacing),_core.Helpers.orDefault(showTextEvery),_core.Helpers.orDefault(maxValue),_core.Helpers.orDefault(minValue),_core.Helpers.orDefault(viewWindowMode),_core.Helpers.orDefault(viewWindow));};options.chartBoundingBox=function chartBoundingBox(left,top,width,height){return new _options.ChartBoundingBox(_core.Helpers.orDefault(left),_core.Helpers.orDefault(top),_core.Helpers.orDefault(width),_core.Helpers.orDefault(height));};options.groupWidth=function groupWidth(_groupWidth){return new _options.GroupWidth(_core.Helpers.orDefault(_groupWidth));};options.trendline=function trendline(color,lineWidth,labelInLegend,opacity,pointSize,pointsVisible,showR2,type,visibleInLegend){return new _options.Trendline(_core.Helpers.orDefault(color),_core.Helpers.orDefault(lineWidth),_core.Helpers.orDefault(labelInLegend),_core.Helpers.orDefault(opacity),_core.Helpers.orDefault(pointSize),_core.Helpers.orDefault(pointsVisible),_core.Helpers.orDefault(showR2),_core.Helpers.orDefault(type),_core.Helpers.orDefault(visibleInLegend));};options.histogramHistogram=function histogramHistogram(bucketSize,hideBucketItems,lastBucketPercentile){return new _options.HistogramHistogram(_core.Helpers.orDefault(bucketSize),_core.Helpers.orDefault(hideBucketItems),_core.Helpers.orDefault(lastBucketPercentile));};options.chartBubble=function chartBubble(opacity,stroke,textStyle){return new _options.ChartBubble(_core.Helpers.orDefault(opacity),_core.Helpers.orDefault(stroke),_core.Helpers.orDefault(textStyle));};options.cssClassNames=function cssClassNames(headerRow,tableRow,oddTableRow,selectedTableRow,hoverTableRow,headerCell,tableCell,rowNumberCell){return new _options.CssClassNames(_core.Helpers.orDefault(headerRow),_core.Helpers.orDefault(tableRow),_core.Helpers.orDefault(oddTableRow),_core.Helpers.orDefault(selectedTableRow),_core.Helpers.orDefault(hoverTableRow),_core.Helpers.orDefault(headerCell),_core.Helpers.orDefault(tableCell),_core.Helpers.orDefault(rowNumberCell));};options.labelStyle=function labelStyle(color,fontName,fontSize){return new _options.LabelStyle(_core.Helpers.orDefault(color),_core.Helpers.orDefault(fontName),_core.Helpers.orDefault(fontSize));};options.timelineTimeline=function timelineTimeline(barLabelStyle,colorByRowLabel,groupByRowLabel,rowLabelStyle,showRowLabels,singleColor){return new _options.TimelineTimeline(_core.Helpers.orDefault(barLabelStyle),_core.Helpers.orDefault(colorByRowLabel),_core.Helpers.orDefault(groupByRowLabel),_core.Helpers.orDefault(rowLabelStyle),_core.Helpers.orDefault(showRowLabels),_core.Helpers.orDefault(singleColor));};options.candlestickCandlestick=function candlestickCandlestick(hollowIsRising,fallingColor,risingColor){return new _options.CandlestickCandlestick(_core.Helpers.orDefault(hollowIsRising),_core.Helpers.orDefault(fallingColor),_core.Helpers.orDefault(risingColor));};return options;}();exports.options=options;_fableCore.Util.setInterfaces(options.prototype,[],"TheGamma.GoogleCharts.Extensions.options");});
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(1), __webpack_require__(8)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== "undefined") {
+	    factory(exports, require("fable-core"), require("./../common"), require("./../series"));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, global.fableCore, global.common, global.series);
+	    global.core = mod.exports;
+	  }
+	})(this, function (exports, _fableCore, _common, _series) {
+	  "use strict";
+	
+	  exports.__esModule = true;
+	  exports.ChartDataOperations = exports.Helpers = exports.ChartData = exports.GoogleCharts = undefined;
+	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
+	  var GoogleCharts = exports.GoogleCharts = function ($exports) {
+	    return $exports;
+	  }({});
+	
+	  var ChartData = exports.ChartData = function ChartData(data) {
+	    _classCallCheck(this, ChartData);
+	
+	    this.data = data;
+	  };
+	
+	  _fableCore.Util.setInterfaces(ChartData.prototype, ["FSharpRecord"], "TheGamma.GoogleCharts.ChartData");
+	
+	  var Helpers = exports.Helpers = function ($exports) {
+	    var copy = $exports.copy = function copy(o, prop) {
+	      return o == null ? undefined : o[prop];
+	    };
+	
+	    var orDefault = $exports.orDefault = function orDefault(newValue) {
+	      return newValue != null ? newValue : undefined;
+	    };
+	
+	    var right = $exports.right = function right(o, prop, newValue) {
+	      return newValue != null ? newValue : o == null ? undefined : o[prop];
+	    };
+	
+	    var showChart = $exports.showChart = function showChart(chart, outputId) {
+	      drawChart(function (cont) {
+	        (function (arg00) {
+	          _fableCore.Async.startImmediate(arg00);
+	        })(function (builder_) {
+	          return builder_.Delay(function (unitVar) {
+	            return builder_.TryWith(builder_.Delay(function (unitVar_1) {
+	              return builder_.Bind(chart["data"].data, function (_arg1) {
+	                cont([chart, _arg1, outputId]);
+	                return builder_.Zero();
+	              });
+	            }), function (_arg2) {
+	              window.alert("SOmething went wrong: " + _arg2);
+	              return builder_.Zero();
+	            });
+	          });
+	        }(_fableCore.AsyncBuilder.singleton));
+	      });
+	    };
+	
+	    return $exports;
+	  }({});
+	
+	  var ChartDataOperations = exports.ChartDataOperations = function ($exports) {
+	    var collect = $exports.collect = function collect(f, l) {
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return l.tail == null ? builder_.Return(new _fableCore.List()) : builder_.Bind(f(l.head), function (_arg1) {
+	            return builder_.Bind(collect(f, l.tail), function (_arg2) {
+	              return builder_.Return(_fableCore.List.append(_arg1, _arg2));
+	            });
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
+	    var oneKeyValue = $exports.oneKeyValue = function oneKeyValue(keyType, v) {
+	      return new ChartData(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var data = new google.visualization.DataTable();
+	          data.addColumn(keyType, v.keyName);
+	          data.addColumn("number", v.seriesName);
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(v.mapPairs(function (k) {
+	            return function (v_1) {
+	              return [k, v_1];
+	            };
+	          }).data), function (_arg1) {
+	            (function (arg00) {
+	              data.addRows(arg00);
+	            })(_arg1.map(function (tuple) {
+	              return tuple[1];
+	            }));
+	
+	            return builder_.Return(data);
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	    };
+	
+	    var oneKeyTwoValues = $exports.oneKeyTwoValues = function oneKeyTwoValues(keyType, v) {
+	      return new ChartData(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var data = new google.visualization.DataTable();
+	          data.addColumn(keyType, v.keyName);
+	          data.addColumn("number", v.seriesName);
+	          data.addColumn("number", v.seriesName);
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(v.mapPairs(function (k) {
+	            return function (tupledArg) {
+	              return [k, tupledArg[0], tupledArg[1]];
+	            };
+	          }).data), function (_arg1) {
+	            (function (arg00) {
+	              data.addRows(arg00);
+	            })(_arg1.map(function (tuple) {
+	              return tuple[1];
+	            }));
+	
+	            return builder_.Return(data);
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	    };
+	
+	    var oneKeyAppendValues = $exports.oneKeyAppendValues = function oneKeyAppendValues(keyType, vs, colors) {
+	      return new ChartData(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var data = new google.visualization.DataTable();
+	          data.addColumn(keyType, vs[0].keyName);
+	          data.addColumn("number", vs[0].valueName);
+	          data.addColumn({
+	            type: "string",
+	            role: "style"
+	          });
+	          return builder_.Bind(collect(function (tupledArg) {
+	            return function (builder__1) {
+	              return builder__1.Delay(function (unitVar_1) {
+	                return builder__1.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(tupledArg[0].mapPairs(function (k) {
+	                  return function (v) {
+	                    return [k, v, tupledArg[1]];
+	                  };
+	                }).data), function (_arg1) {
+	                  return builder__1.Return(_fableCore.List.ofArray(_arg1.map(function (tuple) {
+	                    return tuple[1];
+	                  })));
+	                });
+	              });
+	            }(_fableCore.AsyncBuilder.singleton);
+	          }, _fableCore.List.ofArray(Array.from(_fableCore.Seq.zip(vs, colors)))), function (_arg2) {
+	            (function (arg00) {
+	              data.addRows(arg00);
+	            })(Array.from(_fableCore.Seq.toList(_fableCore.Seq.sortWith(function (x, y) {
+	              return -_fableCore.Util.compare(function (tupledArg) {
+	                return tupledArg[1];
+	              }(x), function (tupledArg) {
+	                return tupledArg[1];
+	              }(y));
+	            }, _arg2))).map(function (tupledArg) {
+	              return [tupledArg[0], tupledArg[1], tupledArg[2]];
+	            }));
+	
+	            return builder_.Return(data);
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	    };
+	
+	    var oneKeyNValues = $exports.oneKeyNValues = function oneKeyNValues(keyType, v) {
+	      return new ChartData(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var data = new google.visualization.DataTable();
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(v.data), function (_arg1) {
+	            var v_1 = _arg1.map(function (tuple) {
+	              return tuple[1];
+	            });
+	
+	            data.addColumn(keyType, v_1[0].keyName);
+	            return builder_.Combine(builder_.For(_fableCore.Seq.range(0, v_1.length - 1), function (_arg2) {
+	              data.addColumn("number", v_1[_arg2].seriesName);
+	              return builder_.Zero();
+	            }), builder_.Delay(function (unitVar_1) {
+	              var head = v_1[0].map(function (v_2) {
+	                return _fableCore.Map.create(_fableCore.List.ofArray([[0, v_2]]), new _fableCore.GenericComparer(function (x, y) {
+	                  return x < y ? -1 : x > y ? 1 : 0;
+	                }));
+	              });
+	              var tail = Array.from(_fableCore.Seq.mapIndexed(function (i, v_2) {
+	                return [i + 1, v_2];
+	              }, _series.SeriesInternals.slice(1, v_1.length - 1, v_1)));
+	
+	              var all = _fableCore.Seq.fold(function (s1, tupledArg) {
+	                return s1.joinOuter(tupledArg[1]).map(function (tupledArg_1) {
+	                  var matchValue = [tupledArg_1[0] != null ? tupledArg_1[0] : _fableCore.Map.create(null, new _fableCore.GenericComparer(function (x, y) {
+	                    return x < y ? -1 : x > y ? 1 : 0;
+	                  })), tupledArg_1[1]];
+	
+	                  if (matchValue[1] == null) {
+	                    return matchValue[0];
+	                  } else {
+	                    var r = matchValue[1];
+	                    return _fableCore.Map.add(tupledArg[0], r, matchValue[0]);
+	                  }
+	                });
+	              }, head, tail);
+	
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(all.mapPairs(function (k) {
+	                return function (vals) {
+	                  var data_1 = Array.from(_fableCore.Seq.initialize(v_1.length, function (i) {
+	                    return _fableCore.Map.tryFind(i, vals) != null ? _fableCore.Map.tryFind(i, vals) : undefined;
+	                  }));
+	                  return Array.from(_fableCore.Seq.append([k], data_1));
+	                };
+	              }).data), function (_arg3) {
+	                (function (arg00) {
+	                  data.addRows(arg00);
+	                })(_arg3.map(function (tuple) {
+	                  return tuple[1];
+	                }));
+	
+	                return builder_.Return(data);
+	              });
+	            }));
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	    };
+	
+	    var twoValues = $exports.twoValues = function twoValues(v1, v2) {
+	      return new ChartData(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var data = new google.visualization.DataTable();
+	          data.addColumn("number", v1.seriesName);
+	          data.addColumn("number", v2.seriesName);
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(v1.joinInner(v2).map(function (tupledArg) {
+	            return [tupledArg[0], tupledArg[1]];
+	          }).data), function (_arg1) {
+	            (function (arg00) {
+	              data.addRows(arg00);
+	            })(_arg1.map(function (tuple) {
+	              return tuple[1];
+	            }));
+	
+	            return builder_.Return(data);
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	    };
+	
+	    return $exports;
+	  }({});
+	});
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	    if (true) {
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else if (typeof exports !== "undefined") {
+	        factory(exports, require("fable-core"));
+	    } else {
+	        var mod = {
+	            exports: {}
+	        };
+	        factory(mod.exports, global.fableCore);
+	        global.options = mod.exports;
+	    }
+	})(this, function (exports, _fableCore) {
+	    "use strict";
+	
+	    exports.__esModule = true;
+	    exports.CandlestickChartOptions = exports.CandlestickCandlestick = exports.TimelineOptions = exports.TimelineTimeline = exports.LabelStyle = exports.TableOptions = exports.CssClassNames = exports.TreeMapOptions = exports.BubbleChartOptions = exports.ChartBubble = exports.PieChartOptions = exports.SteppedAreaChartOptions = exports.AnnotationChartOptions = exports.AreaChartOptions = exports.HistogramOptions = exports.HistogramHistogram = exports.BarChartOptions = exports.LineChartOptions = exports.ColumnChartOptions = exports.ScatterChartOptions = exports.Trendline = exports.GroupWidth = exports.ChartBoundingBox = exports.ChartAxis = exports.ChartViewWindow = exports.ChartGridlines = exports.TransitionAnimation = exports.ChartArea = exports.ChartStroke = exports.ChartExplorer = exports.ChartCrosshair = exports.ChartCrosshairSelected = exports.ChartCrosshairFocused = exports.ChartAnnotations = exports.ChartBoxStyle = exports.ChartBoxStyleGradient = exports.GeoChartOptions = exports.GeoChartMagnifyingGlass = exports.ChartColorAxis = exports.ChartLegend = exports.ChartTooltip = exports.ChartTextStyle = exports.ChartSizeAxis = undefined;
+	
+	    function _classCallCheck(instance, Constructor) {
+	        if (!(instance instanceof Constructor)) {
+	            throw new TypeError("Cannot call a class as a function");
+	        }
+	    }
+	
+	    var ChartSizeAxis = exports.ChartSizeAxis = function () {
+	        function ChartSizeAxis(maxSize, maxValue, minSize, minValue) {
+	            _classCallCheck(this, ChartSizeAxis);
+	
+	            this.maxSize = maxSize;
+	            this.maxValue = maxValue;
+	            this.minSize = minSize;
+	            this.minValue = minValue;
+	        }
+	
+	        ChartSizeAxis.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartSizeAxis.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartSizeAxis;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartSizeAxis.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartSizeAxis");
+	
+	    var ChartTextStyle = exports.ChartTextStyle = function () {
+	        function ChartTextStyle(fontName, fontSize, bold, italic, color, auraColor, opacity) {
+	            _classCallCheck(this, ChartTextStyle);
+	
+	            this.fontName = fontName;
+	            this.fontSize = fontSize;
+	            this.bold = bold;
+	            this.italic = italic;
+	            this.color = color;
+	            this.auraColor = auraColor;
+	            this.opacity = opacity;
+	        }
+	
+	        ChartTextStyle.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartTextStyle.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartTextStyle;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartTextStyle.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartTextStyle");
+	
+	    var ChartTooltip = exports.ChartTooltip = function () {
+	        function ChartTooltip(isHtml, showColorCode, textStyle, trigger) {
+	            _classCallCheck(this, ChartTooltip);
+	
+	            this.isHtml = isHtml;
+	            this.showColorCode = showColorCode;
+	            this.textStyle = textStyle;
+	            this.trigger = trigger;
+	        }
+	
+	        ChartTooltip.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartTooltip.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartTooltip;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartTooltip.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartTooltip");
+	
+	    var ChartLegend = exports.ChartLegend = function () {
+	        function ChartLegend(alignment, maxLines, position, textStyle, numberFormat) {
+	            _classCallCheck(this, ChartLegend);
+	
+	            this.alignment = alignment;
+	            this.maxLines = maxLines;
+	            this.position = position;
+	            this.textStyle = textStyle;
+	            this.numberFormat = numberFormat;
+	        }
+	
+	        ChartLegend.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartLegend.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartLegend;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartLegend.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartLegend");
+	
+	    var ChartColorAxis = exports.ChartColorAxis = function () {
+	        function ChartColorAxis(minValue, maxValue, values, colors, legend) {
+	            _classCallCheck(this, ChartColorAxis);
+	
+	            this.minValue = minValue;
+	            this.maxValue = maxValue;
+	            this.values = values;
+	            this.colors = colors;
+	            this.legend = legend;
+	        }
+	
+	        ChartColorAxis.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartColorAxis.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartColorAxis;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartColorAxis.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartColorAxis");
+	
+	    var GeoChartMagnifyingGlass = exports.GeoChartMagnifyingGlass = function () {
+	        function GeoChartMagnifyingGlass(enable, zoomFactor) {
+	            _classCallCheck(this, GeoChartMagnifyingGlass);
+	
+	            this.enable = enable;
+	            this.zoomFactor = zoomFactor;
+	        }
+	
+	        GeoChartMagnifyingGlass.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        GeoChartMagnifyingGlass.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return GeoChartMagnifyingGlass;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(GeoChartMagnifyingGlass.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.GeoChartMagnifyingGlass");
+	
+	    var GeoChartOptions = exports.GeoChartOptions = function () {
+	        function GeoChartOptions(backgroundColor, colorAxis, datalessRegionColor, displayMode, enableRegionInteractivity, height, keepAspectRatio, legend, region, magnifyingGlass, markerOpacity, resolution, sizeAxis, tooltip, width) {
+	            _classCallCheck(this, GeoChartOptions);
+	
+	            this.backgroundColor = backgroundColor;
+	            this.colorAxis = colorAxis;
+	            this.datalessRegionColor = datalessRegionColor;
+	            this.displayMode = displayMode;
+	            this.enableRegionInteractivity = enableRegionInteractivity;
+	            this.height = height;
+	            this.keepAspectRatio = keepAspectRatio;
+	            this.legend = legend;
+	            this.region = region;
+	            this.magnifyingGlass = magnifyingGlass;
+	            this.markerOpacity = markerOpacity;
+	            this.resolution = resolution;
+	            this.sizeAxis = sizeAxis;
+	            this.tooltip = tooltip;
+	            this.width = width;
+	        }
+	
+	        GeoChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return GeoChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(GeoChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.GeoChartOptions");
+	
+	    var ChartBoxStyleGradient = exports.ChartBoxStyleGradient = function () {
+	        function ChartBoxStyleGradient(color1, color2, x1, y1, x2, y2, useObjectBoundingBoxUnits) {
+	            _classCallCheck(this, ChartBoxStyleGradient);
+	
+	            this.color1 = color1;
+	            this.color2 = color2;
+	            this.x1 = x1;
+	            this.y1 = y1;
+	            this.x2 = x2;
+	            this.y2 = y2;
+	            this.useObjectBoundingBoxUnits = useObjectBoundingBoxUnits;
+	        }
+	
+	        ChartBoxStyleGradient.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartBoxStyleGradient.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartBoxStyleGradient;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartBoxStyleGradient.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartBoxStyleGradient");
+	
+	    var ChartBoxStyle = exports.ChartBoxStyle = function () {
+	        function ChartBoxStyle(stroke, strokeWidth, rx, ry, gradient) {
+	            _classCallCheck(this, ChartBoxStyle);
+	
+	            this.stroke = stroke;
+	            this.strokeWidth = strokeWidth;
+	            this.rx = rx;
+	            this.ry = ry;
+	            this.gradient = gradient;
+	        }
+	
+	        ChartBoxStyle.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartBoxStyle.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartBoxStyle;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartBoxStyle.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartBoxStyle");
+	
+	    var ChartAnnotations = exports.ChartAnnotations = function () {
+	        function ChartAnnotations(boxStyle, textStyle) {
+	            _classCallCheck(this, ChartAnnotations);
+	
+	            this.boxStyle = boxStyle;
+	            this.textStyle = textStyle;
+	        }
+	
+	        ChartAnnotations.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartAnnotations.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartAnnotations;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartAnnotations.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartAnnotations");
+	
+	    var ChartCrosshairFocused = exports.ChartCrosshairFocused = function () {
+	        function ChartCrosshairFocused(color, opacity) {
+	            _classCallCheck(this, ChartCrosshairFocused);
+	
+	            this.color = color;
+	            this.opacity = opacity;
+	        }
+	
+	        ChartCrosshairFocused.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartCrosshairFocused.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartCrosshairFocused;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartCrosshairFocused.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartCrosshairFocused");
+	
+	    var ChartCrosshairSelected = exports.ChartCrosshairSelected = function () {
+	        function ChartCrosshairSelected(color, opacity) {
+	            _classCallCheck(this, ChartCrosshairSelected);
+	
+	            this.color = color;
+	            this.opacity = opacity;
+	        }
+	
+	        ChartCrosshairSelected.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartCrosshairSelected.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartCrosshairSelected;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartCrosshairSelected.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartCrosshairSelected");
+	
+	    var ChartCrosshair = exports.ChartCrosshair = function () {
+	        function ChartCrosshair(color, focused, opacity, orientation, selected, trigger) {
+	            _classCallCheck(this, ChartCrosshair);
+	
+	            this.color = color;
+	            this.focused = focused;
+	            this.opacity = opacity;
+	            this.orientation = orientation;
+	            this.selected = selected;
+	            this.trigger = trigger;
+	        }
+	
+	        ChartCrosshair.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartCrosshair.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartCrosshair;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartCrosshair.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartCrosshair");
+	
+	    var ChartExplorer = exports.ChartExplorer = function () {
+	        function ChartExplorer(actions, axis, keepInBounds, maxZoomIn, maxZoomOut, zoomDelta) {
+	            _classCallCheck(this, ChartExplorer);
+	
+	            this.actions = actions;
+	            this.axis = axis;
+	            this.keepInBounds = keepInBounds;
+	            this.maxZoomIn = maxZoomIn;
+	            this.maxZoomOut = maxZoomOut;
+	            this.zoomDelta = zoomDelta;
+	        }
+	
+	        ChartExplorer.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartExplorer.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartExplorer;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartExplorer.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartExplorer");
+	
+	    var ChartStroke = exports.ChartStroke = function () {
+	        function ChartStroke(stroke, strokeWidth, fill) {
+	            _classCallCheck(this, ChartStroke);
+	
+	            this.stroke = stroke;
+	            this.strokeWidth = strokeWidth;
+	            this.fill = fill;
+	        }
+	
+	        ChartStroke.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartStroke.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartStroke;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartStroke.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartStroke");
+	
+	    var ChartArea = exports.ChartArea = function () {
+	        function ChartArea(top, left, width, height) {
+	            _classCallCheck(this, ChartArea);
+	
+	            this.top = top;
+	            this.left = left;
+	            this.width = width;
+	            this.height = height;
+	        }
+	
+	        ChartArea.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return ChartArea;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartArea.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.ChartArea");
+	
+	    var TransitionAnimation = exports.TransitionAnimation = function () {
+	        function TransitionAnimation(duration, easing) {
+	            _classCallCheck(this, TransitionAnimation);
+	
+	            this.duration = duration;
+	            this.easing = easing;
+	        }
+	
+	        TransitionAnimation.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        TransitionAnimation.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return TransitionAnimation;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(TransitionAnimation.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.TransitionAnimation");
+	
+	    var ChartGridlines = exports.ChartGridlines = function () {
+	        function ChartGridlines(color, count) {
+	            _classCallCheck(this, ChartGridlines);
+	
+	            this.color = color;
+	            this.count = count;
+	        }
+	
+	        ChartGridlines.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartGridlines.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartGridlines;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartGridlines.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartGridlines");
+	
+	    var ChartViewWindow = exports.ChartViewWindow = function () {
+	        function ChartViewWindow(max, min) {
+	            _classCallCheck(this, ChartViewWindow);
+	
+	            this.max = max;
+	            this.min = min;
+	        }
+	
+	        ChartViewWindow.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartViewWindow.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartViewWindow;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartViewWindow.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartViewWindow");
+	
+	    var ChartAxis = exports.ChartAxis = function () {
+	        function ChartAxis(baseline, baselineColor, direction, format, gridlines, minorGridlines, logScale, textPosition, textStyle, ticks, title, titleTextStyle, allowContainerBoundaryTextCufoff, slantedText, slantedTextAngle, maxAlternation, maxTextLines, minTextSpacing, showTextEvery, maxValue, minValue, viewWindowMode, viewWindow) {
+	            _classCallCheck(this, ChartAxis);
+	
+	            this.baseline = baseline;
+	            this.baselineColor = baselineColor;
+	            this.direction = direction;
+	            this.format = format;
+	            this.gridlines = gridlines;
+	            this.minorGridlines = minorGridlines;
+	            this.logScale = logScale;
+	            this.textPosition = textPosition;
+	            this.textStyle = textStyle;
+	            this.ticks = ticks;
+	            this.title = title;
+	            this.titleTextStyle = titleTextStyle;
+	            this.allowContainerBoundaryTextCufoff = allowContainerBoundaryTextCufoff;
+	            this.slantedText = slantedText;
+	            this.slantedTextAngle = slantedTextAngle;
+	            this.maxAlternation = maxAlternation;
+	            this.maxTextLines = maxTextLines;
+	            this.minTextSpacing = minTextSpacing;
+	            this.showTextEvery = showTextEvery;
+	            this.maxValue = maxValue;
+	            this.minValue = minValue;
+	            this.viewWindowMode = viewWindowMode;
+	            this.viewWindow = viewWindow;
+	        }
+	
+	        ChartAxis.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return ChartAxis;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartAxis.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.ChartAxis");
+	
+	    var ChartBoundingBox = exports.ChartBoundingBox = function () {
+	        function ChartBoundingBox(left, top, width, height) {
+	            _classCallCheck(this, ChartBoundingBox);
+	
+	            this.left = left;
+	            this.top = top;
+	            this.width = width;
+	            this.height = height;
+	        }
+	
+	        ChartBoundingBox.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartBoundingBox.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartBoundingBox;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartBoundingBox.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartBoundingBox");
+	
+	    var GroupWidth = exports.GroupWidth = function () {
+	        function GroupWidth(groupWidth) {
+	            _classCallCheck(this, GroupWidth);
+	
+	            this.groupWidth = groupWidth;
+	        }
+	
+	        GroupWidth.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return GroupWidth;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(GroupWidth.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.GroupWidth");
+	
+	    var Trendline = exports.Trendline = function () {
+	        function Trendline(color, lineWidth, labelInLegend, opacity, pointSize, pointsVisible, showR2, type, visibleInLegend) {
+	            _classCallCheck(this, Trendline);
+	
+	            this.color = color;
+	            this.lineWidth = lineWidth;
+	            this.labelInLegend = labelInLegend;
+	            this.opacity = opacity;
+	            this.pointSize = pointSize;
+	            this.pointsVisible = pointsVisible;
+	            this.showR2 = showR2;
+	            this.type = type;
+	            this.visibleInLegend = visibleInLegend;
+	        }
+	
+	        Trendline.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        Trendline.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return Trendline;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(Trendline.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.Trendline");
+	
+	    var ScatterChartOptions = exports.ScatterChartOptions = function () {
+	        function ScatterChartOptions(aggregationTarget, animation, annotations, axisTitlesPosition, backgroundColor, chartArea, colors, crosshair, curveType, dataOpacity, enableInteractivity, explorer, fontSize, fontName, forceIFrame, hAxis, height, legend, lineWidth, pointSize, selectionMode, series, theme, title, titlePosition, titleTextStyle, tooltip, trendlines, vAxis, width) {
+	            _classCallCheck(this, ScatterChartOptions);
+	
+	            this.aggregationTarget = aggregationTarget;
+	            this.animation = animation;
+	            this.annotations = annotations;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.crosshair = crosshair;
+	            this.curveType = curveType;
+	            this.dataOpacity = dataOpacity;
+	            this.enableInteractivity = enableInteractivity;
+	            this.explorer = explorer;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.forceIFrame = forceIFrame;
+	            this.hAxis = hAxis;
+	            this.height = height;
+	            this.legend = legend;
+	            this.lineWidth = lineWidth;
+	            this.pointSize = pointSize;
+	            this.selectionMode = selectionMode;
+	            this.series = series;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.trendlines = trendlines;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        ScatterChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return ScatterChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ScatterChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.ScatterChartOptions");
+	
+	    var ColumnChartOptions = exports.ColumnChartOptions = function () {
+	        function ColumnChartOptions(aggregationTarget, animation, annotations, axisTitlesPosition, backgroundColor, bar, chartArea, colors, enableInteractivity, focusTarget, fontSize, fontName, hAxis, height, isStacked, legend, reverseCategories, selectionMode, series, theme, title, titlePosition, titleTextStyle, tooltip, vAxes, vAxis, width) {
+	            _classCallCheck(this, ColumnChartOptions);
+	
+	            this.aggregationTarget = aggregationTarget;
+	            this.animation = animation;
+	            this.annotations = annotations;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.bar = bar;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.enableInteractivity = enableInteractivity;
+	            this.focusTarget = focusTarget;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.hAxis = hAxis;
+	            this.height = height;
+	            this.isStacked = isStacked;
+	            this.legend = legend;
+	            this.reverseCategories = reverseCategories;
+	            this.selectionMode = selectionMode;
+	            this.series = series;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.vAxes = vAxes;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        ColumnChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return ColumnChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ColumnChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.ColumnChartOptions");
+	
+	    var LineChartOptions = exports.LineChartOptions = function () {
+	        function LineChartOptions(aggregationTarget, animation, annotations, axisTitlesPosition, backgroundColor, chartArea, colors, crosshair, curveType, dataOpacity, enableInteractivity, explorer, focusTarget, fontSize, fontName, hAxis, height, interpolateNulls, legend, lineWidth, orientation, pointSize, reverseCategories, selectionMode, series, theme, title, titlePosition, titleTextStyle, tooltip, vAxes, vAxis, width) {
+	            _classCallCheck(this, LineChartOptions);
+	
+	            this.aggregationTarget = aggregationTarget;
+	            this.animation = animation;
+	            this.annotations = annotations;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.crosshair = crosshair;
+	            this.curveType = curveType;
+	            this.dataOpacity = dataOpacity;
+	            this.enableInteractivity = enableInteractivity;
+	            this.explorer = explorer;
+	            this.focusTarget = focusTarget;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.hAxis = hAxis;
+	            this.height = height;
+	            this.interpolateNulls = interpolateNulls;
+	            this.legend = legend;
+	            this.lineWidth = lineWidth;
+	            this.orientation = orientation;
+	            this.pointSize = pointSize;
+	            this.reverseCategories = reverseCategories;
+	            this.selectionMode = selectionMode;
+	            this.series = series;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.vAxes = vAxes;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        LineChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return LineChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(LineChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.LineChartOptions");
+	
+	    var BarChartOptions = exports.BarChartOptions = function () {
+	        function BarChartOptions(aggregationTarget, animation, annotations, axisTitlesPosition, backgroundColor, bar, chartArea, colors, dataOpacity, enableInteractivity, focusTarget, fontSize, fontName, hAxes, hAxis, height, isStacked, legend, reverseCategories, series, theme, title, titlePosition, titleTextStyle, tooltip, vAxes, vAxis, width) {
+	            _classCallCheck(this, BarChartOptions);
+	
+	            this.aggregationTarget = aggregationTarget;
+	            this.animation = animation;
+	            this.annotations = annotations;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.bar = bar;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.dataOpacity = dataOpacity;
+	            this.enableInteractivity = enableInteractivity;
+	            this.focusTarget = focusTarget;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.hAxes = hAxes;
+	            this.hAxis = hAxis;
+	            this.height = height;
+	            this.isStacked = isStacked;
+	            this.legend = legend;
+	            this.reverseCategories = reverseCategories;
+	            this.series = series;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.vAxes = vAxes;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        BarChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return BarChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(BarChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.BarChartOptions");
+	
+	    var HistogramHistogram = exports.HistogramHistogram = function () {
+	        function HistogramHistogram(bucketSize, hideBucketItems, lastBucketPercentile) {
+	            _classCallCheck(this, HistogramHistogram);
+	
+	            this.bucketSize = bucketSize;
+	            this.hideBucketItems = hideBucketItems;
+	            this.lastBucketPercentile = lastBucketPercentile;
+	        }
+	
+	        HistogramHistogram.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        HistogramHistogram.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return HistogramHistogram;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(HistogramHistogram.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.HistogramHistogram");
+	
+	    var HistogramOptions = exports.HistogramOptions = function () {
+	        function HistogramOptions(animation, axisTitlesPosition, backgroundColor, bar, chartArea, colors, dataOpacity, enableInteractivity, focusTarget, fontSize, fontName, hAxis, histogram, height, interpolateNulls, isStacked, legend, orientation, reverseCategories, series, theme, title, titlePosition, titleTextStyle, tooltip, vAxes, vAxis, width) {
+	            _classCallCheck(this, HistogramOptions);
+	
+	            this.animation = animation;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.bar = bar;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.dataOpacity = dataOpacity;
+	            this.enableInteractivity = enableInteractivity;
+	            this.focusTarget = focusTarget;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.hAxis = hAxis;
+	            this.histogram = histogram;
+	            this.height = height;
+	            this.interpolateNulls = interpolateNulls;
+	            this.isStacked = isStacked;
+	            this.legend = legend;
+	            this.orientation = orientation;
+	            this.reverseCategories = reverseCategories;
+	            this.series = series;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.vAxes = vAxes;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        HistogramOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return HistogramOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(HistogramOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.HistogramOptions");
+	
+	    var AreaChartOptions = exports.AreaChartOptions = function () {
+	        function AreaChartOptions(aggregationTarget, animation, areaOpacity, axisTitlesPosition, backgroundColor, chartArea, colors, crosshair, dataOpacity, enableInteractivity, explorer, focusTarget, fontSize, fontName, hAxis, height, interpolateNulls, isStacked, legend, lineWidth, orientation, pointSize, reverseCategories, selectionMode, series, theme, title, titlePosition, titleTextStyle, tooltip, vAxes, vAxis, width) {
+	            _classCallCheck(this, AreaChartOptions);
+	
+	            this.aggregationTarget = aggregationTarget;
+	            this.animation = animation;
+	            this.areaOpacity = areaOpacity;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.crosshair = crosshair;
+	            this.dataOpacity = dataOpacity;
+	            this.enableInteractivity = enableInteractivity;
+	            this.explorer = explorer;
+	            this.focusTarget = focusTarget;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.hAxis = hAxis;
+	            this.height = height;
+	            this.interpolateNulls = interpolateNulls;
+	            this.isStacked = isStacked;
+	            this.legend = legend;
+	            this.lineWidth = lineWidth;
+	            this.orientation = orientation;
+	            this.pointSize = pointSize;
+	            this.reverseCategories = reverseCategories;
+	            this.selectionMode = selectionMode;
+	            this.series = series;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.vAxes = vAxes;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        AreaChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return AreaChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(AreaChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.AreaChartOptions");
+	
+	    var AnnotationChartOptions = exports.AnnotationChartOptions = function () {
+	        function AnnotationChartOptions(allowHtml, allValuesSuffix, annotationsWidth, colors, dateFormat, displayAnnotations, displayAnnotationsFilter, displayDateTimeBarSeparator, displayExactValues, displayLegendDots, displayLegendValues, displayRangeSelector, displayZoomButtons, fill, legendPosition, max, min, numberFormats, scaleColumns, scaleFormat, scaleType, thickness, zoomEndTime, zoomStartTime) {
+	            _classCallCheck(this, AnnotationChartOptions);
+	
+	            this.allowHtml = allowHtml;
+	            this.allValuesSuffix = allValuesSuffix;
+	            this.annotationsWidth = annotationsWidth;
+	            this.colors = colors;
+	            this.dateFormat = dateFormat;
+	            this.displayAnnotations = displayAnnotations;
+	            this.displayAnnotationsFilter = displayAnnotationsFilter;
+	            this.displayDateTimeBarSeparator = displayDateTimeBarSeparator;
+	            this.displayExactValues = displayExactValues;
+	            this.displayLegendDots = displayLegendDots;
+	            this.displayLegendValues = displayLegendValues;
+	            this.displayRangeSelector = displayRangeSelector;
+	            this.displayZoomButtons = displayZoomButtons;
+	            this.fill = fill;
+	            this.legendPosition = legendPosition;
+	            this.max = max;
+	            this.min = min;
+	            this.numberFormats = numberFormats;
+	            this.scaleColumns = scaleColumns;
+	            this.scaleFormat = scaleFormat;
+	            this.scaleType = scaleType;
+	            this.thickness = thickness;
+	            this.zoomEndTime = zoomEndTime;
+	            this.zoomStartTime = zoomStartTime;
+	        }
+	
+	        AnnotationChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return AnnotationChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(AnnotationChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.AnnotationChartOptions");
+	
+	    var SteppedAreaChartOptions = exports.SteppedAreaChartOptions = function () {
+	        function SteppedAreaChartOptions(aggregationTarget, animation, areaOpacity, axisTitlesPosition, backgroundColor, chartArea, colors, connectSteps, enableInteractivity, focusTarget, fontSize, fontName, hAxis, height, interpolateNulls, isStacked, legend, reverseCategories, selectionMode, series, theme, title, titlePosition, titleTextStyle, tooltip, vAxes, vAxis, width) {
+	            _classCallCheck(this, SteppedAreaChartOptions);
+	
+	            this.aggregationTarget = aggregationTarget;
+	            this.animation = animation;
+	            this.areaOpacity = areaOpacity;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.connectSteps = connectSteps;
+	            this.enableInteractivity = enableInteractivity;
+	            this.focusTarget = focusTarget;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.hAxis = hAxis;
+	            this.height = height;
+	            this.interpolateNulls = interpolateNulls;
+	            this.isStacked = isStacked;
+	            this.legend = legend;
+	            this.reverseCategories = reverseCategories;
+	            this.selectionMode = selectionMode;
+	            this.series = series;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.vAxes = vAxes;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        SteppedAreaChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return SteppedAreaChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(SteppedAreaChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.SteppedAreaChartOptions");
+	
+	    var PieChartOptions = exports.PieChartOptions = function () {
+	        function PieChartOptions(backgroundColor, chartArea, colors, enableInteractivity, fontSize, fontName, height, is3D, legend, pieHole, pieSliceBorderColor, pieSliceText, pieSliceTextStyle, pieStartAngle, reverseCategories, pieResidueSliceColor, pieResidueSliceLabel, slices, sliceVisibilityThreshold, title, titleTextStyle, tooltip, width) {
+	            _classCallCheck(this, PieChartOptions);
+	
+	            this.backgroundColor = backgroundColor;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.enableInteractivity = enableInteractivity;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.height = height;
+	            this.is3D = is3D;
+	            this.legend = legend;
+	            this.pieHole = pieHole;
+	            this.pieSliceBorderColor = pieSliceBorderColor;
+	            this.pieSliceText = pieSliceText;
+	            this.pieSliceTextStyle = pieSliceTextStyle;
+	            this.pieStartAngle = pieStartAngle;
+	            this.reverseCategories = reverseCategories;
+	            this.pieResidueSliceColor = pieResidueSliceColor;
+	            this.pieResidueSliceLabel = pieResidueSliceLabel;
+	            this.slices = slices;
+	            this.sliceVisibilityThreshold = sliceVisibilityThreshold;
+	            this.title = title;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.width = width;
+	        }
+	
+	        PieChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return PieChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(PieChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.PieChartOptions");
+	
+	    var ChartBubble = exports.ChartBubble = function () {
+	        function ChartBubble(opacity, stroke, textStyle) {
+	            _classCallCheck(this, ChartBubble);
+	
+	            this.opacity = opacity;
+	            this.stroke = stroke;
+	            this.textStyle = textStyle;
+	        }
+	
+	        ChartBubble.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        ChartBubble.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return ChartBubble;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(ChartBubble.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.ChartBubble");
+	
+	    var BubbleChartOptions = exports.BubbleChartOptions = function () {
+	        function BubbleChartOptions(animation, axisTitlesPosition, backgroundColor, bubble, chartArea, colors, colorAxis, enableInteractivity, explorer, fontSize, fontName, forceIFrame, hAxis, height, legend, selectionMode, series, sizeAxis, sortBubblesBySize, theme, title, titlePosition, titleTextStyle, tooltip, vAxis, width) {
+	            _classCallCheck(this, BubbleChartOptions);
+	
+	            this.animation = animation;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.bubble = bubble;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.colorAxis = colorAxis;
+	            this.enableInteractivity = enableInteractivity;
+	            this.explorer = explorer;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.forceIFrame = forceIFrame;
+	            this.hAxis = hAxis;
+	            this.height = height;
+	            this.legend = legend;
+	            this.selectionMode = selectionMode;
+	            this.series = series;
+	            this.sizeAxis = sizeAxis;
+	            this.sortBubblesBySize = sortBubblesBySize;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        BubbleChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return BubbleChartOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(BubbleChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.BubbleChartOptions");
+	
+	    var TreeMapOptions = exports.TreeMapOptions = function () {
+	        function TreeMapOptions(fontColor, fontFamily, fontSize, forceIFrame, headerColor, headerHeight, headerHighlightColor, hintOpacity, maxColor, maxDepth, maxHighlightColor, maxPostDepth, maxColorValue, midColor, midHighlightColor, minColor, minHighlightColor, minColorValue, showScale, showTooltips, textStyle, title, titleTextStyle, useWeightedAverageForAggregation) {
+	            _classCallCheck(this, TreeMapOptions);
+	
+	            this.fontColor = fontColor;
+	            this.fontFamily = fontFamily;
+	            this.fontSize = fontSize;
+	            this.forceIFrame = forceIFrame;
+	            this.headerColor = headerColor;
+	            this.headerHeight = headerHeight;
+	            this.headerHighlightColor = headerHighlightColor;
+	            this.hintOpacity = hintOpacity;
+	            this.maxColor = maxColor;
+	            this.maxDepth = maxDepth;
+	            this.maxHighlightColor = maxHighlightColor;
+	            this.maxPostDepth = maxPostDepth;
+	            this.maxColorValue = maxColorValue;
+	            this.midColor = midColor;
+	            this.midHighlightColor = midHighlightColor;
+	            this.minColor = minColor;
+	            this.minHighlightColor = minHighlightColor;
+	            this.minColorValue = minColorValue;
+	            this.showScale = showScale;
+	            this.showTooltips = showTooltips;
+	            this.textStyle = textStyle;
+	            this.title = title;
+	            this.titleTextStyle = titleTextStyle;
+	            this.useWeightedAverageForAggregation = useWeightedAverageForAggregation;
+	        }
+	
+	        TreeMapOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        TreeMapOptions.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return TreeMapOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(TreeMapOptions.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.TreeMapOptions");
+	
+	    var CssClassNames = exports.CssClassNames = function () {
+	        function CssClassNames(headerRow, tableRow, oddTableRow, selectedTableRow, hoverTableRow, headerCell, tableCell, rowNumberCell) {
+	            _classCallCheck(this, CssClassNames);
+	
+	            this.headerRow = headerRow;
+	            this.tableRow = tableRow;
+	            this.oddTableRow = oddTableRow;
+	            this.selectedTableRow = selectedTableRow;
+	            this.hoverTableRow = hoverTableRow;
+	            this.headerCell = headerCell;
+	            this.tableCell = tableCell;
+	            this.rowNumberCell = rowNumberCell;
+	        }
+	
+	        CssClassNames.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        CssClassNames.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return CssClassNames;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(CssClassNames.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.CssClassNames");
+	
+	    var TableOptions = exports.TableOptions = function () {
+	        function TableOptions(allowHtml, alternatingRowStyle, cssClassName, firstRowNumber, height, page, pageSize, rtlTable, scrollLeftStartPosition, showRowNumber, sort, sortAscending, sortColumn, startPage, width) {
+	            _classCallCheck(this, TableOptions);
+	
+	            this.allowHtml = allowHtml;
+	            this.alternatingRowStyle = alternatingRowStyle;
+	            this.cssClassName = cssClassName;
+	            this.firstRowNumber = firstRowNumber;
+	            this.height = height;
+	            this.page = page;
+	            this.pageSize = pageSize;
+	            this.rtlTable = rtlTable;
+	            this.scrollLeftStartPosition = scrollLeftStartPosition;
+	            this.showRowNumber = showRowNumber;
+	            this.sort = sort;
+	            this.sortAscending = sortAscending;
+	            this.sortColumn = sortColumn;
+	            this.startPage = startPage;
+	            this.width = width;
+	        }
+	
+	        TableOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        TableOptions.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return TableOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(TableOptions.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.TableOptions");
+	
+	    var LabelStyle = exports.LabelStyle = function () {
+	        function LabelStyle(color, fontName, fontSize) {
+	            _classCallCheck(this, LabelStyle);
+	
+	            this.color = color;
+	            this.fontName = fontName;
+	            this.fontSize = fontSize;
+	        }
+	
+	        LabelStyle.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        LabelStyle.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return LabelStyle;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(LabelStyle.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.LabelStyle");
+	
+	    var TimelineTimeline = exports.TimelineTimeline = function () {
+	        function TimelineTimeline(barLabelStyle, colorByRowLabel, groupByRowLabel, rowLabelStyle, showRowLabels, singleColor) {
+	            _classCallCheck(this, TimelineTimeline);
+	
+	            this.barLabelStyle = barLabelStyle;
+	            this.colorByRowLabel = colorByRowLabel;
+	            this.groupByRowLabel = groupByRowLabel;
+	            this.rowLabelStyle = rowLabelStyle;
+	            this.showRowLabels = showRowLabels;
+	            this.singleColor = singleColor;
+	        }
+	
+	        TimelineTimeline.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        TimelineTimeline.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return TimelineTimeline;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(TimelineTimeline.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.TimelineTimeline");
+	
+	    var TimelineOptions = exports.TimelineOptions = function () {
+	        function TimelineOptions(avoidOverlappingGridLines, backgroundColor, colors, enableInteractivity, forceIFrame, height, timeline, width) {
+	            _classCallCheck(this, TimelineOptions);
+	
+	            this.avoidOverlappingGridLines = avoidOverlappingGridLines;
+	            this.backgroundColor = backgroundColor;
+	            this.colors = colors;
+	            this.enableInteractivity = enableInteractivity;
+	            this.forceIFrame = forceIFrame;
+	            this.height = height;
+	            this.timeline = timeline;
+	            this.width = width;
+	        }
+	
+	        TimelineOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        return TimelineOptions;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(TimelineOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.TimelineOptions");
+	
+	    var CandlestickCandlestick = exports.CandlestickCandlestick = function () {
+	        function CandlestickCandlestick(hollowIsRising, fallingColor, risingColor) {
+	            _classCallCheck(this, CandlestickCandlestick);
+	
+	            this.hollowIsRising = hollowIsRising;
+	            this.fallingColor = fallingColor;
+	            this.risingColor = risingColor;
+	        }
+	
+	        CandlestickCandlestick.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+	
+	        CandlestickCandlestick.prototype.CompareTo = function CompareTo(other) {
+	            return _fableCore.Util.compareRecords(this, other);
+	        };
+	
+	        return CandlestickCandlestick;
+	    }();
+	
+	    _fableCore.Util.setInterfaces(CandlestickCandlestick.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.GoogleCharts.Options.CandlestickCandlestick");
+	
+	    var CandlestickChartOptions = exports.CandlestickChartOptions = function () {
+	        function CandlestickChartOptions(aggregationTarget, animation, axisTitlesPosition, backgroundColor, bar, candlestick, chartArea, colors, enableInteractivity, focusTarget, fontSize, fontName, hAxis, height, legend, orientation, reverseCategories, selectionMode, series, theme, title, titlePosition, titleTextStyle, tooltip, vAxes, vAxis, width) {
+	            _classCallCheck(this, CandlestickChartOptions);
+	
+	            this.aggregationTarget = aggregationTarget;
+	            this.animation = animation;
+	            this.axisTitlesPosition = axisTitlesPosition;
+	            this.backgroundColor = backgroundColor;
+	            this.bar = bar;
+	            this.candlestick = candlestick;
+	            this.chartArea = chartArea;
+	            this.colors = colors;
+	            this.enableInteractivity = enableInteractivity;
+	            this.focusTarget = focusTarget;
+	            this.fontSize = fontSize;
+	            this.fontName = fontName;
+	            this.hAxis = hAxis;
+	            this.height = height;
+	            this.legend = legend;
+	            this.orientation = orientation;
+	            this.reverseCategories = reverseCategories;
+	            this.selectionMode = selectionMode;
+	            this.series = series;
+	            this.theme = theme;
+	            this.title = title;
+	            this.titlePosition = titlePosition;
+	            this.titleTextStyle = titleTextStyle;
+	            this.tooltip = tooltip;
+	            this.vAxes = vAxes;
+	            this.vAxis = vAxis;
+	            this.width = width;
+	        }
+	
+	        CandlestickChartOptions.prototype.Equals = function Equals(other) {
+	            return _fableCore.Util.equalsRecords(this, other);
+	        };
+
+	        return CandlestickChartOptions;
+	    }();
+
+	    _fableCore.Util.setInterfaces(CandlestickChartOptions.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.GoogleCharts.Options.CandlestickChartOptions");
+	});
+
+
+/***/ },
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -13324,9 +16319,7 @@
 	})(this, function (exports, _fableCore, _ast, _common, _typeops, _errors, _astops) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.CheckingContext = undefined;
 	  exports.addError = addError;
 	  exports.$FindProperty$_$ = $FindProperty$_$;
@@ -13344,7 +16337,7 @@
 	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
 	    return typeof obj;
 	  } : function (obj) {
-	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	  };
 	
 	  function _classCallCheck(instance, Constructor) {
@@ -13352,24 +16345,6 @@
 	      throw new TypeError("Cannot call a class as a function");
 	    }
 	  }
-	
-	  var _createClass = function () {
-	    function defineProperties(target, props) {
-	      for (var i = 0; i < props.length; i++) {
-	        var descriptor = props[i];
-	        descriptor.enumerable = descriptor.enumerable || false;
-	        descriptor.configurable = true;
-	        if ("value" in descriptor) descriptor.writable = true;
-	        Object.defineProperty(target, descriptor.key, descriptor);
-	      }
-	    }
-	
-	    return function (Constructor, protoProps, staticProps) {
-	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	      if (staticProps) defineProperties(Constructor, staticProps);
-	      return Constructor;
-	    };
-	  }();
 	
 	  var CheckingContext = exports.CheckingContext = function () {
 	    function CheckingContext(errors, globals, ranges) {
@@ -13380,12 +16355,9 @@
 	      this.Ranges = ranges;
 	    }
 	
-	    _createClass(CheckingContext, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }]);
+	    CheckingContext.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
 	
 	    return CheckingContext;
 	  }();
@@ -13461,10 +16433,10 @@
 	    };
 	
 	    if (instTy.Case === "Object") {
-	      var activePatternResult5103 = $FindMethod$_$(methName, instTy.Fields[0]);
+	      var activePatternResult5160 = $FindMethod$_$(methName, instTy.Fields[0]);
 	
-	      if (activePatternResult5103 != null) {
-	        var args = activePatternResult5103[1];
+	      if (activePatternResult5160 != null) {
+	        var args = activePatternResult5160[1];
 	
 	        if (parSpec.Case === "Choice2Of2") {
 	          var patternInput = _fableCore.Seq.item(parSpec.Fields[0], args);
@@ -13540,39 +16512,33 @@
 	      if (function () {
 	        return tupledArg[3] != null;
 	      }()) {
-	        var _iteratorNormalCompletion = true;
-	        var _didIteratorError = false;
-	        var _iteratorError = undefined;
-	
-	        try {
-	          var _loop = function _loop() {
-	            var forLoopVar = _step.value;
-	            (function () {
-	              var ent = tupledArg[3];
-	              return function (err) {
-	                addError(ctx, ent, err);
-	              };
-	            })()(function (rng) {
-	              return _errors.TypeChecker.incorrectParameterType(tupledArg[0], tupledArg[1], tupledArg[2], forLoopVar[0], forLoopVar[1], rng);
-	            });
-	          };
-	
-	          for (var _iterator = patternInput_2[1][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	            _loop();
+	        var _loop = function _loop() {
+	          if (_isArray) {
+	            if (_i >= _iterator.length) return "break";
+	            _ref = _iterator[_i++];
+	          } else {
+	            _i = _iterator.next();
+	            if (_i.done) return "break";
+	            _ref = _i.value;
 	          }
-	        } catch (err) {
-	          _didIteratorError = true;
-	          _iteratorError = err;
-	        } finally {
-	          try {
-	            if (!_iteratorNormalCompletion && _iterator.return) {
-	              _iterator.return();
-	            }
-	          } finally {
-	            if (_didIteratorError) {
-	              throw _iteratorError;
-	            }
-	          }
+	
+	          var forLoopVar = _ref;
+	          (function () {
+	            var ent = tupledArg[3];
+	            return function (err) {
+	              addError(ctx, ent, err);
+	            };
+	          })()(function (rng) {
+	            return _errors.TypeChecker.incorrectParameterType(tupledArg[0], tupledArg[1], tupledArg[2], forLoopVar[0], forLoopVar[1], rng);
+	          });
+	        };
+	
+	        for (var _iterator = patternInput_2[1], _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	          var _ref;
+	
+	          var _ret = _loop();
+	
+	          if (_ret === "break") break;
 	        }
 	      }
 	
@@ -13580,78 +16546,67 @@
 	    }, matchedArguments);
 	
 	    {
-	      var inputSequence = _fableCore.Seq.toList(_fableCore.Seq.groupBy(function (tuple) {
+	      var inputSequence = _fableCore.Seq.groupBy(function (tuple) {
 	        return tuple[0];
-	      }, assigns));
+	      }, assigns);
 	
-	      var _iteratorNormalCompletion2 = true;
-	      var _didIteratorError2 = false;
-	      var _iteratorError2 = undefined;
+	      for (var _iterator2 = inputSequence, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+	        var _ref2;
 	
-	      try {
-	        for (var _iterator2 = inputSequence[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	          var _forLoopVar = _step2.value;
+	        if (_isArray2) {
+	          if (_i2 >= _iterator2.length) break;
+	          _ref2 = _iterator2[_i2++];
+	        } else {
+	          _i2 = _iterator2.next();
+	          if (_i2.done) break;
+	          _ref2 = _i2.value;
+	        }
 	
-	          var $target1 = function $target1() {};
+	        var _forLoopVar = _ref2;
 	
-	          if (_forLoopVar[1].tail != null) {
-	            if (_forLoopVar[1].tail.tail != null) {
-	              (function () {
-	                var t1 = _forLoopVar[1].head[1];
-	                var ts = _forLoopVar[1].tail;
-	                var v = _forLoopVar[1].head[0];
-	                var _iteratorNormalCompletion3 = true;
-	                var _didIteratorError3 = false;
-	                var _iteratorError3 = undefined;
+	        var matchValue = _fableCore.Seq.toList(_forLoopVar[1]);
 	
-	                try {
-	                  var _loop2 = function _loop2() {
-	                    var forLoopVar_1 = _step3.value;
+	        var $target1 = function $target1() {};
 	
-	                    (function (err) {
-	                      addError(ctx, argList, err);
-	                    })(function (rng) {
-	                      return _errors.TypeChecker.inferenceConflict(v, t1, forLoopVar_1[1], rng);
-	                    });
-	                  };
+	        if (matchValue.tail != null) {
+	          if (matchValue.tail.tail != null) {
+	            (function () {
+	              var t1 = matchValue.head[1];
+	              var ts = matchValue.tail;
+	              var v = matchValue.head[0];
 	
-	                  for (var _iterator3 = ts[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-	                    _loop2();
-	                  }
-	                } catch (err) {
-	                  _didIteratorError3 = true;
-	                  _iteratorError3 = err;
-	                } finally {
-	                  try {
-	                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
-	                      _iterator3.return();
-	                    }
-	                  } finally {
-	                    if (_didIteratorError3) {
-	                      throw _iteratorError3;
-	                    }
-	                  }
+	              var _loop2 = function _loop2() {
+	                if (_isArray3) {
+	                  if (_i3 >= _iterator3.length) return "break";
+	                  _ref3 = _iterator3[_i3++];
+	                } else {
+	                  _i3 = _iterator3.next();
+	                  if (_i3.done) return "break";
+	                  _ref3 = _i3.value;
 	                }
-	              })();
-	            } else {
-	              $target1();
-	            }
+	
+	                var forLoopVar_1 = _ref3;
+	
+	                (function (err) {
+	                  addError(ctx, argList, err);
+	                })(function (rng) {
+	                  return _errors.TypeChecker.inferenceConflict(v, t1, forLoopVar_1[1], rng);
+	                });
+	              };
+	
+	              for (var _iterator3 = ts, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+	                var _ref3;
+	
+	                var _ret3 = _loop2();
+	
+	                if (_ret3 === "break") break;
+	              }
+	            })();
 	          } else {
 	            $target1();
 	          }
-	        }
-	      } catch (err) {
-	        _didIteratorError2 = true;
-	        _iteratorError2 = err;
-	      } finally {
-	        try {
-	          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	            _iterator2.return();
-	          }
-	        } finally {
-	          if (_didIteratorError2) {
-	            throw _iteratorError2;
-	          }
+	        } else {
+	          $target1();
 	        }
 	      }
 	    }
@@ -13743,11 +16698,11 @@
 	                    };
 	                  } else {
 	                    if (matchValue.Case === "Object") {
-	                      var activePatternResult5135 = $FindProperty$_$(name, matchValue.Fields[0]);
+	                      var activePatternResult5192 = $FindProperty$_$(name, matchValue.Fields[0]);
 	
-	                      if (activePatternResult5135 != null) {
-	                        var meta = activePatternResult5135[0];
-	                        var resTyp = activePatternResult5135[1];
+	                      if (activePatternResult5192 != null) {
+	                        var meta = activePatternResult5192[0];
+	                        var resTyp = activePatternResult5192[1];
 	                        {
 	                          e.Meta = meta;
 	                          return {
@@ -13825,12 +16780,12 @@
 	                        };
 	                      } else {
 	                        if (matchValue.Case === "Object") {
-	                          var activePatternResult5137 = $FindMethod$_$(name, matchValue.Fields[0]);
+	                          var activePatternResult5194 = $FindMethod$_$(name, matchValue.Fields[0]);
 	
-	                          if (activePatternResult5137 != null) {
-	                            var args = activePatternResult5137[1];
-	                            var meta = activePatternResult5137[0];
-	                            var resTyp = activePatternResult5137[2];
+	                          if (activePatternResult5194 != null) {
+	                            var args = activePatternResult5194[1];
+	                            var meta = activePatternResult5194[0];
+	                            var resTyp = activePatternResult5194[2];
 	                            {
 	                              e.Meta = meta;
 	                              return {
@@ -13905,40 +16860,35 @@
 	              }, elems);
 	
 	              var typ = inferListType(typs);
-	              var _iteratorNormalCompletion4 = true;
-	              var _didIteratorError4 = false;
-	              var _iteratorError4 = undefined;
 	
-	              try {
-	                var _loop3 = function _loop3() {
-	                  var a = _step4.value;
-	                  var elty = getType(ctx, a);
-	
-	                  if (!(0, _typeops.typesEqual)(typ)(elty)) {
-	                    (function (err) {
-	                      addError(ctx, a, err);
-	                    })(function (rng) {
-	                      return _errors.TypeChecker.listElementTypeDoesNotMatch(typ, elty, rng);
-	                    });
-	                  }
-	                };
-	
-	                for (var _iterator4 = elems[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-	                  _loop3();
+	              var _loop3 = function _loop3() {
+	                if (_isArray4) {
+	                  if (_i4 >= _iterator4.length) return "break";
+	                  _ref4 = _iterator4[_i4++];
+	                } else {
+	                  _i4 = _iterator4.next();
+	                  if (_i4.done) return "break";
+	                  _ref4 = _i4.value;
 	                }
-	              } catch (err) {
-	                _didIteratorError4 = true;
-	                _iteratorError4 = err;
-	              } finally {
-	                try {
-	                  if (!_iteratorNormalCompletion4 && _iterator4.return) {
-	                    _iterator4.return();
-	                  }
-	                } finally {
-	                  if (_didIteratorError4) {
-	                    throw _iteratorError4;
-	                  }
+	
+	                var a = _ref4;
+	                var elty = getType(ctx, a);
+	
+	                if (!(0, _typeops.typesEqual)(typ)(elty)) {
+	                  (function (err) {
+	                    addError(ctx, a, err);
+	                  })(function (rng) {
+	                    return _errors.TypeChecker.listElementTypeDoesNotMatch(typ, elty, rng);
+	                  });
 	                }
+	              };
+	
+	              for (var _iterator4 = elems, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
+	                var _ref4;
+	
+	                var _ret11 = _loop3();
+	
+	                if (_ret11 === "break") break;
 	              }
 	
 	              return {
@@ -14150,9 +17100,11 @@
 	        var loop = function loop(e_1) {
 	          return function (builder__1) {
 	            return builder__1.Delay(function (unitVar_1) {
-	              return (!visited.has(e_1.Symbol) ? function () {
+	              var isGlobal = e_1.Kind.Case === "GlobalValue" ? true : false;
+	
+	              if (!visited.has(e_1.Symbol) ? isGlobal ? true : function () {
 	                return e_1.Type == null;
-	              }() : false) ? function () {
+	              }() : false) {
 	                visited.set(e_1.Symbol, true);
 	                return builder__1.Combine(builder__1.For(_astops.Entity$2Eget_Antecedents.bind(e_1)(), function (_arg1) {
 	                  return builder__1.Bind(loop(_arg1), function (_arg2) {
@@ -14166,7 +17118,9 @@
 	                    return builder__1.Zero();
 	                  });
 	                }));
-	              }() : builder__1.Zero();
+	              } else {
+	                return builder__1.Zero();
+	              }
 	            });
 	          }(_fableCore.AsyncBuilder.singleton);
 	        };
@@ -14188,28 +17142,20 @@
 	        {
 	          var inputSequence = _astops.Entity$2Eget_Antecedents.bind(e)();
 	
-	          var _iteratorNormalCompletion5 = true;
-	          var _didIteratorError5 = false;
-	          var _iteratorError5 = undefined;
+	          for (var _iterator5 = inputSequence, _isArray5 = Array.isArray(_iterator5), _i5 = 0, _iterator5 = _isArray5 ? _iterator5 : _iterator5[Symbol.iterator]();;) {
+	            var _ref5;
 	
-	          try {
-	            for (var _iterator5 = inputSequence[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-	              var e_1 = _step5.value;
-	              loop(e_1);
+	            if (_isArray5) {
+	              if (_i5 >= _iterator5.length) break;
+	              _ref5 = _iterator5[_i5++];
+	            } else {
+	              _i5 = _iterator5.next();
+	              if (_i5.done) break;
+	              _ref5 = _i5.value;
 	            }
-	          } catch (err) {
-	            _didIteratorError5 = true;
-	            _iteratorError5 = err;
-	          } finally {
-	            try {
-	              if (!_iteratorNormalCompletion5 && _iterator5.return) {
-	                _iterator5.return();
-	              }
-	            } finally {
-	              if (_didIteratorError5) {
-	                throw _iteratorError5;
-	              }
-	            }
+	
+	            var e_1 = _ref5;
+	            loop(e_1);
 	          }
 	        }
 	
@@ -14273,9 +17219,7 @@
 	})(this, function (exports, _ast, _fableCore, _astops) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
+	  exports.__esModule = true;
 	  exports.TypeChecker = exports.Parser = exports.Tokenizer = undefined;
 	
 	  var Tokenizer = exports.Tokenizer = function ($exports) {
@@ -14530,54 +17474,679 @@
 
 
 /***/ },
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(13), __webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(1), __webpack_require__(13), __webpack_require__(14), __webpack_require__(23)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports !== "undefined") {
-	    factory(exports, require("fable-core"), require("./../common/babel"), require("./../ast/typeops"), require("../../libraries/common"));
+	    factory(exports, require("fable-core"), require("./parser/tokenizer"), require("../libraries/common"), require("./ast/typeops"), require("./ast/astops"), require("monaco"));
 	  } else {
 	    var mod = {
 	      exports: {}
 	    };
-	    factory(mod.exports, global.fableCore, global.babel, global.typeops, global.common);
-	    global.codegen = mod.exports;
+	    factory(mod.exports, global.fableCore, global.tokenizer, global.common, global.typeops, global.astops, global.monaco);
+	    global.monaco = mod.exports;
 	  }
-	})(this, function (exports, _fableCore, _babel, _typeops, _common) {
+	})(this, function (exports, _fableCore, _tokenizer, _common, _typeops, _astops, _monaco) {
 	  "use strict";
 	
-	  Object.defineProperty(exports, "__esModule", {
-	    value: true
-	  });
-	  exports.BabelResult = exports.BabelOptions = exports.CompilationContext = undefined;
-	  exports.offsetToLocation = offsetToLocation;
-	  exports.rangeToLoc = rangeToLoc;
-	  exports.getEmitterAndParams = getEmitterAndParams;
-	  exports.compileExpression = compileExpression;
-	  exports.compileCommand = compileCommand;
-	  exports.compileProgram = compileProgram;
-	  exports.compileAndRun = compileAndRun;
+	  exports.__esModule = true;
+	  exports.tokensProvider = exports.noState = exports.LocationMapper = undefined;
+	  exports.getColorClass = getColorClass;
+	  exports.createCompletionProvider = createCompletionProvider;
+	  exports.setupMonacoServices = setupMonacoServices;
+	  exports.createMonacoEditor = createMonacoEditor;
+	
+	  function _defineEnumerableProperties(obj, descs) {
+	    for (var key in descs) {
+	      var desc = descs[key];
+	      desc.configurable = desc.enumerable = true;
+	      if ("value" in desc) desc.writable = true;
+	      Object.defineProperty(obj, key, desc);
+	    }
+	
+	    return obj;
+	  }
 	
 	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
 	    return typeof obj;
 	  } : function (obj) {
-	    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 	  };
+	
+	  var _noState, _tokensProvider;
 	
 	  function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
 	      throw new TypeError("Cannot call a class as a function");
 	    }
 	  }
+	
+	  var LocationMapper = exports.LocationMapper = function () {
+	    function LocationMapper(code) {
+	      _classCallCheck(this, LocationMapper);
+	
+	      this.lengths = Int32Array.from(_fableCore.Seq.map(function (s) {
+	        return s.length;
+	      }, code.split("\n")));
+	    }
+	
+	    LocationMapper.prototype.AbsoluteToLineCol = function AbsoluteToLineCol(offs) {
+	      var line = 0;
+	      var col = 0;
+	      var offs_1 = offs;
+	
+	      while (line <= this.lengths.length ? offs_1 > this.lengths[line] : false) {
+	        offs_1 = offs_1 - this.lengths[line] - 1;
+	        line = line + 1;
+	      }
+	
+	      return [line + 1, offs_1 + 1];
+	    };
+	
+	    LocationMapper.prototype.LineColToAbsolute = function LineColToAbsolute(line, col) {
+	      var offs = 0;
+	
+	      for (var l = 1; l <= line - 1; l++) {
+	        offs = offs + this.lengths[l - 1] + 1;
+	      }
+	
+	      return offs + col - 1;
+	    };
+	
+	    return LocationMapper;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(LocationMapper.prototype, [], "TheGamma.Monaco.LocationMapper");
+	
+	  _monaco = monaco;
+	  var noState = exports.noState = (_noState = {}, _noState[_fableCore.Symbol.interfaces] = ["Fable.Import.monaco.languages.IState"], _noState.clone = function clone() {
+	    return this;
+	  }, _noState.equals = function equals(other) {
+	    return true;
+	  }, _noState);
+	
+	  function getColorClass(_arg1) {
+	    var $target1 = function $target1() {
+	      return "ident";
+	    };
+	
+	    var $target3 = function $target3() {
+	      return "keyword";
+	    };
+	
+	    if (_arg1.Case === "String") {
+	      return "string";
+	    } else {
+	      if (_arg1.Case === "QIdent") {
+	        return $target1();
+	      } else {
+	        if (_arg1.Case === "Ident") {
+	          return $target1();
+	        } else {
+	          if (_arg1.Case === "Dot") {
+	            return "operator";
+	          } else {
+	            if (_arg1.Case === "By") {
+	              return $target3();
+	            } else {
+	              if (_arg1.Case === "To") {
+	                return $target3();
+	              } else {
+	                if (_arg1.Case === "Let") {
+	                  return $target3();
+	                } else {
+	                  if (_arg1.Case === "Boolean") {
+	                    return $target3();
+	                  } else {
+	                    if (_arg1.Case === "Fun") {
+	                      return $target3();
+	                    } else {
+	                      if (_arg1.Case === "Arrow") {
+	                        return $target3();
+	                      } else {
+	                        if (_arg1.Case === "Number") {
+	                          return "number";
+	                        } else {
+	                          return "";
+	                        }
+	                      }
+	                    }
+	                  }
+	                }
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	
+	  var tokensProvider = exports.tokensProvider = (_tokensProvider = {}, _tokensProvider[_fableCore.Symbol.interfaces] = ["Fable.Import.monaco.languages.TokensProvider"], _tokensProvider.tokenize = function tokenize(line, state) {
+	    var tokens = {};
+	    tokens.endState = noState;
+	    tokens.tokens = [];
+	    var patternInput = (0, _tokenizer.tokenize)(line);
+	
+	    for (var idx = 0; idx <= patternInput[0].length - 1; idx++) {
+	      var t = patternInput[0][idx];
+	      var tok = {};
+	      tok.startIndex = t.Range.Start;
+	      tok.scopes = getColorClass(t.Token);
+	      tokens.tokens.push(tok);
+	    }
+	
+	    return tokens;
+	  }, _tokensProvider.getInitialState = function getInitialState() {
+	    return noState;
+	  }, _tokensProvider);
+	
+	  function createCompletionProvider(getService) {
+	    var _triggerCharacters, _ref, _mutatorMap;
+	
+	    return _ref = {}, _ref[_fableCore.Symbol.interfaces] = ["Fable.Import.monaco.languages.CompletionItemProvider"], _triggerCharacters = "triggerCharacters", _mutatorMap = {}, _mutatorMap[_triggerCharacters] = _mutatorMap[_triggerCharacters] || {}, _mutatorMap[_triggerCharacters].get = function () {
+	      return Array.from(_fableCore.List.ofArray(["."]));
+	    }, _ref.provideCompletionItems = function provideCompletionItems(model, position, token) {
+	      return function (arg00) {
+	        return _fableCore.Async.startAsPromise(arg00);
+	      }(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.TryWith(builder_.Delay(function (unitVar_1) {
+	            var svc = getService(model.uri.toString());
+	            var input = model.getValue(1, false);
+	
+	            _common.Log.event("editor", "completions", "", {
+	              source: input,
+	              position: position
+	            });
+	
+	            var conv = new LocationMapper(input);
+	            var loc = conv.LineColToAbsolute((position.lineNumber + 0x80000000 >>> 0) - 0x80000000, (position.column + 0x80000000 >>> 0) - 0x80000000);
+	            return builder_.Bind(svc.TypeCheck(input), function (_arg1) {
+	              var optMembers = _fableCore.Seq.tryPick(function (tupledArg) {
+	                var $target1 = function $target1() {
+	                  var $target1 = function $target1() {
+	                    return null;
+	                  };
+	
+	                  if (tupledArg[1].Kind.Case === "NamedMember") {
+	                    if (tupledArg[1].Kind.Fields[1].Type != null) {
+	                      var n = tupledArg[1].Kind.Fields[0];
+	                      var t = tupledArg[1].Kind.Fields[1].Type;
+	                      {
+	                        _common.Log.trace("completions", "Ignoring '%s' at location %s-%s (current=%s)", n.Name, tupledArg[0].Start, tupledArg[0].End, loc);
+	
+	                        return null;
+	                      }
+	                    } else {
+	                      return $target1();
+	                    }
+	                  } else {
+	                    return $target1();
+	                  }
+	                };
+	
+	                if (tupledArg[1].Kind.Case === "NamedMember") {
+	                  if (tupledArg[1].Kind.Fields[1].Type != null) {
+	                    if (function () {
+	                      var t = tupledArg[1].Kind.Fields[1].Type;
+	
+	                      if (loc >= tupledArg[0].Start) {
+	                        return loc <= tupledArg[0].End + 1;
+	                      } else {
+	                        return false;
+	                      }
+	                    }()) {
+	                      var t = tupledArg[1].Kind.Fields[1].Type;
+	
+	                      _common.Log.trace("completions", "Antecedant at current location: %O", t);
+	
+	                      var matchValue = (0, _typeops.reduceType)(t);
+	
+	                      if (matchValue.Case === "Object") {
+	                        var mems = matchValue.Fields[0].Members;
+	                        return [tupledArg[0], mems];
+	                      }
+	                    } else {
+	                      return $target1();
+	                    }
+	                  } else {
+	                    return $target1();
+	                  }
+	                } else {
+	                  return $target1();
+	                }
+	              }, _arg1[1].Entities);
+	
+	              var convertRange = function convertRange(rng) {
+	                var patternInput = conv.AbsoluteToLineCol(rng.Start);
+	                var patternInput_1 = conv.AbsoluteToLineCol(rng.End);
+	                var res = {};
+	                res.startColumn = patternInput[1];
+	                res.startLineNumber = patternInput[0];
+	                res.endColumn = patternInput_1[1] + 1;
+	                res.endLineNumber = patternInput_1[0];
+	                return res;
+	              };
+	
+	              if (optMembers != null) {
+	                var _ret = function () {
+	                  var nameRange = optMembers[0];
+	                  var members = optMembers[1];
+	                  var nameRange_1 = convertRange(nameRange);
+	
+	                  _common.Log.trace("completions", "providing %s members at %O", members.length, nameRange_1);
+	
+	                  var completion = _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
+	                    return _fableCore.Seq.map(function (m) {
+	                      var ci = {};
+	                      var patternInput = m.Case === "Property" ? [m.Fields[0], 9] : [m.Fields[0], 1];
+	                      ci.kind = patternInput[1];
+	                      ci.label = patternInput[0];
+	                      ci.insertText = (0, _astops.escapeIdent)(patternInput[0]);
+	                      ci.filterText = patternInput[0];
+	
+	                      if (m.Case === "Method") {
+	                        var patternInput_1 = function () {
+	                          var folder = function folder(tupledArg) {
+	                            return function (s) {
+	                              return tupledArg[1].length > 100 ? [new _fableCore.List(tupledArg[1], tupledArg[0]), s] : [tupledArg[0], tupledArg[1] === "" ? s : tupledArg[1] + "," + s];
+	                            };
+	                          };
+	
+	                          var arg = [new _fableCore.List(), ""];
+	                          return function (source) {
+	                            return _fableCore.Seq.fold(function ($var21, $var22) {
+	                              return folder($var21)($var22);
+	                            }, [arg[0], arg[1]], source);
+	                          };
+	                        }()(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_3) {
+	                          return _fableCore.Seq.collect(function (matchValue) {
+	                            return _fableCore.Seq.singleton((matchValue[1] ? "?" : "") + matchValue[0]);
+	                          }, m.Fields[1]);
+	                        })));
+	
+	                        var args = _fableCore.String.join(",\n", _fableCore.List.reverse(new _fableCore.List(patternInput_1[1], patternInput_1[0])));
+	
+	                        ci.documentation = "(" + args + ")";
+	                      }
+	
+	                      var eo = {};
+	                      eo.text = (0, _astops.escapeIdent)(patternInput[0]);
+	                      eo.range = nameRange_1;
+	                      ci.textEdit = eo;
+	                      return ci;
+	                    }, members);
+	                  }));
+	
+	                  _common.Log.trace("completions", "returning %O", Array.from(completion));
+	
+	                  return {
+	                    v: builder_.Return(Array.from(completion))
+	                  };
+	                }();
+	
+	                if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
+	              } else {
+	                _common.Log.trace("completions", "no members at %s", loc);
+	
+	                return builder_.Return(Array.from(new _fableCore.List()));
+	              }
+	            });
+	          }), function (_arg2) {
+	            _common.Log.exn("completions", "completions failed %O", _arg2);
+	
+	            return builder_.Return([]);
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	    }, _ref.resolveCompletionItem = function resolveCompletionItem(item, token) {
+	      return item;
+	    }, _defineEnumerableProperties(_ref, _mutatorMap), _ref;
+	  }
+	
+	  function setupMonacoServices(getService) {
+	    var lang = {};
+	    lang.id = "thegamma";
+	
+	    _monaco.languages.setTokensProvider("thegamma", tokensProvider);
+	
+	    _monaco.languages.registerCompletionItemProvider("thegamma", createCompletionProvider(getService));
+	
+	    _monaco.languages.register(lang);
+	  }
+	
+	  function createMonacoEditor(id, code, customize) {
+	    var services = {};
+	    var options = {};
+	    var scroll = {};
+	    scroll.vertical = "none";
+	    scroll.horizontal = "auto";
+	    options.scrollbar = scroll;
+	    options.value = code;
+	    options.language = "thegamma";
+	    options.lineNumbersMinChars = 3;
+	    options.contextmenu = false;
+	    options.scrollBeyondLastLine = false;
+	    options.overviewRulerLanes = 0;
+	    customize(options);
+	    return _monaco.editor.create(document.getElementById(id), options, services);
+	  }
+	});
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(3), __webpack_require__(20)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== "undefined") {
+	    factory(exports, require("fable-core"), require("./../ast/ast"), require("./../ast/errors"));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, global.fableCore, global.ast, global.errors);
+	    global.tokenizer = mod.exports;
+	  }
+	})(this, function (exports, _fableCore, _ast, _errors) {
+	  "use strict";
+	
+	  exports.__esModule = true;
+	  exports.Context = undefined;
+	  exports.startsWith = startsWith;
+	  exports.letter = letter;
+	  exports.number = number;
+	  exports.addAndTokenize = addAndTokenize;
+	  exports.tokenizeIdent = tokenizeIdent;
+	  exports.tokenizeString = tokenizeString;
+	  exports.tokenizeStringEnd = tokenizeStringEnd;
+	  exports.tokenizeQuotedIdent = tokenizeQuotedIdent;
+	  exports.tokenizeQuotedIdentEnd = tokenizeQuotedIdentEnd;
+	  exports.tokenizeWhite = tokenizeWhite;
+	  exports.tokenizeNumber = tokenizeNumber;
+	  exports.tokenizeInput = tokenizeInput;
+	  exports.tokenize = tokenize;
+	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
+	  var Context = exports.Context = function () {
+	    function Context(tokens, errors, input) {
+	      _classCallCheck(this, Context);
+	
+	      this.Tokens = tokens;
+	      this.Errors = errors;
+	      this.Input = input;
+	    }
+	
+	    Context.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    return Context;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(Context.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.Tokenizer.Context");
+	
+	  function startsWith(s, i, j, prefix) {
+	    return j === prefix.length ? true : i === s.length ? false : s[i] !== prefix[j] ? false : startsWith(s, i + 1, j + 1, prefix);
+	  }
+	
+	  function letter(c) {
+	    return (c >= "a" ? c <= "z" : false) ? true : c >= "A" ? c <= "Z" : false;
+	  }
+	
+	  function number(c) {
+	    return c >= "0" ? c <= "9" : false;
+	  }
+	
+	  function addAndTokenize(ctx, tok, i, l) {
+	    (function (arg00) {
+	      ctx.Tokens.push(arg00);
+	    })(new _ast.Token(tok, new _ast.Range(i, i + l - 1)));
+	
+	    return tokenizeInput(ctx, i + l);
+	  }
+	
+	  function tokenizeIdent(ctx, start, l) {
+	    return (start + l < ctx.Input.length ? letter(ctx.Input[start + l]) ? true : number(ctx.Input[start + l]) : false) ? tokenizeIdent(ctx, start, l + 1) : addAndTokenize(ctx, new _ast.TokenKind("Ident", [ctx.Input.substr(start, l)]), start, l);
+	  }
+	
+	  function tokenizeString(ctx, acc, start, l) {
+	    return start + l >= ctx.Input.length ? tokenizeStringEnd(true, ctx, acc, start, l) : function () {
+	      var matchValue = ctx.Input[start + l];
+	
+	      var $target1 = function $target1() {
+	        return matchValue === "\"" ? tokenizeStringEnd(false, ctx, acc, start, l + 1) : matchValue === "\\" ? function () {
+	          var matchValue_1 = ctx.Input[start + l + 1];
+	
+	          if (matchValue_1 === "\"") {
+	            return tokenizeString(ctx, new _fableCore.List("\"", acc), start, l + 2);
+	          } else {
+	            if (matchValue_1 === "\\") {
+	              return tokenizeString(ctx, new _fableCore.List("\\", acc), start, l + 2);
+	            } else {
+	              if (matchValue_1 === "n") {
+	                return tokenizeString(ctx, new _fableCore.List("\n", acc), start, l + 2);
+	              } else {
+	                if (matchValue_1 === "t") {
+	                  return tokenizeString(ctx, new _fableCore.List("\t", acc), start, l + 2);
+	                } else {
+	                  return tokenizeString(ctx, _fableCore.List.ofArray([matchValue_1, "\\"], acc), start, l + 2);
+	                }
+	              }
+	            }
+	          }
+	        }() : tokenizeString(ctx, new _fableCore.List(matchValue, acc), start, l + 1);
+	      };
+	
+	      if (matchValue === "\\") {
+	        if (start + l + 1 >= ctx.Input.length) {
+	          return tokenizeStringEnd(true, ctx, new _fableCore.List("\\", acc), start, l + 1);
+	        } else {
+	          return $target1();
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    }();
+	  }
+	
+	  function tokenizeStringEnd(error, ctx, acc, start, l) {
+	    var str = Array.from(acc).reverse().join('');
+	    var rng = new _ast.Range(start, start + l);
+	
+	    if (error) {
+	      ctx.Errors.push(_errors.Tokenizer.inputEndInsideString(rng, str));
+	    }
+	
+	    return addAndTokenize(ctx, new _ast.TokenKind("String", [str]), start, l);
+	  }
+	
+	  function tokenizeQuotedIdent(ctx, start, l) {
+	    return start + l >= ctx.Input.length ? tokenizeQuotedIdentEnd(true, ctx, start, l) : function () {
+	      var matchValue = ctx.Input[start + l];
+	
+	      if (matchValue === "\n") {
+	        return tokenizeQuotedIdentEnd(true, ctx, start, l + 1);
+	      } else {
+	        if (matchValue === "'") {
+	          return tokenizeQuotedIdentEnd(false, ctx, start, l + 1);
+	        } else {
+	          return tokenizeQuotedIdent(ctx, start, l + 1);
+	        }
+	      }
+	    }();
+	  }
+	
+	  function tokenizeQuotedIdentEnd(error, ctx, start, l) {
+	    var rng = new _ast.Range(start, start + l);
+	    var qid = ctx.Input.substr(start + 1, l - (error ? 1 : 2));
+	    var qid_1 = _fableCore.String.endsWith(qid, "\n") ? qid.substr(0, qid.length - 1) : qid;
+	
+	    if (error) {
+	      ctx.Errors.push(_errors.Tokenizer.missingClosingQuote(rng, qid_1));
+	    }
+	
+	    return addAndTokenize(ctx, new _ast.TokenKind("QIdent", [qid_1]), start, l);
+	  }
+	
+	  function tokenizeWhite(ctx, start, l) {
+	    return (start + l < ctx.Input.length ? ctx.Input[start + l] === " " : false) ? tokenizeWhite(ctx, start, l + 1) : addAndTokenize(ctx, new _ast.TokenKind("White", [ctx.Input.substr(start, l)]), start, l);
+	  }
+	
+	  function tokenizeNumber(ctx, decimal, start, l) {
+	    return (start + l < ctx.Input.length ? number(ctx.Input[start + l]) : false) ? tokenizeNumber(ctx, decimal, start, l + 1) : ((start + l < ctx.Input.length ? !decimal : false) ? ctx.Input[start + l] === "." : false) ? tokenizeNumber(ctx, true, start, l + 1) : function () {
+	      var str = ctx.Input.substr(start, l);
+	      return addAndTokenize(ctx, new _ast.TokenKind("Number", [str, Number.parseFloat(str)]), start, l);
+	    }();
+	  }
+	
+	  function tokenizeInput(ctx, i) {
+	    return i >= ctx.Input.length ? ctx : function () {
+	      var matchValue = ctx.Input[i];
+	
+	      var $target1 = function $target1() {
+	        var $target1 = function $target1() {
+	          var $target1 = function $target1() {
+	            var $target1 = function $target1() {
+	              var $target1 = function $target1() {
+	                var $target1 = function $target1() {
+	                  var $target1 = function $target1() {
+	                    return matchValue === "\n" ? addAndTokenize(ctx, new _ast.TokenKind("Newline", []), i, 1) : matchValue === " " ? tokenizeWhite(ctx, i, 1) : matchValue === "\"" ? tokenizeString(ctx, new _fableCore.List(), i, 1) : matchValue === "'" ? tokenizeQuotedIdent(ctx, i, 1) : matchValue === "(" ? addAndTokenize(ctx, new _ast.TokenKind("LParen", []), i, 1) : matchValue === ")" ? addAndTokenize(ctx, new _ast.TokenKind("RParen", []), i, 1) : matchValue === "*" ? addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("Multiply", [])]), i, 1) : matchValue === "+" ? addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("Plus", [])]), i, 1) : matchValue === "," ? addAndTokenize(ctx, new _ast.TokenKind("Comma", []), i, 1) : matchValue === "-" ? addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("Minus", [])]), i, 1) : matchValue === "." ? addAndTokenize(ctx, new _ast.TokenKind("Dot", []), i, 1) : matchValue === "/" ? addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("Divide", [])]), i, 1) : matchValue === "<" ? addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("LessThan", [])]), i, 1) : matchValue === "=" ? addAndTokenize(ctx, new _ast.TokenKind("Equals", []), i, 1) : matchValue === ">" ? addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("GreaterThan", [])]), i, 1) : matchValue === "[" ? addAndTokenize(ctx, new _ast.TokenKind("LSquare", []), i, 1) : matchValue === "]" ? addAndTokenize(ctx, new _ast.TokenKind("RSquare", []), i, 1) : matchValue === "^" ? addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("Power", [])]), i, 1) : letter(matchValue) ? tokenizeIdent(ctx, i, 1) : number(matchValue) ? tokenizeNumber(ctx, false, i, 1) : function () {
+	                      ctx.Errors.push(_errors.Tokenizer.unexpectedCharacter(new _ast.Range(i, i), matchValue));
+	                      return addAndTokenize(ctx, new _ast.TokenKind("Error", [matchValue]), i, 1);
+	                    }();
+	                  };
+	
+	                  if (matchValue === ">") {
+	                    if (startsWith(ctx.Input, i, 0, ">=")) {
+	                      return addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("GreaterThanOrEqual", [])]), i, 2);
+	                    } else {
+	                      return $target1();
+	                    }
+	                  } else {
+	                    return $target1();
+	                  }
+	                };
+	
+	                if (matchValue === "<") {
+	                  if (startsWith(ctx.Input, i, 0, "<=")) {
+	                    return addAndTokenize(ctx, new _ast.TokenKind("Operator", [new _ast.Operator("LessThanOrEqual", [])]), i, 2);
+	                  } else {
+	                    return $target1();
+	                  }
+	                } else {
+	                  return $target1();
+	                }
+	              };
+	
+	              if (matchValue === "f") {
+	                if (startsWith(ctx.Input, i, 0, "false")) {
+	                  return addAndTokenize(ctx, new _ast.TokenKind("Boolean", [false]), i, 5);
+	                } else {
+	                  return $target1();
+	                }
+	              } else {
+	                return $target1();
+	              }
+	            };
+	
+	            if (matchValue === "t") {
+	              if (startsWith(ctx.Input, i, 0, "true")) {
+	                return addAndTokenize(ctx, new _ast.TokenKind("Boolean", [true]), i, 4);
+	              } else {
+	                return $target1();
+	              }
+	            } else {
+	              return $target1();
+	            }
+	          };
+	
+	          if (matchValue === "l") {
+	            if (startsWith(ctx.Input, i, 0, "let")) {
+	              return addAndTokenize(ctx, new _ast.TokenKind("Let", []), i, 3);
+	            } else {
+	              return $target1();
+	            }
+	          } else {
+	            return $target1();
+	          }
+	        };
+	
+	        if (matchValue === "f") {
+	          if (startsWith(ctx.Input, i, 0, "fun")) {
+	            return addAndTokenize(ctx, new _ast.TokenKind("Fun", []), i, 3);
+	          } else {
+	            return $target1();
+	          }
+	        } else {
+	          return $target1();
+	        }
+	      };
+	
+	      if (matchValue === "-") {
+	        if (startsWith(ctx.Input, i, 0, "->")) {
+	          return addAndTokenize(ctx, new _ast.TokenKind("Arrow", []), i, 2);
+	        } else {
+	          return $target1();
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    }();
+	  }
+	
+	  function tokenize(input) {
+	    var ctx = function () {
+	      var Errors = [];
+	      return new Context([], Errors, input);
+	    }();
+	
+	    var ctx_1 = tokenizeInput(ctx, 0);
+	    ctx_1.Tokens.push(new _ast.Token(new _ast.TokenKind("EndOfFile", []), new _ast.Range(input.length, input.length)));
+	    return [Array.from(ctx_1.Tokens), Array.from(ctx_1.Errors)];
+	  }
+	});
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = monaco;
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(1), __webpack_require__(25), __webpack_require__(14), __webpack_require__(3), __webpack_require__(26), __webpack_require__(27), __webpack_require__(19)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== "undefined") {
+	    factory(exports, require("fable-core"), require("../libraries/common"), require("./editors"), require("./ast/astops"), require("./ast/ast"), require("./analyzer/binder"), require("./parser/parser"), require("./analyzer/typechecker"));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, global.fableCore, global.common, global.editors, global.astops, global.ast, global.binder, global.parser, global.typechecker);
+	    global.services = mod.exports;
+	  }
+	})(this, function (exports, _fableCore, _common, _editors, _astops, _ast, _binder, _parser, _typechecker) {
+	  "use strict";
+	
+	  exports.__esModule = true;
+	  exports.CheckingService = exports.LineRange = exports.Position = exports.CheckingMessage = exports.EditorService = exports.EditorWorkerMessage = undefined;
+	  exports.offsetToLocation = offsetToLocation;
+	  exports.rangeToLoc = rangeToLoc;
 	
 	  var _createClass = function () {
 	    function defineProperties(target, props) {
@@ -14597,6 +18166,3483 @@
 	    };
 	  }();
 	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
+	  var EditorWorkerMessage = exports.EditorWorkerMessage = function () {
+	    function EditorWorkerMessage(caseName, fields) {
+	      _classCallCheck(this, EditorWorkerMessage);
+	
+	      this.Case = caseName;
+	      this.Fields = fields;
+	    }
+	
+	    EditorWorkerMessage.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    EditorWorkerMessage.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
+	
+	    return EditorWorkerMessage;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(EditorWorkerMessage.prototype, ["FSharpUnion", "System.IEquatable", "System.IComparable"], "TheGamma.Services.EditorWorkerMessage");
+	
+	  var EditorService = exports.EditorService = function () {
+	    function EditorService(article, checker, delay) {
+	      var _this = this;
+	
+	      _classCallCheck(this, EditorService);
+	
+	      this.article = article;
+	      this.checker = checker;
+	      this.renderEditors = new _fableCore.Event();
+	      this.agent = _fableCore.MailboxProcessor.start(function (inbox) {
+	        var loop = function loop(lastText) {
+	          return function (pending) {
+	            return function (builder_) {
+	              return builder_.Delay(function (unitVar) {
+	                return builder_.Bind(inbox.receive(), function (_arg3) {
+	                  return _arg3.Case === "UpdateNow" ? builder_.Combine(builder_.TryWith(builder_.Delay(function (unitVar_1) {
+	                    _common.Log.trace("editors", "updating...");
+	
+	                    if (_arg3.Fields[0] !== lastText) {
+	                      return builder_.Bind(_this.update(_arg3.Fields[0]), function (_arg5) {
+	                        return builder_.Return();
+	                      });
+	                    } else {
+	                      return builder_.Zero();
+	                    }
+	                  }), function (_arg6) {
+	                    _common.Log.exn("editors", "update failed: %O", _arg6);
+	
+	                    return builder_.Zero();
+	                  }), builder_.Delay(function (unitVar_1) {
+	                    return builder_.ReturnFrom(loop(_arg3.Fields[0])(pending));
+	                  })) : _arg3.Case === "Refersh" ? builder_.Combine(pending === 1 ? builder_.TryWith(builder_.Delay(function (unitVar_1) {
+	                    _common.Log.trace("editors", "updating...");
+	
+	                    if (_arg3.Fields[0] !== lastText) {
+	                      return builder_.Bind(_this.update(_arg3.Fields[0]), function (_arg7) {
+	                        return builder_.Return();
+	                      });
+	                    } else {
+	                      return builder_.Zero();
+	                    }
+	                  }), function (_arg8) {
+	                    _common.Log.exn("editors", "update failed: %O", _arg8);
+	
+	                    return builder_.Zero();
+	                  }) : builder_.Zero(), builder_.Delay(function (unitVar_1) {
+	                    return builder_.ReturnFrom(loop(_arg3.Fields[0])(pending - 1));
+	                  })) : function () {
+	                    (function (arg00) {
+	                      _fableCore.Async.startImmediate(arg00);
+	                    })(function (builder__1) {
+	                      return builder__1.Delay(function (unitVar_1) {
+	                        return builder__1.Bind(_fableCore.Async.sleep(delay), function (_arg4) {
+	                          inbox.post(new EditorWorkerMessage("Refersh", [_arg3.Fields[0]]));
+	                          return builder__1.Zero();
+	                        });
+	                      });
+	                    }(_fableCore.AsyncBuilder.singleton));
+	
+	                    return builder_.ReturnFrom(loop(lastText)(pending + 1));
+	                  }();
+	                });
+	              });
+	            }(_fableCore.AsyncBuilder.singleton);
+	          };
+	        };
+	
+	        return loop("")(0);
+	      });
+	    }
+	
+	    EditorService.prototype.UpdateSource = function UpdateSource(text, immediately) {
+	      if (_fableCore.Util.equals(immediately, true)) {
+	        this.agent.post(new EditorWorkerMessage("UpdateNow", [text]));
+	      } else {
+	        this.agent.post(new EditorWorkerMessage("Update", [text]));
+	      }
+	    };
+	
+	    EditorService.prototype.update = function update(text) {
+	      var _this2 = this;
+	
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          _common.Log.event("options", "update", _this2.article, text);
+	
+	          return builder_.Bind(_this2.checker(text), function (_arg1) {
+	            _common.Log.trace("service", "Collecting editors");
+	
+	            return builder_.Bind(_common.Async.collect(function (cmd) {
+	              return (0, _editors.collectCmdEditors)(cmd);
+	            }, _arg1[2].Body.Node), function (_arg2) {
+	              var eds = _fableCore.List.mapIndexed(function (i, v) {
+	                return [i, v];
+	              }, _arg2);
+	
+	              var filteredEds = _fableCore.List.map(function (tuple) {
+	                return tuple[1];
+	              }, _fableCore.List.filter(function (tupledArg) {
+	                return !_fableCore.Seq.exists(function (tupledArg_1) {
+	                  return tupledArg_1[0] !== tupledArg[0] ? (0, _astops.strictSubRange)(tupledArg[1].Range, tupledArg_1[1].Range) : false;
+	                }, eds);
+	              }, eds));
+	
+	              _common.Log.trace("service", "Rendering %s out of %s", filteredEds.length, eds.length);
+	
+	              _this2.renderEditors.Trigger(filteredEds);
+	
+	              return builder_.Zero();
+	            });
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
+	    _createClass(EditorService, [{
+	      key: "EditorsUpdated",
+	      get: function get() {
+	        return this.renderEditors.Publish;
+	      }
+	    }]);
+	
+	    return EditorService;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(EditorService.prototype, [], "TheGamma.Services.EditorService");
+	
+	  var CheckingMessage = exports.CheckingMessage = function () {
+	    function CheckingMessage(caseName, fields) {
+	      _classCallCheck(this, CheckingMessage);
+	
+	      this.Case = caseName;
+	      this.Fields = fields;
+	    }
+	
+	    CheckingMessage.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    return CheckingMessage;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(CheckingMessage.prototype, ["FSharpUnion", "System.IEquatable"], "TheGamma.Services.CheckingMessage");
+	
+	  var Position = exports.Position = function () {
+	    function Position(line, column) {
+	      _classCallCheck(this, Position);
+	
+	      this.Line = line;
+	      this.Column = column;
+	    }
+	
+	    Position.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    Position.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
+	
+	    return Position;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(Position.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.Services.Position");
+	
+	  var LineRange = exports.LineRange = function () {
+	    function LineRange(start, end) {
+	      _classCallCheck(this, LineRange);
+	
+	      this.Start = start;
+	      this.End = end;
+	    }
+	
+	    LineRange.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    LineRange.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
+	
+	    return LineRange;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(LineRange.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.Services.LineRange");
+	
+	  function offsetToLocation(lines, offs, lengths) {
+	    var $target1 = function $target1() {
+	      return lengths.tail == null ? new Position(lines, offs) : offsetToLocation(lines + 1, offs - lengths.head - 1, lengths.tail);
+	    };
+	
+	    if (lengths.tail != null) {
+	      if (offs <= lengths.head) {
+	        var l = lengths.head;
+	        var lengths_1 = lengths.tail;
+	        return new Position(lines, offs);
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
+	
+	  function rangeToLoc(lengths, rng) {
+	    return new LineRange(offsetToLocation(1, rng.Start, lengths), offsetToLocation(1, rng.Start, lengths));
+	  }
+	
+	  var CheckingService = exports.CheckingService = function () {
+	    function CheckingService(article, globals) {
+	      var _this3 = this;
+	
+	      _classCallCheck(this, CheckingService);
+	
+	      this.globals = globals;
+	      this.errorsReported = new _fableCore.Event();
+	      var emptyProg = new _ast.Program((0, _astops.node)(new _ast.Range(0, 0), new _fableCore.List()));
+	      this.bindingContext = (0, _common.Async$2EStartAsFuture$2EStatic)(function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this3.globals), function (_arg1) {
+	            return builder_.Return((0, _binder.createContext)(_arg1, article));
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton));
+	      this.agent = _fableCore.MailboxProcessor.start(function (inbox) {
+	        var loop = function loop(lastCode) {
+	          return function (lastResult) {
+	            return function (builder_) {
+	              return builder_.Delay(function (unitVar) {
+	                return builder_.Bind(inbox.receive(), function (_arg6) {
+	                  return _arg6.Case === "TypeCheck" ? _arg6.Fields[0] === lastCode ? function () {
+	                    var code = _arg6.Fields[0];
+	                    var repl = _arg6.Fields[1];
+	                    {
+	                      _common.Log.trace("service", "Returning previous result");
+	
+	                      repl.reply(lastResult);
+	                      return builder_.ReturnFrom(loop(lastCode)(lastResult));
+	                    }
+	                  }() : _arg6.Case === "TypeCheck" ? function () {
+	                    _common.Log.trace("service", "Type checking source code");
+	
+	                    return builder_.Bind(_this3.typeCheck(_arg6.Fields[0]), function (_arg8) {
+	                      return _arg8 == null ? function () {
+	                        _arg6.Fields[1].reply([false, new _binder.BindingResult([]), emptyProg]);
+	
+	                        return builder_.ReturnFrom(loop(lastCode)(lastResult));
+	                      }() : function () {
+	                        var prog = _arg8[0];
+	                        var errors = _arg8[2];
+	                        var ents = _arg8[1];
+	
+	                        _this3.errorsReported.Trigger([_arg6.Fields[0], errors]);
+	
+	                        var result = [errors.length === 0, ents, prog];
+	
+	                        _arg6.Fields[1].reply(result);
+	
+	                        return builder_.ReturnFrom(loop(_arg6.Fields[0])(result));
+	                      }();
+	                    });
+	                  }() : function () {
+	                    throw ["C:\\Tomas\\Public\\thegamma\\thegamma-script\\src\\thegamma\\services.fs", 119, 12];
+	                  }() : function () {
+	                    var code = _arg6.Fields[0];
+	                    var repl = _arg6.Fields[1];
+	                    return builder_.Bind(_this3.typeCheck(code), function (_arg7) {
+	                      return builder_.Combine(function () {
+	                        var $target1 = function $target1() {
+	                          repl.reply(false);
+	                          return builder_.Zero();
+	                        };
+	
+	                        if (_arg7 != null) {
+	                          if (function () {
+	                            var errs = _arg7[2];
+	                            return errs.length === 0;
+	                          }()) {
+	                            var errs = _arg7[2];
+	                            repl.reply(true);
+	                            return builder_.Zero();
+	                          } else {
+	                            return $target1();
+	                          }
+	                        } else {
+	                          return $target1();
+	                        }
+	                      }(), builder_.Delay(function (unitVar_1) {
+	                        return builder_.ReturnFrom(loop(lastCode)(lastResult));
+	                      }));
+	                    });
+	                  }();
+	                });
+	              });
+	            }(_fableCore.AsyncBuilder.singleton);
+	          };
+	        };
+	
+	        return loop("")([false, new _binder.BindingResult([]), emptyProg]);
+	      });
+	    }
+	
+	    CheckingService.prototype.TypeCheck = function TypeCheck(code) {
+	      return this.agent.postAndAsyncReply(function (ch) {
+	        return new CheckingMessage("TypeCheck", [code, ch]);
+	      });
+	    };
+	
+	    CheckingService.prototype.IsWellTyped = function IsWellTyped(code) {
+	      return this.agent.postAndAsyncReply(function (ch) {
+	        return new CheckingMessage("IsWellTyped", [code, ch]);
+	      });
+	    };
+	
+	    CheckingService.prototype.errorsToLineCol = function errorsToLineCol(code, errors) {
+	      var lengths = _fableCore.List.map(function (l) {
+	        return l.length;
+	      }, _fableCore.Seq.toList(code.split("\n")));
+	
+	      return errors.map(function (e) {
+	        return new _ast.Error(e.Number, e.Message, rangeToLoc(lengths, e.Range));
+	      });
+	    };
+	
+	    CheckingService.prototype.typeCheck = function typeCheck(code) {
+	      var _this4 = this;
+	
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this4.globals), function (_arg2) {
+	            return builder_.TryWith(builder_.Delay(function (unitVar_1) {
+	              var patternInput = (0, _parser.parseProgram)(code);
+	              return builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(_this4.bindingContext), function (_arg3) {
+	                var patternInput_1 = (0, _binder.bindProgram)(_arg3, patternInput[0]);
+	                return builder_.Bind((0, _typechecker.typeCheckProgram)(_arg2, patternInput_1[1], patternInput_1[0]), function (_arg4) {
+	                  var typeErrors = (0, _typechecker.collectTypeErrors)(patternInput_1[0]);
+	
+	                  _common.Log.trace("service", "Type checking completed");
+	
+	                  var errors = function () {
+	                    var errors = patternInput[1].concat(typeErrors);
+	                    return _this4.errorsToLineCol(code, errors);
+	                  }();
+	
+	                  return builder_.Return([patternInput[0], patternInput_1[1], errors]);
+	                });
+	              });
+	            }), function (_arg5) {
+	              _common.Log.exn("service", "Type checking failed: %O", _arg5);
+	
+	              return builder_.Return();
+	            });
+	          });
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
+	    _createClass(CheckingService, [{
+	      key: "ErrorsReported",
+	      get: function get() {
+	        return this.errorsReported.Publish;
+	      }
+	    }]);
+
+	    return CheckingService;
+	  }();
+
+	  _fableCore.Util.setInterfaces(CheckingService.prototype, [], "TheGamma.Services.CheckingService");
+	});
+
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(14), __webpack_require__(3), __webpack_require__(1), __webpack_require__(13), __webpack_require__(11)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== "undefined") {
+	    factory(exports, require("fable-core"), require("./ast/astops"), require("./ast/ast"), require("../libraries/common"), require("./ast/typeops"), require("../gui/html"));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, global.fableCore, global.astops, global.ast, global.common, global.typeops, global.html);
+	    global.editors = mod.exports;
+	  }
+	})(this, function (exports, _fableCore, _astops, _ast, _common, _typeops, _html) {
+	  "use strict";
+	
+	  exports.__esModule = true;
+	  exports.collectItemListEditors = exports.AddActionSchema = exports.CreateActionSchema = exports.ItemListSchema = exports.collectNestedChoiceEditors = exports.collectSingleChoiceEditors = exports.Editor = exports.Property = undefined;
+	  exports.getMembers = getMembers;
+	  exports.extractMetadata = extractMetadata;
+	  exports.getProperty = getProperty;
+	  exports.filterProperties = filterProperties;
+	  exports.dominant = dominant;
+	  exports.chooseableProperty = chooseableProperty;
+	  exports.pickChainSuffixes = pickChainSuffixes;
+	  exports.collectCmdEditors = collectCmdEditors;
+	  exports.replace = replace;
+	  exports.replaceNameWithValue = replaceNameWithValue;
+	  exports.replaceTwoNamesWithValues = replaceTwoNamesWithValues;
+	  exports.removeRangeWithPrecendingDot = removeRangeWithPrecendingDot;
+	  exports.insertDotTextAfter = insertDotTextAfter;
+	  exports.renderDoc = renderDoc;
+	  exports.renderNestedDoc = renderNestedDoc;
+	  exports.renderEditor = renderEditor;
+	
+	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+	    return typeof obj;
+	  } : function (obj) {
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	  };
+	
+	  var _createClass = function () {
+	    function defineProperties(target, props) {
+	      for (var i = 0; i < props.length; i++) {
+	        var descriptor = props[i];
+	        descriptor.enumerable = descriptor.enumerable || false;
+	        descriptor.configurable = true;
+	        if ("value" in descriptor) descriptor.writable = true;
+	        Object.defineProperty(target, descriptor.key, descriptor);
+	      }
+	    }
+	
+	    return function (Constructor, protoProps, staticProps) {
+	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+	      if (staticProps) defineProperties(Constructor, staticProps);
+	      return Constructor;
+	    };
+	  }();
+	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
+	  var Property = exports.Property = function Property(caseName, fields) {
+	    _classCallCheck(this, Property);
+	
+	    this.Case = caseName;
+	    this.Fields = fields;
+	  };
+	
+	  _fableCore.Util.setInterfaces(Property.prototype, ["FSharpUnion"], "TheGamma.Editors.Property");
+	
+	  var Editor = exports.Editor = function () {
+	    function Editor(caseName, fields) {
+	      _classCallCheck(this, Editor);
+	
+	      this.Case = caseName;
+	      this.Fields = fields;
+	    }
+	
+	    _createClass(Editor, [{
+	      key: "Range",
+	      get: function get() {
+	        return this.Case === "NestedChoice" ? (0, _astops.unionRanges)(this.Fields[2].Range, this.Fields[3].Range) : this.Case === "CreateList" ? _fableCore.Seq.fold(function (r, n) {
+	          return (0, _astops.unionRanges)(r, n.Range);
+	        }, new _ast.Range(this.Fields[1].Range.End, this.Fields[1].Range.End), this.Fields[2]) : this.Fields[1].Range;
+	      }
+	    }]);
+	
+	    return Editor;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(Editor.prototype, ["FSharpUnion"], "TheGamma.Editors.Editor");
+	
+	  function getMembers(typ) {
+	    return function (builder_) {
+	      return builder_.Delay(function (unitVar) {
+	        return typ.Case === "Object" ? builder_.Return(typ.Fields[0].Members) : typ.Case === "Delayed" ? builder_.Bind((0, _common.Async$2EAwaitFuture$2EStatic)(typ.Fields[1]), function (_arg1) {
+	          return builder_.ReturnFrom(getMembers(_arg1));
+	        }) : function () {
+	          _common.Log.error("editors", "getMembers: Type %O is not an object", typ);
+	
+	          return builder_.Return(function () {
+	            throw "getMembers: Not an object";
+	          }());
+	        }();
+	      });
+	    }(_fableCore.AsyncBuilder.singleton);
+	  }
+	
+	  function extractMetadata(m) {
+	    var doc = _fableCore.Seq.tryPick(function (m_1) {
+	      return (m_1.Context === "http://thegamma.net" ? m_1.Type === "Documentation" : false) ? m_1.Data : null;
+	    }, m);
+	
+	    var schema = _fableCore.Seq.tryPick(function (m_1) {
+	      return m_1.Context === "http://schema.org" ? m_1 : null;
+	    }, m);
+	
+	    return [schema, doc != null ? doc : new _ast.Documentation("None", [])];
+	  }
+	
+	  function getProperty(name, members) {
+	    return _fableCore.Seq.tryPick(function (_arg1) {
+	      var $target1 = function $target1() {
+	        return null;
+	      };
+	
+	      if (_arg1.Case === "Property") {
+	        if (_arg1.Fields[0] === name.Name) {
+	          var m = _arg1.Fields[2];
+	          var n = _arg1.Fields[0];
+	          var t = _arg1.Fields[1];
+	          {
+	            var patternInput = extractMetadata(m);
+	            return [patternInput[0], t, patternInput[1]];
+	          }
+	        } else {
+	          return $target1();
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    }, members);
+	  }
+	
+	  function filterProperties(f, members) {
+	    var filtered = Array.from(_fableCore.Seq.choose(function (_arg1) {
+	      return _arg1.Case === "Property" ? function () {
+	        var patternInput = extractMetadata(_arg1.Fields[2]);
+	
+	        if (f([_arg1.Fields[0], patternInput[0], _arg1.Fields[1]])) {
+	          return new Property("Property", [_arg1.Fields[0], patternInput[0], _arg1.Fields[1]]);
+	        }
+	      }() : null;
+	    }, members));
+	    return filtered;
+	  }
+	
+	  function dominant(all, subset) {
+	    var nall = _fableCore.Seq.count(all);
+	
+	    var nsub = _fableCore.Seq.count(subset);
+	
+	    if (nsub >= 2) {
+	      return nsub >= ~~(nall * 2 / 3);
+	    } else {
+	      return false;
+	    }
+	  }
+	
+	  function chooseableProperty(equalTyp, name, typ) {
+	    return function (builder_) {
+	      return builder_.Delay(function (unitVar) {
+	        return builder_.Bind(getMembers(typ), function (_arg1) {
+	          var matchValue = getProperty(name.Node, _arg1);
+	
+	          var $target1 = function $target1() {
+	            return builder_.Return();
+	          };
+	
+	          if (matchValue != null) {
+	            if (matchValue[0] != null) {
+	              var _ret = function () {
+	                var propSchema = matchValue[0];
+	                var propTyp = matchValue[1];
+	                {
+	                  var alts = filterProperties(function (_arg2) {
+	                    return _arg2[1] != null ? function () {
+	                      var s = _arg2[1];
+	
+	                      if (s.Type === propSchema.Type) {
+	                        if (!equalTyp) {
+	                          return true;
+	                        } else {
+	                          return (0, _typeops.typesEqual)(_arg2[2])(propTyp);
+	                        }
+	                      } else {
+	                        return false;
+	                      }
+	                    }() : false;
+	                  }, _arg1);
+	
+	                  if (dominant(_arg1, alts)) {
+	                    return {
+	                      v: builder_.Return([name, alts])
+	                    };
+	                  } else {
+	                    return {
+	                      v: builder_.Return()
+	                    };
+	                  }
+	                }
+	              }();
+	
+	              if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
+	            } else {
+	              return $target1();
+	            }
+	          } else {
+	            return $target1();
+	          }
+	        });
+	      });
+	    }(_fableCore.AsyncBuilder.singleton);
+	  }
+	
+	  function pickChainSuffixes(f, expr) {
+	    var loop = function loop(res) {
+	      return function (suffix) {
+	        return function (expr_1) {
+	          return function (builder_) {
+	            return builder_.Delay(function (unitVar) {
+	              return expr_1.Node.Case === "Property" ? function () {
+	                var inst = expr_1.Node.Fields[0];
+	                var name = expr_1.Node.Fields[1];
+	                return builder_.Bind(getMembers(inst.Entity.Type), function (_arg1) {
+	                  var matchValue = getProperty(name.Node, _arg1);
+	
+	                  if (matchValue == null) {
+	                    return builder_.ReturnFrom(loop(res)(suffix)(inst));
+	                  } else {
+	                    var _ret2 = function () {
+	                      var propTy = matchValue[1];
+	                      var propSch = matchValue[0];
+	                      var propDoc = matchValue[2];
+	                      var suffix_1 = new _fableCore.List([inst.Entity.Type, name, propSch, propTy, propDoc], suffix);
+	                      return {
+	                        v: builder_.Bind(f(suffix_1), function (_arg2) {
+	                          return _arg2 != null ? builder_.ReturnFrom(loop(new _fableCore.List(_arg2, res))(suffix_1)(inst)) : builder_.ReturnFrom(loop(res)(suffix_1)(inst));
+	                        })
+	                      };
+	                    }();
+	
+	                    if ((typeof _ret2 === "undefined" ? "undefined" : _typeof(_ret2)) === "object") return _ret2.v;
+	                  }
+	                });
+	              }() : function () {
+	                var activePatternResult6074 = (0, _astops.$ExprLeaf$ExprNode$)(expr_1.Node);
+	
+	                if (activePatternResult6074.Case === "Choice1Of2") {
+	                  return builder_.Return(res);
+	                } else {
+	                  var es = activePatternResult6074.Fields[0][0];
+	                  return builder_.ReturnFrom(function () {
+	                    var f_1 = function f_1(st) {
+	                      return function (e) {
+	                        return loop(st)(new _fableCore.List())(e);
+	                      };
+	                    };
+	
+	                    return function (l) {
+	                      return _common.Async.fold(f_1, res, l);
+	                    };
+	                  }()(es));
+	                }
+	              }();
+	            });
+	          }(_fableCore.AsyncBuilder.singleton);
+	        };
+	      };
+	    };
+	
+	    return loop(new _fableCore.List())(new _fableCore.List())(expr);
+	  }
+	
+	  var collectSingleChoiceEditors = exports.collectSingleChoiceEditors = function () {
+	    var f = function f(chain) {
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          return chain.tail != null ? function () {
+	            var tyParent = chain.head[0];
+	            var name = chain.head[1];
+	            var doc = chain.head[4];
+	            return builder_.Bind(chooseableProperty(true, name, tyParent), function (_arg1) {
+	              return builder_.Return(function () {
+	                var $var16 = _arg1;
+	
+	                if ($var16 != null) {
+	                  return function (tupledArg) {
+	                    return new Editor("SingleChoice", [doc, tupledArg[0], tupledArg[1]]);
+	                  }($var16);
+	                } else {
+	                  return $var16;
+	                }
+	              }());
+	            });
+	          }() : builder_.Return();
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
+	    return function (expr) {
+	      return pickChainSuffixes(f, expr);
+	    };
+	  }();
+	
+	  var collectNestedChoiceEditors = exports.collectNestedChoiceEditors = function () {
+	    var f = function f(chain) {
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var $target1 = function $target1() {
+	            return builder_.Return();
+	          };
+	
+	          if (chain.tail != null) {
+	            if (chain.tail.tail != null) {
+	              if (chain.tail.head[2] != null) {
+	                var _ret3 = function () {
+	                  var catDoc = chain.head[4];
+	                  var catName = chain.head[1];
+	                  var catParentTy = chain.head[0];
+	                  var catSch = chain.head[2];
+	                  var catTy = chain.head[3];
+	                  var valDoc = chain.tail.head[4];
+	                  var valName = chain.tail.head[1];
+	                  var valParentTy = chain.tail.head[0];
+	                  var valSch = chain.tail.head[2];
+	                  var valTy = chain.tail.head[3];
+	                  {
+	                    _common.Log.trace("editors", "checking %s.%s", catName.Node.Name, valName.Node.Name);
+	
+	                    return {
+	                      v: builder_.Bind(chooseableProperty(false, catName, catParentTy), function (_arg1) {
+	                        return builder_.Bind(chooseableProperty(true, valName, valParentTy), function (_arg2) {
+	                          var matchValue = [_arg1, _arg2];
+	
+	                          var $target1_1 = function $target1_1() {
+	                            return builder_.Return();
+	                          };
+	
+	                          if (matchValue[0] != null) {
+	                            if (matchValue[1] != null) {
+	                              var _ret4 = function () {
+	                                var catMembers = matchValue[0][1];
+	                                var catName_1 = matchValue[0][0];
+	                                var valMembers = matchValue[1][1];
+	                                var valName_1 = matchValue[1][0];
+	                                {
+	                                  var _ret5 = function () {
+	                                    _common.Log.trace("editors", "collecting %s nested members", catMembers.length);
+	
+	                                    var nestedMembers = function nestedMembers(trunc) {
+	                                      return _common.Async.Array.map(function (_arg1_1) {
+	                                        return function (builder__1) {
+	                                          return builder__1.Delay(function (unitVar_1) {
+	                                            return builder__1.Bind(getMembers(_arg1_1.Fields[2]), function (_arg3) {
+	                                              var filtered = filterProperties(function (_arg4) {
+	                                                return _arg4[1] != null ? function () {
+	                                                  var s = _arg4[1];
+	
+	                                                  if (s.Type === valSch.Type) {
+	                                                    return (0, _typeops.typesEqual)(_arg4[2])(valTy);
+	                                                  } else {
+	                                                    return false;
+	                                                  }
+	                                                }() : false;
+	                                              }, _arg3);
+	                                              return builder__1.Return([_arg1_1, [_arg3, filtered]]);
+	                                            });
+	                                          });
+	                                        }(_fableCore.AsyncBuilder.singleton);
+	                                      }, trunc(catMembers));
+	                                    };
+	
+	                                    return {
+	                                      v: {
+	                                        v: builder_.Bind(nestedMembers(function ($var17) {
+	                                          return Array.from(_fableCore.Seq.truncate(5, $var17));
+	                                        }), function (_arg5) {
+	                                          return (_fableCore.Seq.count(_arg5) > 2 ? dominant(_fableCore.Seq.collect(function ($var18) {
+	                                            return $var18[1][0];
+	                                          }, _arg5), _fableCore.Seq.collect(function ($var19) {
+	                                            return $var19[1][1];
+	                                          }, _arg5)) : false) ? builder_.Bind(nestedMembers(function (x) {
+	                                            return x;
+	                                          }), function (_arg6) {
+	                                            var props = _arg6.map(function (tupledArg) {
+	                                              return [tupledArg[0], tupledArg[1][1]];
+	                                            });
+	
+	                                            return builder_.Return(new Editor("NestedChoice", [catDoc, valDoc, catName_1, valName_1, props]));
+	                                          }) : builder_.Return();
+	                                        })
+	                                      }
+	                                    };
+	                                  }();
+	
+	                                  if ((typeof _ret5 === "undefined" ? "undefined" : _typeof(_ret5)) === "object") return _ret5.v;
+	                                }
+	                              }();
+	
+	                              if ((typeof _ret4 === "undefined" ? "undefined" : _typeof(_ret4)) === "object") return _ret4.v;
+	                            } else {
+	                              return $target1_1();
+	                            }
+	                          } else {
+	                            return $target1_1();
+	                          }
+	                        });
+	                      })
+	                    };
+	                  }
+	                }();
+	
+	                if ((typeof _ret3 === "undefined" ? "undefined" : _typeof(_ret3)) === "object") return _ret3.v;
+	              } else {
+	                return $target1();
+	              }
+	            } else {
+	              return $target1();
+	            }
+	          } else {
+	            return $target1();
+	          }
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
+	    return function (expr) {
+	      return pickChainSuffixes(f, expr);
+	    };
+	  }();
+	
+	  var ItemListSchema = exports.ItemListSchema = function () {
+	    function ItemListSchema(name) {
+	      _classCallCheck(this, ItemListSchema);
+	
+	      this.name = name;
+	    }
+	
+	    ItemListSchema.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    ItemListSchema.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
+	
+	    return ItemListSchema;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(ItemListSchema.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.Editors.ItemListSchema");
+	
+	  var CreateActionSchema = exports.CreateActionSchema = function () {
+	    function CreateActionSchema(result) {
+	      _classCallCheck(this, CreateActionSchema);
+	
+	      this.result = result;
+	    }
+	
+	    CreateActionSchema.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    CreateActionSchema.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
+	
+	    return CreateActionSchema;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(CreateActionSchema.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.Editors.CreateActionSchema");
+	
+	  var AddActionSchema = exports.AddActionSchema = function () {
+	    function AddActionSchema(targetCollection) {
+	      _classCallCheck(this, AddActionSchema);
+	
+	      this.targetCollection = targetCollection;
+	    }
+	
+	    AddActionSchema.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    AddActionSchema.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
+	
+	    return AddActionSchema;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(AddActionSchema.prototype, ["FSharpRecord", "System.IEquatable", "System.IComparable"], "TheGamma.Editors.AddActionSchema");
+	
+	  var collectItemListEditors = exports.collectItemListEditors = function () {
+	    var f = function f(chain) {
+	      return function (builder_) {
+	        return builder_.Delay(function (unitVar) {
+	          var $target1 = function $target1() {
+	            var $target1 = function $target1() {
+	              return builder_.Return();
+	            };
+	
+	            if (chain.tail != null) {
+	              if (chain.head[2] != null) {
+	                if (function () {
+	                  var catDoc = chain.head[4];
+	                  var caTy = chain.head[3];
+	                  var caSch = chain.head[2];
+	                  var caParentTy = chain.head[0];
+	                  var caName = chain.head[1];
+	                  return caSch.Type === "CreateAction";
+	                }()) {
+	                  var _ret6 = function () {
+	                    var addActions = chain.tail;
+	                    var caName = chain.head[1];
+	                    var caParentTy = chain.head[0];
+	                    var caSch = chain.head[2];
+	                    var caTy = chain.head[3];
+	                    var catDoc = chain.head[4];
+	                    {
+	                      var _ret7 = function () {
+	                        var listName = caSch.Data.result.name;
+	
+	                        var collectAdds = function collectAdds(added) {
+	                          return function (lastTy) {
+	                            return function (_arg1) {
+	                              var $target1_1 = function $target1_1() {
+	                                return [_fableCore.List.reverse(added), lastTy];
+	                              };
+	
+	                              if (_arg1.tail != null) {
+	                                if (_arg1.head[2] != null) {
+	                                  if (function () {
+	                                    var addTy = _arg1.head[3];
+	                                    var addSch = _arg1.head[2];
+	                                    var addParentTy = _arg1.head[0];
+	                                    var addName = _arg1.head[1];
+	
+	                                    if (addSch.Type === "AddAction") {
+	                                      return listName === addSch.Data.targetCollection.name;
+	                                    } else {
+	                                      return false;
+	                                    }
+	                                  }()) {
+	                                    var addActions_1 = _arg1.tail;
+	                                    var addName = _arg1.head[1];
+	                                    var addParentTy = _arg1.head[0];
+	                                    var addSch = _arg1.head[2];
+	                                    var addTy = _arg1.head[3];
+	                                    return collectAdds(new _fableCore.List(addName, added))(addTy)(addActions_1);
+	                                  } else {
+	                                    return $target1_1();
+	                                  }
+	                                } else {
+	                                  return $target1_1();
+	                                }
+	                              } else {
+	                                return $target1_1();
+	                              }
+	                            };
+	                          };
+	                        };
+	
+	                        var patternInput = collectAdds(new _fableCore.List())(caTy)(addActions);
+	                        return {
+	                          v: {
+	                            v: builder_.Bind(getMembers(patternInput[1]), function (_arg2) {
+	                              var availableAdds = filterProperties(function (_arg3) {
+	                                var $target1_1 = function $target1_1() {
+	                                  return false;
+	                                };
+	
+	                                if (_arg3[1] != null) {
+	                                  if (function () {
+	                                    var s = _arg3[1];
+	                                    return s.Type === "AddAction";
+	                                  }()) {
+	                                    var n = _arg3[0];
+	                                    var s = _arg3[1];
+	                                    var t = _arg3[2];
+	                                    return s.Data.targetCollection.name === listName;
+	                                  } else {
+	                                    return $target1_1();
+	                                  }
+	                                } else {
+	                                  return $target1_1();
+	                                }
+	                              }, _arg2);
+	                              return builder_.Return(new Editor("CreateList", [catDoc, caName, Array.from(patternInput[0]), availableAdds]));
+	                            })
+	                          }
+	                        };
+	                      }();
+	
+	                      if ((typeof _ret7 === "undefined" ? "undefined" : _typeof(_ret7)) === "object") return _ret7.v;
+	                    }
+	                  }();
+	
+	                  if ((typeof _ret6 === "undefined" ? "undefined" : _typeof(_ret6)) === "object") return _ret6.v;
+	                } else {
+	                  return $target1();
+	                }
+	              } else {
+	                return $target1();
+	              }
+	            } else {
+	              return $target1();
+	            }
+	          };
+	
+	          if (chain.tail != null) {
+	            if (chain.head[2] != null) {
+	              if (chain.tail.tail != null) {
+	                if (chain.tail.head[2] != null) {
+	                  if (function () {
+	                    var caSch2 = chain.tail.head[2];
+	                    var caSch1 = chain.head[2];
+	
+	                    if (caSch1.Type === "CreateAction") {
+	                      return caSch2.Type === "CreateAction";
+	                    } else {
+	                      return false;
+	                    }
+	                  }()) {
+	                    var caSch1 = chain.head[2];
+	                    var caSch2 = chain.tail.head[2];
+	                    return builder_.Return();
+	                  } else {
+	                    return $target1();
+	                  }
+	                } else {
+	                  return $target1();
+	                }
+	              } else {
+	                return $target1();
+	              }
+	            } else {
+	              return $target1();
+	            }
+	          } else {
+	            return $target1();
+	          }
+	        });
+	      }(_fableCore.AsyncBuilder.singleton);
+	    };
+	
+	    return function (expr) {
+	      return pickChainSuffixes(f, expr);
+	    };
+	  }();
+	
+	  function collectCmdEditors(cmd) {
+	    return function (builder_) {
+	      return builder_.Delay(function (unitVar) {
+	        var $target0 = function $target0(e) {
+	          _common.Log.trace("editors", "single choice");
+	
+	          return builder_.Bind(collectSingleChoiceEditors(e), function (_arg1) {
+	            _common.Log.trace("editors", "item list");
+	
+	            return builder_.Bind(collectItemListEditors(e), function (_arg2) {
+	              _common.Log.trace("editors", "multi choice");
+	
+	              return builder_.Bind(collectNestedChoiceEditors(e), function (_arg3) {
+	                return builder_.Return(_fableCore.List.append(_arg1, _fableCore.List.append(_arg3, _arg2)));
+	              });
+	            });
+	          });
+	        };
+	
+	        if (cmd.Node.Case === "Expr") {
+	          return $target0(cmd.Node.Fields[0]);
+	        } else {
+	          return $target0(cmd.Node.Fields[1]);
+	        }
+	      });
+	    }(_fableCore.AsyncBuilder.singleton);
+	  }
+	
+	  function replace(rng, newValue, text) {
+	    return text.substr(0, rng.Start) + newValue + text.substr(rng.End + 1);
+	  }
+	
+	  function replaceNameWithValue(text, n, value) {
+	    var newValue = (0, _astops.escapeIdent)(value);
+	    return replace(n.Range, newValue, text);
+	  }
+	
+	  function replaceTwoNamesWithValues(text, n1, n2, s1, s2) {
+	    return replace(n1.Range, (0, _astops.escapeIdent)(s1), replace(n2.Range, (0, _astops.escapeIdent)(s2), text));
+	  }
+	
+	  function removeRangeWithPrecendingDot(text, rng) {
+	    var start = rng.Start;
+	
+	    while (start > 0 ? text[start] !== "." : false) {
+	      start = start - 1;
+	    }
+	
+	    return text.substr(0, start) + text.substr(rng.End + 1);
+	  }
+	
+	  function insertDotTextAfter(origText, rng, ins) {
+	    return origText.substr(0, rng.End + 1) + "." + (0, _astops.escapeIdent)(ins) + origText.substr(rng.End + 1);
+	  }
+	
+	  function renderDoc(_arg1) {
+	    return _arg1.Case === "None" ? function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("span")(new _fableCore.List())(new _fableCore.List()) : _arg1.Case === "Details" ? function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("div")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("h3")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(_arg1.Fields[0])])), function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("p")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(_arg1.Fields[1])]))])) : function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("h3")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(_arg1.Fields[0])]));
+	  }
+	
+	  function renderNestedDoc(_arg1_0, _arg1_1) {
+	    var _arg1 = [_arg1_0, _arg1_1];
+	
+	    var $target1 = function $target1() {
+	      return [function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("h3")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)("Choose a value")])), function (arg0) {
+	        return function (arg1) {
+	          return _html.El.op_Dynamic(arg0, arg1);
+	        };
+	      }(_html.h)("p")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)("First choose a category, then choose a value.")]))];
+	    };
+	
+	    if (_arg1[0].Case === "Details") {
+	      if (_arg1[1].Case === "Details") {
+	        var d1 = _arg1[0].Fields[1];
+	        var d2 = _arg1[1].Fields[1];
+	        var t2 = _arg1[1].Fields[0];
+	        return [function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("h3")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(t2)])), function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("p")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(d1), (0, _html.text)(d2)]))];
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
+	
+	  function renderEditor(typeCheck, setValue, origText, _arg1) {
+	    return _arg1.Case === "CreateList" ? function () {
+	      var edits = _arg1.Fields[2].map(function (n) {
+	        return [n, removeRangeWithPrecendingDot(origText, n.Range)];
+	      });
+	
+	      var patternInput = function (arg00) {
+	        return function (arg10) {
+	          return _html.h.part(arg00, arg10);
+	        };
+	      }(_fableCore.Set.create(null, new _fableCore.GenericComparer(function (x, y) {
+	        return x < y ? -1 : x > y ? 1 : 0;
+	      })))(function (s) {
+	        return function (n) {
+	          return _fableCore.Set.add(n, s);
+	        };
+	      });
+	
+	      edits.forEach(function (tupledArg) {
+	        (function (arg00) {
+	          _fableCore.Async.startImmediate(arg00);
+	        })(function (builder_) {
+	          return builder_.Delay(function (unitVar) {
+	            return builder_.Bind(typeCheck(tupledArg[1]), function (_arg14) {
+	              return _arg14 ? function () {
+	                patternInput[0](tupledArg[0].Node.Name);
+	                return builder_.Zero();
+	              }() : builder_.Zero();
+	            });
+	          });
+	        }(_fableCore.AsyncBuilder.singleton));
+	      });
+	      return patternInput[1](function (safe) {
+	        return function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "ed-list")]))(_fableCore.List.ofArray([renderDoc(_arg1.Fields[0]), function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "control")]))(_fableCore.List.ofArray([function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("ul")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	          return _fableCore.Seq.collect(function (matchValue) {
+	            return _fableCore.Seq.singleton(function (arg0) {
+	              return function (arg1) {
+	                return _html.El.op_Dynamic(arg0, arg1);
+	              };
+	            }(_html.h)("li")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
+	              var dis = !safe.has(matchValue[0].Node.Name);
+	              return _fableCore.Seq.append(_fableCore.Seq.singleton((0, _html.text)(matchValue[0].Node.Name)), _fableCore.Seq.delay(function (unitVar_2) {
+	                return _fableCore.Seq.append(_fableCore.Seq.singleton((0, _html.text)(" ")), _fableCore.Seq.delay(function (unitVar_3) {
+	                  return _fableCore.Seq.singleton(function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("button")(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_4) {
+	                    return _fableCore.Seq.append(dis ? _fableCore.Seq.singleton((0, _html.op_EqualsGreater)("disabled", "disabled")) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_5) {
+	                      return _fableCore.Seq.singleton((0, _html.op_EqualsBangGreater)("click", function (el) {
+	                        return function (e) {
+	                          setValue("list-delete")(matchValue[0].Node.Name)(matchValue[1]);
+	                        };
+	                      }));
+	                    }));
+	                  })))(_fableCore.List.ofArray([function (arg0) {
+	                    return function (arg1) {
+	                      return _html.El.op_Dynamic(arg0, arg1);
+	                    };
+	                  }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", dis ? "fa fa-ban" : "fa fa-times")]))(new _fableCore.List())])));
+	                }));
+	              }));
+	            }))));
+	          }, edits);
+	        }))), function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("chosen")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("data-placeholder", "add another item..."), (0, _html.op_EqualsBangGreater)("change", function (el) {
+	          return function (e) {
+	            var sel = el.value;
+	            var last = _arg1.Fields[2].length === 0 ? _arg1.Fields[1] : _arg1.Fields[2][_arg1.Fields[2].length - 1];
+	            setValue("list-add")(sel)(insertDotTextAfter(origText, last.Range, sel));
+	          };
+	        })]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	          return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	            return function (arg1) {
+	              return _html.El.op_Dynamic(arg0, arg1);
+	            };
+	          }(_html.h)("option")(new _fableCore.List())(new _fableCore.List())), _fableCore.Seq.delay(function (unitVar_1) {
+	            return _fableCore.Seq.collect(function (matchValue) {
+	              return _fableCore.Seq.singleton(function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("option")(new _fableCore.List())(_fableCore.List.ofArray([(0, _html.text)(matchValue.Fields[0])])));
+	            }, _arg1.Fields[3]);
+	          }));
+	        })))]))]));
+	      });
+	    }() : _arg1.Case === "NestedChoice" ? function () {
+	      var patternInput = function (arg00) {
+	        return function (arg10) {
+	          return _html.h.part(arg00, arg10);
+	        };
+	      }([_arg1.Fields[2].Node.Name, _arg1.Fields[3].Node.Name])(function (_arg1_1) {
+	        return function (n) {
+	          return n;
+	        };
+	      });
+	
+	      return patternInput[1](function (tupledArg) {
+	        var selected = function () {
+	          var $var20 = _fableCore.Seq.tryFind(function (tupledArg_1) {
+	            return tupledArg_1[0].Fields[0] === tupledArg[0];
+	          }, _arg1.Fields[4]);
+	
+	          if ($var20 != null) {
+	            return function (tuple) {
+	              return tuple[1];
+	            }($var20);
+	          } else {
+	            return $var20;
+	          }
+	        }();
+	
+	        var nested = selected != null ? selected : [];
+	        var patternInput_1 = renderNestedDoc(_arg1.Fields[0], _arg1.Fields[1]);
+	        return function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "ed-nested")]))(_fableCore.List.ofArray([patternInput_1[0], patternInput_1[1], function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "control")]))(_fableCore.List.ofArray([function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("chosen")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("change", function (el) {
+	          return function (e) {
+	            patternInput[0]([el.value, ""]);
+	          };
+	        })]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	          return _fableCore.Seq.collect(function (matchValue) {
+	            var name = matchValue[0].Fields[0];
+	            return _fableCore.Seq.singleton(function () {
+	              var sel = name === tupledArg[0] ? _fableCore.List.ofArray([(0, _html.op_EqualsGreater)("selected", "selected")]) : new _fableCore.List();
+	              return function (arg0) {
+	                return function (arg1) {
+	                  return _html.El.op_Dynamic(arg0, arg1);
+	                };
+	              }(_html.h)("option")(sel)(_fableCore.List.ofArray([(0, _html.text)(name)]));
+	            }());
+	          }, _arg1.Fields[4]);
+	        }))), function (arg0) {
+	          return function (arg1) {
+	            return _html.El.op_Dynamic(arg0, arg1);
+	          };
+	        }(_html.h)("chosen")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("data-placeholder", "choose an item..."), (0, _html.op_EqualsBangGreater)("change", function (el) {
+	          return function (e) {
+	            var name2 = el.value;
+	            setValue("nested")(name2)(replaceTwoNamesWithValues(origText, _arg1.Fields[2], _arg1.Fields[3], tupledArg[0], name2));
+	          };
+	        })]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	          return _fableCore.Seq.append(tupledArg[1] === "" ? _fableCore.Seq.singleton(function (arg0) {
+	            return function (arg1) {
+	              return _html.El.op_Dynamic(arg0, arg1);
+	            };
+	          }(_html.h)("option")(new _fableCore.List())(new _fableCore.List())) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_1) {
+	            return _fableCore.Seq.collect(function (matchValue) {
+	              return _fableCore.Seq.singleton(function () {
+	                var sel = matchValue.Fields[0] === tupledArg[1] ? _fableCore.List.ofArray([(0, _html.op_EqualsGreater)("selected", "selected")]) : new _fableCore.List();
+	                return function (arg0) {
+	                  return function (arg1) {
+	                    return _html.El.op_Dynamic(arg0, arg1);
+	                  };
+	                }(_html.h)("option")(sel)(_fableCore.List.ofArray([(0, _html.text)(matchValue.Fields[0])]));
+	              }());
+	            }, nested);
+	          }));
+	        })))]))]));
+	      });
+	    }() : function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "ed-single")]))(_fableCore.List.ofArray([renderDoc(_arg1.Fields[0]), function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("div")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "control")]))(_fableCore.List.ofArray([function (arg0) {
+	      return function (arg1) {
+	        return _html.El.op_Dynamic(arg0, arg1);
+	      };
+	    }(_html.h)("chosen")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("change", function (el) {
+	      return function (e) {
+	        var value = el.value;
+	        setValue("single")(value)(replaceNameWithValue(origText, _arg1.Fields[1], value));
+	      };
+	    })]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	      return _fableCore.Seq.collect(function (matchValue) {
+	        return _fableCore.Seq.singleton(function () {
+	          var sel = matchValue.Fields[0] === _arg1.Fields[1].Node.Name ? _fableCore.List.ofArray([(0, _html.op_EqualsGreater)("selected", "selected")]) : new _fableCore.List();
+	          return function (arg0) {
+	            return function (arg1) {
+	              return _html.El.op_Dynamic(arg0, arg1);
+	            };
+	          }(_html.h)("option")(sel)(_fableCore.List.ofArray([(0, _html.text)(matchValue.Fields[0])]));
+	        }());
+	      }, _arg1.Fields[2]);
+	    })))]))]));
+	  }
+	});
+
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(14), __webpack_require__(1), __webpack_require__(3)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== "undefined") {
+	    factory(exports, require("fable-core"), require("./../ast/astops"), require("../../libraries/common"), require("./../ast/ast"));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, global.fableCore, global.astops, global.common, global.ast);
+	    global.binder = mod.exports;
+	  }
+	})(this, function (exports, _fableCore, _astops, _common, _ast) {
+	  "use strict";
+	
+	  exports.__esModule = true;
+	  exports.BindingResult = exports.BindingContext = undefined;
+	  exports.bindEntity = bindEntity;
+	  exports.setEntity = setEntity;
+	  exports.bindExpression = bindExpression;
+	  exports.bindCommand = bindCommand;
+	  exports.bindProgram = bindProgram;
+	  exports.createContext = createContext;
+	
+	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+	    return typeof obj;
+	  } : function (obj) {
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	  };
+	
+	  var _createClass = function () {
+	    function defineProperties(target, props) {
+	      for (var i = 0; i < props.length; i++) {
+	        var descriptor = props[i];
+	        descriptor.enumerable = descriptor.enumerable || false;
+	        descriptor.configurable = true;
+	        if ("value" in descriptor) descriptor.writable = true;
+	        Object.defineProperty(target, descriptor.key, descriptor);
+	      }
+	    }
+	
+	    return function (Constructor, protoProps, staticProps) {
+	      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+	      if (staticProps) defineProperties(Constructor, staticProps);
+	      return Constructor;
+	    };
+	  }();
+	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
+	  var BindingContext = exports.BindingContext = function BindingContext(variables, globalValues, root, table, bound) {
+	    _classCallCheck(this, BindingContext);
+	
+	    this.Variables = variables;
+	    this.GlobalValues = globalValues;
+	    this.Root = root;
+	    this.Table = table;
+	    this.Bound = bound;
+	  };
+	
+	  _fableCore.Util.setInterfaces(BindingContext.prototype, ["FSharpRecord"], "TheGamma.Binder.BindingContext");
+	
+	  var BindingResult = exports.BindingResult = function () {
+	    function BindingResult(ents) {
+	      var _this = this;
+	
+	      _classCallCheck(this, BindingResult);
+	
+	      this.ents = ents;
+	      {
+	        (function () {
+	          var res = new Map();
+	
+	          var add = function add(a) {
+	            return function (e) {
+	              if (!res.has(a)) {
+	                res.set(a, []);
+	              }
+	
+	              res.get(a).push(e);
+	            };
+	          };
+	
+	          {
+	            var arr = _this.ents;
+	
+	            for (var idx = 0; idx <= arr.length - 1; idx++) {
+	              var forLoopVar = arr[idx];
+	
+	              var inputSequence = _astops.Entity$2Eget_Antecedents.bind(forLoopVar[1])();
+	
+	              for (var _iterator = inputSequence, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+	                var _ref;
+	
+	                if (_isArray) {
+	                  if (_i >= _iterator.length) break;
+	                  _ref = _iterator[_i++];
+	                } else {
+	                  _i = _iterator.next();
+	                  if (_i.done) break;
+	                  _ref = _i.value;
+	                }
+	
+	                var a = _ref;
+	                add(a.Symbol)(forLoopVar[1]);
+	              }
+	            }
+	          }
+	          _this.childrenLookup = res;
+	        })();
+	      }
+	    }
+	
+	    BindingResult.prototype.GetChildren = function GetChildren(ent) {
+	      var matchValue = this.childrenLookup.has(ent.Symbol) ? [true, this.childrenLookup.get(ent.Symbol)] : [false, null];
+	
+	      if (matchValue[0]) {
+	        return Array.from(matchValue[1]);
+	      } else {
+	        return [];
+	      }
+	    };
+	
+	    _createClass(BindingResult, [{
+	      key: "Entities",
+	      get: function get() {
+	        return this.ents;
+	      }
+	    }]);
+	
+	    return BindingResult;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(BindingResult.prototype, [], "TheGamma.Binder.BindingResult");
+	
+	  function bindEntity(ctx, kind) {
+	    var patternInput = (0, _astops.entityCodeNameAndAntecedents)(kind);
+	
+	    var symbols = _fableCore.List.map(function (a) {
+	      return a.Symbol;
+	    }, new _fableCore.List(ctx.Root, patternInput[1]));
+	
+	    var nestedDict = function () {
+	      var matchValue = _common.ListDictionaryModule.tryFind(symbols, ctx.Table);
+	
+	      if (matchValue != null) {
+	        return matchValue;
+	      } else {
+	        return _fableCore.Map.create(null, new _fableCore.GenericComparer(_fableCore.Util.compare));
+	      }
+	    }();
+	
+	    if (nestedDict.has([patternInput[0], patternInput[2]])) {
+	      _common.Log.trace("binder", "Cached: binding %s %s", (0, _astops.formatEntityKind)(kind), patternInput[2]);
+	
+	      return nestedDict.get([patternInput[0], patternInput[2]]);
+	    } else {
+	      var _ret2 = function () {
+	        _common.Log.trace("binder", "New: binding %s %s", (0, _astops.formatEntityKind)(kind), patternInput[2]);
+	
+	        var symbol = Symbol();
+	
+	        var entity = function () {
+	          var Type = null;
+	          var Errors = new _fableCore.List();
+	          var Meta = new _fableCore.List();
+	          return new _ast.Entity(kind, symbol, null, Meta, Type, Errors);
+	        }();
+	
+	        _common.ListDictionaryModule.set(symbols, _fableCore.Map.add([patternInput[0], patternInput[2]], entity, nestedDict), ctx.Table);
+	
+	        return {
+	          v: entity
+	        };
+	      }();
+	
+	      if ((typeof _ret2 === "undefined" ? "undefined" : _typeof(_ret2)) === "object") return _ret2.v;
+	    }
+	  }
+	
+	  function setEntity(ctx, node, entity) {
+	    ctx.Bound.push([node.Range, entity]);
+	    node.Entity = entity;
+	    return entity;
+	  }
+	
+	  function bindExpression(callSite, ctx, node) {
+	    var bindCallArgExpression = function bindCallArgExpression(site) {
+	      var callSite_1 = site;
+	      return function (ctx_1) {
+	        return function (node_1) {
+	          return bindExpression(callSite_1, ctx_1, node_1);
+	        };
+	      };
+	    };
+	
+	    var bindExpression_1 = function () {
+	      var callSite_1 = null;
+	      return function (ctx_1) {
+	        return function (node_1) {
+	          return bindExpression(callSite_1, ctx_1, node_1);
+	        };
+	      };
+	    }();
+	
+	    if (node.Node.Case === "Call") {
+	      var _ret3 = function () {
+	        var inst = function () {
+	          var $var8 = node.Node.Fields[0];
+	
+	          if ($var8 != null) {
+	            return bindExpression_1(ctx)($var8);
+	          } else {
+	            return $var8;
+	          }
+	        }() != null ? function () {
+	          var $var8 = node.Node.Fields[0];
+	
+	          if ($var8 != null) {
+	            return bindExpression_1(ctx)($var8);
+	          } else {
+	            return $var8;
+	          }
+	        }() : ctx.Root;
+	
+	        var site = function site(arg) {
+	          return bindEntity(ctx, new _ast.EntityKind("CallSite", [inst, node.Node.Fields[1].Node, arg]));
+	        };
+	
+	        var args = _fableCore.List.mapIndexed(function (idx, arg) {
+	          var site_1 = site(arg.Name != null ? new _fableCore.Choice("Choice1Of2", [arg.Name.Node.Name]) : new _fableCore.Choice("Choice2Of2", [idx]));
+	          var expr = bindCallArgExpression(site_1)(ctx)(arg.Value);
+	
+	          if (arg.Name == null) {
+	            return expr;
+	          } else {
+	            return function (entity) {
+	              return setEntity(ctx, arg.Name, entity);
+	            }(bindEntity(ctx, new _ast.EntityKind("NamedParam", [arg.Name.Node, expr])));
+	          }
+	        }, node.Node.Fields[2].Node);
+	
+	        var args_1 = function (entity) {
+	          return setEntity(ctx, node.Node.Fields[2], entity);
+	        }(bindEntity(ctx, new _ast.EntityKind("ArgumentList", [args])));
+	
+	        var named = function (entity) {
+	          return setEntity(ctx, node.Node.Fields[1], entity);
+	        }(bindEntity(ctx, new _ast.EntityKind("NamedMember", [node.Node.Fields[1].Node, inst])));
+	
+	        return {
+	          v: function (entity) {
+	            return setEntity(ctx, node, entity);
+	          }(bindEntity(ctx, new _ast.EntityKind("ChainElement", [false, node.Node.Fields[1].Node, named, inst, args_1])))
+	        };
+	      }();
+	
+	      if ((typeof _ret3 === "undefined" ? "undefined" : _typeof(_ret3)) === "object") return _ret3.v;
+	    } else {
+	      if (node.Node.Case === "Property") {
+	        var _inst = bindExpression_1(ctx)(node.Node.Fields[0]);
+	
+	        var _named = function (entity) {
+	          return setEntity(ctx, node.Node.Fields[1], entity);
+	        }(bindEntity(ctx, new _ast.EntityKind("NamedMember", [node.Node.Fields[1].Node, _inst])));
+	
+	        return function (entity) {
+	          return setEntity(ctx, node, entity);
+	        }(bindEntity(ctx, new _ast.EntityKind("ChainElement", [true, node.Node.Fields[1].Node, _named, _inst, null])));
+	      } else {
+	        if (node.Node.Case === "Binary") {
+	          var lentity = bindExpression_1(ctx)(node.Node.Fields[0]);
+	          var rentity = bindExpression_1(ctx)(node.Node.Fields[2]);
+	          return function (entity) {
+	            return setEntity(ctx, node, entity);
+	          }(bindEntity(ctx, new _ast.EntityKind("Operator", [lentity, node.Node.Fields[1].Node, rentity])));
+	        } else {
+	          if (node.Node.Case === "List") {
+	            var entities = _fableCore.List.map(bindExpression_1(ctx), node.Node.Fields[0]);
+	
+	            return function (entity) {
+	              return setEntity(ctx, node, entity);
+	            }(bindEntity(ctx, new _ast.EntityKind("List", [entities])));
+	          } else {
+	            if (node.Node.Case === "Function") {
+	              var callSite_1 = callSite == null ? function () {
+	                throw "bindExpression: Function missing call site";
+	              }() : callSite;
+	
+	              var _var = function (entity) {
+	                return setEntity(ctx, node.Node.Fields[0], entity);
+	              }(bindEntity(ctx, new _ast.EntityKind("Binding", [node.Node.Fields[0].Node, callSite_1])));
+	
+	              var body = bindExpression_1(new BindingContext(_fableCore.Map.add(node.Node.Fields[0].Node, _var, ctx.Variables), ctx.GlobalValues, ctx.Root, ctx.Table, ctx.Bound))(node.Node.Fields[1]);
+	              return function (entity) {
+	                return setEntity(ctx, node, entity);
+	              }(bindEntity(ctx, new _ast.EntityKind("Function", [_var, body])));
+	            } else {
+	              if (node.Node.Case === "Boolean") {
+	                return function (entity) {
+	                  return setEntity(ctx, node, entity);
+	                }(bindEntity(ctx, new _ast.EntityKind("Constant", [new _ast.Constant("Boolean", [node.Node.Fields[0]])])));
+	              } else {
+	                if (node.Node.Case === "String") {
+	                  return function (entity) {
+	                    return setEntity(ctx, node, entity);
+	                  }(bindEntity(ctx, new _ast.EntityKind("Constant", [new _ast.Constant("String", [node.Node.Fields[0]])])));
+	                } else {
+	                  if (node.Node.Case === "Number") {
+	                    return function (entity) {
+	                      return setEntity(ctx, node, entity);
+	                    }(bindEntity(ctx, new _ast.EntityKind("Constant", [new _ast.Constant("Number", [node.Node.Fields[0]])])));
+	                  } else {
+	                    if (node.Node.Case === "Empty") {
+	                      return function (entity) {
+	                        return setEntity(ctx, node, entity);
+	                      }(bindEntity(ctx, new _ast.EntityKind("Constant", [new _ast.Constant("Empty", [])])));
+	                    } else {
+	                      var matchValue = _fableCore.Map.tryFind(node.Node.Fields[0].Node, ctx.Variables);
+	
+	                      if (matchValue != null) {
+	                        return function (entity) {
+	                          return setEntity(ctx, node, entity);
+	                        }(bindEntity(ctx, new _ast.EntityKind("Variable", [node.Node.Fields[0].Node, matchValue])));
+	                      } else {
+	                        var matchValue_1 = _fableCore.Map.tryFind(node.Node.Fields[0].Node, ctx.GlobalValues);
+	
+	                        if (matchValue_1 == null) {
+	                          return function (entity) {
+	                            return setEntity(ctx, node, entity);
+	                          }(bindEntity(ctx, new _ast.EntityKind("GlobalValue", [node.Node.Fields[0].Node, null])));
+	                        } else {
+	                          return function (entity) {
+	                            return setEntity(ctx, node, entity);
+	                          }(matchValue_1);
+	                        }
+	                      }
+	                    }
+	                  }
+	                }
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	
+	  function bindCommand(ctx, node) {
+	    return node.Node.Case === "Expr" ? function () {
+	      var body = bindExpression(null, ctx, node.Node.Fields[0]);
+	
+	      var node_1 = function (entity) {
+	        return setEntity(ctx, node, entity);
+	      }(bindEntity(ctx, new _ast.EntityKind("RunCommand", [body])));
+	
+	      return [ctx, node_1];
+	    }() : function () {
+	      var body = bindExpression(null, ctx, node.Node.Fields[1]);
+	
+	      var _var = function (entity) {
+	        return setEntity(ctx, node.Node.Fields[0], entity);
+	      }(bindEntity(ctx, new _ast.EntityKind("Variable", [node.Node.Fields[0].Node, body])));
+	
+	      var node_1 = function (entity) {
+	        return setEntity(ctx, node, entity);
+	      }(bindEntity(ctx, new _ast.EntityKind("LetCommand", [_var, body])));
+	
+	      return [new BindingContext(_fableCore.Map.add(node.Node.Fields[0].Node, _var, ctx.Variables), ctx.GlobalValues, ctx.Root, ctx.Table, ctx.Bound), node_1];
+	    }();
+	  }
+	
+	  function bindProgram(ctx, program) {
+	    ctx.Bound.splice(0);
+	
+	    var patternInput = _fableCore.Seq.fold(function (tupledArg, cmd) {
+	      var patternInput = bindCommand(tupledArg[0], cmd);
+	      return [patternInput[0], new _fableCore.List(patternInput[1], tupledArg[1])];
+	    }, [ctx, new _fableCore.List()], program.Body.Node);
+	
+	    return [bindEntity(ctx, new _ast.EntityKind("Program", [patternInput[1]])), new BindingResult(Array.from(ctx.Bound))];
+	  }
+	
+	  function createContext(globals, name) {
+	    var root = function () {
+	      var Kind = new _ast.EntityKind("Root", []);
+	      var Errors = new _fableCore.List();
+	
+	      var _Symbol = Symbol();
+	
+	      var Type = null;
+	      var Meta = new _fableCore.List();
+	      return new _ast.Entity(Kind, _Symbol, null, Meta, Type, Errors);
+	    }();
+	
+	    var Table = new Map();
+	    var Bound = [];
+	    return new BindingContext(_fableCore.Map.create(null, new _fableCore.GenericComparer(function (x, y) {
+	      return x.CompareTo(y);
+	    })), _fableCore.Map.create(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	      return _fableCore.Seq.map(function (e) {
+	        return [new _ast.Name(_astops.Entity$2Eget_Name.bind(e)()), e];
+	      }, globals);
+	    })), new _fableCore.GenericComparer(function (x, y) {
+	      return x.CompareTo(y);
+	    })), root, Table, Bound);
+	  }
+	});
+
+
+/***/ },
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(20), __webpack_require__(3), __webpack_require__(14), __webpack_require__(1), __webpack_require__(22)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== "undefined") {
+	    factory(exports, require("fable-core"), require("./../ast/errors"), require("./../ast/ast"), require("./../ast/astops"), require("../../libraries/common"), require("./tokenizer"));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, global.fableCore, global.errors, global.ast, global.astops, global.common, global.tokenizer);
+	    global.parser = mod.exports;
+	  }
+	})(this, function (exports, _fableCore, _errors, _ast, _astops, _common, _tokenizer) {
+	  "use strict";
+	
+	  exports.__esModule = true;
+	  exports.OpExpr = exports.Associativity = exports.Context = undefined;
+	  exports.clone = clone;
+	  exports.next = next;
+	  exports.usingSilentMode = usingSilentMode;
+	  exports.addError = addError;
+	  exports.usingIndent = usingIndent;
+	  exports.usingTopLevelNesting = usingTopLevelNesting;
+	  exports.usingNonTopLevel = usingNonTopLevel;
+	  exports.setLineIndent = setLineIndent;
+	  exports.justToken = justToken;
+	  exports.token = token;
+	  exports.nestedToken = nestedToken;
+	  exports.node = node;
+	  exports.whiteAfter = whiteAfter;
+	  exports.whiteBefore = whiteBefore;
+	  exports.lastCallOrPropertyRange = lastCallOrPropertyRange;
+	  exports.$Identifier$_$ = $Identifier$_$;
+	  exports.$Let$ = $Let$;
+	  exports.precedence = precedence;
+	  exports.precClimb = precClimb;
+	  exports.buildExpression = buildExpression;
+	  exports.makeCallOrProp = makeCallOrProp;
+	  exports.parseChain = parseChain;
+	  exports.parseDotOrLParen = parseDotOrLParen;
+	  exports.parseMember = parseMember;
+	  exports.parseFunction = parseFunction;
+	  exports.parseTerm = parseTerm;
+	  exports.parseListElements = parseListElements;
+	  exports.parseParenTermEnd = parseParenTermEnd;
+	  exports.parseExpression = parseExpression;
+	  exports.parseExpressionOrNamedParam = parseExpressionOrNamedParam;
+	  exports.parseCallArgList = parseCallArgList;
+	  exports.parseNestedExpressions = parseNestedExpressions;
+	  exports.parseLetBinding = parseLetBinding;
+	  exports.parseCommands = parseCommands;
+	  exports.parseProgram = parseProgram;
+	
+	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+	    return typeof obj;
+	  } : function (obj) {
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	  };
+	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
+	  var Context = exports.Context = function () {
+	    function Context(tokens, whitespace, errors, topLevel, silent, strictlyNested, indentCurrent, indentStack, position) {
+	      _classCallCheck(this, Context);
+	
+	      this.Tokens = tokens;
+	      this.Whitespace = whitespace;
+	      this.Errors = errors;
+	      this.TopLevel = topLevel;
+	      this.Silent = silent;
+	      this.StrictlyNested = strictlyNested;
+	      this.IndentCurrent = indentCurrent;
+	      this.IndentStack = indentStack;
+	      this.Position = position;
+	    }
+	
+	    Context.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    return Context;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(Context.prototype, ["FSharpRecord", "System.IEquatable"], "TheGamma.Parser.Context");
+	
+	  function clone(ctx) {
+	    return new Context(ctx.Tokens, Array.from(ctx.Whitespace), Array.from(ctx.Errors), ctx.TopLevel, ctx.Silent, ctx.StrictlyNested, ctx.IndentCurrent, ctx.IndentStack, ctx.Position);
+	  }
+	
+	  function next(ctx) {
+	    ctx.Position = ctx.Position + 1;
+	  }
+	
+	  function usingSilentMode(ctx) {
+	    var _ref;
+	
+	    var prev = ctx.Silent;
+	    ctx.Silent = true;
+	    return _ref = {}, _ref[_fableCore.Symbol.interfaces] = ["System.IDisposable"], _ref.Dispose = function Dispose() {
+	      ctx.Silent = prev;
+	    }, _ref;
+	  }
+	
+	  function addError(ctx, e) {
+	    if (!ctx.Silent) {
+	      ctx.Errors.push(e);
+	    }
+	  }
+	
+	  function usingIndent(current, tok, ctx) {
+	    var _ref2;
+	
+	    var started = function () {
+	      var matchValue = ctx.IndentStack;
+	
+	      var $target1 = function $target1() {
+	        var $target1 = function $target1() {
+	          ctx.IndentStack = new _fableCore.List([ctx.IndentCurrent, current], ctx.IndentStack);
+	          return true;
+	        };
+	
+	        if (matchValue.tail != null) {
+	          if (matchValue.head[1]) {
+	            return $target1();
+	          } else {
+	            if (function () {
+	              var prev = matchValue.head[0];
+	              return prev !== ctx.IndentCurrent;
+	            }()) {
+	              var prev = matchValue.head[0];
+	              throw "usingIndent: We forgot to set the top-stack line indentation";
+	            } else {
+	              return $target1();
+	            }
+	          }
+	        } else {
+	          return $target1();
+	        }
+	      };
+	
+	      if (matchValue.tail != null) {
+	        if (matchValue.head[1]) {
+	          if (function () {
+	            var prev = matchValue.head[0];
+	            return prev > ctx.IndentCurrent;
+	          }()) {
+	            var prev = matchValue.head[0];
+	
+	            (function (e) {
+	              addError(ctx, e);
+	            })(_errors.Parser.unindentedBlock(tok.Range, tok.Token));
+	
+	            return false;
+	          } else {
+	            return $target1();
+	          }
+	        } else {
+	          return $target1();
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    }();
+	
+	    return _ref2 = {}, _ref2[_fableCore.Symbol.interfaces] = ["System.IDisposable"], _ref2.Dispose = function Dispose() {
+	      var matchValue = [started, ctx.IndentStack];
+	
+	      if (matchValue[0]) {
+	        if (matchValue[1].tail != null) {
+	          var t = matchValue[1].head;
+	          var stack = matchValue[1].tail;
+	          ctx.IndentStack = stack;
+	        } else {
+	          throw "usingIndent: We lost item from an indentation stack";
+	        }
+	      }
+	    }, _ref2;
+	  }
+	
+	  function usingTopLevelNesting(ctx) {
+	    var _ref3;
+	
+	    var prev = ctx.StrictlyNested;
+	    ctx.StrictlyNested = true;
+	    {
+	      var matchValue = ctx.IndentStack;
+	
+	      if (matchValue.tail != null) {
+	        ctx.IndentStack = new _fableCore.List([0, true], matchValue.tail);
+	      }
+	    }
+	    return _ref3 = {}, _ref3[_fableCore.Symbol.interfaces] = ["System.IDisposable"], _ref3.Dispose = function Dispose() {
+	      ctx.StrictlyNested = prev;
+	    }, _ref3;
+	  }
+	
+	  function usingNonTopLevel(ctx) {
+	    var _ref4;
+	
+	    var prev = ctx.TopLevel;
+	    ctx.TopLevel = false;
+	    return _ref4 = {}, _ref4[_fableCore.Symbol.interfaces] = ["System.IDisposable"], _ref4.Dispose = function Dispose() {
+	      ctx.TopLevel = prev;
+	    }, _ref4;
+	  }
+	
+	  function setLineIndent(ctx, l) {
+	    ctx.IndentCurrent = l;
+	    var matchValue = ctx.IndentStack;
+	
+	    var $target1 = function $target1() {
+	      var $target1 = function $target1() {};
+	
+	      if (matchValue.tail != null) {
+	        if (matchValue.head[1]) {
+	          $target1();
+	        } else {
+	          var oldl = matchValue.head[0];
+	          var stack = matchValue.tail;
+	          ctx.IndentStack = new _fableCore.List([l, true], stack);
+	        }
+	      } else {
+	        $target1();
+	      }
+	    };
+	
+	    if (matchValue.tail != null) {
+	      if (matchValue.head[1]) {
+	        $target1();
+	      } else {
+	        if (function () {
+	          var oldl = matchValue.head[0];
+	          return l <= oldl;
+	        }()) {
+	          var oldl = matchValue.head[0];
+	          var stack = matchValue.tail;
+	          ctx.IndentStack = new _fableCore.List([2147483647, true], stack);
+	        } else {
+	          $target1();
+	        }
+	      }
+	    } else {
+	      $target1();
+	    }
+	  }
+	
+	  function justToken(ctx) {
+	    var current = function current(ctx_1) {
+	      return ctx_1.Tokens[ctx_1.Position];
+	    };
+	
+	    var matchValue = current(ctx);
+	
+	    var $target1 = function $target1(t) {
+	      ctx.Whitespace.push(t);
+	      next(ctx);
+	      return justToken(ctx);
+	    };
+	
+	    if (matchValue.Token.Case === "Newline") {
+	      ctx.Whitespace.push(matchValue);
+	      next(ctx);
+	      {
+	        var matchValue_1 = current(ctx);
+	
+	        if (matchValue_1.Token.Case === "White") {
+	          var s = matchValue_1.Token.Fields[0];
+	          ctx.Whitespace.push(matchValue_1);
+	          setLineIndent(ctx, s.length);
+	          next(ctx);
+	        } else {
+	          setLineIndent(ctx, 0);
+	        }
+	      }
+	      return justToken(ctx);
+	    } else {
+	      if (matchValue.Token.Case === "Error") {
+	        return $target1(matchValue);
+	      } else {
+	        if (matchValue.Token.Case === "White") {
+	          return $target1(matchValue);
+	        } else {
+	          return matchValue;
+	        }
+	      }
+	    }
+	  }
+	
+	  function token(ctx) {
+	    var t = justToken(ctx);
+	
+	    var white = _fableCore.Seq.toList(ctx.Whitespace);
+	
+	    ctx.Whitespace.splice(0);
+	    return [white, t];
+	  }
+	
+	  function nestedToken(ctx) {
+	    var white = function white(unitVar0) {
+	      var white = _fableCore.Seq.toList(ctx.Whitespace);
+	
+	      ctx.Whitespace.splice(0);
+	      return white;
+	    };
+	
+	    var t = justToken(ctx);
+	    var matchValue = ctx.IndentStack;
+	
+	    var $target1 = function $target1() {
+	      return matchValue.tail == null ? [white(), t] : null;
+	    };
+	
+	    if (matchValue.tail != null) {
+	      if (function () {
+	        var indent = matchValue.head[0];
+	
+	        if (ctx.IndentCurrent > indent) {
+	          return true;
+	        } else {
+	          if (!ctx.StrictlyNested) {
+	            return ctx.IndentCurrent === indent;
+	          } else {
+	            return false;
+	          }
+	        }
+	      }()) {
+	        var indent = matchValue.head[0];
+	        return [white(), t];
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
+	
+	  function node(rng, n) {
+	    return new _ast.Node(new _fableCore.List(), new _fableCore.List(), rng, n);
+	  }
+	
+	  function whiteAfter(w, n) {
+	    var WhiteAfter = _fableCore.List.append(n.WhiteAfter, w);
+	
+	    return new _ast.Node(n.WhiteBefore, WhiteAfter, n.Range, n.Node, n.Entity);
+	  }
+	
+	  function whiteBefore(w, n) {
+	    return new _ast.Node(_fableCore.List.append(w, n.WhiteBefore), n.WhiteAfter, n.Range, n.Node, n.Entity);
+	  }
+	
+	  function lastCallOrPropertyRange(expr, id) {
+	    var $target0 = function $target0(id_1) {
+	      return id_1.Range;
+	    };
+	
+	    if (expr.Node.Case === "Call") {
+	      return $target0(expr.Node.Fields[1]);
+	    } else {
+	      if (expr.Node.Case === "Property") {
+	        return $target0(expr.Node.Fields[1]);
+	      } else {
+	        return expr.Range;
+	      }
+	    }
+	  }
+	
+	  function $Identifier$_$(t_0, t_1) {
+	    var t = [t_0, t_1];
+	
+	    var $target0 = function $target0(id, rng, white) {
+	      return function (n) {
+	        return whiteBefore(white, n);
+	      }(node(rng, new _ast.Name(id)));
+	    };
+	
+	    if (t[1].Token.Case === "Ident") {
+	      return $target0(t[1].Token.Fields[0], t[1].Range, t[0]);
+	    } else {
+	      if (t[1].Token.Case === "QIdent") {
+	        return $target0(t[1].Token.Fields[0], t[1].Range, t[0]);
+	      }
+	    }
+	  }
+	
+	  function $Let$(a, b) {
+	    return [a, b];
+	  }
+	
+	  var Associativity = exports.Associativity = function () {
+	    function Associativity(caseName, fields) {
+	      _classCallCheck(this, Associativity);
+	
+	      this.Case = caseName;
+	      this.Fields = fields;
+	    }
+	
+	    Associativity.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsUnions(this, other);
+	    };
+	
+	    Associativity.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareUnions(this, other);
+	    };
+	
+	    return Associativity;
+	  }();
+	
+	  _fableCore.Util.setInterfaces(Associativity.prototype, ["FSharpUnion", "System.IEquatable", "System.IComparable"], "TheGamma.Parser.Associativity");
+	
+	  function precedence(_arg1) {
+	    var $target1 = function $target1() {
+	      return [1, new Associativity("Left", [])];
+	    };
+	
+	    var $target2 = function $target2() {
+	      return [2, new Associativity("Left", [])];
+	    };
+	
+	    var $target3 = function $target3() {
+	      return [3, new Associativity("Left", [])];
+	    };
+	
+	    if (_arg1.Case === "GreaterThan") {
+	      return $target1();
+	    } else {
+	      if (_arg1.Case === "GreaterThanOrEqual") {
+	        return $target1();
+	      } else {
+	        if (_arg1.Case === "LessThan") {
+	          return $target1();
+	        } else {
+	          if (_arg1.Case === "LessThanOrEqual") {
+	            return $target1();
+	          } else {
+	            if (_arg1.Case === "Plus") {
+	              return $target2();
+	            } else {
+	              if (_arg1.Case === "Minus") {
+	                return $target2();
+	              } else {
+	                if (_arg1.Case === "Multiply") {
+	                  return $target3();
+	                } else {
+	                  if (_arg1.Case === "Divide") {
+	                    return $target3();
+	                  } else {
+	                    if (_arg1.Case === "Power") {
+	                      return [4, new Associativity("Right", [])];
+	                    } else {
+	                      return [0, new Associativity("Left", [])];
+	                    }
+	                  }
+	                }
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	
+	  var OpExpr = exports.OpExpr = function OpExpr(caseName, fields) {
+	    _classCallCheck(this, OpExpr);
+	
+	    this.Case = caseName;
+	    this.Fields = fields;
+	  };
+	
+	  _fableCore.Util.setInterfaces(OpExpr.prototype, ["FSharpUnion"], "TheGamma.Parser.OpExpr");
+	
+	  function precClimb(minPrec, _arg1) {
+	    var loop = function loop(result) {
+	      return function (next_1) {
+	        var $target1 = function $target1() {
+	          return [result, next_1];
+	        };
+	
+	        if (next_1 != null) {
+	          if (function () {
+	            var op = next_1[0];
+	            var next_2 = next_1[1];
+	            return precedence(op.Node)[0] >= minPrec;
+	          }()) {
+	            var next_2 = next_1[1];
+	            var op = next_1[0];
+	            {
+	              var patternInput = precedence(op.Node);
+	              var nextMinPrec = patternInput[1].Equals(new Associativity("Left", [])) ? patternInput[0] + 1 : patternInput[0];
+	              var patternInput_1 = precClimb(nextMinPrec, next_2);
+	              var result_1 = node((0, _astops.unionRanges)(result.Range, patternInput_1[0].Range), new _ast.Expr("Binary", [result, op, patternInput_1[0]]));
+	              return loop(result_1)(patternInput_1[1]);
+	            }
+	          } else {
+	            return $target1();
+	          }
+	        } else {
+	          return $target1();
+	        }
+	      };
+	    };
+	
+	    return loop(_arg1.Fields[0])(_arg1.Fields[1]);
+	  }
+	
+	  function buildExpression(terms, term) {
+	    return precClimb(0, _fableCore.Seq.fold(function (oe, tupledArg) {
+	      return new OpExpr("OpExpr", [tupledArg[0], [tupledArg[1], oe]]);
+	    }, new OpExpr("OpExpr", [term, null]), terms))[0];
+	  }
+	
+	  function makeCallOrProp(optInst, prevId, prevArgs) {
+	    var matchValue = [optInst, prevArgs];
+	
+	    var $target2 = function $target2(prevArgs_1) {
+	      var fullRng = optInst != null ? (0, _astops.unionRanges)(optInst.Range, prevArgs_1.Range) : (0, _astops.unionRanges)(prevId.Range, prevArgs_1.Range);
+	      return node(fullRng, new _ast.Expr("Call", [optInst, prevId, prevArgs_1]));
+	    };
+	
+	    if (matchValue[0] == null) {
+	      if (matchValue[1] != null) {
+	        return $target2(matchValue[1]);
+	      } else {
+	        return node(prevId.Range, new _ast.Expr("Variable", [prevId]));
+	      }
+	    } else {
+	      if (matchValue[1] != null) {
+	        return $target2(matchValue[1]);
+	      } else {
+	        var inst = matchValue[0];
+	        return node((0, _astops.unionRanges)(inst.Range, prevId.Range), new _ast.Expr("Property", [inst, prevId]));
+	      }
+	    }
+	  }
+	
+	  function parseChain(dotRng, optInst, prevId, prevArgs, prevWhite, ctx) {
+	    var inst = function (n) {
+	      return whiteAfter(prevWhite, n);
+	    }(makeCallOrProp(optInst, prevId, prevArgs));
+	
+	    var emptyRng = new _ast.Range(dotRng.End + 1, dotRng.End + 1);
+	    var emptyMember = node(emptyRng, new _ast.Expr("Property", [inst, node(emptyRng, new _ast.Name(""))]));
+	    var matchValue = nestedToken(ctx);
+	
+	    var $target1 = function $target1() {
+	      return matchValue == null ? function () {
+	        var matchValue_1 = token(ctx);
+	        var activePatternResult4857 = $Identifier$_$(matchValue_1[0], matchValue_1[1]);
+	
+	        if (activePatternResult4857 != null) {
+	          var _ret = function () {
+	            var id = activePatternResult4857;
+	
+	            var rng = function rng(id_1) {
+	              return lastCallOrPropertyRange(inst, id_1);
+	            };
+	
+	            (function (e) {
+	              addError(ctx, e);
+	            })(_errors.Parser.unindentedIdentifierAfterDot(id.Range, rng, id.Node.Name));
+	
+	            var matchValue_2 = [ctx.TopLevel, ctx.IndentStack];
+	
+	            var $target1 = function $target1() {
+	              return emptyMember;
+	            };
+	
+	            if (matchValue_2[0]) {
+	              return {
+	                v: $target1()
+	              };
+	            } else {
+	              if (matchValue_2[1].tail != null) {
+	                if (function () {
+	                  var stack = matchValue_2[1].tail;
+	                  var sl = matchValue_2[1].head[0];
+	                  var si = matchValue_2[1].head[1];
+	                  return ctx.IndentCurrent > 0;
+	                }()) {
+	                  var si = matchValue_2[1].head[1];
+	                  var sl = matchValue_2[1].head[0];
+	                  var stack = matchValue_2[1].tail;
+	                  {
+	                    next(ctx);
+	                    ctx.IndentStack = new _fableCore.List([ctx.IndentCurrent, si], stack);
+	                    return {
+	                      v: parseMember(inst, id, ctx)
+	                    };
+	                  }
+	                } else {
+	                  return {
+	                    v: $target1()
+	                  };
+	                }
+	              } else {
+	                return {
+	                  v: $target1()
+	                };
+	              }
+	            }
+	          }();
+	
+	          if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
+	        } else {
+	          var _rng = function _rng(id) {
+	            return lastCallOrPropertyRange(inst, id);
+	          };
+	
+	          (function (e) {
+	            addError(ctx, e);
+	          })(_errors.Parser.unexpectedScopeEndAfterDot(matchValue_1[1].Range, _rng, matchValue_1[1].Token));
+	
+	          return emptyMember;
+	        }
+	      }() : function () {
+	        var t = matchValue[1];
+	
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.unexpectedTokenAfterDot(t.Range, t.Token));
+	
+	        if (t.Token.Equals(new _ast.TokenKind("EndOfFile", []))) {
+	          return emptyMember;
+	        } else {
+	          next(ctx);
+	
+	          var _silent = usingSilentMode(ctx);
+	
+	          try {
+	            return parseMember(inst, node(emptyRng, new _ast.Name("")), ctx);
+	          } finally {
+	            if (_fableCore.Util.hasInterface(_silent, "System.IDisposable")) {
+	              _silent.Dispose();
+	            }
+	          }
+	        }
+	      }();
+	    };
+	
+	    if (matchValue != null) {
+	      var activePatternResult4858 = $Identifier$_$(matchValue[0], matchValue[1]);
+	
+	      if (activePatternResult4858 != null) {
+	        var id = activePatternResult4858;
+	        next(ctx);
+	        return parseMember(inst, id, ctx);
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
+	
+	  function parseDotOrLParen(optInst, id, ctx, tok) {
+	    return tok.Token.Case === "LParen" ? function () {
+	      next(ctx);
+	
+	      var _top = usingNonTopLevel(ctx);
+	
+	      try {
+	        var _ret2 = function () {
+	          var patternInput = parseCallArgList(false, tok.Range, new _fableCore.List(), ctx);
+	
+	          var args = function (n) {
+	            return whiteAfter(patternInput[1], n);
+	          }(node((0, _astops.unionRanges)(tok.Range, patternInput[0]), patternInput[2]));
+	
+	          var matchValue = nestedToken(ctx);
+	
+	          var $target1 = function $target1() {
+	            return makeCallOrProp(optInst, id, args);
+	          };
+	
+	          if (matchValue != null) {
+	            if (matchValue[1].Token.Case === "Dot") {
+	              var dotRng = matchValue[1].Range;
+	              var whiteAfterArgs = matchValue[0];
+	              {
+	                next(ctx);
+	                return {
+	                  v: parseChain(dotRng, optInst, id, args, whiteAfterArgs, ctx)
+	                };
+	              }
+	            } else {
+	              return {
+	                v: $target1()
+	              };
+	            }
+	          } else {
+	            return {
+	              v: $target1()
+	            };
+	          }
+	        }();
+	
+	        if ((typeof _ret2 === "undefined" ? "undefined" : _typeof(_ret2)) === "object") return _ret2.v;
+	      } finally {
+	        if (_fableCore.Util.hasInterface(_top, "System.IDisposable")) {
+	          _top.Dispose();
+	        }
+	      }
+	    }() : tok.Token.Case === "Dot" ? function () {
+	      next(ctx);
+	      return parseChain(tok.Range, optInst, id, null, new _fableCore.List(), ctx);
+	    }() : null;
+	  }
+	
+	  function parseMember(optInst, id, ctx) {
+	    var parsed = function () {
+	      var matchValue = nestedToken(ctx);
+	
+	      if (matchValue != null) {
+	        var white = matchValue[0];
+	        var res = matchValue[1];
+	        return parseDotOrLParen(optInst, whiteAfter(white, id), ctx, res);
+	      } else {
+	        var _ret3 = function () {
+	          var patternInput = token(ctx);
+	
+	          var matchValue_1 = function () {
+	            var _silent = usingSilentMode(ctx);
+	
+	            try {
+	              return parseDotOrLParen(optInst, whiteAfter(patternInput[0], id), ctx, patternInput[1]);
+	            } finally {
+	              if (_fableCore.Util.hasInterface(_silent, "System.IDisposable")) {
+	                _silent.Dispose();
+	              }
+	            }
+	          }();
+	
+	          if (matchValue_1 != null) {
+	            (function (e) {
+	              addError(ctx, e);
+	            })(_errors.Parser.unindentedDotAfterIdentifier(id.Range, patternInput[1].Range));
+	
+	            return {
+	              v: matchValue_1
+	            };
+	          }
+	        }();
+	
+	        if ((typeof _ret3 === "undefined" ? "undefined" : _typeof(_ret3)) === "object") return _ret3.v;
+	      }
+	    }();
+	
+	    if (parsed == null) {
+	      if (optInst == null) {
+	        return node(id.Range, new _ast.Expr("Variable", [id]));
+	      } else {
+	        return node((0, _astops.unionRanges)(optInst.Range, id.Range), new _ast.Expr("Property", [optInst, id]));
+	      }
+	    } else {
+	      return parsed;
+	    }
+	  }
+	
+	  function parseFunction(ctx, funRng) {
+	    var matchValue = nestedToken(ctx);
+	
+	    var $target1 = function $target1() {
+	      return matchValue == null ? function () {
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.unexpectedScopeEndInFunc(funRng));
+	
+	        var rng = new _ast.Range(funRng.End, funRng.End);
+	        return node(rng, new _ast.Expr("Function", [node(rng, new _ast.Name("")), node(rng, new _ast.Expr("Empty", []))]));
+	      }() : function () {
+	        var white = matchValue[0];
+	        var t = matchValue[1];
+	
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.unexpectedTokenAfterFun(t.Range, t.Token));
+	
+	        var rng = new _ast.Range(funRng.End, funRng.End);
+	        return function (n) {
+	          return whiteBefore(white, n);
+	        }(node(rng, new _ast.Expr("Function", [node(rng, new _ast.Name("")), node(rng, new _ast.Expr("Empty", []))])));
+	      }();
+	    };
+	
+	    if (matchValue != null) {
+	      var activePatternResult4880 = $Identifier$_$(matchValue[0], matchValue[1]);
+	
+	      if (activePatternResult4880 != null) {
+	        var _ret4 = function () {
+	          var id = activePatternResult4880;
+	          next(ctx);
+	          var matchValue_1 = nestedToken(ctx);
+	
+	          var $target1_1 = function $target1_1(nt) {
+	            var patternInput = nt != null ? function () {
+	              var whiteAfterId = nt[0];
+	              var t = nt[1];
+	              return [t.Range, whiteAfterId];
+	            }() : [(0, _astops.unionRanges)(funRng, id.Range), new _fableCore.List()];
+	
+	            (function (e) {
+	              addError(ctx, e);
+	            })(_errors.Parser.missingArrowInFunc(patternInput[0]));
+	
+	            var body = function () {
+	              var matchValue_2 = parseExpression(new _fableCore.List(), ctx);
+	
+	              if (matchValue_2 != null) {
+	                return matchValue_2;
+	              } else {
+	                return node(new _ast.Range(id.Range.End, id.Range.End), new _ast.Expr("Empty", []));
+	              }
+	            }();
+	
+	            return node((0, _astops.unionRanges)(funRng, body.Range), new _ast.Expr("Function", [id, whiteBefore(patternInput[1], body)]));
+	          };
+	
+	          if (matchValue_1 != null) {
+	            if (matchValue_1[1].Token.Case === "Arrow") {
+	              var _ret5 = function () {
+	                var rngEq = matchValue_1[1].Range;
+	                var whiteAfterId = matchValue_1[0];
+	                {
+	                  next(ctx);
+	
+	                  var body = function () {
+	                    var matchValue_2 = parseExpression(new _fableCore.List(), ctx);
+	
+	                    if (matchValue_2 != null) {
+	                      return matchValue_2;
+	                    } else {
+	                      (function (e) {
+	                        addError(ctx, e);
+	                      })(_errors.Parser.missingBodyOfFunc((0, _astops.unionRanges)(funRng, rngEq)));
+	
+	                      return node(new _ast.Range(rngEq.End, rngEq.End), new _ast.Expr("Empty", []));
+	                    }
+	                  }();
+	
+	                  var rng = (0, _astops.unionRanges)(funRng, body.Range);
+	                  return {
+	                    v: {
+	                      v: node(rng, new _ast.Expr("Function", [whiteAfter(whiteAfterId, id), body]))
+	                    }
+	                  };
+	                }
+	              }();
+	
+	              if ((typeof _ret5 === "undefined" ? "undefined" : _typeof(_ret5)) === "object") return _ret5.v;
+	            } else {
+	              return {
+	                v: $target1_1(matchValue_1)
+	              };
+	            }
+	          } else {
+	            return {
+	              v: $target1_1(matchValue_1)
+	            };
+	          }
+	        }();
+	
+	        if ((typeof _ret4 === "undefined" ? "undefined" : _typeof(_ret4)) === "object") return _ret4.v;
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
+	
+	  function parseTerm(ctx) {
+	    var matchValue = nestedToken(ctx);
+	
+	    var $target1 = function $target1() {
+	      var $target6 = function $target6() {
+	        return null;
+	      };
+	
+	      if (matchValue != null) {
+	        if (matchValue[1].Token.Case === "Number") {
+	          var _ret6 = function () {
+	            var n = matchValue[1].Token.Fields[1];
+	            var r = matchValue[1].Range;
+	            var white = matchValue[0];
+	            {
+	              next(ctx);
+	              return {
+	                v: function (n_1) {
+	                  return whiteAfter(white, n_1);
+	                }(node(r, new _ast.Expr("Number", [n])))
+	              };
+	            }
+	          }();
+	
+	          if ((typeof _ret6 === "undefined" ? "undefined" : _typeof(_ret6)) === "object") return _ret6.v;
+	        } else {
+	          if (matchValue[1].Token.Case === "String") {
+	            var _ret7 = function () {
+	              var r = matchValue[1].Range;
+	              var s = matchValue[1].Token.Fields[0];
+	              var white = matchValue[0];
+	              {
+	                next(ctx);
+	                return {
+	                  v: function (n) {
+	                    return whiteAfter(white, n);
+	                  }(node(r, new _ast.Expr("String", [s])))
+	                };
+	              }
+	            }();
+	
+	            if ((typeof _ret7 === "undefined" ? "undefined" : _typeof(_ret7)) === "object") return _ret7.v;
+	          } else {
+	            if (matchValue[1].Token.Case === "Boolean") {
+	              var _ret8 = function () {
+	                var b = matchValue[1].Token.Fields[0];
+	                var r = matchValue[1].Range;
+	                var white = matchValue[0];
+	                {
+	                  next(ctx);
+	                  return {
+	                    v: function (n) {
+	                      return whiteAfter(white, n);
+	                    }(node(r, new _ast.Expr("Boolean", [b])))
+	                  };
+	                }
+	              }();
+	
+	              if ((typeof _ret8 === "undefined" ? "undefined" : _typeof(_ret8)) === "object") return _ret8.v;
+	            } else {
+	              if (matchValue[1].Token.Case === "LParen") {
+	                var t = matchValue[1];
+	                var _white = matchValue[0];
+	                {
+	                  next(ctx);
+	                  return parseParenTermEnd(new _fableCore.List(t, _fableCore.List.reverse(_white)), new _fableCore.List(), parseExpression(new _fableCore.List(), ctx), ctx);
+	                }
+	              } else {
+	                if (matchValue[1].Token.Case === "LSquare") {
+	                  var _t = matchValue[1];
+	                  var _white2 = matchValue[0];
+	                  {
+	                    next(ctx);
+	
+	                    var _nest = usingNonTopLevel(ctx);
+	
+	                    try {
+	                      return parseListElements(false, _t.Range, _white2, _t.Range, new _fableCore.List(), ctx);
+	                    } finally {
+	                      if (_fableCore.Util.hasInterface(_nest, "System.IDisposable")) {
+	                        _nest.Dispose();
+	                      }
+	                    }
+	                  }
+	                } else {
+	                  if (matchValue[1].Token.Case === "Fun") {
+	                    var _t2 = matchValue[1];
+	                    var _white3 = matchValue[0];
+	                    {
+	                      next(ctx);
+	                      return parseFunction(ctx, _t2.Range);
+	                    }
+	                  } else {
+	                    return $target6();
+	                  }
+	                }
+	              }
+	            }
+	          }
+	        }
+	      } else {
+	        return $target6();
+	      }
+	    };
+	
+	    if (matchValue != null) {
+	      var activePatternResult4890 = $Identifier$_$(matchValue[0], matchValue[1]);
+	
+	      if (activePatternResult4890 != null) {
+	        var id = activePatternResult4890;
+	        var tok = matchValue[1];
+	        {
+	          next(ctx);
+	
+	          var _indent = usingIndent(false, tok, ctx);
+	
+	          try {
+	            var varOrCall = parseMember(null, id, ctx);
+	            return varOrCall;
+	          } finally {
+	            if (_fableCore.Util.hasInterface(_indent, "System.IDisposable")) {
+	              _indent.Dispose();
+	            }
+	          }
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
+	
+	  function parseListElements(expectMore, lastRng, whiteStart, startRng, acc, ctx) {
+	    var patternInput = function () {
+	      var matchValue = parseExpression(new _fableCore.List(), ctx);
+	
+	      if (matchValue != null) {
+	        return [true, function (white) {
+	          return new _fableCore.List(whiteAfter(white, matchValue), acc);
+	        }];
+	      } else {
+	        return [false, function (_arg1) {
+	          return acc;
+	        }];
+	      }
+	    }();
+	
+	    var matchValue = nestedToken(ctx);
+	
+	    var $target3 = function $target3() {
+	      (function (e) {
+	        addError(ctx, e);
+	      })(_errors.Parser.unexpectedScopeEndInList(lastRng));
+	
+	      return node((0, _astops.unionRanges)(startRng, lastRng), new _ast.Expr("List", [_fableCore.List.reverse(patternInput[1](new _fableCore.List()))]));
+	    };
+	
+	    if (matchValue != null) {
+	      if (matchValue[1].Token.Case === "RSquare") {
+	        var _ret9 = function () {
+	          var endRng = matchValue[1].Range;
+	          var white = matchValue[0];
+	          {
+	            next(ctx);
+	            return {
+	              v: function (n) {
+	                return whiteBefore(white, n);
+	              }(node((0, _astops.unionRanges)(startRng, endRng), new _ast.Expr("List", [_fableCore.List.reverse(patternInput[1](new _fableCore.List()))])))
+	            };
+	          }
+	        }();
+	
+	        if ((typeof _ret9 === "undefined" ? "undefined" : _typeof(_ret9)) === "object") return _ret9.v;
+	      } else {
+	        if (matchValue[1].Token.Case === "Comma") {
+	          var lastRng_1 = matchValue[1].Range;
+	          var _white4 = matchValue[0];
+	          {
+	            next(ctx);
+	
+	            if (!patternInput[0] ? expectMore : false) {
+	              (function (e) {
+	                addError(ctx, e);
+	              })(_errors.Parser.unexpectedTokenInList(lastRng_1, new _ast.TokenKind("Comma", [])));
+	            }
+	
+	            return parseListElements(true, lastRng_1, whiteStart, startRng, patternInput[1](_white4), ctx);
+	          }
+	        } else {
+	          if (function () {
+	            var t = matchValue[1];
+	            return !t.Token.Equals(new _ast.TokenKind("EndOfFile", []));
+	          }()) {
+	            var t = matchValue[1];
+	            next(ctx);
+	
+	            (function (e) {
+	              addError(ctx, e);
+	            })(_errors.Parser.unexpectedTokenInList(t.Range, t.Token));
+	
+	            return parseListElements(expectMore, t.Range, whiteStart, startRng, patternInput[1](new _fableCore.List()), ctx);
+	          } else {
+	            return $target3();
+	          }
+	        }
+	      }
+	    } else {
+	      return $target3();
+	    }
+	  }
+	
+	  function parseParenTermEnd(wb, wa, bodyOpt, ctx) {
+	    var makeBody = function makeBody(wa_1) {
+	      var body = bodyOpt == null ? function () {
+	        var rng = function (list) {
+	          return _fableCore.Seq.reduce(function (r1, r2) {
+	            return (0, _astops.unionRanges)(r1, r2);
+	          }, list);
+	        }(_fableCore.List.map(function (t) {
+	          return t.Range;
+	        }, _fableCore.List.append(_fableCore.List.ofArray([wb.head]), wa_1)));
+	
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.missingParenthesizedExpr(rng));
+	
+	        return node(rng, new _ast.Expr("Empty", []));
+	      }() : bodyOpt;
+	      return whiteAfter(_fableCore.List.reverse(wa_1), whiteBefore(_fableCore.List.reverse(wb), body));
+	    };
+	
+	    var matchValue = nestedToken(ctx);
+	
+	    if (matchValue == null) {
+	      var rng = bodyOpt != null ? bodyOpt.Range : wb.head.Range;
+	
+	      (function (e) {
+	        addError(ctx, e);
+	      })(_errors.Parser.unindentedTokenInParenthesizedExpr(rng));
+	
+	      return makeBody(wa);
+	    } else {
+	      if (matchValue[1].Token.Case === "RParen") {
+	        var t = matchValue[1];
+	        var white = matchValue[0];
+	        {
+	          next(ctx);
+	          return makeBody(new _fableCore.List(t, _fableCore.List.append(_fableCore.List.reverse(white), wa)));
+	        }
+	      } else {
+	        var _t3 = matchValue[1];
+	        var _white5 = matchValue[0];
+	        {
+	          next(ctx);
+	
+	          (function (e) {
+	            addError(ctx, e);
+	          })(_errors.Parser.unexpectedTokenInParenthesizedExpr(_t3.Range, _t3.Token));
+	
+	          return parseParenTermEnd(wb, new _fableCore.List(_t3, _fableCore.List.append(_fableCore.List.reverse(_white5), wa)), bodyOpt, ctx);
+	        }
+	      }
+	    }
+	  }
+	
+	  function parseExpression(terms, ctx) {
+	    var matchValue = [terms, parseTerm(ctx)];
+	
+	    if (matchValue[1] == null) {
+	      if (matchValue[0].tail != null) {
+	        var terms_1 = matchValue[0].tail;
+	        var term = matchValue[0].head[0];
+	        var op = matchValue[0].head[1];
+	        var next_1 = justToken(ctx);
+	
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.unexpectedTokenAfterOperator(next_1.Range, new _ast.TokenKind("Operator", [op.Node]), next_1.Token));
+	
+	        return buildExpression(terms_1, term);
+	      }
+	    } else {
+	      var _ret10 = function () {
+	        var term = matchValue[1];
+	        var matchValue_1 = nestedToken(ctx);
+	
+	        var $target2 = function $target2() {
+	          return buildExpression(matchValue[0], term);
+	        };
+	
+	        if (matchValue_1 != null) {
+	          if (matchValue_1[1].Token.Case === "Equals") {
+	            var t = matchValue_1[1];
+	            var white = matchValue_1[0];
+	            {
+	              next(ctx);
+	              return {
+	                v: parseExpression(new _fableCore.List([term, whiteBefore(white, node(t.Range, new _ast.Operator("Equals", [])))], matchValue[0]), ctx)
+	              };
+	            }
+	          } else {
+	            if (matchValue_1[1].Token.Case === "Operator") {
+	              var _op = matchValue_1[1].Token.Fields[0];
+	              var _t4 = matchValue_1[1];
+	              var _white6 = matchValue_1[0];
+	              {
+	                next(ctx);
+	                return {
+	                  v: parseExpression(new _fableCore.List([term, whiteBefore(_white6, node(_t4.Range, _op))], matchValue[0]), ctx)
+	                };
+	              }
+	            } else {
+	              return {
+	                v: $target2()
+	              };
+	            }
+	          }
+	        } else {
+	          return {
+	            v: $target2()
+	          };
+	        }
+	      }();
+	
+	      if ((typeof _ret10 === "undefined" ? "undefined" : _typeof(_ret10)) === "object") return _ret10.v;
+	    }
+	  }
+	
+	  function parseExpressionOrNamedParam(ctx) {
+	    var lookAheadCtx = clone(ctx);
+	    var matchValue = nestedToken(lookAheadCtx);
+	
+	    var $target1 = function $target1() {
+	      return new _fableCore.Choice("Choice2Of2", [parseExpression(new _fableCore.List(), ctx)]);
+	    };
+	
+	    if (matchValue != null) {
+	      var activePatternResult4910 = $Identifier$_$(matchValue[0], matchValue[1]);
+	
+	      if (activePatternResult4910 != null) {
+	        var id = activePatternResult4910;
+	        next(lookAheadCtx);
+	        var matchValue_1 = nestedToken(lookAheadCtx);
+	
+	        var $target1_1 = function $target1_1() {
+	          return new _fableCore.Choice("Choice2Of2", [parseExpression(new _fableCore.List(), ctx)]);
+	        };
+	
+	        if (matchValue_1 != null) {
+	          if (matchValue_1[1].Token.Case === "Equals") {
+	            var t = matchValue_1[1];
+	            var white = matchValue_1[0];
+	            {
+	              nestedToken(ctx);
+	              next(ctx);
+	              nestedToken(ctx);
+	              next(ctx);
+	              var matchValue_2 = parseExpression(new _fableCore.List(), ctx);
+	
+	              if (matchValue_2 == null) {
+	                (function (e) {
+	                  addError(ctx, e);
+	                })(_errors.Parser.unexpectedTokenInArgList(t.Range, t.Token));
+	
+	                return new _fableCore.Choice("Choice2Of2", [node(id.Range, new _ast.Expr("Variable", [id]))]);
+	              } else {
+	                return new _fableCore.Choice("Choice1Of2", [[whiteAfter(white, id), matchValue_2]]);
+	              }
+	            }
+	          } else {
+	            return $target1_1();
+	          }
+	        } else {
+	          return $target1_1();
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
+	
+	  function parseCallArgList(expectMore, lastRng, acc, ctx) {
+	    var patternInput = function () {
+	      var matchValue = parseExpressionOrNamedParam(ctx);
+	
+	      if (matchValue.Case === "Choice1Of2") {
+	        var e = matchValue.Fields[0][1];
+	        var id = matchValue.Fields[0][0];
+	        return [true, new _fableCore.List(new _ast.Argument(id, e), acc)];
+	      } else {
+	        if (matchValue.Fields[0] != null) {
+	          var _e = matchValue.Fields[0];
+	          return [true, new _fableCore.List(new _ast.Argument(null, _e), acc)];
+	        } else {
+	          return [false, acc];
+	        }
+	      }
+	    }();
+	
+	    var matchValue = nestedToken(ctx);
+	
+	    var $target2 = function $target2() {
+	      var $target1 = function $target1() {
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.unexpectedScopeEndInArgList(lastRng));
+	
+	        return [lastRng, new _fableCore.List(), _fableCore.List.reverse(patternInput[1])];
+	      };
+	
+	      if (matchValue != null) {
+	        if (function () {
+	          var t = matchValue[1];
+	          return !t.Token.Equals(new _ast.TokenKind("EndOfFile", []));
+	        }()) {
+	          var t = matchValue[1];
+	          next(ctx);
+	
+	          (function (e) {
+	            addError(ctx, e);
+	          })(_errors.Parser.unexpectedTokenInArgList(t.Range, t.Token));
+	
+	          return parseCallArgList(expectMore, t.Range, patternInput[1], ctx);
+	        } else {
+	          return $target1();
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    };
+	
+	    if (matchValue != null) {
+	      if (matchValue[1].Token.Case === "RParen") {
+	        var t = matchValue[1];
+	        var white = matchValue[0];
+	        {
+	          next(ctx);
+	
+	          if (expectMore ? !patternInput[0] : false) {
+	            (function (e) {
+	              addError(ctx, e);
+	            })(_errors.Parser.unexpectedTokenInArgList(lastRng, new _ast.TokenKind("RParen", [])));
+	          }
+	
+	          return [t.Range, white, _fableCore.List.reverse(patternInput[1])];
+	        }
+	      } else {
+	        if (matchValue[1].Token.Case === "Comma") {
+	          if (function () {
+	            var white = matchValue[0];
+	            var lastRng_1 = matchValue[1].Range;
+	            return patternInput[0];
+	          }()) {
+	            var lastRng_1 = matchValue[1].Range;
+	            var _white7 = matchValue[0];
+	            {
+	              next(ctx);
+	              return parseCallArgList(true, lastRng_1, patternInput[1], ctx);
+	            }
+	          } else {
+	            return $target2();
+	          }
+	        } else {
+	          return $target2();
+	        }
+	      }
+	    } else {
+	      return $target2();
+	    }
+	  }
+	
+	  function parseNestedExpressions(wacc, acc, ctx) {
+	    var matchValue = parseExpression(new _fableCore.List(), ctx);
+	
+	    if (matchValue != null) {
+	      if (!(acc.tail == null)) {
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.nestedExpressionInCommand(matchValue.Range));
+	
+	        return parseNestedExpressions(new _fableCore.List(), new _fableCore.List(whiteBefore(_fableCore.List.reverse(wacc), matchValue), acc), ctx);
+	      } else {
+	        var _strict = usingTopLevelNesting(ctx);
+	
+	        try {
+	          return parseNestedExpressions(new _fableCore.List(), new _fableCore.List(whiteBefore(_fableCore.List.reverse(wacc), matchValue), acc), ctx);
+	        } finally {
+	          if (_fableCore.Util.hasInterface(_strict, "System.IDisposable")) {
+	            _strict.Dispose();
+	          }
+	        }
+	      }
+	    } else {
+	      var matchValue_1 = nestedToken(ctx);
+	
+	      var $target0 = function $target0() {
+	        return acc.tail == null ? new _fableCore.List() : new _fableCore.List(whiteAfter(_fableCore.List.reverse(wacc), acc.head), acc.tail);
+	      };
+	
+	      if (matchValue_1 == null) {
+	        return $target0();
+	      } else {
+	        if (matchValue_1[1].Token.Case === "EndOfFile") {
+	          return $target0();
+	        } else {
+	          var tok = matchValue_1[1];
+	          var white = matchValue_1[0];
+	          {
+	            next(ctx);
+	            return parseNestedExpressions(_fableCore.List.append(new _fableCore.List(tok, _fableCore.List.reverse(white)), wacc), acc, ctx);
+	          }
+	        }
+	      }
+	    }
+	  }
+	
+	  function parseLetBinding(whiteBeforeLet, rngLet, ctx) {
+	    var matchValue = nestedToken(ctx);
+	
+	    var $target1 = function $target1() {
+	      return matchValue == null ? function () {
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.missingBodyInLetBinding(rngLet));
+	
+	        var rng = new _ast.Range(rngLet.End, rngLet.End);
+	        return [new _fableCore.List(), function (n) {
+	          return whiteBefore(whiteBeforeLet, n);
+	        }(node(rng, new _ast.Command("Let", [node(rng, new _ast.Name("")), node(rng, new _ast.Expr("Empty", []))])))];
+	      }() : function () {
+	        var whiteAfterLet = matchValue[0];
+	        var t = matchValue[1];
+	
+	        (function (e) {
+	          addError(ctx, e);
+	        })(_errors.Parser.unexpectedTokenInLetBinding(t.Range, t.Token));
+	
+	        var letEndRng = new _ast.Range(rngLet.End, rngLet.End);
+	
+	        var patternInput = function () {
+	          var matchValue_1 = _fableCore.List.reverse(parseNestedExpressions(new _fableCore.List(), new _fableCore.List(), ctx));
+	
+	          if (matchValue_1.tail == null) {
+	            return [node(letEndRng, new _ast.Expr("Empty", [])), new _fableCore.List()];
+	          } else {
+	            return [matchValue_1.head, matchValue_1.tail];
+	          }
+	        }();
+	
+	        return [patternInput[1], function (n) {
+	          return whiteBefore(whiteBeforeLet, n);
+	        }(node((0, _astops.unionRanges)(rngLet, patternInput[0].Range), new _ast.Command("Let", [whiteBefore(whiteAfterLet, node(letEndRng, new _ast.Name(""))), patternInput[0]])))];
+	      }();
+	    };
+	
+	    if (matchValue != null) {
+	      var activePatternResult4921 = $Identifier$_$(matchValue[0], matchValue[1]);
+	
+	      if (activePatternResult4921 != null) {
+	        var _ret11 = function () {
+	          var id = activePatternResult4921;
+	          next(ctx);
+	          var matchValue_1 = nestedToken(ctx);
+	
+	          if (matchValue_1 == null) {
+	            (function (e) {
+	              addError(ctx, e);
+	            })(_errors.Parser.missingBodyInLetBinding(id.Range));
+	
+	            var body = node(new _ast.Range(id.Range.End, id.Range.End), new _ast.Expr("Empty", []));
+	            return {
+	              v: [new _fableCore.List(), function (n) {
+	                return whiteBefore(whiteBeforeLet, n);
+	              }(node((0, _astops.unionRanges)(rngLet, id.Range), new _ast.Command("Let", [id, body])))]
+	            };
+	          } else {
+	            if (matchValue_1[1].Token.Case === "Equals") {
+	              var rngEq = matchValue_1[1].Range;
+	              var whiteAfterId = matchValue_1[0];
+	              {
+	                next(ctx);
+	
+	                var matchValue_2 = _fableCore.List.reverse(parseNestedExpressions(new _fableCore.List(), new _fableCore.List(), ctx));
+	
+	                if (matchValue_2.tail == null) {
+	                  (function (e) {
+	                    addError(ctx, e);
+	                  })(_errors.Parser.missingBodyInLetBinding((0, _astops.unionRanges)(rngLet, rngEq)));
+	
+	                  return {
+	                    v: [new _fableCore.List(), function (n) {
+	                      return whiteBefore(whiteBeforeLet, n);
+	                    }(node((0, _astops.unionRanges)(rngLet, rngEq), new _ast.Command("Let", [whiteAfter(whiteAfterId, id), node(new _ast.Range(rngEq.End, rngEq.End), new _ast.Expr("Empty", []))])))]
+	                  };
+	                } else {
+	                  return {
+	                    v: [matchValue_2.tail, function (n) {
+	                      return whiteBefore(whiteBeforeLet, n);
+	                    }(node((0, _astops.unionRanges)(rngLet, matchValue_2.head.Range), new _ast.Command("Let", [whiteAfter(whiteAfterId, id), matchValue_2.head])))]
+	                  };
+	                }
+	              }
+	            } else {
+	              var t = matchValue_1[1];
+	              var _whiteAfterId = matchValue_1[0];
+	              {
+	                (function (e) {
+	                  addError(ctx, e);
+	                })(_errors.Parser.unexpectedTokenInLetBinding(t.Range, t.Token));
+	
+	                var patternInput = function () {
+	                  var matchValue_2 = _fableCore.List.reverse(parseNestedExpressions(new _fableCore.List(), new _fableCore.List(), ctx));
+	
+	                  if (matchValue_2.tail == null) {
+	                    return [node(new _ast.Range(id.Range.End, id.Range.End), new _ast.Expr("Empty", [])), new _fableCore.List()];
+	                  } else {
+	                    return [matchValue_2.head, matchValue_2.tail];
+	                  }
+	                }();
+	
+	                return {
+	                  v: [patternInput[1], function (n) {
+	                    return whiteBefore(whiteBeforeLet, n);
+	                  }(node((0, _astops.unionRanges)(rngLet, id.Range), new _ast.Command("Let", [whiteAfter(_whiteAfterId, id), patternInput[0]])))]
+	                };
+	              }
+	            }
+	          }
+	        }();
+	
+	        if ((typeof _ret11 === "undefined" ? "undefined" : _typeof(_ret11)) === "object") return _ret11.v;
+	      } else {
+	        return $target1();
+	      }
+	    } else {
+	      return $target1();
+	    }
+	  }
+	
+	  function parseCommands(acc, ctx) {
+	    var c = token(ctx);
+	
+	    if (c[1].Token.Case === "Let") {
+	      var _ret12 = function () {
+	        var rngLet = c[1].Range;
+	        next(ctx);
+	
+	        var patternInput = function () {
+	          var _indent = usingIndent(false, c[1], ctx);
+	
+	          try {
+	            return parseLetBinding(c[0], rngLet, ctx);
+	          } finally {
+	            if (_fableCore.Util.hasInterface(_indent, "System.IDisposable")) {
+	              _indent.Dispose();
+	            }
+	          }
+	        }();
+	
+	        var rest = _fableCore.List.map(function (e) {
+	          return node(e.Range, new _ast.Command("Expr", [e]));
+	        }, patternInput[0]);
+	
+	        return {
+	          v: parseCommands(_fableCore.List.append(rest, new _fableCore.List(patternInput[1], acc)), ctx)
+	        };
+	      }();
+	
+	      if ((typeof _ret12 === "undefined" ? "undefined" : _typeof(_ret12)) === "object") return _ret12.v;
+	    } else {
+	      if (c[1].Token.Case === "EndOfFile") {
+	        if (acc.tail == null) {
+	          return new _fableCore.List();
+	        } else {
+	          return _fableCore.List.reverse(new _fableCore.List(new _ast.Node(acc.head.WhiteBefore, c[0], acc.head.Range, acc.head.Node, acc.head.Entity), acc.tail));
+	        }
+	      } else {
+	        var cmds = function () {
+	          var _indent = usingIndent(true, c[1], ctx);
+	
+	          try {
+	            return _fableCore.List.map(function (expr) {
+	              return node(expr.Range, new _ast.Command("Expr", [expr]));
+	            }, parseNestedExpressions(_fableCore.List.reverse(c[0]), new _fableCore.List(), ctx));
+	          } finally {
+	            if (_fableCore.Util.hasInterface(_indent, "System.IDisposable")) {
+	              _indent.Dispose();
+	            }
+	          }
+	        }();
+	
+	        return parseCommands(_fableCore.List.append(cmds, acc), ctx);
+	      }
+	    }
+	  }
+	
+	  function parseProgram(input) {
+	    try {
+	      var _ret13 = function () {
+	        var patternInput = (0, _tokenizer.tokenize)(input);
+	
+	        var ctx = function () {
+	          var TopLevel = true;
+	          var Silent = false;
+	          var StrictlyNested = false;
+	          var Position = 0;
+	          var IndentCurrent = 0;
+	          var IndentStack = new _fableCore.List();
+	          var Errors = [];
+	          return new Context(patternInput[0], [], Errors, TopLevel, Silent, StrictlyNested, IndentCurrent, IndentStack, Position);
+	        }();
+	
+	        var cmds = parseCommands(new _fableCore.List(), ctx);
+	        var errors = patternInput[1].concat(Array.from(ctx.Errors));
+	
+	        var rng = _fableCore.Seq.fold(function (rng, cmd) {
+	          return (0, _astops.unionRanges)(rng, cmd.Range);
+	        }, new _ast.Range(0, 0), cmds);
+	
+	        return {
+	          v: [new _ast.Program(node(rng, cmds)), errors]
+	        };
+	      }();
+	
+	      if ((typeof _ret13 === "undefined" ? "undefined" : _typeof(_ret13)) === "object") return _ret13.v;
+	    } catch (e) {
+	      _common.Log.exn("parsing", "Exception while parsing program: %O", e);
+	
+	      var _rng2 = new _ast.Range(0, 0);
+	
+	      var error = _errors.Parser.exceptionWhileParsing(_rng2, _fableCore.Util.toString(e));
+	
+	      return [new _ast.Program(node(_rng2, new _fableCore.List())), [error]];
+	    }
+	  }
+	});
+
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(13), __webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports !== "undefined") {
+	    factory(exports, require("fable-core"), require("./../common/babel"), require("./../ast/typeops"), require("../../libraries/common"));
+	  } else {
+	    var mod = {
+	      exports: {}
+	    };
+	    factory(mod.exports, global.fableCore, global.babel, global.typeops, global.common);
+	    global.codegen = mod.exports;
+	  }
+	})(this, function (exports, _fableCore, _babel, _typeops, _common) {
+	  "use strict";
+	
+	  exports.__esModule = true;
+	  exports.BabelResult = exports.BabelOptions = exports.CompilationContext = undefined;
+	  exports.offsetToLocation = offsetToLocation;
+	  exports.rangeToLoc = rangeToLoc;
+	  exports.getEmitterAndParams = getEmitterAndParams;
+	  exports.compileExpression = compileExpression;
+	  exports.compileCommand = compileCommand;
+	  exports.compileProgram = compileProgram;
+	  exports.compileAndRun = compileAndRun;
+	
+	  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+	    return typeof obj;
+	  } : function (obj) {
+	    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	  };
+	
+	  function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	      throw new TypeError("Cannot call a class as a function");
+	    }
+	  }
+	
 	  var CompilationContext = exports.CompilationContext = function () {
 	    function CompilationContext(lineLengths, globals) {
 	      _classCallCheck(this, CompilationContext);
@@ -14605,17 +21651,13 @@
 	      this.Globals = globals;
 	    }
 	
-	    _createClass(CompilationContext, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    CompilationContext.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    CompilationContext.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return CompilationContext;
 	  }();
@@ -14856,17 +21898,13 @@
 	      this.presets = presets;
 	    }
 	
-	    _createClass(BabelOptions, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    BabelOptions.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    BabelOptions.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return BabelOptions;
 	  }();
@@ -14880,17 +21918,13 @@
 	      this.code = code;
 	    }
 	
-	    _createClass(BabelResult, [{
-	      key: "Equals",
-	      value: function Equals(other) {
-	        return _fableCore.Util.equalsRecords(this, other);
-	      }
-	    }, {
-	      key: "CompareTo",
-	      value: function CompareTo(other) {
-	        return _fableCore.Util.compareRecords(this, other);
-	      }
-	    }]);
+	    BabelResult.prototype.Equals = function Equals(other) {
+	      return _fableCore.Util.equalsRecords(this, other);
+	    };
+	
+	    BabelResult.prototype.CompareTo = function CompareTo(other) {
+	      return _fableCore.Util.compareRecords(this, other);
+	    };
 	
 	    return BabelResult;
 	  }();

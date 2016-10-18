@@ -46,9 +46,10 @@
           </p>
           <script class="ia-source" type="text/thegamma">
 let data =
-  olympics2
+  olympics
     .'group data'.'by Athlete'.'sum Gold'.'average Year'.then
     .'sort data'.'by Gold descending'.then
+    .'drop columns'.'drop Athlete'.'drop Gold'.then  
     .paging.take(10)
     .'get the data'
 

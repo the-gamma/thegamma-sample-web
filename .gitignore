@@ -9,7 +9,6 @@ paket.targets
 paket-files
 packages
 
-web/ext/src
 web/ext/tests
 
 temp
