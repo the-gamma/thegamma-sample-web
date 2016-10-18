@@ -36,6 +36,7 @@ let inits = Lazy.Create(fun () ->
   DotLiquid.setTemplatesDir templ 
   DotLiquid.setCSharpNamingConvention()
   System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
+  |> Seq.collect (fun ty -> Seq.append [ty] (ty.GetNestedTypes()))
   |> Seq.find (fun ty -> ty.Name = "Filters")
   |> DotLiquid.registerFiltersByType )  
    
