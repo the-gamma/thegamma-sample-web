@@ -47,11 +47,12 @@
           <script class="ia-source" type="text/thegamma">
 let data =
   olympics
-    .'group data'.'by Athlete'.'sum Gold'.'average Year'.then
+    .'group data'.'by Athlete'.'sum Gold'.then
     .'sort data'.'by Gold descending'.then
-    .'drop columns'.'drop Athlete'.'drop Gold'.then  
     .paging.take(10)
-    .'get the data'
+    .'get series'.'with key Athlete'.'and value Gold'
+
+chart.column(data)
 
 
 
@@ -65,12 +66,8 @@ let data =
 
 
 
-
-
-
-
-empty.create()
-          </script>
+"just need some whitespace..."
+</script>
           <!-- <script class="ia-compiled" type="text/thegamma-compiled"></script> -->
           <div class="ia-options" style="display:none">
             <div class="loading">

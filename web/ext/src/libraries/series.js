@@ -450,10 +450,10 @@
           return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
         };
       }(function () {
-        var predicate = function predicate($var6) {
+        var predicate = function predicate($var57) {
           return f(function (tuple) {
             return tuple[1];
-          }($var6));
+          }($var57));
         };
 
         return function (array) {
@@ -593,6 +593,10 @@
           });
         }(_fableCore.AsyncBuilder.singleton);
       })(this);
+    };
+
+    series.prototype.preview = function preview() {
+      return this.take(10);
     };
 
     return series;

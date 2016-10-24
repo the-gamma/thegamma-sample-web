@@ -29,7 +29,7 @@
 
   var enabledCategories = exports.enabledCategories = !isLocalHost() ? _fableCore.Set.create(new _fableCore.List(), new _fableCore.GenericComparer(function (x, y) {
     return x < y ? -1 : x > y ? 1 : 0;
-  })) : _fableCore.Set.create(_fableCore.List.ofArray(["LIVE", "INTERPRETER"]), new _fableCore.GenericComparer(function (x, y) {
+  })) : _fableCore.Set.create(_fableCore.List.ofArray(["LIVE", "SYSTEM", "PARSING", "BINDER", "COMPLETIONS", "EDITORS", "TYPECHECKER", "PROVIDERS", "SERVICE", "CODEGEN", "INTERPRETER", "RUNTIME"]), new _fableCore.GenericComparer(function (x, y) {
     return x < y ? -1 : x > y ? 1 : 0;
   }));
 
@@ -78,26 +78,26 @@
         })(p2(_fableCore.Date.hour(dt)))(p2(_fableCore.Date.minute(dt)))(p2(_fableCore.Date.second(dt)))(p4(_fableCore.Date.millisecond(dt)))(category_1);
 
         var color = function () {
-          var $var1 = null;
+          var $var51 = null;
 
           switch (level) {
             case "TRACE":
-              $var1 = "color:#808080";
+              $var51 = "color:#808080";
               break;
 
             case "EXCEPTION":
-              $var1 = "color:#c00000";
+              $var51 = "color:#c00000";
               break;
 
             case "ERROR":
-              $var1 = "color:#900000";
+              $var51 = "color:#900000";
               break;
 
             default:
-              $var1 = "";
+              $var51 = "";
           }
 
-          return $var1;
+          return $var51;
         }();
 
         console.log.apply(console, Array.from(_fableCore.Seq.append(["%c" + prefix + msg, color], args_1)));
@@ -208,10 +208,10 @@
         _fableCore.Seq.iterate(function (n_1) {
           Log.trace("system", "Starting future '%s'....", n_1);
         }, function () {
-          var $var2 = n;
+          var $var52 = n;
 
-          if ($var2 != null) {
-            return [$var2];
+          if ($var52 != null) {
+            return [$var52];
           } else {
             return [];
           }
@@ -228,10 +228,10 @@
                 _fableCore.Seq.iterate(function (n_1) {
                   Log.trace("system", "Future '%s' evaluated to: %O", n_1, _arg1);
                 }, function () {
-                  var $var3 = n;
+                  var $var53 = n;
 
-                  if ($var3 != null) {
-                    return [$var3];
+                  if ($var53 != null) {
+                    return [$var53];
                   } else {
                     return [];
                   }
@@ -563,21 +563,21 @@
         }
       }
 
-      return _fableCore.Seq.toList(_fableCore.Seq.map(function ($var4) {
-        return _fableCore.Seq.toList($var4[1]);
+      return _fableCore.Seq.toList(_fableCore.Seq.map(function ($var54) {
+        return _fableCore.Seq.toList($var54[1]);
       }, groups));
     };
 
     var unreduce = $exports.unreduce = function unreduce(f, s) {
       return _fableCore.Seq.toList(_fableCore.Seq.unfold(function (s_1) {
-        var $var5 = f(s_1);
+        var $var55 = f(s_1);
 
-        if ($var5 != null) {
+        if ($var55 != null) {
           return function (v) {
             return [v, v];
-          }($var5);
+          }($var55);
         } else {
-          return $var5;
+          return $var55;
         }
       }, s));
     };

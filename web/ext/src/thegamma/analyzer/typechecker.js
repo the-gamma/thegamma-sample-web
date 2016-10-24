@@ -127,10 +127,10 @@
     };
 
     if (instTy.Case === "Object") {
-      var activePatternResult5160 = $FindMethod$_$(methName, instTy.Fields[0]);
+      var activePatternResult120604 = $FindMethod$_$(methName, instTy.Fields[0]);
 
-      if (activePatternResult5160 != null) {
-        var args = activePatternResult5160[1];
+      if (activePatternResult120604 != null) {
+        var args = activePatternResult120604[1];
 
         if (parSpec.Case === "Choice2Of2") {
           var patternInput = _fableCore.Seq.item(parSpec.Fields[0], args);
@@ -392,11 +392,11 @@
                     };
                   } else {
                     if (matchValue.Case === "Object") {
-                      var activePatternResult5192 = $FindProperty$_$(name, matchValue.Fields[0]);
+                      var activePatternResult120636 = $FindProperty$_$(name, matchValue.Fields[0]);
 
-                      if (activePatternResult5192 != null) {
-                        var meta = activePatternResult5192[0];
-                        var resTyp = activePatternResult5192[1];
+                      if (activePatternResult120636 != null) {
+                        var meta = activePatternResult120636[0];
+                        var resTyp = activePatternResult120636[1];
                         {
                           e.Meta = meta;
                           return {
@@ -474,12 +474,12 @@
                         };
                       } else {
                         if (matchValue.Case === "Object") {
-                          var activePatternResult5194 = $FindMethod$_$(name, matchValue.Fields[0]);
+                          var activePatternResult120638 = $FindMethod$_$(name, matchValue.Fields[0]);
 
-                          if (activePatternResult5194 != null) {
-                            var args = activePatternResult5194[1];
-                            var meta = activePatternResult5194[0];
-                            var resTyp = activePatternResult5194[2];
+                          if (activePatternResult120638 != null) {
+                            var args = activePatternResult120638[1];
+                            var meta = activePatternResult120638[0];
+                            var resTyp = activePatternResult120638[2];
                             {
                               e.Meta = meta;
                               return {
@@ -805,8 +805,10 @@
                     return builder__1.Return();
                   });
                 }), builder__1.Delay(function (unitVar_2) {
+                  _common.Log.trace("typechecker", "Type of entity '%s' (%O) is: %O", _astops.Entity$2Eget_Name.bind(e_1)(), e_1.Kind, getType(ctx, e_1));
+
                   return builder__1.Bind(evaluateDelayedType(true, getType(ctx, e_1)), function (_arg3) {
-                    _common.Log.trace("typechecker", "Type of entity '%s' (%O) is: %O", _astops.Entity$2Eget_Name.bind(e_1)(), e_1.Kind, _arg3);
+                    _common.Log.trace("typechecker", "Type of entity '%s' (%O) reduced to: %O", _astops.Entity$2Eget_Name.bind(e_1)(), e_1.Kind, _arg3);
 
                     e_1.Type = _arg3;
                     return builder__1.Zero();

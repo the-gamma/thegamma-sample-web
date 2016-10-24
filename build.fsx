@@ -20,7 +20,7 @@ Target "clean" (fun _ ->
 )
 
 Target "build" (fun _ ->
-  [ "thegamma-olympics-web.sln" ]
+  [ "thegamma-sample-web.sln" ]
   |> MSBuildRelease "" "Rebuild"
   |> Log ""
 )

@@ -198,15 +198,34 @@
     var previewName = new _ast.Name("preview");
 
     var $target1 = function $target1() {
-      return null;
+      var $target1 = function $target1() {
+        return null;
+      };
+
+      if (typ != null) {
+        if (typ.Case === "Object") {
+          var activePatternResult105129 = $FindMethod$_$(previewName, typ.Fields[0]);
+
+          if (activePatternResult105129 != null) {
+            var e = activePatternResult105129[1];
+            return evaluateCall(e, value, new _fableCore.List());
+          } else {
+            return $target1();
+          }
+        } else {
+          return $target1();
+        }
+      } else {
+        return $target1();
+      }
     };
 
     if (typ != null) {
       if (typ.Case === "Object") {
-        var activePatternResult5319 = $FindProperty$_$(previewName, typ.Fields[0]);
+        var activePatternResult105131 = $FindProperty$_$(previewName, typ.Fields[0]);
 
-        if (activePatternResult5319 != null) {
-          var e = activePatternResult5319;
+        if (activePatternResult105131 != null) {
+          var e = activePatternResult105131;
           return evaluateCall(e, value, new _fableCore.List());
         } else {
           return $target1();
@@ -291,10 +310,10 @@
                 };
 
                 if (matchValue.Case === "Object") {
-                  var activePatternResult5327 = $FindProperty$_$(_name, matchValue.Fields[0]);
+                  var activePatternResult105139 = $FindProperty$_$(_name, matchValue.Fields[0]);
 
-                  if (activePatternResult5327 != null) {
-                    var e_1 = activePatternResult5327;
+                  if (activePatternResult105139 != null) {
+                    var e_1 = activePatternResult105139;
                     return evaluateCall(e_1, getValue(ctx, inst), new _fableCore.List());
                   } else {
                     return $target1();
@@ -340,11 +359,11 @@
                       };
 
                       if (matchValue.Case === "Object") {
-                        var activePatternResult5334 = $FindMethod$_$(_name2, matchValue.Fields[0]);
+                        var activePatternResult105146 = $FindMethod$_$(_name2, matchValue.Fields[0]);
 
-                        if (activePatternResult5334 != null) {
-                          var _e_ = activePatternResult5334[1];
-                          var pars = activePatternResult5334[0];
+                        if (activePatternResult105146 != null) {
+                          var _e_ = activePatternResult105146[1];
+                          var pars = activePatternResult105146[0];
                           {
                             var args_1 = _fableCore.List.mapIndexed(function (i, tupledArg) {
                               return i < positionBased.length ? positionBased[i] : nameBased.has(tupledArg[0]) ? nameBased.get(tupledArg[0]) : null;
@@ -447,14 +466,14 @@
           } else {
             if (e.Kind.Case === "Variable") {
               var value = e.Kind.Fields[1];
-              var $var9 = value.Value;
+              var $var23 = value.Value;
 
-              if ($var9 != null) {
+              if ($var23 != null) {
                 return function (v) {
                   return v.Value;
-                }($var9);
+                }($var23);
               } else {
-                return $var9;
+                return $var23;
               }
             } else {
               if (e.Kind.Case === "ArgumentList") {

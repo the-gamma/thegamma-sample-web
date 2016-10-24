@@ -46,17 +46,17 @@
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(1), __webpack_require__(2), __webpack_require__(3), __webpack_require__(4), __webpack_require__(6), __webpack_require__(7), __webpack_require__(19), __webpack_require__(10), __webpack_require__(14), __webpack_require__(21), __webpack_require__(27), __webpack_require__(11), __webpack_require__(13), __webpack_require__(24), __webpack_require__(28), __webpack_require__(8), __webpack_require__(9), __webpack_require__(15), __webpack_require__(12), __webpack_require__(25), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(1), __webpack_require__(2), __webpack_require__(3), __webpack_require__(4), __webpack_require__(6), __webpack_require__(7), __webpack_require__(13), __webpack_require__(10), __webpack_require__(19), __webpack_require__(14), __webpack_require__(21), __webpack_require__(27), __webpack_require__(11), __webpack_require__(24), __webpack_require__(28), __webpack_require__(8), __webpack_require__(9), __webpack_require__(15), __webpack_require__(12), __webpack_require__(25), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports !== "undefined") {
-	    factory(exports, require("../libraries/common"), require("fable-core"), require("../thegamma/ast/ast"), require("../thegamma/providers/providers"), require("../thegamma/providers/pivot"), require("../thegamma/analyzer/interpreter"), require("../thegamma/analyzer/typechecker"), require("../libraries/tables"), require("../thegamma/ast/astops"), require("../thegamma/monaco"), require("../thegamma/parser/parser"), require("../gui/html"), require("../thegamma/ast/typeops"), require("../thegamma/services"), require("../thegamma/codegen/codegen"), require("../libraries/series"), require("../thegamma/codegen/runtime"), require("../libraries/google/charts"), require("../libraries/maps"), require("../thegamma/editors"), require("core-js"));
+	    factory(exports, require("../libraries/common"), require("fable-core"), require("../thegamma/ast/ast"), require("../thegamma/providers/providers"), require("../thegamma/providers/pivot"), require("../thegamma/analyzer/interpreter"), require("../thegamma/ast/typeops"), require("../libraries/tables"), require("../thegamma/analyzer/typechecker"), require("../thegamma/ast/astops"), require("../thegamma/monaco"), require("../thegamma/parser/parser"), require("../gui/html"), require("../thegamma/services"), require("../thegamma/codegen/codegen"), require("../libraries/series"), require("../thegamma/codegen/runtime"), require("../libraries/google/charts"), require("../libraries/maps"), require("../thegamma/editors"), require("core-js"));
 	  } else {
 	    var mod = {
 	      exports: {}
 	    };
-	    factory(mod.exports, global.common, global.fableCore, global.ast, global.providers, global.pivot, global.interpreter, global.typechecker, global.tables, global.astops, global.monaco, global.parser, global.html, global.typeops, global.services, global.codegen, global.series, global.runtime, global.charts, global.maps, global.editors, global.coreJs);
+	    factory(mod.exports, global.common, global.fableCore, global.ast, global.providers, global.pivot, global.interpreter, global.typeops, global.tables, global.typechecker, global.astops, global.monaco, global.parser, global.html, global.services, global.codegen, global.series, global.runtime, global.charts, global.maps, global.editors, global.coreJs);
 	    global.main = mod.exports;
 	  }
-	})(this, function (exports, _common, _fableCore, _ast, _providers, _pivot, _interpreter, _typechecker, _tables, _astops, _monaco, _parser, _html, _typeops, _services, _codegen, _series, _runtime, _charts, _maps, _editors) {
+	})(this, function (exports, _common, _fableCore, _ast, _providers, _pivot, _interpreter, _typeops, _tables, _typechecker, _astops, _monaco, _parser, _html, _services, _codegen, _series, _runtime, _charts, _maps, _editors) {
 	  "use strict";
 	
 	  exports.__esModule = true;
@@ -86,6 +86,7 @@
 	  exports.renderNodeList = renderNodeList;
 	  exports.renderContextMenu = renderContextMenu;
 	  exports.renderAddPropertyMenu = renderAddPropertyMenu;
+	  exports.renderSection = renderSection;
 	  exports.renderPivot = renderPivot;
 	  exports.callShowMethod = callShowMethod;
 	  exports.renderErrors = renderErrors;
@@ -155,7 +156,7 @@
 	        };
 	      };
 	
-	      var restTys = _fableCore.List.ofArray([_providers.RestProvider.provideRestType(lookupNamed, "olympics1", services + "olympics", ""), _providers.RestProvider.provideRestType(lookupNamed, "olympics3", services + "pivot", "source=" + services + "olympics"), _providers.RestProvider.provideRestType(lookupNamed, "smlouvy1", services + "smlouvy", ""), _providers.RestProvider.provideRestType(lookupNamed, "smlouvy2", services + "pivot", "source=" + services + "smlouvy"), _providers.RestProvider.provideRestType(lookupNamed, "adventure", services + "adventure", ""), _providers.RestProvider.provideRestType(lookupNamed, "world", services + "worldbank", ""), (0, _pivot.providePivotType)(services + "pdata/olympics", "olympics", lookupNamed, _fableCore.List.ofArray([["Games", new _ast.PrimitiveType("String", [])], ["Year", new _ast.PrimitiveType("Number", [])], ["Sport", new _ast.PrimitiveType("String", [])], ["Discipline", new _ast.PrimitiveType("String", [])], ["Athlete", new _ast.PrimitiveType("String", [])], ["Team", new _ast.PrimitiveType("String", [])], ["Gender", new _ast.PrimitiveType("String", [])], ["Event", new _ast.PrimitiveType("String", [])], ["Medal", new _ast.PrimitiveType("String", [])], ["Gold", new _ast.PrimitiveType("Number", [])], ["Silver", new _ast.PrimitiveType("Number", [])], ["Bronze", new _ast.PrimitiveType("Number", [])]])), (0, _pivot.providePivotType)(services + "pdata/smlouvy", "smlouvy", lookupNamed, _fableCore.List.ofArray([["Uzav\u0159eno", new _ast.PrimitiveType("String", [])], ["Publikov\xE1no", new _ast.PrimitiveType("String", [])], ["Hodnota", new _ast.PrimitiveType("Number", [])], ["Chyb\xED hodnota", new _ast.PrimitiveType("String", [])], ["Subjekt", new _ast.PrimitiveType("String", [])], ["\xDAtvar", new _ast.PrimitiveType("String", [])], ["Schv\xE1lil", new _ast.PrimitiveType("String", [])], ["P\u0159edm\u011Bt", new _ast.PrimitiveType("String", [])], ["Odkaz", new _ast.PrimitiveType("String", [])], ["Platnost", new _ast.PrimitiveType("String", [])], ["P\u0159\xEDjemci", new _ast.PrimitiveType("String", [])], ["P\u0159\xEDjemci (I\u010CO)", new _ast.PrimitiveType("String", [])]])), new _providers.ProvidedType("NamedType", ["value", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["seq", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["async", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])])]);
+	      var restTys = _fableCore.List.ofArray([_providers.RestProvider.provideRestType(lookupNamed, "olympics1", services + "olympics", ""), _providers.RestProvider.provideRestType(lookupNamed, "olympics3", services + "pivot", "source=" + services + "olympics"), _providers.RestProvider.provideRestType(lookupNamed, "smlouvy1", services + "smlouvy", ""), _providers.RestProvider.provideRestType(lookupNamed, "smlouvy2", services + "pivot", "source=" + services + "smlouvy"), _providers.RestProvider.provideRestType(lookupNamed, "adventure", services + "adventure", ""), _providers.RestProvider.provideRestType(lookupNamed, "world", services + "worldbank", ""), (0, _pivot.providePivotType)(services + "pdata/olympics", "olympics", lookupNamed, _fableCore.List.ofArray([["Games", new _ast.PrimitiveType("String", [])], ["Year", new _ast.PrimitiveType("Number", [])], ["Sport", new _ast.PrimitiveType("String", [])], ["Discipline", new _ast.PrimitiveType("String", [])], ["Athlete", new _ast.PrimitiveType("String", [])], ["Team", new _ast.PrimitiveType("String", [])], ["Gender", new _ast.PrimitiveType("String", [])], ["Event", new _ast.PrimitiveType("String", [])], ["Medal", new _ast.PrimitiveType("String", [])], ["Gold", new _ast.PrimitiveType("Number", [])], ["Silver", new _ast.PrimitiveType("Number", [])], ["Bronze", new _ast.PrimitiveType("Number", [])]])), (0, _pivot.providePivotType)(services + "pdata/smlouvy", "smlouvy", lookupNamed, _fableCore.List.ofArray([["Uzav\u0159eno", new _ast.PrimitiveType("String", [])], ["Publikov\xE1no", new _ast.PrimitiveType("String", [])], ["Hodnota", new _ast.PrimitiveType("Number", [])], ["Chyb\xED hodnota", new _ast.PrimitiveType("String", [])], ["Subjekt", new _ast.PrimitiveType("String", [])], ["\xDAtvar", new _ast.PrimitiveType("String", [])], ["Schv\xE1lil", new _ast.PrimitiveType("String", [])], ["P\u0159edm\u011Bt", new _ast.PrimitiveType("String", [])], ["Odkaz", new _ast.PrimitiveType("String", [])], ["Platnost", new _ast.PrimitiveType("String", [])], ["P\u0159\xEDjemci", new _ast.PrimitiveType("String", [])], ["P\u0159\xEDjemci (I\u010CO)", new _ast.PrimitiveType("String", [])]])), new _providers.ProvidedType("NamedType", ["value", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["object", new _fableCore.List(), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["seq", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])]), new _providers.ProvidedType("NamedType", ["async", _fableCore.List.ofArray(["a"]), new _ast.Type("Any", [])])]);
 	
 	      return builder_.Bind(_providers.FSharpProvider.provideFSharpTypes(lookupNamed, "/ext/libraries.json?" + String(function () {
 	        var copyOfStruct = _fableCore.Date.now();
@@ -318,7 +319,45 @@
 	
 	  function tryFindPreview(globals, ent) {
 	    var nm = new _ast.Name("preview");
-	    var matchValue = ent.Type;
+	
+	    var matchValue = function () {
+	      var $var78 = ent.Type;
+	
+	      if ($var78 != null) {
+	        return function (t) {
+	          return (0, _typeops.reduceType)(t);
+	        }($var78);
+	      } else {
+	        return $var78;
+	      }
+	    }();
+	
+	    var $target0 = function $target0() {
+	      var res = (0, _interpreter.evaluate)(globals, ent);
+	
+	      var $target1 = function $target1() {
+	        return null;
+	      };
+	
+	      if (res != null) {
+	        if (res.Preview != null) {
+	          var _ret = function () {
+	            var p = res.Preview;
+	            return {
+	              v: function v(id) {
+	                _tables.table.create(p).set(null, false).show(id);
+	              }
+	            };
+	          }();
+	
+	          if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
+	        } else {
+	          return $target1();
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    };
 	
 	    var $target1 = function $target1() {
 	      return null;
@@ -326,36 +365,18 @@
 	
 	    if (matchValue != null) {
 	      if (matchValue.Case === "Object") {
-	        var activePatternResult31632 = (0, _typechecker.$FindProperty$_$)(nm, matchValue.Fields[0]);
+	        var activePatternResult174289 = (0, _typechecker.$FindMethod$_$)(nm, matchValue.Fields[0]);
 	
-	        if (activePatternResult31632 != null) {
-	          var prev = activePatternResult31632;
-	          var res = (0, _interpreter.evaluate)(globals, ent);
-	
-	          var $target1_1 = function $target1_1() {
-	            return null;
-	          };
-	
-	          if (res != null) {
-	            if (res.Preview != null) {
-	              var _ret = function () {
-	                var p = res.Preview;
-	                return {
-	                  v: function v(id) {
-	                    _tables.table.create(p).set(null, false).show(id);
-	                  }
-	                };
-	              }();
-	
-	              if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
-	            } else {
-	              return $target1_1();
-	            }
-	          } else {
-	            return $target1_1();
-	          }
+	        if (activePatternResult174289 != null) {
+	          return $target0();
 	        } else {
-	          return $target1();
+	          var activePatternResult174290 = (0, _typechecker.$FindProperty$_$)(nm, matchValue.Fields[0]);
+	
+	          if (activePatternResult174290 != null) {
+	            return $target0();
+	          } else {
+	            return $target1();
+	          }
 	        }
 	      } else {
 	        return $target1();
@@ -485,12 +506,12 @@
 	    var matchValue = collectChain(new _fableCore.List(), expr);
 	
 	    var $target1 = function $target1() {
-	      var activePatternResult31650 = (0, _astops.$ExprLeaf$ExprNode$)(expr.Node);
+	      var activePatternResult174308 = (0, _astops.$ExprLeaf$ExprNode$)(expr.Node);
 	
-	      if (activePatternResult31650.Case === "Choice2Of2") {
+	      if (activePatternResult174308.Case === "Choice2Of2") {
 	        var _ret2 = function () {
-	          var es = activePatternResult31650.Fields[0][0];
-	          var ns = activePatternResult31650.Fields[0][1];
+	          var es = activePatternResult174308.Fields[0][0];
+	          var ns = activePatternResult174308.Fields[0][1];
 	          {
 	            var _ret3 = function () {
 	              var loop = function loop(acc) {
@@ -738,8 +759,8 @@
 	      };
 	
 	      return function (list) {
-	        return _fableCore.Seq.fold(function ($var15, $var16) {
-	          return folder($var15)($var16);
+	        return _fableCore.Seq.fold(function ($var79, $var80) {
+	          return folder($var79)($var80);
 	        }, state, list);
 	      };
 	    }()(event.Fields[0]) : event.Case === "SelectChainElement" ? tryTransformChain(function (body) {
@@ -953,8 +974,8 @@
 	                };
 	
 	                return function (list) {
-	                  return _fableCore.Seq.fold(function ($var17, $var18) {
-	                    return folder($var17)($var18);
+	                  return _fableCore.Seq.fold(function ($var81, $var82) {
+	                    return folder($var81)($var82);
 	                  }, expr, list);
 	                };
 	              }()(patternInput_1[1](expr)));
@@ -993,7 +1014,7 @@
 	            };
 	
 	            var patternInput_2 = _fableCore.Seq.fold(function (tupledArg, part) {
-	              var patternInput_2 = tryInjectBefore(tupledArg[1])(part);
+	              var patternInput_2 = tupledArg[0] ? [tupledArg[0], tupledArg[1]] : tryInjectBefore(tupledArg[1])(part);
 	
 	              if (part.Node.Case === "Property") {
 	                return [patternInput_2[0], function () {
@@ -1147,6 +1168,480 @@
 	    }));
 	  }
 	
+	  function renderSection(triggerEvent, section) {
+	    var trigger = function trigger(action) {
+	      return function (_arg1) {
+	        return function (e) {
+	          e.cancelBubble = true;
+	          triggerEvent(action);
+	        };
+	      };
+	    };
+	
+	    var triggerWith = function triggerWith(f) {
+	      return function (el) {
+	        return function (e) {
+	          e.cancelBubble = true;
+	          triggerEvent(f(el));
+	        };
+	      };
+	    };
+	
+	    var getNodeNameAndSymbol = function getNodeNameAndSymbol(_arg1) {
+	      var $target1 = function $target1() {
+	        return ["", null];
+	      };
+	
+	      if (_arg1 != null) {
+	        if (_arg1.Node.Case === "Property") {
+	          if (_arg1.Entity != null) {
+	            var e = _arg1.Entity;
+	            var n = _arg1.Node.Fields[1];
+	            return [n.Node.Name, e.Symbol];
+	          } else {
+	            return $target1();
+	          }
+	        } else {
+	          return $target1();
+	        }
+	      } else {
+	        return $target1();
+	      }
+	    };
+	
+	    return _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
+	      var $target5 = function $target5() {
+	        return _fableCore.Seq.empty();
+	      };
+	
+	      if (section != null) {
+	        if (section.Transformation.Case === "GetSeries") {
+	          var _ret6 = function () {
+	            var nodes = section.Nodes;
+	            var patternInput = nodes.tail != null ? nodes.tail.tail != null ? nodes.tail.tail.tail != null ? function () {
+	              var gs = nodes.head;
+	              var gsk = nodes.tail.head;
+	              var gsv = nodes.tail.tail.head;
+	              return [gs, gsk, gsv];
+	            }() : function () {
+	              var gs = nodes.head;
+	              var gsk = nodes.tail.head;
+	              return [gs, gsk, null];
+	            }() : function () {
+	              var gs = nodes.head;
+	              return [gs, null, null];
+	            }() : function () {
+	              throw "No get series node in get series transformation";
+	            }();
+	            var patternInput_1 = getNodeNameAndSymbol(patternInput[1]);
+	            var patternInput_2 = getNodeNameAndSymbol(patternInput[2]);
+	            return {
+	              v: _fableCore.Seq.append(function () {
+	                var matchValue = patternInput[0].Entity.Type;
+	
+	                var $target1 = function $target1() {
+	                  return _fableCore.Seq.empty();
+	                };
+	
+	                if (matchValue != null) {
+	                  if (matchValue.Case === "Object") {
+	                    var _ret7 = function () {
+	                      var obj = matchValue.Fields[0];
+	                      return {
+	                        v: _fableCore.Seq.singleton(function (arg0) {
+	                          return function (arg1) {
+	                            return _html.El.op_Dynamic(arg0, arg1);
+	                          };
+	                        }(_html.h)("select")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("change", triggerWith(function (el) {
+	                          return patternInput_1[1] != null ? new PivotEditorAction("ReplaceElement", [patternInput_1[1], el.value, null]) : new PivotEditorAction("AddElement", [patternInput[0].Entity.Symbol, el.value, null]);
+	                        }))]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
+	                          return _fableCore.Seq.append(patternInput_1[0] === "" ? _fableCore.Seq.singleton(function (arg0) {
+	                            return function (arg1) {
+	                              return _html.El.op_Dynamic(arg0, arg1);
+	                            };
+	                          }(_html.h)("option")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("value", ""), (0, _html.op_EqualsGreater)("selected", "selected")]))(_fableCore.List.ofArray([(0, _html.text)("")]))) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_2) {
+	                            return _fableCore.Seq.collect(function (m) {
+	                              var $target1_1 = function $target1_1() {
+	                                return _fableCore.Seq.empty();
+	                              };
+	
+	                              if (m.Case === "Property") {
+	                                if (m.Fields[0].indexOf("with key") === 0) {
+	                                  var _ret8 = function () {
+	                                    var n = m.Fields[0];
+	                                    return {
+	                                      v: _fableCore.Seq.singleton(function (arg0) {
+	                                        return function (arg1) {
+	                                          return _html.El.op_Dynamic(arg0, arg1);
+	                                        };
+	                                      }(_html.h)("option")(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_3) {
+	                                        return _fableCore.Seq.append(_fableCore.Seq.singleton((0, _html.op_EqualsGreater)("value", n)), _fableCore.Seq.delay(function (unitVar_4) {
+	                                          return patternInput_1[0] === n ? _fableCore.Seq.singleton((0, _html.op_EqualsGreater)("selected", "selected")) : _fableCore.Seq.empty();
+	                                        }));
+	                                      })))(_fableCore.List.ofArray([(0, _html.text)(n)])))
+	                                    };
+	                                  }();
+	
+	                                  if ((typeof _ret8 === "undefined" ? "undefined" : _typeof(_ret8)) === "object") return _ret8.v;
+	                                } else {
+	                                  return $target1_1();
+	                                }
+	                              } else {
+	                                return $target1_1();
+	                              }
+	                            }, obj.Members);
+	                          }));
+	                        }))))
+	                      };
+	                    }();
+	
+	                    if ((typeof _ret7 === "undefined" ? "undefined" : _typeof(_ret7)) === "object") return _ret7.v;
+	                  } else {
+	                    return $target1();
+	                  }
+	                } else {
+	                  return $target1();
+	                }
+	              }(), _fableCore.Seq.delay(function (unitVar_1) {
+	                var $target1 = function $target1() {
+	                  return _fableCore.Seq.empty();
+	                };
+	
+	                if (patternInput[1] != null) {
+	                  if (patternInput[1].Entity != null) {
+	                    if (patternInput[1].Entity.Type != null) {
+	                      if (patternInput[1].Entity.Type.Case === "Object") {
+	                        var _ret9 = function () {
+	                          var keyEnt = patternInput[1].Entity;
+	                          var obj = patternInput[1].Entity.Type.Fields[0];
+	                          return {
+	                            v: _fableCore.Seq.singleton(function (arg0) {
+	                              return function (arg1) {
+	                                return _html.El.op_Dynamic(arg0, arg1);
+	                              };
+	                            }(_html.h)("select")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("change", triggerWith(function (el) {
+	                              return patternInput_2[1] != null ? new PivotEditorAction("ReplaceElement", [patternInput_2[1], el.value, null]) : new PivotEditorAction("AddElement", [keyEnt.Symbol, el.value, null]);
+	                            }))]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
+	                              return _fableCore.Seq.append(patternInput_2[0] === "" ? _fableCore.Seq.singleton(function (arg0) {
+	                                return function (arg1) {
+	                                  return _html.El.op_Dynamic(arg0, arg1);
+	                                };
+	                              }(_html.h)("option")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("value", ""), (0, _html.op_EqualsGreater)("selected", "selected")]))(_fableCore.List.ofArray([(0, _html.text)("")]))) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_3) {
+	                                return _fableCore.Seq.collect(function (m) {
+	                                  var $target1_1 = function $target1_1() {
+	                                    return _fableCore.Seq.empty();
+	                                  };
+	
+	                                  if (m.Case === "Property") {
+	                                    if (m.Fields[0].indexOf("and value") === 0) {
+	                                      var _ret10 = function () {
+	                                        var n = m.Fields[0];
+	                                        return {
+	                                          v: _fableCore.Seq.singleton(function (arg0) {
+	                                            return function (arg1) {
+	                                              return _html.El.op_Dynamic(arg0, arg1);
+	                                            };
+	                                          }(_html.h)("option")(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_4) {
+	                                            return _fableCore.Seq.append(_fableCore.Seq.singleton((0, _html.op_EqualsGreater)("value", n)), _fableCore.Seq.delay(function (unitVar_5) {
+	                                              return patternInput_1[0] === n ? _fableCore.Seq.singleton((0, _html.op_EqualsGreater)("selected", "selected")) : _fableCore.Seq.empty();
+	                                            }));
+	                                          })))(_fableCore.List.ofArray([(0, _html.text)(n)])))
+	                                        };
+	                                      }();
+	
+	                                      if ((typeof _ret10 === "undefined" ? "undefined" : _typeof(_ret10)) === "object") return _ret10.v;
+	                                    } else {
+	                                      return $target1_1();
+	                                    }
+	                                  } else {
+	                                    return $target1_1();
+	                                  }
+	                                }, obj.Members);
+	                              }));
+	                            }))))
+	                          };
+	                        }();
+	
+	                        if ((typeof _ret9 === "undefined" ? "undefined" : _typeof(_ret9)) === "object") return _ret9.v;
+	                      } else {
+	                        return $target1();
+	                      }
+	                    } else {
+	                      return $target1();
+	                    }
+	                  } else {
+	                    return $target1();
+	                  }
+	                } else {
+	                  return $target1();
+	                }
+	              }))
+	            };
+	          }();
+	
+	          if ((typeof _ret6 === "undefined" ? "undefined" : _typeof(_ret6)) === "object") return _ret6.v;
+	        } else {
+	          if (section.Transformation.Case === "GroupBy") {
+	            var _ret11 = function () {
+	              var nodes = section.Nodes;
+	              var patternInput = nodes.tail != null ? nodes.tail.tail != null ? function () {
+	                var aggs = nodes.tail.tail;
+	                var gby = nodes.head;
+	                var sel = nodes.tail.head;
+	                return [gby, sel, aggs];
+	              }() : function () {
+	                var gby = nodes.head;
+	                return [gby, null, new _fableCore.List()];
+	              }() : function () {
+	                throw "No group by node in group by transformation";
+	              }();
+	              var patternInput_1 = getNodeNameAndSymbol(patternInput[1]);
+	              return {
+	                v: _fableCore.Seq.append(function () {
+	                  var matchValue = patternInput[0].Entity.Type;
+	
+	                  var $target1 = function $target1() {
+	                    return _fableCore.Seq.empty();
+	                  };
+	
+	                  if (matchValue != null) {
+	                    if (matchValue.Case === "Object") {
+	                      var _ret12 = function () {
+	                        var obj = matchValue.Fields[0];
+	                        return {
+	                          v: _fableCore.Seq.singleton(function (arg0) {
+	                            return function (arg1) {
+	                              return _html.El.op_Dynamic(arg0, arg1);
+	                            };
+	                          }(_html.h)("select")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("change", triggerWith(function (el) {
+	                            return patternInput_1[1] != null ? new PivotEditorAction("ReplaceElement", [patternInput_1[1], el.value, null]) : new PivotEditorAction("AddElement", [patternInput[0].Entity.Symbol, el.value, null]);
+	                          }))]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
+	                            return _fableCore.Seq.append(patternInput_1[0] === "" ? _fableCore.Seq.singleton(function (arg0) {
+	                              return function (arg1) {
+	                                return _html.El.op_Dynamic(arg0, arg1);
+	                              };
+	                            }(_html.h)("option")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("value", ""), (0, _html.op_EqualsGreater)("selected", "selected")]))(_fableCore.List.ofArray([(0, _html.text)("")]))) : _fableCore.Seq.empty(), _fableCore.Seq.delay(function (unitVar_2) {
+	                              return _fableCore.Seq.collect(function (m) {
+	                                var $target1_1 = function $target1_1() {
+	                                  return _fableCore.Seq.empty();
+	                                };
+	
+	                                if (m.Case === "Property") {
+	                                  if (m.Fields[0].indexOf("by") === 0) {
+	                                    var _ret13 = function () {
+	                                      var n = m.Fields[0];
+	                                      return {
+	                                        v: _fableCore.Seq.singleton(function (arg0) {
+	                                          return function (arg1) {
+	                                            return _html.El.op_Dynamic(arg0, arg1);
+	                                          };
+	                                        }(_html.h)("option")(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_3) {
+	                                          return _fableCore.Seq.append(_fableCore.Seq.singleton((0, _html.op_EqualsGreater)("value", n)), _fableCore.Seq.delay(function (unitVar_4) {
+	                                            return patternInput_1[0] === n ? _fableCore.Seq.singleton((0, _html.op_EqualsGreater)("selected", "selected")) : _fableCore.Seq.empty();
+	                                          }));
+	                                        })))(_fableCore.List.ofArray([(0, _html.text)(n)])))
+	                                      };
+	                                    }();
+	
+	                                    if ((typeof _ret13 === "undefined" ? "undefined" : _typeof(_ret13)) === "object") return _ret13.v;
+	                                  } else {
+	                                    return $target1_1();
+	                                  }
+	                                } else {
+	                                  return $target1_1();
+	                                }
+	                              }, obj.Members);
+	                            }));
+	                          }))))
+	                        };
+	                      }();
+	
+	                      if ((typeof _ret12 === "undefined" ? "undefined" : _typeof(_ret12)) === "object") return _ret12.v;
+	                    } else {
+	                      return $target1();
+	                    }
+	                  } else {
+	                    return $target1();
+	                  }
+	                }(), _fableCore.Seq.delay(function (unitVar_1) {
+	                  return _fableCore.Seq.append(renderNodeList(trigger, patternInput[2]), _fableCore.Seq.delay(function (unitVar_2) {
+	                    return _fableCore.Seq.singleton(renderContextMenu(trigger));
+	                  }));
+	                }))
+	              };
+	            }();
+	
+	            if ((typeof _ret11 === "undefined" ? "undefined" : _typeof(_ret11)) === "object") return _ret11.v;
+	          } else {
+	            if (section.Transformation.Case === "Paging") {
+	              var _ret14 = function () {
+	                var nodes = section.Nodes;
+	
+	                var methods = _fableCore.Set.create(_fableCore.List.map(function (_arg29) {
+	                  return _arg29.Node.Case === "Call" ? function () {
+	                    var n = _arg29.Node.Fields[1];
+	                    return n.Node.Name;
+	                  }() : "";
+	                }, nodes), new _fableCore.GenericComparer(function (x, y) {
+	                  return x < y ? -1 : x > y ? 1 : 0;
+	                }));
+	
+	                return {
+	                  v: _fableCore.Seq.append(_fableCore.Seq.collect(function (nd) {
+	                    var $target1 = function $target1() {
+	                      return _fableCore.Seq.empty();
+	                    };
+	
+	                    if (nd.Node.Case === "Call") {
+	                      if (nd.Node.Fields[2].Node.tail != null) {
+	                        if (nd.Node.Fields[2].Node.tail.tail == null) {
+	                          var _ret15 = function () {
+	                            var arg = nd.Node.Fields[2].Node.head;
+	                            var n = nd.Node.Fields[1];
+	                            {
+	                              var removeOp = n.Node.Name === "take" ? new PivotEditorAction("ReplaceElement", [nd.Entity.Symbol, "then", null]) : new PivotEditorAction("RemoveElement", [nd.Entity.Symbol]);
+	                              return {
+	                                v: _fableCore.Seq.singleton(function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("span")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [n.Range])))]))(_fableCore.List.ofArray([(0, _html.text)(n.Node.Name)])), function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("input")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", "input-pg-" + n.Node.Name), (0, _html.op_EqualsBangGreater)("input", function (el) {
+	                                  return function (_arg2) {
+	                                    var input = el;
+	                                    var patternInput = (0, _parser.parseProgram)(input.value);
+	
+	                                    if (patternInput[1].length === 0 ? patternInput[0].Body.Node.length === 1 : false) {
+	                                      el.setCustomValidity("");
+	                                      triggerEvent(new PivotEditorAction("Multiplex", [_fableCore.List.ofArray([new PivotEditorAction("SetFocus", ["input-pg-" + n.Node.Name, (input.selectionStart + 0x80000000 >>> 0) - 0x80000000]), new PivotEditorAction("ReplaceRange", [arg.Value.Range, input.value])])]));
+	                                    } else {
+	                                      el.setCustomValidity("Cannot parse expression");
+	                                    }
+	                                  };
+	                                }), (0, _html.op_EqualsGreater)("value", (0, _astops.formatSingleExpression)(arg.Value))]))(new _fableCore.List()), function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(removeOp))]))(_fableCore.List.ofArray([function (arg0) {
+	                                  return function (arg1) {
+	                                    return _html.El.op_Dynamic(arg0, arg1);
+	                                  };
+	                                }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-times")]))(new _fableCore.List())]))])))
+	                              };
+	                            }
+	                          }();
+	
+	                          if ((typeof _ret15 === "undefined" ? "undefined" : _typeof(_ret15)) === "object") return _ret15.v;
+	                        } else {
+	                          return $target1();
+	                        }
+	                      } else {
+	                        return $target1();
+	                      }
+	                    } else {
+	                      return $target1();
+	                    }
+	                  }, nodes), _fableCore.Seq.delay(function (unitVar_1) {
+	                    return !(methods.has("take") ? methods.has("skip") : false) ? _fableCore.Seq.singleton(renderContextMenu(trigger)) : _fableCore.Seq.empty();
+	                  }))
+	                };
+	              }();
+	
+	              if ((typeof _ret14 === "undefined" ? "undefined" : _typeof(_ret14)) === "object") return _ret14.v;
+	            } else {
+	              if (section.Transformation.Case === "SortBy") {
+	                var _ret16 = function () {
+	                  var nodes = section.Nodes;
+	
+	                  var props = _fableCore.List.choose(function (_arg45) {
+	                    var $target1 = function $target1() {
+	                      return null;
+	                    };
+	
+	                    if (_arg45.Node.Case === "Property") {
+	                      if (_arg45.Entity != null) {
+	                        if (function () {
+	                          var sym = _arg45.Entity.Symbol;
+	                          var n = _arg45.Node.Fields[1];
+	
+	                          if (n.Node.Name !== "then") {
+	                            return n.Node.Name !== "sort data";
+	                          } else {
+	                            return false;
+	                          }
+	                        }()) {
+	                          var n = _arg45.Node.Fields[1];
+	                          var sym = _arg45.Entity.Symbol;
+	                          return [sym, n];
+	                        } else {
+	                          return $target1();
+	                        }
+	                      } else {
+	                        return $target1();
+	                      }
+	                    } else {
+	                      return $target1();
+	                    }
+	                  }, nodes);
+	
+	                  var last = _fableCore.Seq.tryLast(props);
+	
+	                  return {
+	                    v: _fableCore.Seq.append(_fableCore.Seq.collect(function (matchValue) {
+	                      return _fableCore.Seq.singleton(function (arg0) {
+	                        return function (arg1) {
+	                          return _html.El.op_Dynamic(arg0, arg1);
+	                        };
+	                      }(_html.h)("span")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_1) {
+	                        return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
+	                          return function (arg1) {
+	                            return _html.El.op_Dynamic(arg0, arg1);
+	                          };
+	                        }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [matchValue[1].Range])))]))(_fableCore.List.ofArray([(0, _html.text)(matchValue[1].Node.Name)]))), _fableCore.Seq.delay(function (unitVar_2) {
+	                          return matchValue[1].Node.Name === last[1].Node.Name ? _fableCore.Seq.singleton(function (arg0) {
+	                            return function (arg1) {
+	                              return _html.El.op_Dynamic(arg0, arg1);
+	                            };
+	                          }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("RemoveElement", [matchValue[0]])))]))(_fableCore.List.ofArray([function (arg0) {
+	                            return function (arg1) {
+	                              return _html.El.op_Dynamic(arg0, arg1);
+	                            };
+	                          }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-times")]))(new _fableCore.List())]))) : _fableCore.Seq.empty();
+	                        }));
+	                      }))));
+	                    }, props), _fableCore.Seq.delay(function (unitVar_1) {
+	                      return _fableCore.Seq.singleton(renderContextMenu(trigger));
+	                    }))
+	                  };
+	                }();
+	
+	                if ((typeof _ret16 === "undefined" ? "undefined" : _typeof(_ret16)) === "object") return _ret16.v;
+	              } else {
+	                if (section.Transformation.Case === "DropColumns") {
+	                  var _nodes = section.Nodes;
+	                  return _fableCore.Seq.append(renderNodeList(trigger, _nodes.tail), _fableCore.Seq.delay(function (unitVar_1) {
+	                    return _fableCore.Seq.singleton(renderContextMenu(trigger));
+	                  }));
+	                } else {
+	                  return $target5();
+	                }
+	              }
+	            }
+	          }
+	        }
+	      } else {
+	        return $target5();
+	      }
+	    }));
+	  }
+	
 	  function renderPivot(triggerEvent, state) {
 	    var trigger = function trigger(action) {
 	      return function (_arg1) {
@@ -1170,7 +1665,7 @@
 	      var matchValue = collectFirstChain(state.Body);
 	
 	      if (matchValue != null) {
-	        var _ret6 = function () {
+	        var _ret17 = function () {
 	          var chainNodes = matchValue[1];
 	          var starts = Array.from(_fableCore.Seq.delay(function (unitVar) {
 	            return _fableCore.Seq.collect(function (matchValue_1) {
@@ -1187,7 +1682,7 @@
 	          }, chainNodes));
 	
 	          if (matchValue_1 != null) {
-	            var _ret7 = function () {
+	            var _ret18 = function () {
 	              var selNode = matchValue_1[1];
 	              var selEnt = selNode.Entity;
 	              var sections = createPivotSections(_fableCore.List.map(function (tuple) {
@@ -1439,284 +1934,7 @@
 	                    return _html.El.op_Dynamic(arg0, arg1);
 	                  };
 	                }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectChainElement", [1]))), (0, _html.op_EqualsGreater)("class", "fa fa-chevron-right")]))(new _fableCore.List())]))]))), _fableCore.Seq.delay(function (unitVar_1) {
-	                  var $target4 = function $target4() {
-	                    return _fableCore.Seq.empty();
-	                  };
-	
-	                  if (selSec != null) {
-	                    if (selSec.Transformation.Case === "GroupBy") {
-	                      var _ret8 = function () {
-	                        var nodes = selSec.Nodes;
-	                        var patternInput = nodes.tail != null ? nodes.tail.tail != null ? function () {
-	                          var aggs = nodes.tail.tail;
-	                          var gby = nodes.head;
-	                          var sel = nodes.tail.head;
-	                          return [gby, sel, aggs];
-	                        }() : function () {
-	                          var gby = nodes.head;
-	                          return [gby, null, new _fableCore.List()];
-	                        }() : function () {
-	                          throw "No group by node in group by transformation";
-	                        }();
-	
-	                        var patternInput_1 = function () {
-	                          var $target1 = function $target1() {
-	                            return ["", null];
-	                          };
-	
-	                          if (patternInput[1] != null) {
-	                            if (patternInput[1].Node.Case === "Property") {
-	                              if (patternInput[1].Entity != null) {
-	                                var e = patternInput[1].Entity;
-	                                var n = patternInput[1].Node.Fields[1];
-	                                return [n.Node.Name, e.Symbol];
-	                              } else {
-	                                return $target1();
-	                              }
-	                            } else {
-	                              return $target1();
-	                            }
-	                          } else {
-	                            return $target1();
-	                          }
-	                        }();
-	
-	                        return {
-	                          v: _fableCore.Seq.append(function () {
-	                            var matchValue_2 = patternInput[0].Entity.Type;
-	
-	                            var $target1 = function $target1() {
-	                              return _fableCore.Seq.empty();
-	                            };
-	
-	                            if (matchValue_2 != null) {
-	                              if (matchValue_2.Case === "Object") {
-	                                var _ret9 = function () {
-	                                  var obj = matchValue_2.Fields[0];
-	                                  return {
-	                                    v: _fableCore.Seq.singleton(function (arg0) {
-	                                      return function (arg1) {
-	                                        return _html.El.op_Dynamic(arg0, arg1);
-	                                      };
-	                                    }(_html.h)("select")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("change", triggerWith(function (el) {
-	                                      return patternInput_1[1] != null ? new PivotEditorAction("ReplaceElement", [patternInput_1[1], el.value, null]) : new PivotEditorAction("AddElement", [patternInput[0].Entity.Symbol, el.value, null]);
-	                                    }))]))(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
-	                                      return _fableCore.Seq.collect(function (m) {
-	                                        var $target1_1 = function $target1_1() {
-	                                          return _fableCore.Seq.empty();
-	                                        };
-	
-	                                        if (m.Case === "Property") {
-	                                          if (m.Fields[0].indexOf("by") === 0) {
-	                                            var _ret10 = function () {
-	                                              var n = m.Fields[0];
-	                                              return {
-	                                                v: _fableCore.Seq.singleton(function (arg0) {
-	                                                  return function (arg1) {
-	                                                    return _html.El.op_Dynamic(arg0, arg1);
-	                                                  };
-	                                                }(_html.h)("option")(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_3) {
-	                                                  return _fableCore.Seq.append(_fableCore.Seq.singleton((0, _html.op_EqualsGreater)("value", n)), _fableCore.Seq.delay(function (unitVar_4) {
-	                                                    return patternInput_1[0] === n ? _fableCore.Seq.singleton((0, _html.op_EqualsGreater)("selected", "selected")) : _fableCore.Seq.empty();
-	                                                  }));
-	                                                })))(_fableCore.List.ofArray([(0, _html.text)(n)])))
-	                                              };
-	                                            }();
-	
-	                                            if ((typeof _ret10 === "undefined" ? "undefined" : _typeof(_ret10)) === "object") return _ret10.v;
-	                                          } else {
-	                                            return $target1_1();
-	                                          }
-	                                        } else {
-	                                          return $target1_1();
-	                                        }
-	                                      }, obj.Members);
-	                                    }))))
-	                                  };
-	                                }();
-	
-	                                if ((typeof _ret9 === "undefined" ? "undefined" : _typeof(_ret9)) === "object") return _ret9.v;
-	                              } else {
-	                                return $target1();
-	                              }
-	                            } else {
-	                              return $target1();
-	                            }
-	                          }(), _fableCore.Seq.delay(function (unitVar_2) {
-	                            return _fableCore.Seq.append(renderNodeList(trigger, patternInput[2]), _fableCore.Seq.delay(function (unitVar_3) {
-	                              return _fableCore.Seq.singleton(renderContextMenu(trigger));
-	                            }));
-	                          }))
-	                        };
-	                      }();
-	
-	                      if ((typeof _ret8 === "undefined" ? "undefined" : _typeof(_ret8)) === "object") return _ret8.v;
-	                    } else {
-	                      if (selSec.Transformation.Case === "Paging") {
-	                        var _ret11 = function () {
-	                          var nodes = selSec.Nodes;
-	
-	                          var methods = _fableCore.Set.create(_fableCore.List.map(function (_arg113) {
-	                            return _arg113.Node.Case === "Call" ? function () {
-	                              var n = _arg113.Node.Fields[1];
-	                              return n.Node.Name;
-	                            }() : "";
-	                          }, nodes), new _fableCore.GenericComparer(function (x, y) {
-	                            return x < y ? -1 : x > y ? 1 : 0;
-	                          }));
-	
-	                          return {
-	                            v: _fableCore.Seq.append(_fableCore.Seq.collect(function (nd) {
-	                              var $target1 = function $target1() {
-	                                return _fableCore.Seq.empty();
-	                              };
-	
-	                              if (nd.Node.Case === "Call") {
-	                                if (nd.Node.Fields[2].Node.tail != null) {
-	                                  if (nd.Node.Fields[2].Node.tail.tail == null) {
-	                                    var _ret12 = function () {
-	                                      var arg = nd.Node.Fields[2].Node.head;
-	                                      var n = nd.Node.Fields[1];
-	                                      {
-	                                        var removeOp = n.Node.Name === "take" ? new PivotEditorAction("ReplaceElement", [nd.Entity.Symbol, "then", null]) : new PivotEditorAction("RemoveElement", [nd.Entity.Symbol]);
-	                                        return {
-	                                          v: _fableCore.Seq.singleton(function (arg0) {
-	                                            return function (arg1) {
-	                                              return _html.El.op_Dynamic(arg0, arg1);
-	                                            };
-	                                          }(_html.h)("span")(new _fableCore.List())(_fableCore.List.ofArray([function (arg0) {
-	                                            return function (arg1) {
-	                                              return _html.El.op_Dynamic(arg0, arg1);
-	                                            };
-	                                          }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [n.Range])))]))(_fableCore.List.ofArray([(0, _html.text)(n.Node.Name)])), function (arg0) {
-	                                            return function (arg1) {
-	                                              return _html.El.op_Dynamic(arg0, arg1);
-	                                            };
-	                                          }(_html.h)("input")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("id", "input-pg-" + n.Node.Name), (0, _html.op_EqualsBangGreater)("input", function (el) {
-	                                            return function (_arg2) {
-	                                              var input = el;
-	                                              var patternInput = (0, _parser.parseProgram)(input.value);
-	
-	                                              if (patternInput[1].length === 0 ? patternInput[0].Body.Node.length === 1 : false) {
-	                                                el.setCustomValidity("");
-	                                                triggerEvent(new PivotEditorAction("Multiplex", [_fableCore.List.ofArray([new PivotEditorAction("SetFocus", ["input-pg-" + n.Node.Name, (input.selectionStart + 0x80000000 >>> 0) - 0x80000000]), new PivotEditorAction("ReplaceRange", [arg.Value.Range, input.value])])]));
-	                                              } else {
-	                                                el.setCustomValidity("Cannot parse expression");
-	                                              }
-	                                            };
-	                                          }), (0, _html.op_EqualsGreater)("value", (0, _astops.formatSingleExpression)(arg.Value))]))(new _fableCore.List()), function (arg0) {
-	                                            return function (arg1) {
-	                                              return _html.El.op_Dynamic(arg0, arg1);
-	                                            };
-	                                          }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(removeOp))]))(_fableCore.List.ofArray([function (arg0) {
-	                                            return function (arg1) {
-	                                              return _html.El.op_Dynamic(arg0, arg1);
-	                                            };
-	                                          }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-times")]))(new _fableCore.List())]))])))
-	                                        };
-	                                      }
-	                                    }();
-	
-	                                    if ((typeof _ret12 === "undefined" ? "undefined" : _typeof(_ret12)) === "object") return _ret12.v;
-	                                  } else {
-	                                    return $target1();
-	                                  }
-	                                } else {
-	                                  return $target1();
-	                                }
-	                              } else {
-	                                return $target1();
-	                              }
-	                            }, nodes), _fableCore.Seq.delay(function (unitVar_2) {
-	                              return !(methods.has("take") ? methods.has("skip") : false) ? _fableCore.Seq.singleton(renderContextMenu(trigger)) : _fableCore.Seq.empty();
-	                            }))
-	                          };
-	                        }();
-	
-	                        if ((typeof _ret11 === "undefined" ? "undefined" : _typeof(_ret11)) === "object") return _ret11.v;
-	                      } else {
-	                        if (selSec.Transformation.Case === "SortBy") {
-	                          var _ret13 = function () {
-	                            var nodes = selSec.Nodes;
-	
-	                            var props = _fableCore.List.choose(function (_arg129) {
-	                              var $target1 = function $target1() {
-	                                return null;
-	                              };
-	
-	                              if (_arg129.Node.Case === "Property") {
-	                                if (_arg129.Entity != null) {
-	                                  if (function () {
-	                                    var sym = _arg129.Entity.Symbol;
-	                                    var n = _arg129.Node.Fields[1];
-	
-	                                    if (n.Node.Name !== "then") {
-	                                      return n.Node.Name !== "sort data";
-	                                    } else {
-	                                      return false;
-	                                    }
-	                                  }()) {
-	                                    var n = _arg129.Node.Fields[1];
-	                                    var sym = _arg129.Entity.Symbol;
-	                                    return [sym, n];
-	                                  } else {
-	                                    return $target1();
-	                                  }
-	                                } else {
-	                                  return $target1();
-	                                }
-	                              } else {
-	                                return $target1();
-	                              }
-	                            }, nodes);
-	
-	                            var last = _fableCore.Seq.tryLast(props);
-	
-	                            return {
-	                              v: _fableCore.Seq.append(_fableCore.Seq.collect(function (matchValue_2) {
-	                                return _fableCore.Seq.singleton(function (arg0) {
-	                                  return function (arg1) {
-	                                    return _html.El.op_Dynamic(arg0, arg1);
-	                                  };
-	                                }(_html.h)("span")(new _fableCore.List())(_fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar_2) {
-	                                  return _fableCore.Seq.append(_fableCore.Seq.singleton(function (arg0) {
-	                                    return function (arg1) {
-	                                      return _html.El.op_Dynamic(arg0, arg1);
-	                                    };
-	                                  }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("SelectRange", [matchValue_2[1].Range])))]))(_fableCore.List.ofArray([(0, _html.text)(matchValue_2[1].Node.Name)]))), _fableCore.Seq.delay(function (unitVar_3) {
-	                                    return matchValue_2[1].Node.Name === last[1].Node.Name ? _fableCore.Seq.singleton(function (arg0) {
-	                                      return function (arg1) {
-	                                        return _html.El.op_Dynamic(arg0, arg1);
-	                                      };
-	                                    }(_html.h)("a")(_fableCore.List.ofArray([(0, _html.op_EqualsBangGreater)("click", trigger(new PivotEditorAction("RemoveElement", [matchValue_2[0]])))]))(_fableCore.List.ofArray([function (arg0) {
-	                                      return function (arg1) {
-	                                        return _html.El.op_Dynamic(arg0, arg1);
-	                                      };
-	                                    }(_html.h)("i")(_fableCore.List.ofArray([(0, _html.op_EqualsGreater)("class", "fa fa-times")]))(new _fableCore.List())]))) : _fableCore.Seq.empty();
-	                                  }));
-	                                }))));
-	                              }, props), _fableCore.Seq.delay(function (unitVar_2) {
-	                                return _fableCore.Seq.singleton(renderContextMenu(trigger));
-	                              }))
-	                            };
-	                          }();
-	
-	                          if ((typeof _ret13 === "undefined" ? "undefined" : _typeof(_ret13)) === "object") return _ret13.v;
-	                        } else {
-	                          if (selSec.Transformation.Case === "DropColumns") {
-	                            var _nodes = selSec.Nodes;
-	                            return _fableCore.Seq.append(renderNodeList(trigger, _nodes.tail), _fableCore.Seq.delay(function (unitVar_2) {
-	                              return _fableCore.Seq.singleton(renderContextMenu(trigger));
-	                            }));
-	                          } else {
-	                            return $target4();
-	                          }
-	                        }
-	                      }
-	                    }
-	                  } else {
-	                    return $target4();
-	                  }
+	                  return renderSection(triggerEvent, selSec);
 	                }));
 	              }))), function (arg0) {
 	                return function (arg1) {
@@ -1732,18 +1950,18 @@
 	                if (matchValue_2[0].Case === "ContextualDropdownOpen") {
 	                  if (matchValue_2[1] != null) {
 	                    if (matchValue_2[1].Transformation.Case === "Paging") {
-	                      var _ret14 = function () {
+	                      var _ret19 = function () {
 	                        var nodes = matchValue_2[1].Nodes;
-	                        var methods = new Map(_fableCore.List.choose(function (_arg145) {
+	                        var methods = new Map(_fableCore.List.choose(function (_arg110) {
 	                          var $target0 = function $target0(e, n) {
 	                            return [n.Node.Name, e.Symbol];
 	                          };
 	
-	                          if (_arg145.Node.Case === "Property") {
-	                            return $target0(_arg145.Entity, _arg145.Node.Fields[1]);
+	                          if (_arg110.Node.Case === "Property") {
+	                            return $target0(_arg110.Entity, _arg110.Node.Fields[1]);
 	                          } else {
-	                            if (_arg145.Node.Case === "Call") {
-	                              return $target0(_arg145.Entity, _arg145.Node.Fields[1]);
+	                            if (_arg110.Node.Case === "Call") {
+	                              return $target0(_arg110.Entity, _arg110.Node.Fields[1]);
 	                            }
 	                          }
 	                        }, nodes));
@@ -1786,7 +2004,7 @@
 	                        };
 	                      }();
 	
-	                      if ((typeof _ret14 === "undefined" ? "undefined" : _typeof(_ret14)) === "object") return _ret14.v;
+	                      if ((typeof _ret19 === "undefined" ? "undefined" : _typeof(_ret19)) === "object") return _ret19.v;
 	                    } else {
 	                      if (matchValue_2[1].Transformation.Case === "GroupBy") {
 	                        var _nodes2 = matchValue_2[1].Nodes;
@@ -1833,11 +2051,11 @@
 	              };
 	            }();
 	
-	            if ((typeof _ret7 === "undefined" ? "undefined" : _typeof(_ret7)) === "object") return _ret7.v;
+	            if ((typeof _ret18 === "undefined" ? "undefined" : _typeof(_ret18)) === "object") return _ret18.v;
 	          }
 	        }();
 	
-	        if ((typeof _ret6 === "undefined" ? "undefined" : _typeof(_ret6)) === "object") return _ret6.v;
+	        if ((typeof _ret17 === "undefined" ? "undefined" : _typeof(_ret17)) === "object") return _ret17.v;
 	      }
 	    }
 	  }
@@ -1975,7 +2193,7 @@
 	          var position = _this5.ed.getPosition();
 	
 	          if (code !== _this5.lastCode) {
-	            var _ret17 = function () {
+	            var _ret22 = function () {
 	              _this5.lastCode = code;
 	              _this5.lastMapper = new _monaco.LocationMapper(code);
 	
@@ -1988,7 +2206,7 @@
 	              };
 	            }();
 	
-	            if ((typeof _ret17 === "undefined" ? "undefined" : _typeof(_ret17)) === "object") return _ret17.v;
+	            if ((typeof _ret22 === "undefined" ? "undefined" : _typeof(_ret22)) === "object") return _ret22.v;
 	          } else {
 	            var _loc = _this5.lastMapper.LineColToAbsolute((position.lineNumber + 0x80000000 >>> 0) - 0x80000000, (position.column + 0x80000000 >>> 0) - 0x80000000);
 	
@@ -2062,7 +2280,7 @@
 	                  var matchValue = pivotState.Focus;
 	
 	                  if (matchValue != null) {
-	                    var _ret18 = function () {
+	                    var _ret23 = function () {
 	                      var sel = matchValue[1];
 	                      var focus = matchValue[0];
 	
@@ -2079,10 +2297,10 @@
 	                        element.selectionStart = s;
 	                        element.selectionEnd = s;
 	                      }, function () {
-	                        var $var19 = sel;
+	                        var $var83 = sel;
 	
-	                        if ($var19 != null) {
-	                          return [$var19];
+	                        if ($var83 != null) {
+	                          return [$var83];
 	                        } else {
 	                          return [];
 	                        }
@@ -2093,7 +2311,7 @@
 	                      };
 	                    }();
 	
-	                    if ((typeof _ret18 === "undefined" ? "undefined" : _typeof(_ret18)) === "object") return _ret18.v;
+	                    if ((typeof _ret23 === "undefined" ? "undefined" : _typeof(_ret23)) === "object") return _ret23.v;
 	                  } else {
 	                    return builder_.Zero();
 	                  }
@@ -2266,19 +2484,19 @@
 	    }(), parent).innerText, "both");
 	
 	    var compiled = function () {
-	      var $var20 = tryFindChildElement(function () {
+	      var $var84 = tryFindChildElement(function () {
 	        var cls = "ia-compiled";
 	        return function (el) {
 	          return withClass(cls, el);
 	        };
 	      }(), parent);
 	
-	      if ($var20 != null) {
+	      if ($var84 != null) {
 	        return function (el) {
 	          return _fableCore.String.trim(el.innerText, "both");
-	        }($var20);
+	        }($var84);
 	      } else {
-	        return $var20;
+	        return $var84;
 	      }
 	    }();
 	
@@ -2534,10 +2752,10 @@
 	        return null;
 	      };
 	    }, function () {
-	      var $var21 = showOptionsBtn;
+	      var $var85 = showOptionsBtn;
 	
-	      if ($var21 != null) {
-	        return [$var21];
+	      if ($var85 != null) {
+	        return [$var85];
 	      } else {
 	        return [];
 	      }
@@ -2683,7 +2901,7 @@
 	
 	  var enabledCategories = exports.enabledCategories = !isLocalHost() ? _fableCore.Set.create(new _fableCore.List(), new _fableCore.GenericComparer(function (x, y) {
 	    return x < y ? -1 : x > y ? 1 : 0;
-	  })) : _fableCore.Set.create(_fableCore.List.ofArray(["LIVE", "INTERPRETER"]), new _fableCore.GenericComparer(function (x, y) {
+	  })) : _fableCore.Set.create(_fableCore.List.ofArray(["LIVE", "SYSTEM", "PARSING", "BINDER", "COMPLETIONS", "EDITORS", "TYPECHECKER", "PROVIDERS", "SERVICE", "CODEGEN", "INTERPRETER", "RUNTIME"]), new _fableCore.GenericComparer(function (x, y) {
 	    return x < y ? -1 : x > y ? 1 : 0;
 	  }));
 	
@@ -2732,26 +2950,26 @@
 	        })(p2(_fableCore.Date.hour(dt)))(p2(_fableCore.Date.minute(dt)))(p2(_fableCore.Date.second(dt)))(p4(_fableCore.Date.millisecond(dt)))(category_1);
 	
 	        var color = function () {
-	          var $var1 = null;
+	          var $var51 = null;
 	
 	          switch (level) {
 	            case "TRACE":
-	              $var1 = "color:#808080";
+	              $var51 = "color:#808080";
 	              break;
 	
 	            case "EXCEPTION":
-	              $var1 = "color:#c00000";
+	              $var51 = "color:#c00000";
 	              break;
 	
 	            case "ERROR":
-	              $var1 = "color:#900000";
+	              $var51 = "color:#900000";
 	              break;
 	
 	            default:
-	              $var1 = "";
+	              $var51 = "";
 	          }
 	
-	          return $var1;
+	          return $var51;
 	        }();
 	
 	        console.log.apply(console, Array.from(_fableCore.Seq.append(["%c" + prefix + msg, color], args_1)));
@@ -2862,10 +3080,10 @@
 	        _fableCore.Seq.iterate(function (n_1) {
 	          Log.trace("system", "Starting future '%s'....", n_1);
 	        }, function () {
-	          var $var2 = n;
+	          var $var52 = n;
 	
-	          if ($var2 != null) {
-	            return [$var2];
+	          if ($var52 != null) {
+	            return [$var52];
 	          } else {
 	            return [];
 	          }
@@ -2882,10 +3100,10 @@
 	                _fableCore.Seq.iterate(function (n_1) {
 	                  Log.trace("system", "Future '%s' evaluated to: %O", n_1, _arg1);
 	                }, function () {
-	                  var $var3 = n;
+	                  var $var53 = n;
 	
-	                  if ($var3 != null) {
-	                    return [$var3];
+	                  if ($var53 != null) {
+	                    return [$var53];
 	                  } else {
 	                    return [];
 	                  }
@@ -3217,21 +3435,21 @@
 	        }
 	      }
 	
-	      return _fableCore.Seq.toList(_fableCore.Seq.map(function ($var4) {
-	        return _fableCore.Seq.toList($var4[1]);
+	      return _fableCore.Seq.toList(_fableCore.Seq.map(function ($var54) {
+	        return _fableCore.Seq.toList($var54[1]);
 	      }, groups));
 	    };
 	
 	    var unreduce = $exports.unreduce = function unreduce(f, s) {
 	      return _fableCore.Seq.toList(_fableCore.Seq.unfold(function (s_1) {
-	        var $var5 = f(s_1);
+	        var $var55 = f(s_1);
 	
-	        if ($var5 != null) {
+	        if ($var55 != null) {
 	          return function (v) {
 	            return [v, v];
-	          }($var5);
+	          }($var55);
 	        } else {
-	          return $var5;
+	          return $var55;
 	        }
 	      }, s));
 	    };
@@ -9530,17 +9748,17 @@
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(3), __webpack_require__(5), __webpack_require__(4), __webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(3), __webpack_require__(5), __webpack_require__(1), __webpack_require__(4)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports !== "undefined") {
-	    factory(exports, require("fable-core"), require("./../ast/ast"), require("./../common/babel"), require("./providers"), require("../../libraries/common"));
+	    factory(exports, require("fable-core"), require("./../ast/ast"), require("./../common/babel"), require("../../libraries/common"), require("./providers"));
 	  } else {
 	    var mod = {
 	      exports: {}
 	    };
-	    factory(mod.exports, global.fableCore, global.ast, global.babel, global.providers, global.common);
+	    factory(mod.exports, global.fableCore, global.ast, global.babel, global.common, global.providers);
 	    global.pivot = mod.exports;
 	  }
-	})(this, function (exports, _fableCore, _ast, _babel, _providers, _common) {
+	})(this, function (exports, _fableCore, _ast, _babel, _common, _providers) {
 	  "use strict";
 	
 	  exports.__esModule = true;
@@ -9698,7 +9916,7 @@
 	
 	    var toUrl = $exports.toUrl = function toUrl(transforms) {
 	      return _fableCore.String.join("/", _fableCore.List.concat(_fableCore.List.mapIndexed(function (i, l) {
-	        return i === 0 ? l : new _fableCore.List("then", l);
+	        return (i === 0 ? true : l.tail == null) ? l : new _fableCore.List("then", l);
 	      }, _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
 	        return _fableCore.Seq.map(function (t) {
 	          return t.Case === "FilterBy" ? new _fableCore.List("filter", _fableCore.List.collect(function (tupledArg) {
@@ -9711,7 +9929,7 @@
 	            return formatAgg(_arg1);
 	          }, t.Fields[1]))) : t.Case === "Paging" ? new _fableCore.List("page", _fableCore.List.collect(function (_arg1) {
 	            return _arg1.Case === "Skip" ? _fableCore.List.ofArray(["skip", _arg1.Fields[0]]) : _fableCore.List.ofArray(["take", _arg1.Fields[0]]);
-	          }, t.Fields[0])) : t.Case === "GetSeries" ? _fableCore.List.ofArray(["series", t.Fields[0], t.Fields[1]]) : t.Case === "Empty" ? new _fableCore.List() : _fableCore.List.ofArray(["data"]);
+	          }, t.Fields[0])) : t.Case === "GetSeries" ? _fableCore.List.ofArray(["series", t.Fields[0], t.Fields[1]]) : t.Case === "Empty" ? new _fableCore.List() : new _fableCore.List();
 	        }, _fableCore.List.reverse(transforms));
 	      })))));
 	    };
@@ -9772,7 +9990,7 @@
 	    };
 	
 	    var transformFields = $exports.transformFields = function transformFields(fields, tfs) {
-	      return function () {
+	      return _fableCore.Seq.toList(function () {
 	        var state = _fableCore.Seq.toList(fields);
 	
 	        return function (list) {
@@ -9780,7 +9998,7 @@
 	            return singleTransformFields(fields_1, _arg1);
 	          }, state, list);
 	        };
-	      }()(tfs);
+	      }()(tfs));
 	    };
 	
 	    return $exports;
@@ -9910,6 +10128,8 @@
 	  function makeDataMember(ctx, name, isPreview, tfs) {
 	    var fields = Transform.transformFields(ctx.InputFields, _fableCore.List.reverse(tfs));
 	
+	    _common.Log.trace("providers", "Make data member using transform %O. Got fields: %O", tfs, fields);
+	
 	    var patternInput = function () {
 	      var $target1 = function $target1() {
 	        var membs = Array.from(fields).map(function (fld) {
@@ -9929,11 +10149,11 @@
 	            throw "makeDataMember: Series should have key and value";
 	          };
 	
-	          if (ctx.Fields.tail != null) {
-	            if (ctx.Fields.tail.tail != null) {
-	              if (ctx.Fields.tail.tail.tail == null) {
-	                var kf = ctx.Fields.head;
-	                var vf = ctx.Fields.tail.head;
+	          if (fields.tail != null) {
+	            if (fields.tail.tail != null) {
+	              if (fields.tail.tail.tail == null) {
+	                var kf = fields.head;
+	                var vf = fields.tail.head;
 	                return [ctx.LookupNamed("series")(_fableCore.List.ofArray([new _ast.Type("Primitive", [kf.Type]), new _ast.Type("Primitive", [vf.Type])])), true];
 	              } else {
 	                return $target1_1();
@@ -9952,9 +10172,10 @@
 	      }
 	    }();
 	
-	    var meta1 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Transformations", new _fableCore.List(new Transformation("GetTheData", []), tfs));
+	    var tfs_1 = patternInput[1] ? tfs : new _fableCore.List(new Transformation("GetTheData", []), tfs);
+	    var meta1 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Transformations", tfs_1);
 	    var meta2 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Fields", ctx.Fields);
-	    return new _ast.Member("Property", [name, patternInput[0], _fableCore.List.ofArray([meta1, meta2]), makeDataEmitter(isPreview, patternInput[1], tfs)]);
+	    return new _ast.Member("Property", [name, patternInput[0], _fableCore.List.ofArray([meta1, meta2]), makeDataEmitter(isPreview, patternInput[1], tfs_1)]);
 	  }
 	
 	  function handleGetSeriesRequest(ctx, rest, k, v) {
@@ -10246,7 +10467,7 @@
 	  }
 	
 	  function adjustForPreview(tfs) {
-	    var $target2 = function $target2() {
+	    var $target3 = function $target3() {
 	      return tfs;
 	    };
 	
@@ -10261,14 +10482,19 @@
 	            var _tfs_ = tfs.tail;
 	            return new _fableCore.List(new Transformation("GroupBy", [k, _fableCore.List.ofArray([new Aggregation("GroupKey", [])])]), _tfs_);
 	          } else {
-	            return $target2();
+	            return $target3();
 	          }
 	        }
 	      } else {
-	        return $target2();
+	        if (tfs.head.Case === "GetSeries") {
+	          var _tfs_2 = tfs.tail;
+	          return _tfs_2;
+	        } else {
+	          return $target3();
+	        }
 	      }
 	    } else {
-	      return $target2();
+	      return $target3();
 	    }
 	  }
 	
@@ -10286,8 +10512,16 @@
 	
 	    var typ = function (builder_) {
 	      return builder_.Delay(function (unitVar) {
-	        return builder_.Bind(makePivotTypeImmediate(ctx, tfs), function (_arg4) {
-	          return builder_.Return(withPreview(ctx, tfs, _arg4));
+	        return builder_.TryWith(builder_.Delay(function (unitVar_1) {
+	          return builder_.Bind(makePivotTypeImmediate(ctx, tfs), function (_arg4) {
+	            return builder_.Return(withPreview(ctx, tfs, _arg4));
+	          });
+	        }), function (_arg5) {
+	          _common.Log.exn("providers", "Failed when generating type for %O with exception %O", tfs, _arg5);
+	
+	          return builder_.Return(function () {
+	            throw _arg5;
+	          }());
 	        });
 	      });
 	    }(_fableCore.AsyncBuilder.singleton);
@@ -10519,15 +10753,34 @@
 	    var previewName = new _ast.Name("preview");
 	
 	    var $target1 = function $target1() {
-	      return null;
+	      var $target1 = function $target1() {
+	        return null;
+	      };
+	
+	      if (typ != null) {
+	        if (typ.Case === "Object") {
+	          var activePatternResult105129 = $FindMethod$_$(previewName, typ.Fields[0]);
+	
+	          if (activePatternResult105129 != null) {
+	            var e = activePatternResult105129[1];
+	            return evaluateCall(e, value, new _fableCore.List());
+	          } else {
+	            return $target1();
+	          }
+	        } else {
+	          return $target1();
+	        }
+	      } else {
+	        return $target1();
+	      }
 	    };
 	
 	    if (typ != null) {
 	      if (typ.Case === "Object") {
-	        var activePatternResult5319 = $FindProperty$_$(previewName, typ.Fields[0]);
+	        var activePatternResult105131 = $FindProperty$_$(previewName, typ.Fields[0]);
 	
-	        if (activePatternResult5319 != null) {
-	          var e = activePatternResult5319;
+	        if (activePatternResult105131 != null) {
+	          var e = activePatternResult105131;
 	          return evaluateCall(e, value, new _fableCore.List());
 	        } else {
 	          return $target1();
@@ -10612,10 +10865,10 @@
 	                };
 	
 	                if (matchValue.Case === "Object") {
-	                  var activePatternResult5327 = $FindProperty$_$(_name, matchValue.Fields[0]);
+	                  var activePatternResult105139 = $FindProperty$_$(_name, matchValue.Fields[0]);
 	
-	                  if (activePatternResult5327 != null) {
-	                    var e_1 = activePatternResult5327;
+	                  if (activePatternResult105139 != null) {
+	                    var e_1 = activePatternResult105139;
 	                    return evaluateCall(e_1, getValue(ctx, inst), new _fableCore.List());
 	                  } else {
 	                    return $target1();
@@ -10661,11 +10914,11 @@
 	                      };
 	
 	                      if (matchValue.Case === "Object") {
-	                        var activePatternResult5334 = $FindMethod$_$(_name2, matchValue.Fields[0]);
+	                        var activePatternResult105146 = $FindMethod$_$(_name2, matchValue.Fields[0]);
 	
-	                        if (activePatternResult5334 != null) {
-	                          var _e_ = activePatternResult5334[1];
-	                          var pars = activePatternResult5334[0];
+	                        if (activePatternResult105146 != null) {
+	                          var _e_ = activePatternResult105146[1];
+	                          var pars = activePatternResult105146[0];
 	                          {
 	                            var args_1 = _fableCore.List.mapIndexed(function (i, tupledArg) {
 	                              return i < positionBased.length ? positionBased[i] : nameBased.has(tupledArg[0]) ? nameBased.get(tupledArg[0]) : null;
@@ -10768,14 +11021,14 @@
 	          } else {
 	            if (e.Kind.Case === "Variable") {
 	              var value = e.Kind.Fields[1];
-	              var $var9 = value.Value;
+	              var $var23 = value.Value;
 	
-	              if ($var9 != null) {
+	              if ($var23 != null) {
 	                return function (v) {
 	                  return v.Value;
-	                }($var9);
+	                }($var23);
 	              } else {
-	                return $var9;
+	                return $var23;
 	              }
 	            } else {
 	              if (e.Kind.Case === "ArgumentList") {
@@ -11311,10 +11564,10 @@
 	          return new series(nd, arg10.keyName, arg10.valueName, arg10.seriesName);
 	        };
 	      }(function () {
-	        var predicate = function predicate($var6) {
+	        var predicate = function predicate($var57) {
 	          return f(function (tuple) {
 	            return tuple[1];
-	          }($var6));
+	          }($var57));
 	        };
 	
 	        return function (array) {
@@ -11454,6 +11707,10 @@
 	          });
 	        }(_fableCore.AsyncBuilder.singleton);
 	      })(this);
+	    };
+	
+	    series.prototype.preview = function preview() {
+	      return this.take(10);
 	    };
 	
 	    return series;
@@ -16433,10 +16690,10 @@
 	    };
 	
 	    if (instTy.Case === "Object") {
-	      var activePatternResult5160 = $FindMethod$_$(methName, instTy.Fields[0]);
+	      var activePatternResult120604 = $FindMethod$_$(methName, instTy.Fields[0]);
 	
-	      if (activePatternResult5160 != null) {
-	        var args = activePatternResult5160[1];
+	      if (activePatternResult120604 != null) {
+	        var args = activePatternResult120604[1];
 	
 	        if (parSpec.Case === "Choice2Of2") {
 	          var patternInput = _fableCore.Seq.item(parSpec.Fields[0], args);
@@ -16698,11 +16955,11 @@
 	                    };
 	                  } else {
 	                    if (matchValue.Case === "Object") {
-	                      var activePatternResult5192 = $FindProperty$_$(name, matchValue.Fields[0]);
+	                      var activePatternResult120636 = $FindProperty$_$(name, matchValue.Fields[0]);
 	
-	                      if (activePatternResult5192 != null) {
-	                        var meta = activePatternResult5192[0];
-	                        var resTyp = activePatternResult5192[1];
+	                      if (activePatternResult120636 != null) {
+	                        var meta = activePatternResult120636[0];
+	                        var resTyp = activePatternResult120636[1];
 	                        {
 	                          e.Meta = meta;
 	                          return {
@@ -16780,12 +17037,12 @@
 	                        };
 	                      } else {
 	                        if (matchValue.Case === "Object") {
-	                          var activePatternResult5194 = $FindMethod$_$(name, matchValue.Fields[0]);
+	                          var activePatternResult120638 = $FindMethod$_$(name, matchValue.Fields[0]);
 	
-	                          if (activePatternResult5194 != null) {
-	                            var args = activePatternResult5194[1];
-	                            var meta = activePatternResult5194[0];
-	                            var resTyp = activePatternResult5194[2];
+	                          if (activePatternResult120638 != null) {
+	                            var args = activePatternResult120638[1];
+	                            var meta = activePatternResult120638[0];
+	                            var resTyp = activePatternResult120638[2];
 	                            {
 	                              e.Meta = meta;
 	                              return {
@@ -17111,8 +17368,10 @@
 	                    return builder__1.Return();
 	                  });
 	                }), builder__1.Delay(function (unitVar_2) {
+	                  _common.Log.trace("typechecker", "Type of entity '%s' (%O) is: %O", _astops.Entity$2Eget_Name.bind(e_1)(), e_1.Kind, getType(ctx, e_1));
+	
 	                  return builder__1.Bind(evaluateDelayedType(true, getType(ctx, e_1)), function (_arg3) {
-	                    _common.Log.trace("typechecker", "Type of entity '%s' (%O) is: %O", _astops.Entity$2Eget_Name.bind(e_1)(), e_1.Kind, _arg3);
+	                    _common.Log.trace("typechecker", "Type of entity '%s' (%O) reduced to: %O", _astops.Entity$2Eget_Name.bind(e_1)(), e_1.Kind, _arg3);
 	
 	                    e_1.Type = _arg3;
 	                    return builder__1.Zero();

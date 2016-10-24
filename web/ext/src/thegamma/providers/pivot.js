@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["exports", "fable-core", "./../ast/ast", "./../common/babel", "./providers", "../../libraries/common"], factory);
+    define(["exports", "fable-core", "./../ast/ast", "./../common/babel", "../../libraries/common", "./providers"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require("fable-core"), require("./../ast/ast"), require("./../common/babel"), require("./providers"), require("../../libraries/common"));
+    factory(exports, require("fable-core"), require("./../ast/ast"), require("./../common/babel"), require("../../libraries/common"), require("./providers"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.fableCore, global.ast, global.babel, global.providers, global.common);
+    factory(mod.exports, global.fableCore, global.ast, global.babel, global.common, global.providers);
     global.pivot = mod.exports;
   }
-})(this, function (exports, _fableCore, _ast, _babel, _providers, _common) {
+})(this, function (exports, _fableCore, _ast, _babel, _common, _providers) {
   "use strict";
 
   exports.__esModule = true;
@@ -168,7 +168,7 @@
 
     var toUrl = $exports.toUrl = function toUrl(transforms) {
       return _fableCore.String.join("/", _fableCore.List.concat(_fableCore.List.mapIndexed(function (i, l) {
-        return i === 0 ? l : new _fableCore.List("then", l);
+        return (i === 0 ? true : l.tail == null) ? l : new _fableCore.List("then", l);
       }, _fableCore.Seq.toList(_fableCore.Seq.delay(function (unitVar) {
         return _fableCore.Seq.map(function (t) {
           return t.Case === "FilterBy" ? new _fableCore.List("filter", _fableCore.List.collect(function (tupledArg) {
@@ -181,7 +181,7 @@
             return formatAgg(_arg1);
           }, t.Fields[1]))) : t.Case === "Paging" ? new _fableCore.List("page", _fableCore.List.collect(function (_arg1) {
             return _arg1.Case === "Skip" ? _fableCore.List.ofArray(["skip", _arg1.Fields[0]]) : _fableCore.List.ofArray(["take", _arg1.Fields[0]]);
-          }, t.Fields[0])) : t.Case === "GetSeries" ? _fableCore.List.ofArray(["series", t.Fields[0], t.Fields[1]]) : t.Case === "Empty" ? new _fableCore.List() : _fableCore.List.ofArray(["data"]);
+          }, t.Fields[0])) : t.Case === "GetSeries" ? _fableCore.List.ofArray(["series", t.Fields[0], t.Fields[1]]) : t.Case === "Empty" ? new _fableCore.List() : new _fableCore.List();
         }, _fableCore.List.reverse(transforms));
       })))));
     };
@@ -242,7 +242,7 @@
     };
 
     var transformFields = $exports.transformFields = function transformFields(fields, tfs) {
-      return function () {
+      return _fableCore.Seq.toList(function () {
         var state = _fableCore.Seq.toList(fields);
 
         return function (list) {
@@ -250,7 +250,7 @@
             return singleTransformFields(fields_1, _arg1);
           }, state, list);
         };
-      }()(tfs);
+      }()(tfs));
     };
 
     return $exports;
@@ -380,6 +380,8 @@
   function makeDataMember(ctx, name, isPreview, tfs) {
     var fields = Transform.transformFields(ctx.InputFields, _fableCore.List.reverse(tfs));
 
+    _common.Log.trace("providers", "Make data member using transform %O. Got fields: %O", tfs, fields);
+
     var patternInput = function () {
       var $target1 = function $target1() {
         var membs = Array.from(fields).map(function (fld) {
@@ -399,11 +401,11 @@
             throw "makeDataMember: Series should have key and value";
           };
 
-          if (ctx.Fields.tail != null) {
-            if (ctx.Fields.tail.tail != null) {
-              if (ctx.Fields.tail.tail.tail == null) {
-                var kf = ctx.Fields.head;
-                var vf = ctx.Fields.tail.head;
+          if (fields.tail != null) {
+            if (fields.tail.tail != null) {
+              if (fields.tail.tail.tail == null) {
+                var kf = fields.head;
+                var vf = fields.tail.head;
                 return [ctx.LookupNamed("series")(_fableCore.List.ofArray([new _ast.Type("Primitive", [kf.Type]), new _ast.Type("Primitive", [vf.Type])])), true];
               } else {
                 return $target1_1();
@@ -422,9 +424,10 @@
       }
     }();
 
-    var meta1 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Transformations", new _fableCore.List(new Transformation("GetTheData", []), tfs));
+    var tfs_1 = patternInput[1] ? tfs : new _fableCore.List(new Transformation("GetTheData", []), tfs);
+    var meta1 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Transformations", tfs_1);
     var meta2 = new _ast.Metadata("http://schema.thegamma.net/pivot", "Fields", ctx.Fields);
-    return new _ast.Member("Property", [name, patternInput[0], _fableCore.List.ofArray([meta1, meta2]), makeDataEmitter(isPreview, patternInput[1], tfs)]);
+    return new _ast.Member("Property", [name, patternInput[0], _fableCore.List.ofArray([meta1, meta2]), makeDataEmitter(isPreview, patternInput[1], tfs_1)]);
   }
 
   function handleGetSeriesRequest(ctx, rest, k, v) {
@@ -716,7 +719,7 @@
   }
 
   function adjustForPreview(tfs) {
-    var $target2 = function $target2() {
+    var $target3 = function $target3() {
       return tfs;
     };
 
@@ -731,14 +734,19 @@
             var _tfs_ = tfs.tail;
             return new _fableCore.List(new Transformation("GroupBy", [k, _fableCore.List.ofArray([new Aggregation("GroupKey", [])])]), _tfs_);
           } else {
-            return $target2();
+            return $target3();
           }
         }
       } else {
-        return $target2();
+        if (tfs.head.Case === "GetSeries") {
+          var _tfs_2 = tfs.tail;
+          return _tfs_2;
+        } else {
+          return $target3();
+        }
       }
     } else {
-      return $target2();
+      return $target3();
     }
   }
 
@@ -756,8 +764,16 @@
 
     var typ = function (builder_) {
       return builder_.Delay(function (unitVar) {
-        return builder_.Bind(makePivotTypeImmediate(ctx, tfs), function (_arg4) {
-          return builder_.Return(withPreview(ctx, tfs, _arg4));
+        return builder_.TryWith(builder_.Delay(function (unitVar_1) {
+          return builder_.Bind(makePivotTypeImmediate(ctx, tfs), function (_arg4) {
+            return builder_.Return(withPreview(ctx, tfs, _arg4));
+          });
+        }), function (_arg5) {
+          _common.Log.exn("providers", "Failed when generating type for %O with exception %O", tfs, _arg5);
+
+          return builder_.Return(function () {
+            throw _arg5;
+          }());
         });
       });
     }(_fableCore.AsyncBuilder.singleton);
