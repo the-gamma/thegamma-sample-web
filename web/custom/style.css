@@ -116,7 +116,7 @@ footer .btn-success:hover, footer .btn-success:focus,
   border-bottom:solid 3px #F4C300;
   z-index:1000;
 }
-.pivot-preview .placeholder {
+.placeholder {
   text-align:center;
   color:#a0a0a0;
   font-size:15pt;
