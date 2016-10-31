@@ -125,10 +125,10 @@ chart.column(data)
     });
     require(["monaco","ext/src/bundle"], function (_,g) {
       
-      var services = "http://127.0.0.1:10042/"; 
+      //var services = "http://127.0.0.1:10042/"; 
       var code = document.getElementById("demo").innerText;
       
-      //var services = "http://thegamma-services.azurewebsites.net/";
+      var services = "http://thegamma-services.azurewebsites.net/";
       var olympicColumns = 
         { Games: "string", Year: "number", Sport: "string", 
           Discipline: "string", Athlete: "string", Team: "string", 
