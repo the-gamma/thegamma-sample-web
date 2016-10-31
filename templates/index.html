@@ -7,7 +7,6 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <link href="/lib/bootstrap.min.css" rel="stylesheet">
-  <link href="/lib/chosen.min.css" rel="stylesheet">
   <link href="/custom/style.css" rel="stylesheet">
   
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -19,6 +18,7 @@
   <title>The Gamma</title>
 </head>
 <body>
+  <div id="sizer" style="position:absolute;z-index:-1000;background:transparent;height:90vh;width:80vw;max-width:1000px;"></div>
 
   <header>
     <div class="container">
@@ -32,70 +32,26 @@
     </div>
   </header>
 
-  <article>
-    <div class="container">
-      <div class="col-lg-12">
-        <div class="ia-figure">
-          <p class="tools tools-right">
-            <a class="ia-show-options" href="javascript:;"><i class="fa fa-pencil-square-o"></i> <span>options</span></a>
-            <a class="ia-show-source" href="javascript:;"><i class="fa fa-code"></i> <span>source</span></a>
-          </p>
-          <p class="tools tools-left">
-            <a class="ia-share" href="javascript:;" style="display:none"><i class="fa fa-share-alt"></i> <span>share</span></a>
-            <a class="ia-run" href="javascript:;" style="display:none"><i class="fa fa-refresh"></i> <span>refresh</span></a>
-          </p>
-          <script class="ia-source" type="text/thegamma">
+  <script type="text/thegamma" id="demo">
 let data =
   olympics
     .'group data'.'by Athlete'.'sum Gold'.then
     .'sort data'.'by Gold descending'.then
     .paging.take(10)
     .'get series'.'with key Athlete'.'and value Gold'
-
+  
 chart.column(data)
+  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-"just need some whitespace..."
-</script>
-          <!-- <script class="ia-compiled" type="text/thegamma-compiled"></script> -->
-          <div class="ia-options" style="display:none">
-            <div class="loading">
-              <p>Loading content, please wait...</p>
-              <div class="spinner" id="sp1"></div>
-              <script>startSpinning('sp1');</script>
-            </div>
-          </div>
-          <div class="ia-editor" style="display:none">
-            <h3>Edit source</h3>
-            <p>The following is the source code behind the visualization. You can change it and hit 'refresh' to run your new version.
-              When you type <code>.</code> after a name or a quoted name, you will get hint with possible options to choose from!</p>
-            <div id="ed1" class="ia-monaco"></div>
-          </div>
-          <div class="ia-errors"></div>
-          <div id="out1" class="ia-output">
-            <div class="loading">
-              <p>Loading content, please wait...</p>
-              <div class="spinner" id="sp2"></div>
-              <script>startSpinning('sp2');</script>
-            </div>
-          </div>
-        </div>
+  <article>
+    <div class="container">
+      <div class="col-lg-12">
+        <div id="out1" class="ia-output"></div>
+        <button class="btn btn-success" id="editbtn">Edit source code</button>
       </div>
     </div>
   </article>
-  
-  <!--
+
   <footer>
     <div class="container">
       <div class="hidden-xs col-sm-4 col-md-3" style="text-align:center;">
@@ -113,7 +69,7 @@ chart.column(data)
           <a href="mailto:tomas@tomasp.net">tomas@tomasp.net</a>.
         </p>
         <p>
-          All source code is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+          All source code is licensed under <a href="https://github.com/the-gamma/thegamma-script/blob/master/LICENSE.md">MIT</a>
           and is available on <a href="http://github.com/the-gamma">GitHub</a>. If you have an interesting
           project idea, do get in touch!
         </p>
@@ -133,111 +89,20 @@ chart.column(data)
       </div>
     </div>    
   </footer>
-  -->
-
-  <!-- Dialog for entering more details when sharing a snippet -->
-  <div class="modal fade" id="share-dialog" tabindex="-1" role="dialog" aria-labelledby="Share" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
+      
+  <div class="modal fade" id="editor" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="width:80vw; max-width:1000px">
+      <div class="modal-content" style="height:90vh">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Share Your Visualization</h4>
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          <h4 class="modal-title">Editor</h4>
         </div>
-        
-        <!-- This appears once snippet is saved -->
-        <div class="modal-body" id="modal-done" style="display:none">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <div class="col-sm-10 col-sm-offset-1">
-                <h3>Your visualization was succesfully saved!</h3>
-                <p>Here is a link to your visualization so that you can review it and an address
-                 that you can copy and share with friends.</p>
-                <ul><li><a href="#" id="result-link">View your created visualization</a></li></ul>
-                <p>Share your visualization:</p>                
-                <button class="btn btn-success" data-dismiss="modal" onclick="closeShareDialog();" style="float:right;margin-top:30px">Close</button>
-                <p class="social">
-                  <a id="share-lnk-tw" target="_blank" href="#">
-                    <i class="fa fa-twitter-square"></i></a>
-                  <a id="share-lnk-fb" target="_blank" href="#">
-                    <i class="fa fa-facebook-official"></i></a>
-                  <a id="share-lnk-rd" target="_blank" href="#">
-                    <i class="fa fa-reddit-square"></i></a>
-                  <a id="share-lnk-em" href="#">
-                    <i class="fa fa-envelope"></i></a>
-                </p>                
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <!-- This appears initially when dialog opens -->
-        <div class="modal-body" id="modal-share">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="submit-title" class="col-sm-2 control-label">Title</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="submit-title" placeholder="Title of your visualization">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="submit-author" class="col-sm-2 control-label">Author</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="submit-author" placeholder="Your name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="submit-author" class="col-sm-2 control-label">Twitter</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="submit-twitter" placeholder="Your twitter (optional)">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="submit-info" class="col-sm-2 control-label">About</label>
-              <div class="col-sm-10">
-                <textarea id="submit-info" class="form-control" placeholder="Write a few words about your visualization! You can use Markdown for basic formatting." rows="4"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <input type="button" class="btn btn-success" onclick="saveAndShare();" value="Share"/>
-                <span id="submit-error">We need title, your name and a brief description.</span>
-              </div>
-            </div>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Dialog shown when snippet is not well-typed -->
-  <div class="modal fade" id="cannot-share-dialog" tabindex="-1" role="dialog" aria-labelledby="Share" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel2">Error</h4>
-        </div>
-        
-        <!-- This appears once snippet is saved -->
         <div class="modal-body">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <div class="col-sm-10 col-sm-offset-1">
-                <h3>Code contains errors</h3>
-                <p>The source code of the visualization contains errors and cannot be shared.
-                  Please correct all errors before sharing the snippet.</p>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-1 col-sm-10">
-                <button class="btn btn-success" data-dismiss="modal">OK</button>
-              </div>
-            </div>
-          </form>
-        </div>
 
+          <div id="ed1" class="ia-monaco"></div>
+          <div class="ia-errors"></div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -249,50 +114,56 @@ chart.column(data)
     integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <script src="/lib/chosen.jquery.min.js"></script>
-
-  <!-- More fancy libraries -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-  <script src="/lib/datamaps.world.min.js"></script>
-
+  
   <!-- Loading Monaco and TheGamma scripts -->
   <script src="/lib/babel.min.js"></script>
   <script src="/lib/require.js"></script>
   <script>
     require.config({
-        baseUrl: '/',
-        paths: { 
-          'core-js': 'lib/dev/core.min',          // Debug: only needed when loading 'ext/src/main/main'
-          'fable-core': 'lib/dev/fable-core.min', // Debug: Only needed when loading 'ext/src/main/main'
-          // {% if model.debug == "true" %}
-          // 'core-js': 'lib/dev/core.min',          // Debug: only needed when loading 'ext/src/main/main'
-          // 'fable-core': 'lib/dev/fable-core.min', // Debug: Only needed when loading 'ext/src/main/main'
-          // {% endif %}
-          'vs': 'lib/vs' 
-        },
-        map: { "*": { "monaco": "vs/editor/editor.main" }}
+      paths:{'vs':'lib/vs'},
+      map:{ "*":{"monaco":"vs/editor/editor.main"}}
     });
-    require(['monaco'], function () {
-      // Start logging of site events
-      // logStarted = true; 
-      // logEvent("page", "loaded", "", window.navigator.userAgent);
-      require(["ext/src/main/main"]);
+    require(["monaco","ext/src/bundle"], function (_,g) {
       
-      // {% if model.debug == "true" %}
-      // Debug: load individual source files instead of WebPacked version
-      // require(["ext/src/main/main"]);
-      // {% else %}
-      // require(["ext/thegamma-script"]);
-      // {% endif %}
+      var services = "http://127.0.0.1:10042/"; 
+      var code = document.getElementById("demo").innerText;
+      
+      //var services = "http://thegamma-services.azurewebsites.net/";
+      var olympicColumns = 
+        { Games: "string", Year: "number", Sport: "string", 
+          Discipline: "string", Athlete: "string", Team: "string", 
+          Gender: "string", Event: "string", Medal: "string",
+          Gold: "number", Silver: "number", Bronze: "number" };
+      
+      var providers = 
+        g.providers.createProviders({
+          "libraries": g.providers.library("/ext/libraries.json?s"),
+          "olympics": g.providers.pivot(services + "pdata/olympics", olympicColumns) });
+          
+      var ctx = g.gamma.createContext(providers);
+      ctx.evaluate(code, "out1");
+
+      var opts =
+        { height: document.getElementById("sizer").clientHeight - 100,
+          width: document.getElementById("sizer").clientWidth - 40,
+          monacoOptions: function(m) {
+            m.fontFamily = "Inconsolata";
+            m.fontSize = 15;
+            m.lineHeight = 20;
+            m.lineNumbers = false;
+          } };
+      var created = false;
+      editbtn.onclick = function() {
+        $('#editor').modal();
+        if (!created) ctx.createEditor("ed1", code, opts);
+        created = true;
+      }
     });
   </script>
 
   <!-- More fancy libraries -->
   <script type="text/javascript" src="//www.google.com/jsapi"></script>
   <script type="text/javascript" src="/custom/charts.js"></script>
-
-  <!-- Google analytics
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -301,6 +172,6 @@ chart.column(data)
       
     ga('create', 'UA-65311433-1', 'auto');
     ga('send', 'pageview');  
-  </script> -->
+  </script>
 </body>
 </html>

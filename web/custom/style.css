@@ -116,7 +116,15 @@ footer .btn-success:hover, footer .btn-success:focus,
   border-bottom:solid 3px #F4C300;
   z-index:1000;
 }
-
+.pivot-preview .placeholder {
+  text-align:center;
+  color:#a0a0a0;
+  font-size:15pt;
+  padding:40px 20px 40px 20px;
+}
+.pivot-preview .table {
+  margin-bottom:0px;
+}
 /** tabs that list the operations applied so far and "+" button **/
 .pivot-preview ul.tabs {
   padding:0px;
@@ -467,7 +475,7 @@ body {
 
 article {
   padding-top:30px;
-  min-height:800px;
+  min-height:calc(100vh - 410px);
 }
 
 article code {
