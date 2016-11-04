@@ -7,13 +7,13 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <link href="/lib/bootstrap.min.css" rel="stylesheet">
-  <link href="/custom/style.css" rel="stylesheet">
+  <link href="/lib/style.css" rel="stylesheet">
   
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
   <meta name="theme-color" content="#F4C300">    
-  <script type="text/javascript" src="/custom/common.js"></script>
+  <script type="text/javascript" src="/lib/common.js"></script>
   
   <title>The Gamma</title>
 </head>
@@ -32,8 +32,7 @@
     </div>
   </header>
 
-  <script type="text/thegamma" id="demo">
-let data =
+  <script type="text/thegamma" id="demo">let data =
   olympics
     .'group data'.'by Athlete'.'sum Gold'.then
     .'sort data'.'by Gold descending'.then
@@ -120,14 +119,14 @@ chart.column(data)
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   
   <!-- Loading Monaco and TheGamma scripts -->
-  <script src="/lib/babel.min.js"></script>
-  <script src="/lib/require.js"></script>
+  <script src="/node_modules/babel-standalone/babel.min.js"></script>
+  <script src="/node_modules/requirejs/require.js"></script>
   <script>
     require.config({
-      paths:{'vs':'lib/vs'},
+      paths:{'vs':'node_modules/monaco-editor/min/vs'},
       map:{ "*":{"monaco":"vs/editor/editor.main"}}
     });
-    require(["monaco","ext/src/bundle"], function (_,g) {
+    require(["monaco","node_modules/thegamma-script/dist/thegamma.js"], function (_,g) {
       
       //var services = "http://127.0.0.1:10042/"; 
       var code = document.getElementById("demo").innerText;
@@ -141,7 +140,7 @@ chart.column(data)
       
       var providers = 
         g.providers.createProviders({
-          "libraries": g.providers.library("/ext/libraries.json?s"),
+          "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json?s"),
           "olympics": g.providers.pivot(services + "pdata/olympics", olympicColumns) });
           
       var ctx = g.gamma.createContext(providers);
@@ -167,7 +166,7 @@ chart.column(data)
 
   <!-- More fancy libraries -->
   <script type="text/javascript" src="//www.google.com/jsapi"></script>
-  <script type="text/javascript" src="/custom/charts.js"></script>
+  <script type="text/javascript" src="/lib/charts.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

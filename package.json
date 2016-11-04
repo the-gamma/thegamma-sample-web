@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "name": "thegamma-sample-web",
+  "version": "0.0.1",
+  "description": "Minimal sample web site showing how to use The Gamma project",
+  "scripts": {
+    "start": "http-server . -c-1 -p 8089 -o http://localhost:8089"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-gamma/thegamma-sample-web.git"
+  },
+  "keywords": [
+    "sample",
+    "thegamma",
+    "visualization",
+    "data"
+  ],
+  "author": "Tomas Petricek <tomas@tomasp.net> (http://tomasp.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/the-gamma/thegamma-sample-web/issues"
+  },
+  "homepage": "https://github.com/the-gamma/thegamma-sample-web#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  },
+  "dependencies": {
+    "babel-standalone": "^6.18.1",
+    "monaco-editor": "^0.7.0",
+    "requirejs": "^2.3.2",
+    "thegamma-script": "0.0.2"
+  }
+}
