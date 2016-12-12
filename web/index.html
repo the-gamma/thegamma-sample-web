@@ -131,17 +131,11 @@ chart.column(data)
       //var services = "http://127.0.0.1:10042/"; 
       var code = document.getElementById("demo").innerText;
       
-      var services = "http://thegamma-services.azurewebsites.net/";
-      var olympicColumns = 
-        { Games: "string", Year: "number", Sport: "string", 
-          Discipline: "string", Athlete: "string", Team: "string", 
-          Gender: "string", Event: "string", Medal: "string",
-          Gold: "number", Silver: "number", Bronze: "number" };
-      
+      var services = "http://thegamma-services.azurewebsites.net/";      
       var providers = 
         g.providers.createProviders({
           "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json?s"),
-          "olympics": g.providers.pivot(services + "pdata/olympics", olympicColumns) });
+          "olympics": g.providers.pivot(services + "pdata/olympics") });
           
       var ctx = g.gamma.createContext(providers);
       ctx.evaluate(code, "out1");

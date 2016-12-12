@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "Minimal sample web site showing how to use The Gamma project",
   "scripts": {
-    "start": "http-server . -c-1 -p 8089 -o http://localhost:8089"
+    "start": "concurrently \"node server.js\" \"open-cli http://localhost:8089\""
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,12 @@
   },
   "homepage": "https://github.com/the-gamma/thegamma-sample-web#readme",
   "devDependencies": {
-    "http-server": "^0.9.0"
+    "concurrently": "^3.1.0",
+    "open-cli": "^1.0.5"
   },
   "dependencies": {
     "babel-standalone": "^6.18.1",
+    "express": "^4.14.0",
     "monaco-editor": "^0.7.0",
     "requirejs": "^2.3.2",
     "thegamma-script": "0.0.2"
