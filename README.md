@@ -4,6 +4,20 @@ This project shows how to use [thegamma-script](https://www.npmjs.com/package/th
 NPM package to build open and reproducible data-driven visualizations. You can see the result
 of running this [sample web live](http://thegamma-sample-web.azurewebsites.net/).
 
+## Running the sample
+
+Running the sample should be easy - it is a pure JavaScript node project, so you just need two commands:
+
+```
+npm install
+npm run start
+```
+
+This should start a local server and open a browser with the sample web site!
+
+
+## Using The Gamma in JavaScript
+
 After referencing `thegamma-script` and `monaco-editor` (the web-based editor that we are 
 extending), you can load all the packages using something like:
 
