@@ -27,7 +27,7 @@
     "open-cli": "^1.0.5"
   },
   "dependencies": {
-    "babel-standalone": "^6.18.1",
+    "babel-standalone": "^6.21.1",
     "express": "^4.14.0",
     "monaco-editor": "^0.7.0",
     "requirejs": "^2.3.2",

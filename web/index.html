@@ -6,93 +6,68 @@
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-  <link href="/lib/bootstrap.min.css" rel="stylesheet">
-  <link href="/lib/style.css" rel="stylesheet">
-  
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
   <meta name="theme-color" content="#F4C300">    
-  <script type="text/javascript" src="/lib/common.js"></script>
-  
-  <title>The Gamma</title>
+  <title>The Gamma: Embedding sample</title>
+
+  <!-- thegamma.css contains style definitions for the live preview and you'll need it in 
+    your projects that use The Gamma; custom.css contains extra styling for this demo page -->
+  <link href="/lib/thegamma.css" rel="stylesheet">
+  <link href="/lib/custom.css" rel="stylesheet">
 </head>
 <body>
-  <div id="sizer" style="position:absolute;z-index:-1000;background:transparent;height:90vh;width:80vw;max-width:1000px;"></div>
-
-  <header>
-    <div class="container">
-      <div class="content">
-        <div class="col-lg-12">
-          <a href="/">
-            <h1><span>The Gamma</span></h1>    
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
+  <div id="sizer"></div>
 
   <script type="text/thegamma" id="demo">let data =
   olympics
+    .'filter data'.'Games is'.'Rio (2016)'.then
     .'group data'.'by Athlete'.'sum Gold'.then
     .'sort data'.'by Gold descending'.then
-    .paging.take(10)
+    .paging.take(8)
     .'get series'.'with key Athlete'.'and value Gold'
   
-chart.column(data)
+chart.column(data).legend(position="none")
+  .set(fontName="Roboto", fontSize=12, colors=["#F4C300"], 
+    title="Top medalists (by number of gold medals) at Rio 2016")
   </script>
 
   <article>
     <div class="container">
-      <div class="col-lg-12">
-        <div id="out1" class="ia-output">
-          <div class="placeholder" style="background:white;padding:100px 20px 100px 20px">
+      <div class="row">
+      <div class="col-md-2 hidden-sm"></div>
+      <div class="col-md-8 col-sm-12">
+        <a href="/"><h1><span><strong>The Gamma</strong>: Embedding sample</span></h1></a>
+
+        <p>This is a minimal sample page demonstrating how to use <a href="http://thegamma.net">The 
+          Gamma</a> for creating open, transparent and customizable visualizations. The chart below
+          is based on the <a href="http://rio2016.thegamma.net/">Olympic medalists visualizations</a>
+          and shows the top athletes (by number of gold medals) in Rio 2016 games. You can click 
+          "Edit source code" to see and modify the visualization. The full source code of this
+          demo is <a href="https://github.com/the-gamma/thegamma-sample-web">available on GitHub</a>. 
+          See the README for description of how it works!        
+         </p>        
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-sm-12">
+        <!-- The 'out1' element is used as output - running the visualization code will create
+          chart and put the output in the `out1` element below (replacng the loading text) -->
+        <div id="out1" class="output">
+          <div class="placeholder">
             Loading the visualization...
           </div>
         </div>
         <button class="btn btn-success" id="editbtn">Edit source code</button>
       </div>
+      </div>
     </div>
   </article>
-
-  <footer>
-    <div class="container">
-      <div class="hidden-xs col-sm-4 col-md-3" style="text-align:center;">
-        <h1>The Gamma</h1>        
-      </div>
-    </div>
-    <div class="container">
-      <div class="col-sm-3 hidden-xs" style="text-align:center;">
-        <img src="/img/logo.png" style="width:100px;" />
-      </div>
-      <div class="col-sm-5 text">
-        <p>For more information about The Gamma and related projects, follow us
-          at <a href="http://twitter.com/thegamma_net">@thegamma_net</a>. If you want to speak
-          to us, contact <a href="http://tomasp.net">Tomas Petricek</a> at 
-          <a href="mailto:tomas@tomasp.net">tomas@tomasp.net</a>.
-        </p>
-        <p>
-          All source code is licensed under <a href="https://github.com/the-gamma/thegamma-script/blob/master/LICENSE.md">MIT</a>
-          and is available on <a href="http://github.com/the-gamma">GitHub</a>. If you have an interesting
-          project idea, do get in touch!
-        </p>
-      </div>
-      <div class="col-sm-4 text">
-        <p>To receive the latest news enter your email below. We will not spam you.</p>
-        <form action="https://docs.google.com/forms/d/1QhOoo9g6M6WhtZcMxOcURH1pQLpLLVIuTN1omvJLbWA/formResponse" 
-            method="POST" id="ss-form" target="_self" onsubmit="" class="form-inline">
-          <input placeholder="hello@thegamma.net" type="text" name="entry.902762028" value="" 
-            style="width:100%;" class="form-control ss-q-short" id="entry_902762028" dir="auto" aria-label="Email" title="">
-          <input style="margin-top:5px;width:100%;" type="submit" name="submit" class="btn btn-success" value="Sign up" id="ss-submit">
-          <input type="hidden" name="draftResponse" value="[,,&quot;-2799700618843047135&quot;]">
-          <input type="hidden" name="pageHistory" value="0">
-          <input type="hidden" name="fvv" value="0">
-          <input type="hidden" name="fbzx" value="-2799700618843047135">
-        </form>
-      </div>
-    </div>    
-  </footer>
-      
+            
   <div class="modal fade" id="editor" tabindex="-1" role="dialog">
     <div class="modal-dialog" style="width:80vw; max-width:1000px">
       <div class="modal-content" style="height:90vh">
@@ -101,10 +76,12 @@ chart.column(data)
           <h4 class="modal-title">Editor</h4>
         </div>
         <div class="modal-body">
-
-          <div id="ed1" class="ia-monaco"></div>
-          <div class="ia-errors"></div>
-
+          <!-- This modal dialog opens when you click "Edit source code" - the 'ed1' element
+            is used to create the Monaco-based source editor and 'ed1-errors' is used in the
+            code below to render errors reported from The Gamma -->
+          <div id="ed1"></div>
+          <div id="ed1-errors" class="errors"></div>
+          <button class="btn btn-success" id="okbtn">Update page</button>
         </div>
       </div>
     </div>
@@ -122,26 +99,49 @@ chart.column(data)
   <script src="/node_modules/babel-standalone/babel.min.js"></script>
   <script src="/node_modules/requirejs/require.js"></script>
   <script>
+    // This follows the standard way of loading the Monaco editor (https://github.com/Microsoft/monaco-editor)
+    // although we use normal 'require.js' and also load the compiled 'thegamma.js' (which depends on Monaco)
     require.config({
       paths:{'vs':'node_modules/monaco-editor/min/vs'},
       map:{ "*":{"monaco":"vs/editor/editor.main"}}
     });
-    require(["monaco","node_modules/thegamma-script/dist/thegamma.js"], function (_,g) {
-      
-      //var services = "http://127.0.0.1:10042/"; 
-      var code = document.getElementById("demo").innerText;
-      
+    require(["vs/editor/editor.main", "node_modules/thegamma-script/dist/thegamma.js"], function (_, g) {      
+      // Configure type providers available in The Gamma
+      // (when running thegamma-services locally, use http://127.0.0.1:10042/)
       var services = "http://thegamma-services.azurewebsites.net/";      
       var providers = 
-        g.providers.createProviders({
-          "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json?s"),
+        g.providers.createProviders({ 
+          "worldbank": g.providers.rest(services + "worldbank"),
+          "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json"),
           "olympics": g.providers.pivot(services + "pdata/olympics") });
           
+      // Create context which is used to create editor & run code
+      // When errors are reported, display the errors in modal dialog (while editting)
       var ctx = g.gamma.createContext(providers);
+      ctx.errorsReported(function (errs) { 
+        var lis = errs.slice(0, 5).map(function (e) { 
+          return $("<li>")
+            .append($("<span class='err'>error " + e.number + "<span>"))
+            .append($("<span class='loc'>at line " + e.startLine + " col " + e.startColumn + "</span>"))
+            .append(": " + e.message);          
+        });        
+        var ul = $("<ul>").append(lis);
+        $("#ed1-errors").empty().append(ul);
+      });
+
+      // Get sample code and run it; use the '#out1' element for outputs
+      var code = document.getElementById("demo").innerText;
       ctx.evaluate(code, "out1");
 
+      // We create editor lazily when the "Edit source code" button is clicked the first time
+      var editor = null;
+      var editbtn = document.getElementById("editbtn");
+      var okbtn = document.getElementById("okbtn");
+      
+      // Options passed to the editor - specify size & configuration function
+      // that sets properties directly for the Monaco editor
       var opts =
-        { height: document.getElementById("sizer").clientHeight - 100,
+        { height: document.getElementById("sizer").clientHeight - 150,
           width: document.getElementById("sizer").clientWidth - 40,
           monacoOptions: function(m) {
             m.fontFamily = "Inconsolata";
@@ -149,18 +149,24 @@ chart.column(data)
             m.lineHeight = 20;
             m.lineNumbers = false;
           } };
-      var created = false;
+
+      // Create editor if it is not created yet
       editbtn.onclick = function() {
         $('#editor').modal();
-        if (!created) ctx.createEditor("ed1", code, opts);
-        created = true;
-      }
+        if (!editor) editor = ctx.createEditor("ed1", code, opts);
+      };
+      
+      // Get editor text and run it on the main page
+      okbtn.onclick = function() { 
+        $('#editor').modal('hide');
+        code = editor.getValue();
+        ctx.evaluate(code, "out1");
+      };
     });
   </script>
 
   <!-- More fancy libraries -->
   <script type="text/javascript" src="//www.google.com/jsapi"></script>
-  <script type="text/javascript" src="/lib/charts.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
