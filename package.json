@@ -29,8 +29,8 @@
   "dependencies": {
     "babel-standalone": "^6.21.1",
     "express": "^4.14.0",
-    "monaco-editor": "^0.7.0",
+    "monaco-editor": "^0.8.0",
     "requirejs": "^2.3.2",
-    "thegamma-script": "0.0.2"
+    "thegamma-script": "0.0.3"
   }
 }
