@@ -21,7 +21,7 @@ This should start a local server and open a browser with the sample web site!
 After referencing `thegamma-script` and `monaco-editor` (the web-based editor that we are 
 extending), you can load all the packages using something like:
 
-```
+```html
 <script src="/node_modules/requirejs/require.js"></script>
 <script>
   require.config({
@@ -41,19 +41,12 @@ data sources are available, run The Gamma scripts and create the editor componen
 In the sample, we use a service that provides Olympic medal data. We also specify 
 libraries that are available to use in the user code:
 
-```
-var services = "http://thegamma-services.azurewebsites.net/";
-
-var olympicColumns = 
-  { Games: "string", Year: "number", Sport: "string", 
-    Discipline: "string", Athlete: "string", Team: "string", 
-    Gender: "string", Event: "string", Medal: "string",
-    Gold: "number", Silver: "number", Bronze: "number" };
-
+```javascript
+var services = "http://thegamma-services.azurewebsites.net/";      
 var providers = 
-  g.providers.createProviders({
-    "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json?s"),
-    "olympics": g.providers.pivot(services + "pdata/olympics", olympicColumns) });
+  g.providers.createProviders({ 
+    "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json"),
+    "olympics": g.providers.pivot(services + "pdata/olympics") });
           
 var ctx = g.gamma.createContext(providers);
 ```
@@ -68,10 +61,11 @@ can users write in The Gamma editor:
    
  - The `pivot` provider takes a service that can evaluate "data aggregation" requests.
    The above uses a [sample implementation](https://github.com/the-gamma/thegamma-services/blob/master/src/pdata/server.fsx).
-   It also takes the columns that the data source has - it then lets you write data 
+   The service reports the columns available in the data source, so you do not 
+   need to provide those explicitly. The provider then lets you write data 
    aggregations and transformations using `.` as in the example below.
    
-Here, the first (larger) block uses the `pivot` provier and the second one uses the `library` provider (`chart`):
+Here, the first (larger) block uses the `pivot` provider and the second one uses the `library` provider (`chart`):
 
 ```
 let data = olympics
@@ -83,11 +77,25 @@ let data = olympics
 chart.column(data)
 ```
 
+Before we run any code, it is a good idea to register an error handler that will be called when
+the executed script contains errors. You can use this to display code errors to the user:
+
+```javascript
+ctx.errorsReported(function (errs) { 
+  for(var i = 0; i < errs.length; i++) {
+    var e = errs[i];
+    console.log("error " + e.number + " at line " +
+      e.startLine + " col " + e.startColumn + ": " +
+      e.message);
+  }
+});
+```
+
 Once we configured The Gamma providers, we can run the code - assuming `code` contains the above 
 snippet and `out1` is an ID of an element on a page, the following runs the code and renders
 chart into `out1`:
 
-```
+```javascript
 ctx.evaluate(code, "out1");
 ```
 
@@ -96,7 +104,7 @@ To create the editor, we first need to provide options. The available options ar
 record](https://github.com/the-gamma/thegamma-script/blob/master/src/main/main.fsx#L465). Then you just
 need to call `createEditor` function and give it an ID of a HTML element to use:
 
-```
+```javascript
 var opts =
   { height: document.getElementById("sizer").clientHeight - 100,
     width: document.getElementById("sizer").clientWidth - 40,
