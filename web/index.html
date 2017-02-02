@@ -130,7 +130,7 @@ chart.column(data).legend(position="none")
       });
 
       // Get sample code and run it; use the '#out1' element for outputs
-      var code = document.getElementById("demo").innerText;
+      var code = document.getElementById("demo").innerHTML;
       ctx.evaluate(code, "out1");
 
       // We create editor lazily when the "Edit source code" button is clicked the first time
