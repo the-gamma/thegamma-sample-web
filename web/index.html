@@ -17,23 +17,14 @@
 
   <!-- thegamma.css contains style definitions for the live preview and you'll need it in 
     your projects that use The Gamma; custom.css contains extra styling for this demo page -->
-  <link href="/lib/thegamma.css" rel="stylesheet">
+  <link href="http://thegamma.net/lib/thegamma/thegamma.css" rel="stylesheet">
   <link href="/lib/custom.css" rel="stylesheet">
 </head>
 <body>
   <div id="sizer"></div>
 
-  <script type="text/thegamma" id="demo">let data =
-  olympics
-    .'filter data'.'Games is'.'Rio (2016)'.then
-    .'group data'.'by Athlete'.'sum Gold'.then
-    .'sort data'.'by Gold descending'.then
-    .paging.take(8)
-    .'get series'.'with key Athlete'.'and value Gold'
-  
-chart.column(data).legend(position="none")
-  .set(fontName="Roboto", fontSize=12, colors=["#F4C300"], 
-    title="Top medalists (by number of gold medals) at Rio 2016")
+  <script type="text/thegamma" id="demo">let data = worldbank.byCountry.China.Environment.'CO2 emissions (kt)'
+youdraw.create(data)
   </script>
 
   <article>
@@ -54,7 +45,7 @@ chart.column(data).legend(position="none")
       </div>
       </div>
       <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-12 thegamma">
         <!-- The 'out1' element is used as output - running the visualization code will create
           chart and put the output in the `out1` element below (replacng the loading text) -->
         <div id="out1" class="output">
@@ -75,7 +66,7 @@ chart.column(data).legend(position="none")
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           <h4 class="modal-title">Editor</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body thegamma">
           <!-- This modal dialog opens when you click "Edit source code" - the 'ed1' element
             is used to create the Monaco-based source editor and 'ed1-errors' is used in the
             code below to render errors reported from The Gamma -->
@@ -94,6 +85,7 @@ chart.column(data).legend(position="none")
     integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="https://thegamma.net/lib/thegamma/d3v4.js"></script>
   
   <!-- Loading Monaco and TheGamma scripts -->
   <script src="/node_modules/babel-standalone/babel.min.js"></script>
