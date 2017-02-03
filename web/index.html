@@ -17,14 +17,23 @@
 
   <!-- thegamma.css contains style definitions for the live preview and you'll need it in 
     your projects that use The Gamma; custom.css contains extra styling for this demo page -->
-  <link href="http://thegamma.net/lib/thegamma/thegamma.css" rel="stylesheet">
+  <link href="https://thegamma.net/lib/thegamma/thegamma.css" rel="stylesheet">
   <link href="/lib/custom.css" rel="stylesheet">
 </head>
 <body>
   <div id="sizer"></div>
 
-  <script type="text/thegamma" id="demo">let data = worldbank.byCountry.China.Environment.'CO2 emissions (kt)'
-youdraw.create(data)
+  <script type="text/thegamma" id="demo">let data = 
+  olympics
+    .'filter data'.'Games is'.'Rio (2016)'.then		
+    .'group data'.'by Athlete'.'sum Gold'.then		
+    .'sort data'.'by Gold descending'.then		
+    .paging.take(8)		
+    .'get series'.'with key Athlete'.'and value Gold'		
+  		
+chart.column(data).legend(position="none")		
+  .set(fontName="Roboto", fontSize=12, colors=["#F4C300"], 		
+    title="Top medalists (by number of gold medals) at Rio 2016")
   </script>
 
   <article>
