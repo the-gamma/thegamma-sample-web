@@ -23,16 +23,16 @@
 <body>
   <div id="sizer"></div>
 
-  <script type="text/thegamma" id="demo">let data = 
+  <script type="text/thegamma" id="demo">let data =
   olympics
-    .'filter data'.'Games is'.'Rio (2016)'.then		
-    .'group data'.'by Athlete'.'sum Gold'.then		
-    .'sort data'.'by Gold descending'.then		
-    .paging.take(8)		
-    .'get series'.'with key Athlete'.'and value Gold'		
-  		
-chart.column(data).legend(position="none")		
-  .set(fontName="Roboto", fontSize=12, colors=["#F4C300"], 		
+    .'filter data'.'Games is'.'Rio (2016)'.then
+    .'group data'.'by Athlete'.'sum Gold'.then
+    .'sort data'.'by Gold descending'.then
+    .paging.take(8)
+    .'get series'.'with key Athlete'.'and value Gold'
+
+chart.column(data).legend(position="none")
+  .set(fontName="Roboto", fontSize=12, colors=["#F4C300"],
     title="Top medalists (by number of gold medals) at Rio 2016")
   </script>
 
