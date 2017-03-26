@@ -26,14 +26,21 @@
 <body>
   <div id="sizer"></div>
 
-  <script type="text/thegamma" id="demo">let ts = 
-  worldbank.byCountry
-    .'United States'.'Climate Change'
-    .'CO2 emissions (kt)'.take(11)
+<script type="text/thegamma" id="demo">let data = 
+  worldbank.byYear.'2010'.'All Indicators'.'Population, total'
+    .sortValues(true).take(6).shuffle()
 
-youdraw.create(ts)
-  .setRange(5000000, 6400000).setColors("#4060c0","#a040b0")
-  .setDrawColor("#a07020").setLabels("Draw the thing!", "We tell you this", "You have to guess this")
+youguess.columns(data)
+  .setLabel("Drag the bars and guess the population of 6 largest countries of the world!")   
+</script>
+<script type="text/thegamma" id="demo1">let ts1 = 
+  govuk.'by pollutant'.'Particulate matter < 10 ┬╡m (aerosol)'
+    .'by station'.'London Bloomsbury'.'after date'.'2010'.January.'get the data'
+let ts2 = 
+  govuk.'by pollutant'.'Particulate matter < 10 ┬╡m (aerosol)'
+    .'by station'.'London Marylebone Road'.'after date'.'2010'.January.'get the data'
+
+chart.lines(series.values([ts1, ts2]))
   </script>
 
   <article>
@@ -66,7 +73,6 @@ youdraw.create(ts)
     integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <script src="https://thegamma.net/lib/thegamma/d3v4.js"></script>
   
   <!-- Loading Monaco and TheGamma scripts -->
   <script src="/node_modules/babel-standalone/babel.min.js"></script>
@@ -81,12 +87,14 @@ youdraw.create(ts)
     require(["vs/editor/editor.main", "node_modules/thegamma-script/dist/thegamma.js"], function (_, g) {      
       // Configure type providers available in The Gamma
       // (when running thegamma-services locally, use http://127.0.0.1:10042/)
-      var services = "https://thegamma-services.azurewebsites.net/";      
+      //var services = "https://thegamma-services.azurewebsites.net/";      
+      var services = "http://127.0.0.1:10042/";
       var providers = 
         g.providers.createProviders({ 
           "worldbank": g.providers.rest(services + "worldbank"),
           //"houses": g.providers.pivot("http://127.0.0.1:8087/land-registry-monthly-price-paid-data"),
           //"medals": g.providers.pivot("http://127.0.0.1:8087/medals"),
+          //"govuk": g.providers.rest("http://localhost:10039/minimal"),
           "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json"),
           "olympics": g.providers.pivot(services + "pdata/olympics") });
           
