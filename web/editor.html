@@ -26,22 +26,35 @@
 <body>
   <div id="sizer"></div>
 
-<script type="text/thegamma" id="demo">let data = 
+<script type="text/thegamma" id="demo1">let data = 
   worldbank.byYear.'2010'.'All Indicators'.'Population, total'
     .sortValues(true).take(6).shuffle()
 
 youguess.columns(data)
   .setLabel("Drag the bars and guess the population of 6 largest countries of the world!")   
 </script>
-<script type="text/thegamma" id="demo1">let ts1 = 
-  govuk.'by pollutant'.'Particulate matter < 10 ┬╡m (aerosol)'
-    .'by station'.'London Bloomsbury'.'after date'.'2010'.January.'get the data'
+<script type="text/thegamma" id="demo">let ts1 = 
+  traffic.'by location'.Cambridgeshire.'get motor vehicles per year'
 let ts2 = 
-  govuk.'by pollutant'.'Particulate matter < 10 ┬╡m (aerosol)'
-    .'by station'.'London Marylebone Road'.'after date'.'2010'.January.'get the data'
+  traffic.'by region'.London.'get motor vehicles per year'
+
+chart.lines(series.values([ts1, ts2]))
+</script>
+<script type="text/thegamma" id="demo">let ts1 = 
+  airquality.'by pollutant'.'Particulate matter < 2.5 µm (aerosol)'
+    .'by station'.'London Bloomsbury'
+    .'by date'.'for a custom range'.'from 2016'.January.'until 2016'.April
+    .'get daily averages'
+
+let ts2 = 
+  airquality.'by pollutant'.'Particulate matter < 2.5 µm (aerosol)'
+    .'by station'.'London Marylebone Road'
+    .'by date'.'for a custom range'.'from 2016'.January.'until 2016'.April
+    .'get daily averages'
 
 chart.lines(series.values([ts1, ts2]))
   </script>
+  
 
   <article>
     <div class="container">
@@ -51,8 +64,10 @@ chart.lines(series.values([ts1, ts2]))
         <!-- The 'out1' element is used as output - running the visualization code will create
           chart and put the output in the `out1` element below (replacng the loading text) -->
         <div style="background:white;padding:20px">
-          <div id="ed1"></div>
-          <div id="ed1-errors"></div>
+          <div style="position:relative;padding-bottom:60px">
+            <div id="ed1"></div>
+            <div id="ed1-errors" class="errors" style="bottom:0px"></div>
+          </div>
           <button class="btn btn-success" id="okbtn">Update page</button>
         </div>
         <div id="out1" class="output">
@@ -87,14 +102,15 @@ chart.lines(series.values([ts1, ts2]))
     require(["vs/editor/editor.main", "node_modules/thegamma-script/dist/thegamma.js"], function (_, g) {      
       // Configure type providers available in The Gamma
       // (when running thegamma-services locally, use http://127.0.0.1:10042/)
-      //var services = "https://thegamma-services.azurewebsites.net/";      
-      var services = "http://127.0.0.1:10042/";
+      var services = "https://thegamma-services.azurewebsites.net/";      
+      //var services = "http://127.0.0.1:10042/";
       var providers = 
         g.providers.createProviders({ 
           "worldbank": g.providers.rest(services + "worldbank"),
           //"houses": g.providers.pivot("http://127.0.0.1:8087/land-registry-monthly-price-paid-data"),
           //"medals": g.providers.pivot("http://127.0.0.1:8087/medals"),
-          //"govuk": g.providers.rest("http://localhost:10039/minimal"),
+          "airquality": g.providers.rest("http://localhost:10039/airquality"),
+          "traffic": g.providers.rest("http://localhost:10039/traffic"),
           "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json"),
           "olympics": g.providers.pivot(services + "pdata/olympics") });
           
