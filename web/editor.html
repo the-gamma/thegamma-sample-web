@@ -24,28 +24,36 @@
   </style>
 </head>
 <body>
-<!--  
-  <svg width="100px" height="100px" style="background:yellow">
-    <defs>
-      <clipPath id="clipPath">
-          <rect x="15" y="15" width="40" height="40" />
-      </clipPath>
-  </defs>
-
-  <circle cx="25" cy="25" r="20"
-          style="fill: #0000ff; clip-path: url(#clipPath); " />
-</svg>
---> 
   <div id="sizer"></div>
 
-<script type="text/thegamma" id="demo">let t =
-  data.load("https://raw.githubusercontent.com/the-gamma/workyard/master/fsharp/fsharp-survey-2017.csv").explore
-    .paging.take(10)
+<script type="text/thegamma" id="demo">let ftse100 = shared.'by date'.'August 2017'.'FTSE100 (2012-2017)'
+    .'filter data'.'Date is in range'(date.date(2016,5,1), date.date(2016,8,1)).then
+    .'get series'.'with key Date'.'and value Close'
+
+let markers = 
+  web.scrapeDatedLists("https://en.wikipedia.org/wiki/2016_in_the_United_Kingdom", 2016).explore
+    .'filter data'.'Type is'.'Events[edit]'.then
+    .'filter data'
+       .'Entry contains'("votes to leave")
+       .'or Entry contains'("tim peake returns")
+       .'or Entry contains'("aaa credit")
+       .then
+    .'get series'.'with key Date'.'and value Entry'
+      
+youguess.vlineOffset(ftse100).setSize(400, 1000)
+  .setAxisY(label="", labelOffset=100, 
+     minValue=date.date(2016,6,9), maxValue=date.date(2016,7,3))
+  .setAxisX(minValue=5500, maxValue=7000)
+  .setMarkers(markers)</script>
+
+<script type="text/thegamma" id="demouuu">let events = 
+  web.scrape("https://en.wikipedia.org/wiki/2016_in_science").explore
+    .'filter data'.'Heading 2 is'.'Events[edit]'.then
+    .'filter data'.'Item contains'("Oxford").'or Item contains'("Cambridge").then
+    .'drop columns'.'drop Heading 2'.then
     .'get the data'
-
-data.test("http://turing.ac.uk").explore
-
-table.create(t)
+    
+table.create(events)
 </script>
 <script type="text/thegamma" id="demoyy">let data = 
   views.windowing.'expanding by date'.'sum views'.then
@@ -204,7 +212,8 @@ chart.lines(series.values([ts1, ts2]))
           "olympics": g.providers.pivot(csvService + "providers/csv/2017-06-17/file_0.csv"),
           "videos": g.providers.pivot(csvService + "providers/csv/2017-05-12/file_8.csv"),
           "views": g.providers.pivot(csvService + "providers/csv/2017-05-29/file_3.csv"),
-          "data": g.providers.rest(csvService + "providers/data")
+          "web": g.providers.rest(csvService + "providers/data"),
+          "shared": g.providers.rest(csvService + "providers/listing")
         });
           
       // Create context which is used to create editor & run code
