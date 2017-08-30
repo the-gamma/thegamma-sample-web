@@ -21,133 +21,61 @@
   <link href="/lib/custom.css" rel="stylesheet">
   <style>
     #out1 { background:white; }
+    
+    .pilleditor ul.pills {
+      margin:0px;
+      padding:0px;
+      font-family:'Roboto',verdana,sans-serif;
+    }
+    
+    .pilleditor ul.pills li {
+      list-style-type:none;
+      display:inline-block;
+      background:#F4C300;
+      color:white;
+      padding:5px 15px 5px 15px;
+      margin:10px 10px 10px 0px;
+      border-radius:12px;
+      cursor:default;
+    }
+    
+    .pilleditor ul.pills li i {
+      margin-left:10px;
+      cursor:pointer;
+    }
+
+    .pilleditor ul.pills select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border:none !important;
+      width:0px;
+      background-color:transparent;
+      padding:1px 25px 1px 5px;
+      color:black;
+    }
+
+    .pilleditor ul.pills li .selectwrapper {
+      background:url(http://thegamma.net/lib/thegamma-0.1/gfa/pw.png) no-repeat center center;
+      background-size:13px 13px;
+      cursor:pointer;
+    }    
+    
+    
+    .pilleditor ul.pills li input {
+      border:solid 0px #C49E15;
+      background-color:#FBE697;
+      color:#505050;
+      font-size:10pt;
+      padding:2px;
+      margin:0px 5px 0px 0px;
+      width:50px;
+    }
+
   </style>
 </head>
 <body>
   <div id="sizer"></div>
-
-<script type="text/thegamma" id="demo">let ftse100 = shared.'by date'.'August 2017'.'FTSE100 (2012-2017)'
-    .'filter data'.'Date is in range'(date.date(2016,5,1), date.date(2016,8,1)).then
-    .'get series'.'with key Date'.'and value Close'
-
-let markers = 
-  web.scrapeDatedLists("https://en.wikipedia.org/wiki/2016_in_the_United_Kingdom", 2016).explore
-    .'filter data'.'Type is'.'Events[edit]'.then
-    .'filter data'
-       .'Entry contains'("votes to leave")
-       .'or Entry contains'("tim peake returns")
-       .'or Entry contains'("aaa credit")
-       .then
-    .'get series'.'with key Date'.'and value Entry'
-      
-youguess.vlineOffset(ftse100).setSize(400, 1000)
-  .setAxisY(label="", labelOffset=100, 
-     minValue=date.date(2016,6,9), maxValue=date.date(2016,7,3))
-  .setAxisX(minValue=5500, maxValue=7000)
-  .setMarkers(markers)</script>
-
-<script type="text/thegamma" id="demouuu">let events = 
-  web.scrape("https://en.wikipedia.org/wiki/2016_in_science").explore
-    .'filter data'.'Heading 2 is'.'Events[edit]'.then
-    .'filter data'.'Item contains'("Oxford").'or Item contains'("Cambridge").then
-    .'drop columns'.'drop Heading 2'.then
-    .'get the data'
-    
-table.create(events)
-</script>
-<script type="text/thegamma" id="demoyy">let data = 
-  views.windowing.'expanding by date'.'sum views'.then
-    .'get series'.'with key last date'.'and value views'
-
-compost.charts.area(data)
-  .setAxisX(minValue=date.date(2016,5,10), maxValue=date.date(2017,5,10))
-  .setAxisY(label="Total number of YouTube views")
-  .setSize(height=300)
-</script>
-<script type="text/thegamma" id="demozzzz">let l1 = 
-  worldbank.byCountry.'United States'.'Climate Change'
-    .'CO2 emissions (kt)'.setProperties(seriesName="United States")
-let l2 = 
-  worldbank.byCountry.China.'Climate Change'
-    .'CO2 emissions (kt)'.setProperties(seriesName="China")
-
-compost.charts.lines([l1,l2])
-  .setAxisX(1990, 2010, "Years")
-  .setAxisY(label="CO2 emissions (kt)")
-  .setTitle("Carbon emissions in the USA and China")
-  .setColors(["blue","red"])
-  .setLegend("rightun ")
-  
-let co2 = 
-  worldbank.byYear.'2010'.'Climate Change'
-    .'CO2 emissions (kt)'
-    .sortValues(reverse=true).take(10)  
-    
-youguess.line(l1)
-  .setAxisX(label="Yadda")
-  .setAxisY(label="Yadda").show("zz")
-
-compost.charts.bar(co2)  
-  .setAxisX(label="yadda")
-  .setAxisY(label="zadda").show("zz")
-</script>
-<script type="text/thegamma" id="demo1">let data = videos.'get the data'
-
-compost.charts.bubbles(data)
-  .set(
-    x = fun v -> v.'Video created',
-    y = fun v -> math.log(v.Views),
-    size = fun v -> math.log(v.Views) ^ 1.25)
-  .setColors("#ffa070")
-</script>
-<script type="text/thegamma" id="demojjkk">let data =
-  worldbank.byCountry.'United States'.'Economy & Growth'
-    .'GDP per capita (current US$)'
-
-let markers =
-   olympics
-      .'filter data'.'Team is'.'United States'.'and Athlete is'.'Mark Spitz'.then
-     .'group data'.'by Year'.'sum Gold'.then
-     .'get series'.'with key Year'.'and value Gold'
-
-youguess.line(data).setMarkers(markers)
-   .setColors("blue","green")
-   .setMarkerColor("red")
-</script>
-<script type="text/thegamma" id="demo1">let data = 
-  worldbank.byYear.'2010'.'All Indicators'.'Population, total'
-    .sortValues(true).take(6).shuffle()
-
-youguess.columns(data)
-  .setLabel("Drag the bars and guess the population of 6 largest countries of the world!")   
-</script>
-<script type="text/thegamma" id="demo0">let ts1 = traffic.'by location'.Cambridgeshire.'get motor vehicles per year'
-chart.lines(series.values([ts1]))
-
-let ts2 = airquality.'by station'.'London UCL'.'by pollutant'.'Toluene (air)'.'get daily averages'
-chart.lines(series.values([ts2]))
-
-let ts3 = airquality.'by station'.'London UCL'.'by pollutant'.'Toluene (air)'.'get yearly averages'
-chart.lines(series.values([ts3]))
-
-youdraw.create(ts3)
-</script> 
-<script type="text/thegamma" id="demo2">let ts1 = 
-  airquality.'by pollutant'.'Particulate matter < 2.5 µm (aerosol)'
-    .'by station'.'London Bloomsbury'
-    .'by date'.'for a custom range'.'from 2016'.January.'until 2016'.April
-    .'get daily averages'
-
-let ts2 = 
-  airquality.'by pollutant'.'Particulate matter < 2.5 µm (aerosol)'
-    .'by station'.'London Marylebone Road'
-    .'by date'.'for a custom range'.'from 2016'.January.'until 2016'.April
-    .'get daily averages'
-
-chart.lines(series.values([ts1, ts2]))
-  </script>
-  
-
+  <script type="text/thegamma" id="demo">placeholder.create("Yo")</script>
   <article>
     <div class="container">
       <div class="row">
@@ -195,9 +123,8 @@ chart.lines(series.values([ts1, ts2]))
       // Configure type providers available in The Gamma
       // (when running thegamma-services locally, use http://127.0.0.1:10042/)
       var services = "https://thegamma-services.azurewebsites.net/";      
-      //var services = "http://127.0.0.1:10042/";
-      
       var csvService = "https://gallery-csv-service.azurewebsites.net/";
+      //var services = "http://localhost:10042/";
       //var csvService = "http://localhost:8897/";
             
       var providers = 
@@ -250,6 +177,8 @@ chart.lines(series.values([ts1, ts2]))
           } };
 
       // Create editor if it is not created yet
+      ctx.createBlocks("ed1");
+      /*
       var editor = ctx.createEditor("ed1", code, opts);
       
       // Get editor text and run it on the main page
@@ -258,6 +187,7 @@ chart.lines(series.values([ts1, ts2]))
         code = editor.getValue();
         ctx.evaluate(code, "out1");
       };
+      */
     });
   </script>
 
