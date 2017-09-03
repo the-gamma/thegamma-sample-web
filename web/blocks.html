@@ -124,6 +124,7 @@
       // (when running thegamma-services locally, use http://127.0.0.1:10042/)
       var services = "https://thegamma-services.azurewebsites.net/";      
       var csvService = "https://gallery-csv-service.azurewebsites.net/";
+      var restServices = "http://localhost:10033/";
       //var services = "http://localhost:10042/";
       //var csvService = "http://localhost:8897/";
             
@@ -135,6 +136,7 @@
           //"test": g.providers.rest("http://localhost:8897/providers/listing"),
           //"airquality": g.providers.rest("http://localhost:10039/airquality"),
           //"traffic": g.providers.rest("http://localhost:10039/traffic"),
+          "enigma": g.providers.rest(restServices + "enigma"),
           "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json"),
           "olympics": g.providers.pivot(csvService + "providers/csv/2017-06-17/file_0.csv"),
           "videos": g.providers.pivot(csvService + "providers/csv/2017-05-12/file_8.csv"),
