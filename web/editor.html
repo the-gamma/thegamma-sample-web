@@ -25,8 +25,9 @@
 </head>
 <body>
   <div id="sizer"></div>
-
-<script type="text/thegamma" id="demo">placeholder.create("Hello!")</script>
+  
+<script type="text/thegamma" id="demo">table.create(drWho.Actor.'[any]'.'get_properties')</script>
+<script type="text/thegamma" id="demoqqq">placeholder.create("Hello!")</script>
 <script type="text/thegamma" id="demoqq">let ftse100 = shared.'by date'.'August 2017'.'FTSE100 (2012-2017)'
     .'filter data'.'Date is in range'(date.date(2016,5,1), date.date(2016,8,1)).then
     .'get series'.'with key Date'.'and value Close'
@@ -208,6 +209,7 @@ chart.lines(series.values([ts1, ts2]))
       var providers =
         g.providers.createProviders({
           "worldbank": g.providers.rest(services + "worldbank"),
+          "minimal": g.providers.rest(services + "minimal"),
           //"houses": g.providers.pivot("http://127.0.0.1:8087/land-registry-monthly-price-paid-data"),
           //"medals": g.providers.pivot("http://127.0.0.1:8087/medals"),
           //"test": g.providers.rest("http://localhost:8897/providers/listing"),
