@@ -109,11 +109,15 @@ chart.column(data).legend(position="none")
       // Configure type providers available in The Gamma
       // (when running thegamma-services locally, use http://127.0.0.1:10042/)
       var services = "https://thegamma-services.azurewebsites.net/";      
+      var graphServices = "https://thegamma-graph-service.azurewebsites.net/";
+
       var providers = 
         g.providers.createProviders({ 
           "worldbank": g.providers.rest(services + "worldbank"),
+          "drWho": g.providers.rest(graphServices + "drWho"),
           //"houses": g.providers.pivot("http://127.0.0.1:8087/land-registry-monthly-price-paid-data"),
           //"medals": g.providers.pivot("http://127.0.0.1:8087/medals"),
+          
           "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json"),
           "olympics": g.providers.pivot(services + "pdata/olympics") });
           
