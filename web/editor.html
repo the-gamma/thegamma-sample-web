@@ -25,8 +25,18 @@
 </head>
 <body>
   <div id="sizer"></div>
-  
-<script type="text/thegamma" id="demo">table.create(drWho.Actor.'[any]'.'get_properties')</script>
+
+<script type="text/thegamma" id="demo">let topEnemies =
+  drWho.Character.Doctor
+    .'ENEMY_OF'.'[any]'.'APPEARED_IN'.'[any]'.'explore_properties'
+  .explore
+    .'group data'.'by 1-name'.'count distinct 2-name'.then
+    .'sort data'.'by 2-name descending'.then
+    .paging.take(8).'get series'.'with key 1-name'.'and value 2-name'
+    .shuffle()
+
+youguess.bars(topEnemies)
+  </script>
 <script type="text/thegamma" id="demoqqq">placeholder.create("Hello!")</script>
 <script type="text/thegamma" id="demoqq">let ftse100 = shared.'by date'.'August 2017'.'FTSE100 (2012-2017)'
     .'filter data'.'Date is in range'(date.date(2016,5,1), date.date(2016,8,1)).then
@@ -204,7 +214,7 @@ chart.lines(series.values([ts1, ts2]))
 
       var restServices = "http://localhost:10033/";
 
-      var graphServices = "https://thegamma-graph-service.azurewebsites.net/";
+      var graphServices = "http://localhost:8000/";
 
       var providers =
         g.providers.createProviders({
