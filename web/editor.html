@@ -214,7 +214,8 @@ chart.lines(series.values([ts1, ts2]))
 
       var restServices = "http://localhost:10033/";
 
-      var graphServices = "http://localhost:8000/";
+      //var graphServices = "http://localhost:8000/";
+      var graphServices = "https://thegamma-graph-service.azurewebsites.net/";
 
       var providers =
         g.providers.createProviders({
@@ -225,7 +226,7 @@ chart.lines(series.values([ts1, ts2]))
           //"test": g.providers.rest("http://localhost:8897/providers/listing"),
           //"airquality": g.providers.rest("http://localhost:10039/airquality"),
           //"traffic": g.providers.rest("http://localhost:10039/traffic"),
-          "enigma": g.providers.rest(restServices + "enigma"),
+          //"enigma": g.providers.rest(restServices + "enigma"),
           "datadiff": g.providers.rest("http://127.0.0.1:10037/datadiff"),
           "libraries": g.providers.library("/node_modules/thegamma-script/dist/libraries.json"),
           "olympics": g.providers.pivot(csvService + "providers/csv/2017-06-17/file_0.csv"),
