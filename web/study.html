@@ -81,9 +81,21 @@
 
   </script>
 </head>
-<body>
+<body style="background:white">
   <div id="sizer"></div>
 
+  <script type="text/thegamma" id="test">worldbank.byCountry
+  .'United States'
+  .'Climate Change'
+  .'CO2 emissions (kt)'
+  .setProperties(seriesName="United States")
+
+worldbank.byCountry
+  .China
+  .'Climate Change'
+  .'CO2 emissions (kt)'
+  .setProperties(seriesName="China")
+</script>
 <script type="text/thegamma" id="study1">expenditure</script>
 <script type="text/thegamma" id="study2">lords</script>
 <script type="text/thegamma" id="study3">worldbank.byCountry.'United Kingdom'
@@ -104,8 +116,11 @@ worldbank.byCountry.'Czech Republic'
   <article>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-12 ">
-          <a href="/"><h1><span>The Gamma: User experience study</span></h1></a>
+        <div class="col-sm-12" style="text-align:center">
+          <input type="text" value="The Gamma: "
+            style="margin:10px;width:90%;text-align:center;
+              font-family:Kreon,'Times New Roman',times,serif;
+              font-size:20pt;border-style:none"/>
         </div>
       </div>
     </div>
@@ -116,7 +131,7 @@ worldbank.byCountry.'Czech Republic'
 
         <div style="background:white;padding:20px">
           <div style="position:relative;padding-bottom:60px">
-            <div id="ed1"></div>
+            <div id="ed1" style="min-height:380px"></div>
             <div id="ed1-errors" class="errors" style="bottom:0px"></div>
           </div>
           <div>
@@ -309,10 +324,12 @@ worldbank.byCountry.'Czech Republic'
           }
         }
         if (does.length == 1) {
-          run += "\ncompost.charts.line(v0)";
+          run += "\ncompost.charts.lines([v0.setProperties(seriesName=\"United Kingdom\")]).setLegend(\"bottom\").setAxisY(minValue=0,maxValue=1000000).setAxisX(maxValue=2010)";
         } else {
           run += "\ncompost.charts.lines([v0";
           for(var i = 1; i < does.length; i++) run += ", v" + i;
+          //run += ".setProperties(seriesName=\"China\"), v1.setProperties(seriesName=\"United States\")"
+          //run += "]).setLegend(\"bottom\").setAxisY(minValue=0).setAxisX(maxValue=2010)"
           run += "])"
         }
         ctx.evaluate(run, "out1");
@@ -332,7 +349,7 @@ worldbank.byCountry.'Czech Republic'
             run += "\ncompost.charts.line(v" + i + ").setSize(height=400).show(\"out1_v" + i + "\")"
           } else if (t.type == "series" && t.value == "number") {
             run += c; html += h;
-            run += "\ncompost.charts.bar(v" + i + ").setAxisY(label=\" \", labelOffset=150).setSize(height=400).show(\"out1_v" + i + "\")"
+            run += "\ncompost.charts.bar(v" + i + ".reverse()).setAxisY(label=\" \", labelOffset=150).setSize(height=400).show(\"out1_v" + i + "\")"
           } else if (t.type == "series") {
             run += c; html += ht;
             run += "\ntable.create(v" + i + ").show(\"out1_v" + i + "\")"
@@ -369,8 +386,8 @@ worldbank.byCountry.'Czech Republic'
                 valid = true; clr = "#10aa20";
               } else {
                 logEvent("preview", "display", "", {"kind": "nothing" });
-                msg = "<i class='fa fa-cube'></i> &nbsp; The code is good, but the result does not have a preview!";
-                valid = false; clr = "#d07040";
+                msg = "<i class='fa fa-cube'></i> &nbsp; The code is good, but does not have a preview!";
+                valid = false; clr = "#808080";
               }
             } else {
               logEvent("preview", "display", "", {"kind": "empty" });
@@ -379,7 +396,7 @@ worldbank.byCountry.'Czech Republic'
           }
           else {
             logEvent("preview", "failed", "", null);
-            msg = "<i class='fa fa-wrench'></i> &nbsp; The code is not correct. Fix the errors so that we can continue!";
+            msg = "<i class='fa fa-wrench'></i> &nbsp; The code is not correct. Fix the errors first...";
           }
 
           if (!valid) document.getElementById("out1").innerHTML = "";
